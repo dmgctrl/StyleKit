@@ -37,6 +37,7 @@ class SwiftGenerator:
         self.level = 0
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
+        self.buttonArray = "[UIButton]! "
   
     def end(self):
         return string.join(self.code, "")
@@ -71,10 +72,8 @@ class SwiftGenerator:
         self.write("for object in " + label.name + " {")
         self.newline()
         self.indent()
-        if label.font: set([self.write("object.font = " + label.font.toSwift())])
-        self.newline()
-        if label.textColor: set([self.write("object.textColor = " + label.textColor)])
-        self.newline()
+        if label.font: set([self.write("object.font = " + label.font.toSwift())]),  self.newline()
+        if label.textColor: set([self.write("object.textColor = " + label.textColor)]), self.newline()
         self.dedent()
         self.write("}")
         self.dedent()
