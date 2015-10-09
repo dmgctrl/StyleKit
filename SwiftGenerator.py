@@ -74,10 +74,12 @@ class SwiftGenerator:
         self.indent()
         if label.font: set([self.write("object.font = " + label.font.toSwift())]),  self.newline()
         if label.textColor: set([self.write("object.textColor = " + label.textColor)]), self.newline()
+        self.indent()
+        self.write("}")
+        self.newline()
         self.dedent()
         self.write("}")
-        self.dedent()
-        self.dedent()
+
  
     def write(self, string):
         self.code.append(self.tab * self.level + string)
@@ -105,6 +107,13 @@ h1Label = Label("h1Label")
 h1Label.font = h1Font
 h1Label.setTextColor(h1Color.toSwift())
 
+## define h2 ##
+h2font = Font("Asul", 24)
+h2Color = Color(0, 1, 0, 1)
+h2Label = Label("h2Label")
+h2Label.font = h2font
+h2Label.setTextColor(h2Color.toSwift())
+
 swiftGenerator.begin(tab="    ")
 swiftGenerator.write("import UIKit\n")
 swiftGenerator.newline()
@@ -112,10 +121,13 @@ swiftGenerator.write("class Theme: NSObject {\n")
 swiftGenerator.newline()
 swiftGenerator.indent()
 swiftGenerator.labelOutletCollection(h1Label)
+swiftGenerator.labelOutletCollection(h2Label)
 swiftGenerator.buildLabelStyleFunction(h1Label)
+swiftGenerator.dedent()
 swiftGenerator.newline()
-swiftGenerator.indent()
-swiftGenerator.write("}")
+swiftGenerator.newline()
+swiftGenerator.buildLabelStyleFunction(h2Label)
+swiftGenerator.dedent()
 swiftGenerator.newline()
 swiftGenerator.dedent()
 swiftGenerator.write("}")
