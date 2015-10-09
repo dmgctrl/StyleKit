@@ -44,11 +44,11 @@ class SwiftGenerator:
     def newline(self):
         self.write("\n")
 
-    def labelOutletCollection(self, Label):
-        self.write(self.iboutlet + Label.name + ": "+ self.labelArray + "{" )
+    def labelOutletCollection(self, label):
+        self.write(self.iboutlet + label.name + ": "+ self.labelArray + "{" )
         self.indent()
         self.newline()
-        self.didSet(Label.name)
+        self.didSet(label.name)
         self.newline()
         self.dedent()
         self.write("}")
@@ -99,6 +99,7 @@ class SwiftGenerator:
 swiftGenerator = SwiftGenerator()
 file = open("Theme.swift", "w")
 
+## define h1 ##
 h1Font = Font("Asul", 34)
 h1Color = Color(1, 0, 0, 1)
 h1Label = Label("h1Label")
