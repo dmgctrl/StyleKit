@@ -51,7 +51,7 @@ class SwiftGenerator:
         self.newline()
         self.didSet(label.name)
         self.newline()
-        self.dedent()
+        self.outdent()
         self.write("}")
         self.newline()
         self.newline()
@@ -62,7 +62,7 @@ class SwiftGenerator:
         self.newline()
         self.write(name + "Style()")
         self.newline()
-        self.dedent()
+        self.outdent()
         self.write("}")
        
     def buildLabelStyleFunction(self, label):
@@ -77,7 +77,7 @@ class SwiftGenerator:
         self.indent()
         self.write("}")
         self.newline()
-        self.dedent()
+        self.outdent()
         self.write("}")
 
  
@@ -87,7 +87,7 @@ class SwiftGenerator:
     def indent(self):
         self.level = self.level + 1
 
-    def dedent(self):
+    def outdent(self):
         if self.level == 0:
             raise SyntaxError, "internal error in code generator"
         self.level = self.level - 1
@@ -123,13 +123,13 @@ swiftGenerator.indent()
 swiftGenerator.labelOutletCollection(h1Label)
 swiftGenerator.labelOutletCollection(h2Label)
 swiftGenerator.buildLabelStyleFunction(h1Label)
-swiftGenerator.dedent()
+swiftGenerator.outdent()
 swiftGenerator.newline()
 swiftGenerator.newline()
 swiftGenerator.buildLabelStyleFunction(h2Label)
-swiftGenerator.dedent()
+swiftGenerator.outdent()
 swiftGenerator.newline()
-swiftGenerator.dedent()
+swiftGenerator.outdent()
 swiftGenerator.write("}")
 file.write(swiftGenerator.end())
 file.close()
