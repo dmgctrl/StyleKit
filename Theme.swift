@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-12 15:57:54
+//Theme Generated:2015-10-12 16:15:19
 
 import UIKit
 
@@ -54,5 +54,4 @@ class Theme: NSObject {
             }            
         }    
     
-
-}
+    }

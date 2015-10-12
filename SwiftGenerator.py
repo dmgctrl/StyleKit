@@ -114,5 +114,4 @@ class SwiftGenerator:
 
     def closeClass(self):
         self.indentLevel = 0
-        self.newline()
         self.write("}")
