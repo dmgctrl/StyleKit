@@ -5,7 +5,7 @@ class SwiftGenerator:
     def __init__(self):
         self.code = []
         self.tab = "    "
-        self.level = 0
+        self.indentLevel = 0
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
         self.buttonArray = "[UIButton]! "
@@ -31,11 +31,7 @@ class SwiftGenerator:
             self.indent()
             self.newline()
             self.didSet(label.name)
-            self.newline()
-            self.outdent()
-            self.write("}")
-            self.newline()
-            self.newline()
+            self.closeCollection()
 
     def buttonOutletCollections(self, buttons = []):
         for button in buttons:
@@ -43,11 +39,7 @@ class SwiftGenerator:
             self.indent()
             self.newline()
             self.didSet(button.name)
-            self.newline()
-            self.outdent()
-            self.write("}")
-            self.newline()
-            self.newline()
+            self.closeCollection()
         
     def didSet(self, name):
         self.write("didSet {")
@@ -68,13 +60,8 @@ class SwiftGenerator:
             self.indent()
             if label.font: set([self.write("object.font = " + label.font.toSwift())]),  self.newline()
             if label.textColor: set([self.write("object.textColor = " + label.textColor)]), self.newline()
-            self.write("}")
-            self.newline()
-            self.outdent()
-            self.write("}")
+            self.closeFunction()
             self.nextFunction()
-
-
 
     def buildButtonStyleFunctions(self, buttons = []):
         for button in buttons:
@@ -85,29 +72,31 @@ class SwiftGenerator:
             self.newline()
             self.indent()
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
-            self.write("}")
-            self.newline()
-            self.outdent()
-            self.write("}")
+            self.closeFunction()
             self.nextFunction()
 
-
     def write(self, string):
-        self.code.append(self.tab * self.level + string)
+        self.code.append(self.tab * self.indentLevel + string)
         
     def indent(self):
-        self.level = self.level + 1
+        self.indentLevel = self.indentLevel + 1
 
     def outdent(self):
-        if self.level == 0:
+        if self.indentLevel == 0:
             raise SyntaxError, "internal error in code generator"
-        self.level = self.level - 1
+        self.indentLevel = self.indentLevel - 1
 
     def nextFunction(self):
-        self.level = 0
+        self.indentLevel = 0
         self.indent()
         self.newline()
         self.newline()
+
+    def closeFunction(self):
+        self.write("}")
+        self.newline()
+        self.outdent()
+        self.write("}")
 
     def openClass(self):
         self.write("import UIKit\n")
@@ -116,8 +105,14 @@ class SwiftGenerator:
         self.newline()
         self.indent()
 
+    def closeCollection(self):
+        self.newline()
+        self.outdent()
+        self.write("}")
+        self.newline()
+        self.newline()
 
     def closeClass(self):
-        self.level = 0
+        self.indentLevel = 0
         self.newline()
         self.write("}")
