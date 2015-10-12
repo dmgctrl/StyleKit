@@ -27,7 +27,7 @@ class Color:
         self.alpha = alpha
         
     def toSwift(self):
-        return "UIColor(red: %.2f, green: %f, blue: %.2f, alpha: %.2f)" % (self.red, self.green, self.blue, self.alpha)
+        return "UIColor(red: %.2f, green: %.2f, blue: %.2f, alpha: %.2f)" % (self.red, self.green, self.blue, self.alpha)
 
 class SwiftGenerator:
     
@@ -77,6 +77,7 @@ class SwiftGenerator:
         self.indent()
         self.write("}")
         self.newline()
+        self.outdent()
         self.outdent()
         self.write("}")
 
