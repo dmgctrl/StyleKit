@@ -60,13 +60,13 @@ class SwiftGenerator:
         self.write("didSet {")
         self.indent()
         self.newline()
-        self.write(name + "Style()")
+        self.write("style" + name + "("+ name +")")
         self.newline()
         self.outdent()
         self.write("}")
        
     def buildLabelStyleFunction(self, label):
-        self.write("func " + label.name +"Style() {")
+        self.write("func " + "style" + label.name + "(labels: [UILabel])" + " {" )
         self.newline()
         self.indent()
         self.write("for object in " + label.name + " {")
@@ -101,18 +101,18 @@ swiftGenerator = SwiftGenerator()
 file = open("Theme.swift", "w")
 
 ## define h1 ##
-h1Font = Font("Asul", 34)
-h1Color = Color(1, 0, 0, 1)
-h1Label = Label("h1Label")
-h1Label.font = h1Font
-h1Label.setTextColor(h1Color.toSwift())
+H1Font = Font("Asul", 34)
+H1Color = Color(1, 0, 0, 1)
+H1Label = Label("H1Label")
+H1Label.font = H1Font
+H1Label.setTextColor(H1Color.toSwift())
 
 ## define h2 ##
-h2font = Font("Asul", 24)
-h2Color = Color(0, 1, 0, 1)
-h2Label = Label("h2Label")
-h2Label.font = h2font
-h2Label.setTextColor(h2Color.toSwift())
+H2font = Font("Asul", 24)
+H2Color = Color(0, 1, 0, 1)
+H2Label = Label("H2Label")
+H2Label.font = H2font
+H2Label.setTextColor(H2Color.toSwift())
 
 swiftGenerator.begin(tab="    ")
 swiftGenerator.write("import UIKit\n")
@@ -120,13 +120,13 @@ swiftGenerator.newline()
 swiftGenerator.write("class Theme: NSObject {\n")
 swiftGenerator.newline()
 swiftGenerator.indent()
-swiftGenerator.labelOutletCollection(h1Label)
-swiftGenerator.labelOutletCollection(h2Label)
-swiftGenerator.buildLabelStyleFunction(h1Label)
+swiftGenerator.labelOutletCollection(H1Label)
+swiftGenerator.labelOutletCollection(H2Label)
+swiftGenerator.buildLabelStyleFunction(H1Label)
 swiftGenerator.outdent()
 swiftGenerator.newline()
 swiftGenerator.newline()
-swiftGenerator.buildLabelStyleFunction(h2Label)
+swiftGenerator.buildLabelStyleFunction(H2Label)
 swiftGenerator.outdent()
 swiftGenerator.newline()
 swiftGenerator.outdent()
