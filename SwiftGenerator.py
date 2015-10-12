@@ -25,26 +25,28 @@ class SwiftGenerator:
     def newline(self):
         self.write("\n")
 
+    def enter(self):
+        self.indent()
+        self.newline()
+
+
     def labelOutletCollections(self, labels = []):
         for label in labels:
             self.write(self.iboutlet + label.name + ": "+ self.labelArray + "{" )
-            self.indent()
-            self.newline()
+            self.enter()
             self.didSet(label.name)
             self.closeCollection()
 
     def buttonOutletCollections(self, buttons = []):
         for button in buttons:
             self.write(self.iboutlet + button.name + ": "+ self.buttonArray + "{" )
-            self.indent()
-            self.newline()
+            self.enter()
             self.didSet(button.name)
             self.closeCollection()
         
     def didSet(self, name):
         self.write("didSet {")
-        self.indent()
-        self.newline()
+        self.enter()
         self.write("style" + name + "("+ name +")")
         self.newline()
         self.outdent()
@@ -53,8 +55,7 @@ class SwiftGenerator:
     def buildLabelStyleFunctions(self, labels = []):
         for label in labels:
             self.write("func " + "style" + label.name + self.labelArgument + " {" )
-            self.newline()
-            self.indent()
+            self.enter()
             self.write("for object in " + label.name + " {")
             self.newline()
             self.indent()
@@ -66,11 +67,9 @@ class SwiftGenerator:
     def buildButtonStyleFunctions(self, buttons = []):
         for button in buttons:
             self.write("func " + "style" + button.name + self.buttonArgument + " {" )
-            self.newline()
-            self.indent()
+            self.enter()
             self.write("for object in " + button.name + " {")
-            self.newline()
-            self.indent()
+            self.enter()
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
             self.closeFunction()
             self.nextFunction()
@@ -88,8 +87,7 @@ class SwiftGenerator:
 
     def nextFunction(self):
         self.indentLevel = 0
-        self.indent()
-        self.newline()
+        self.enter()
         self.newline()
 
     def closeFunction(self):
