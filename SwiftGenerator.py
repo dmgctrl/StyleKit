@@ -14,9 +14,11 @@ class SwiftGenerator:
 
     def timestamp(self):
         ts = time.time()
-        timeStamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+        timeStamp = ("//Theme Generated:" + datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'))
         self.write(timeStamp)
-  
+        self.newline()
+        self.newline()
+
     def end(self):
         return string.join(self.code, "")
         
@@ -83,9 +85,13 @@ class SwiftGenerator:
             self.newline()
             self.indent()
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
+            self.write("}")
+            self.newline()
+            self.outdent()
+            self.write("}")
+            self.nextFunction()
 
 
- 
     def write(self, string):
         self.code.append(self.tab * self.level + string)
         
@@ -99,7 +105,7 @@ class SwiftGenerator:
 
     def nextFunction(self):
         self.level = 0
-        ##self.outdent()
+        self.indent()
         self.newline()
         self.newline()
 
@@ -112,7 +118,6 @@ class SwiftGenerator:
 
 
     def closeClass(self):
-        self.outdent()
+        self.level = 0
         self.newline()
-        self.outdent()
         self.write("}")
