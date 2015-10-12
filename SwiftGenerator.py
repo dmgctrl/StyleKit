@@ -1,7 +1,6 @@
 import sys, string
 
 class Label:
-    
     def __init__(self, name):
         self.name = name
         self.textColor = None
@@ -9,6 +8,14 @@ class Label:
         
     def setTextColor(self, textColor):
         self.textColor = textColor
+
+class Button:
+    def __init__(self, name):
+        self.name = name
+        self.tintColor = None
+
+    def setTintColor(self, tintColor):
+        self.tintColor = tintColor
 
 class Font:
     def __init__(self, name, size):
@@ -38,6 +45,8 @@ class SwiftGenerator:
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
         self.buttonArray = "[UIButton]! "
+        self.labelArgument = "(labels: [UILabel])"
+        self.buttonArgument = "(buttons: [UIButton])"
   
     def end(self):
         return string.join(self.code, "")
@@ -55,6 +64,17 @@ class SwiftGenerator:
         self.write("}")
         self.newline()
         self.newline()
+
+    def buttonOutletCollection(self, button):
+        self.write(self.iboutlet + button.name + ": "+ self.buttonArray + "{" )
+        self.indent()
+        self.newline()
+        self.didSet(button.name)
+        self.newline()
+        self.outdent()
+        self.write("}")
+        self.newline()
+        self.newline()
         
     def didSet(self, name):
         self.write("didSet {")
@@ -66,7 +86,7 @@ class SwiftGenerator:
         self.write("}")
        
     def buildLabelStyleFunction(self, label):
-        self.write("func " + "style" + label.name + "(labels: [UILabel])" + " {" )
+        self.write("func " + "style" + label.name + self.labelArgument + " {" )
         self.newline()
         self.indent()
         self.write("for object in " + label.name + " {")
@@ -81,6 +101,12 @@ class SwiftGenerator:
         self.outdent()
         self.write("}")
 
+    def buildButtonStyleFunction(self, button):
+        self.write("func " + "style" + button.name + self.buttonArgument + " {" )
+        self.newline()
+        self.indent()
+        self.write("}")
+
  
     def write(self, string):
         self.code.append(self.tab * self.level + string)
@@ -93,7 +119,24 @@ class SwiftGenerator:
             raise SyntaxError, "internal error in code generator"
         self.level = self.level - 1
 
+    def newFunction(self):
+        self.outdent()
+        self.newline()
+        self.newline()
 
+    def openClass(self):
+        self.write("import UIKit\n")
+        self.newline()
+        self.write("class Theme: NSObject {\n")
+        self.newline()
+        self.indent()
+
+
+    def closeClass(self):
+        self.outdent()
+        self.newline()
+        self.outdent()
+        self.write("}")
 
 
 
@@ -115,23 +158,24 @@ H2Label = Label("H2Label")
 H2Label.font = H2font
 H2Label.setTextColor(H2Color.toSwift())
 
+## define button1 ##
+Button1 = Button("Button1")
+Button1Color = Color(0, 0, 1, 1)
+Button1.tintColor = Button1Color
+
+
+## begin swift generation ##
 swiftGenerator.begin(tab="    ")
-swiftGenerator.write("import UIKit\n")
-swiftGenerator.newline()
-swiftGenerator.write("class Theme: NSObject {\n")
-swiftGenerator.newline()
-swiftGenerator.indent()
+swiftGenerator.openClass()
 swiftGenerator.labelOutletCollection(H1Label)
 swiftGenerator.labelOutletCollection(H2Label)
+swiftGenerator.buttonOutletCollection(Button1)
 swiftGenerator.buildLabelStyleFunction(H1Label)
-swiftGenerator.outdent()
-swiftGenerator.newline()
-swiftGenerator.newline()
+swiftGenerator.newFunction()
+swiftGenerator.buildButtonStyleFunction(Button1)
+swiftGenerator.newFunction()
 swiftGenerator.buildLabelStyleFunction(H2Label)
-swiftGenerator.outdent()
-swiftGenerator.newline()
-swiftGenerator.outdent()
-swiftGenerator.write("}")
+swiftGenerator.closeClass()
 file.write(swiftGenerator.end())
 file.close()
 print swiftGenerator.end()
