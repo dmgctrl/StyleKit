@@ -12,12 +12,16 @@ class Button:
         self.name = name
         self.backgroundColor = None
         self.titleColor = None
+        self.cornerRadius = None
 
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
 
     def setTitleColor(self, titleColor):
         self.titleColor = titleColor
+
+    def setCornerRadius(self, cornerRadius):
+        self.cornerRadius = cornerRadius
 
 class Font:
     def __init__(self, name):

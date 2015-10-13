@@ -71,6 +71,7 @@ class SwiftGenerator:
             self.enter()
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
             if button.titleColor: set([self.write("object.setTitleColor(" + button.titleColor + ", forState: .Normal)")]), self.newline()
+            if button.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(button.cornerRadius))]), self.newline()
             self.closeFunction()
             self.nextFunction()
 

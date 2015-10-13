@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-13 13:45:32
+//Theme Generated:2015-10-13 14:02:17
 
 import UIKit
 
@@ -65,6 +65,7 @@ class Theme: NSObject {
     func styleButton2(buttons: [UIButton]) {        
         for object in Button2 {            
             object.backgroundColor = UIColor(red: 0.00, green: 1.00, blue: 0.00, alpha: 1.00)            
+            object.layer.cornerRadius = 5            
             }            
         }    
     
