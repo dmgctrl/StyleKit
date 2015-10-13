@@ -70,7 +70,7 @@ class SwiftGenerator:
             self.write("for object in " + button.name + " {")
             self.enter()
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
-            ##if button.titleColor: set([self.write("object.setTitleColor = " + button.titleColor + ", forState: UIControlStateNormal)")]), self.newline()
+            if button.titleColor: set([self.write("object.setTitleColor = " + button.titleColor + ", forState: UIControlStateNormal)")]), self.newline()
             self.closeFunction()
             self.nextFunction()
 

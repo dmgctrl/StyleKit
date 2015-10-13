@@ -20,9 +20,9 @@ class Button:
         self.titleColor = titleColor
 
 class Font:
-    def __init__(self, name, size):
+    def __init__(self, name):
         self.name = name
-        self.size = size
+        self.size = None
 
     def toSwift(self):
         return "UIFont (name: \"%s\", size: %s)" % (self.name, self.size)

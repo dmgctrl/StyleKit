@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-13 08:50:50
+//Theme Generated:2015-10-13 12:59:30
 
 import UIKit
 
@@ -51,19 +51,20 @@ class Theme: NSObject {
     func styleH3Label(labels: [UILabel]) {        
         for object in H3Label {        
             object.font = UIFont (name: "Asul", size: 14)            
-            object.textColor = UIColor(red: 1.00, green: 0.00, blue: 1.00, alpha: 1.00)            
+            object.textColor = UIColor(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.00)            
             }            
         }    
     
     func styleButton1(buttons: [UIButton]) {        
         for object in Button1 {            
             object.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 1.00, alpha: 1.00)            
+            object.setTitleColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00), forState: UIControlStateNormal)            
             }            
         }    
     
     func styleButton2(buttons: [UIButton]) {        
         for object in Button2 {            
-            object.backgroundColor = UIColor(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.00)            
+            object.backgroundColor = UIColor(red: 0.00, green: 1.00, blue: 0.00, alpha: 1.00)            
             }            
         }    
     
