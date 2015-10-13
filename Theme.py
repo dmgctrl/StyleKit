@@ -43,6 +43,8 @@ Button1.setTitleColor(primaryColor.toSwiftRGBA())
 Button2 = ui.Button("Button2")
 Button2.setBackgroundColor(secondaryColor.toSwiftRGBA())
 Button2.setCornerRadius(5)
+Button1.setBorderColor(primaryColor.toSwiftRGBA())
+Button1.setBorderWidth(2)
 
 ## begin swift generation ##
 swiftGenerator.openClass()

@@ -72,6 +72,8 @@ class SwiftGenerator:
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
             if button.titleColor: set([self.write("object.setTitleColor(" + button.titleColor + ", forState: .Normal)")]), self.newline()
             if button.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(button.cornerRadius))]), self.newline()
+            if button.borderColor: set([self.write("object.layer.borderColor = " + button.borderColor + ".CGColor")]), self.newline()
+            if button.borderWidth: set([self.write("object.layer.borderWidth = " + str(button.borderWidth))]), self.newline()
             self.closeFunction()
             self.nextFunction()
 

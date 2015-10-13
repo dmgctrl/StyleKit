@@ -13,6 +13,8 @@ class Button:
         self.backgroundColor = None
         self.titleColor = None
         self.cornerRadius = None
+        self.borderColor = None
+        self.borderWidth = None
 
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
@@ -23,6 +25,12 @@ class Button:
     def setCornerRadius(self, cornerRadius):
         self.cornerRadius = cornerRadius
 
+    def setBorderColor(self, borderColor):
+        self.borderColor = borderColor
+
+    def setBorderWidth(self, borderWidth):
+        self.borderWidth = borderWidth
+
 class Font:
     def __init__(self, name):
         self.name = name
@@ -32,7 +40,6 @@ class Font:
         return "UIFont (name: \"%s\", size: %s)" % (self.name, self.size)
 
 class Color:
-
     def __init__(self, red, green, blue, alpha):
         self.red = red
         self.green = green
