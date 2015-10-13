@@ -1,4 +1,4 @@
-import sys, string, PyUI, datetime, time
+import sys, string, UIObjects, datetime, time
 
 class SwiftGenerator:
 
@@ -28,7 +28,6 @@ class SwiftGenerator:
     def enter(self):
         self.indent()
         self.newline()
-
 
     def labelOutletCollections(self, labels = []):
         for label in labels:
@@ -71,6 +70,7 @@ class SwiftGenerator:
             self.write("for object in " + button.name + " {")
             self.enter()
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
+            ##if button.titleColor: set([self.write("object.setTitleColor = " + button.titleColor + ", forState: UIControlStateNormal)")]), self.newline()
             self.closeFunction()
             self.nextFunction()
 

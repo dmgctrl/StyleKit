@@ -11,9 +11,13 @@ class Button:
     def __init__(self, name):
         self.name = name
         self.backgroundColor = None
+        self.titleColor = None
 
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
+
+    def setTitleColor(self, titleColor):
+        self.titleColor = titleColor
 
 class Font:
     def __init__(self, name, size):
