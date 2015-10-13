@@ -11,9 +11,6 @@ primaryColor = ui.Color(1, 0, 0, 1)
 secondaryColor = ui.Color(0, 1, 0, 1)
 tertiaryColor = ui.Color(1, 1,0 ,1)
 buttonPrimaryColor = ui.Color(0, 0, 1,1)
-hex = ui.Color.rgb_to_hex(primaryColor, 1, 1, 1)
-print (hex)
-
 
 ## define Font ##
 primaryFont = ui.Font("Asul")

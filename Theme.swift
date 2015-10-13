@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-13 13:35:17
+//Theme Generated:2015-10-13 13:45:32
 
 import UIKit
 
@@ -58,7 +58,7 @@ class Theme: NSObject {
     func styleButton1(buttons: [UIButton]) {        
         for object in Button1 {            
             object.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 1.00, alpha: 1.00)            
-            object.setTitleColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00), forState: UIControlStateNormal)            
+            object.setTitleColor(UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00), forState: .Normal)            
             }            
         }    
     
