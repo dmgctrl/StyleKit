@@ -10,7 +10,9 @@ swiftGenerator.timestamp()
 primaryColor = ui.Color(1, 0, 0, 1)
 secondaryColor = ui.Color(0, 1, 0, 1)
 tertiaryColor = ui.Color(1, 1,0 ,1)
-buttonPrimaryColor = ui.Color(0, 0, 1,1)
+buttonPrimaryColor = ui.Color(0, 0, 1, 1)
+greyColor = ui.Color(224,224,224, 1)
+darkColor = ui.Color(0, 0, 0, 1)
 
 ## define Font ##
 primaryFont = ui.Font("Asul")
@@ -43,15 +45,23 @@ Button1.setTitleColor(primaryColor.toSwiftRGBA())
 Button2 = ui.Button("Button2")
 Button2.setBackgroundColor(secondaryColor.toSwiftRGBA())
 Button2.setCornerRadius(5)
-Button1.setBorderColor(primaryColor.toSwiftRGBA())
-Button1.setBorderWidth(2)
+Button2.setBorderColor(primaryColor.toSwiftRGBA())
+Button2.setBorderWidth(2)
+
+##define button3 ##
+Button3 = ui.Button("Button3")
+Button3.setTitleColor(darkColor.toSwiftRGBA())
+Button3.setBackgroundColor(greyColor.toSwiftRGBA())
+Button3.setCornerRadius(10)
+Button3.setBorderColor(darkColor.toSwiftRGBA())
+Button3.setBorderWidth(2)
 
 ## begin swift generation ##
 swiftGenerator.openClass()
 swiftGenerator.labelOutletCollections([H1Label, H2Label, H3Label])
-swiftGenerator.buttonOutletCollections([Button1, Button2])
+swiftGenerator.buttonOutletCollections([Button1, Button2,Button3])
 swiftGenerator.buildLabelStyleFunctions([H1Label, H2Label, H3Label])
-swiftGenerator.buildButtonStyleFunctions([Button1, Button2])
+swiftGenerator.buildButtonStyleFunctions([Button1, Button2, Button3])
 swiftGenerator.closeClass()
 
 ## write and close file

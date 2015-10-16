@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-13 14:20:56
+//Theme Generated:2015-10-13 16:38:42
 
 import UIKit
 
@@ -34,6 +34,12 @@ class Theme: NSObject {
         }        
     }    
     
+    @IBOutlet var Button3: [UIButton]! {        
+        didSet {            
+            styleButton3(Button3)            
+        }        
+    }    
+    
     func styleH1Label(labels: [UILabel]) {        
         for object in H1Label {        
             object.font = UIFont (name: "Asul", size: 34)            
@@ -59,8 +65,6 @@ class Theme: NSObject {
         for object in Button1 {            
             object.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 1.00, alpha: 1.00)            
             object.setTitleColor(UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00), forState: .Normal)            
-            object.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).CGColor            
-            object.layer.borderWidth = 2            
             }            
         }    
     
@@ -68,6 +72,18 @@ class Theme: NSObject {
         for object in Button2 {            
             object.backgroundColor = UIColor(red: 0.00, green: 1.00, blue: 0.00, alpha: 1.00)            
             object.layer.cornerRadius = 5            
+            object.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).CGColor            
+            object.layer.borderWidth = 2            
+            }            
+        }    
+    
+    func styleButton3(buttons: [UIButton]) {        
+        for object in Button3 {            
+            object.backgroundColor = UIColor(red: 224.00, green: 224.00, blue: 224.00, alpha: 1.00)            
+            object.setTitleColor(UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00), forState: .Normal)            
+            object.layer.cornerRadius = 10            
+            object.layer.borderColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).CGColor            
+            object.layer.borderWidth = 2            
             }            
         }    
     
