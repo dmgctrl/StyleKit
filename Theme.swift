@@ -1,84 +1,58 @@
-//Theme Generated:2015-10-13 16:38:42
+//Theme Generated:2015-10-19 12:05:40
 
 import UIKit
 
 class Theme: NSObject {
 
-    @IBOutlet var H1Label: [UILabel]! {        
+    @IBOutlet var H7Label: [UILabel]! {        
         didSet {            
-            styleH1Label(H1Label)            
+            styleH7Label(H7Label)            
         }        
     }    
     
-    @IBOutlet var H2Label: [UILabel]! {        
+    @IBOutlet var B1Button: [UIButton]! {        
         didSet {            
-            styleH2Label(H2Label)            
+            styleB1Button(B1Button)            
         }        
     }    
     
-    @IBOutlet var H3Label: [UILabel]! {        
+    @IBOutlet var B2Button: [UIButton]! {        
         didSet {            
-            styleH3Label(H3Label)            
+            styleB2Button(B2Button)            
         }        
     }    
     
-    @IBOutlet var Button1: [UIButton]! {        
+    @IBOutlet var B3Button: [UIButton]! {        
         didSet {            
-            styleButton1(Button1)            
+            styleB3Button(B3Button)            
         }        
     }    
     
-    @IBOutlet var Button2: [UIButton]! {        
-        didSet {            
-            styleButton2(Button2)            
-        }        
-    }    
-    
-    @IBOutlet var Button3: [UIButton]! {        
-        didSet {            
-            styleButton3(Button3)            
-        }        
-    }    
-    
-    func styleH1Label(labels: [UILabel]) {        
-        for object in H1Label {        
-            object.font = UIFont (name: "Asul", size: 34)            
-            object.textColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00)            
+    func styleH7Label(labels: [UILabel]) {        
+        for object in H7Label {        
+            object.font = UIFont (name: "BrandonGrotesque-Light", size: 20)            
+            object.textColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)            
             }            
         }    
     
-    func styleH2Label(labels: [UILabel]) {        
-        for object in H2Label {        
-            object.font = UIFont (name: "Asul", size: 24)            
-            object.textColor = UIColor(red: 0.00, green: 1.00, blue: 0.00, alpha: 1.00)            
-            }            
-        }    
-    
-    func styleH3Label(labels: [UILabel]) {        
-        for object in H3Label {        
-            object.font = UIFont (name: "Asul", size: 14)            
-            object.textColor = UIColor(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.00)            
-            }            
-        }    
-    
-    func styleButton1(buttons: [UIButton]) {        
-        for object in Button1 {            
+    func styleB1Button(buttons: [UIButton]) {        
+        for object in B1Button {            
             object.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 1.00, alpha: 1.00)            
-            object.setTitleColor(UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00), forState: .Normal)            
+            object.setTitleColor(UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00), forState: .Normal)            
             }            
         }    
     
-    func styleButton2(buttons: [UIButton]) {        
-        for object in Button2 {            
-            object.backgroundColor = UIColor(red: 0.00, green: 1.00, blue: 0.00, alpha: 1.00)            
+    func styleB2Button(buttons: [UIButton]) {        
+        for object in B2Button {            
+            object.backgroundColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)            
             object.layer.cornerRadius = 5            
-            object.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).CGColor            
+            object.layer.borderColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).CGColor            
             object.layer.borderWidth = 2            
             }            
         }    
     
-    func styleButton3(buttons: [UIButton]) {        
-        for object in Button3 {            
+    func styleB3Button(buttons: [UIButton]) {        
+        for object in B3Button {            
             object.backgroundColor = UIColor(red: 224.00, green: 224.00, blue: 224.00, alpha: 1.00)            
             object.setTitleColor(UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00), forState: .Normal)            
             object.layer.cornerRadius = 10            
