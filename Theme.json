@@ -1,0 +1,41 @@
+{
+    "Fonts": {
+        "primaryFontLight":"BrandonGrotesque-Light",
+        "primaryFontMedium":"BrandonGrotesque-Medium",
+        "primaryFontBold":"BrandonGrotesque-Bold",
+        "primaryFontBlack":"BrandonGrotesque-Black"
+    },
+    "Colors": {
+        "lightColor": {
+            "rgba": "1, 1, 1, 1"
+        },
+        "darkColor": {
+            "rgba": "0, 0, 0, 1"
+        }
+    },
+    "Labels": {
+        "H7": {
+            "font": "BrandonGrotesque-Light",
+            "size": "20"
+        },
+        "H1": {
+          "font": "BrandonGrotesque-Bold",
+          "size": "14"
+        }
+    },
+    "Buttons": {
+        "B1": {
+            "normal": {
+                "backgroudColor": "lightColor",
+                "titleColor": "darkColor",
+                "font": "primaryFontLight"
+            },
+            "highlighted": {
+                "backgroudColor": "darkColor",
+                "titleColor": "lightColor",
+                "font": "primaryFontBold"
+            }
+        }
+    }
+}
+

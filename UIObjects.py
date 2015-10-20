@@ -3,6 +3,7 @@ class Label:
         self.name = name
         self.textColor = None
         self.font = None
+        self.fontSize = None
 
     def setTextColor(self, textColor):
         self.textColor = textColor
@@ -32,9 +33,9 @@ class Button:
         self.borderWidth = borderWidth
 
 class Font:
-    def __init__(self, name):
+    def __init__(self, name, size):
         self.name = name
-        self.size = None
+        self.size = size
 
     def toSwift(self):
         return "UIFont (name: \"%s\", size: %s)" % (self.name, self.size)
