@@ -11,31 +11,37 @@
             "green": 20,
             "blue": 60,
             "alpha": 1
+        },
+        "secondaryColor": {
+          "red": 255,
+          "green": 255,
+          "blue": 255,
+          "alpha": 1
         }
     },
     "Labels": {
         "H7": {
-            "font": "BrandonGrotesque-Light",
-            "size": "20",
-            "textColor": "220,20,60"
+            "font": "primaryFontLight",
+            "size": "34",
+            "textColor": "primaryColor"
         },
         "H1": {
-          "font": "BrandonGrotesque-Bold",
+          "font": "primaryFontBold",
           "size": "14",
-          "textColor": "220,20,60,1"
+          "textColor": "secondaryColor"
         }
     },
     "Buttons": {
           "B1": {
             "font": "primaryFontBold",
             "size": "14",
-            "backgroudColor": "220,20,60,1",
+            "backgroudColor": "primaryColor",
             "normal": {
                 "titleColor": "255,255,255,1",
                 "titleShadowColor" : "primaryFontLight"
             },
             "highlighted": {
-                "titleColor": "220,20,60,1"
+                "titleColor": "primaryColor"
             }
         }
     }
