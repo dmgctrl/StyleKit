@@ -16,7 +16,8 @@
     "Labels": {
         "H7": {
             "font": "BrandonGrotesque-Light",
-            "size": "20"
+            "size": "20",
+            "textColor": "220,20,60"
         },
         "H1": {
           "font": "BrandonGrotesque-Bold",
@@ -38,4 +39,3 @@
         }
     }
 }
-

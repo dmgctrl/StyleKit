@@ -3,6 +3,7 @@ from SwiftGenerator import SwiftGenerator
 
 class ParserJSON:
     theme = json.loads(open("Theme.json").read())
+    print(theme)
     swiftGenerator = SwiftGenerator()
     ui = UIObjects
 
@@ -11,18 +12,21 @@ class ParserJSON:
     swiftGenerator.openClass()
 
     if 'Labels' in theme:
-        for key, value in theme['Labels'].iteritems():
+        labelDefinitions = theme['Labels']
+        for key, value in labelDefinitions.iteritems():
             Label = ui.Label(key + "Label")
             swiftGenerator.labelOutletCollections([Label])
 
-        for key, value in theme['Labels'].iteritems():
+        for key, value in labelDefinitions.iteritems():
             Label = ui.Label(key + "Label")
             if value['font']:
-                Label.font = ui.Font(value['font'], value['size'])
-                print(Label.name)
-                swiftGenerator.buildLabelStyleFunctions([Label])
+                 Label.font = ui.Font(value['font'], value['size'])
+            if value['textColor']:
+                print(value['textColor'])
+                Label.setTextColor(value['textColor'])
+            swiftGenerator.buildLabelStyleFunctions([Label])
     else:
-        print "No labels"
+        print "No Labels Defined"
 
     swiftGenerator.closeClass()
 
