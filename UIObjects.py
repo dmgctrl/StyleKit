@@ -38,7 +38,7 @@ class Font:
         self.size = size
 
     def toSwift(self):
-        return "UIFont (name: \"%s\", size: %s)" % (self.name, self.size)
+        return "UIFont (name: %s, size: %s)" % (self.name, self.size)
 
 class Color:
     def __init__(self, red, green, blue, alpha):

@@ -29,6 +29,13 @@ class SwiftGenerator:
         self.indent()
         self.newline()
 
+    def buildFontConstants(self, fonts = {}):
+        print (fonts)
+        for key, value in fonts.iteritems():
+            self.write("let %s: String = \"%s\"" % (key, value))
+            self.newline()
+        self.newline()
+
     def labelOutletCollections(self, labels = []):
         for label in labels:
             self.write(self.iboutlet + label.name + ": "+ self.labelArray + "{" )

@@ -11,6 +11,10 @@ class ParserJSON:
     swiftGenerator.timestamp()
     swiftGenerator.openClass()
 
+    if 'Fonts' in theme:
+        fontDefinitions = theme['Fonts']
+        swiftGenerator.buildFontConstants(fontDefinitions)
+
     if 'Labels' in theme:
         labelDefinitions = theme['Labels']
         for key, value in labelDefinitions.iteritems():
@@ -19,10 +23,10 @@ class ParserJSON:
 
         for key, value in labelDefinitions.iteritems():
             Label = ui.Label(key + "Label")
-            if value['font']:
+            if "font" in value:
                  Label.font = ui.Font(value['font'], value['size'])
-            if value['textColor']:
-                print(value['textColor'])
+
+            if "textColor" in value:
                 Label.setTextColor(value['textColor'])
             swiftGenerator.buildLabelStyleFunctions([Label])
     else:

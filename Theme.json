@@ -15,12 +15,12 @@
     },
     "Labels": {
         "H7": {
-            "font": "BrandonGrotesque-Light",
+            "font": "primaryFontLight",
             "size": "20",
             "textColor": "220,20,60"
         },
         "H1": {
-          "font": "BrandonGrotesque-Bold",
+          "font": "primaryFontBold",
           "size": "14"
         }
     },
