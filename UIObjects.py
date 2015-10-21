@@ -11,17 +11,40 @@ class Label:
 class Button:
     def __init__(self, name):
         self.name = name
+        self.state = None
         self.backgroundColor = None
         self.titleColor = None
+        self.titleShadowColor = None
+        self.titleForState = None
+        self.titleColorForState = None
+        self.titleShadowColorForState = None
         self.cornerRadius = None
         self.borderColor = None
         self.borderWidth = None
+        self.backgroundImageForState = None
+        self.imageForState = None
+        self.reversesTitleShadowWhenHighlighted = None
 
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
 
     def setTitleColor(self, titleColor):
         self.titleColor = titleColor
+
+    def setTitleShadowColor(self, titleShadowColor):
+        self.titleShadowColor = titleShadowColor
+
+    def setTitleForState(self, titleForState, state):
+        self.titleForState = titleForState
+        self.state = state
+
+    def setTitleColorForState(self, titleColorForState, state):
+        self.titleColorForState = titleColorForState
+        self.state = state
+
+    def titleShadowColorForState(self, titleShadowColorForState, state):
+        self.titleShadowColorForState = titleShadowColorForState
+        self.state = state
 
     def setCornerRadius(self, cornerRadius):
         self.cornerRadius = cornerRadius
@@ -31,6 +54,25 @@ class Button:
 
     def setBorderWidth(self, borderWidth):
         self.borderWidth = borderWidth
+
+    def setBackgroundImageForState(self, backgroundImageForState, state):
+        self.backgroundImageForState = backgroundImageForState
+        self.state = state
+
+    def setImageForState(self, imageForState, state):
+        self.imageForState = imageForState
+        self.state = state
+
+    def setReversesTitleShadowWhenHighlighted(self,reversesTitleShadowWhenHighlighted = bool ):
+        self.reversesTitleShadowWhenHighlighted = reversesTitleShadowWhenHighlighted
+
+class Image:
+    def __init__(self, name, filename):
+        self.name = name
+        self.filename = filename
+
+    def toSwift(self):
+        return "UIImage (named: %s)" % (self.filename)
 
 class Font:
     def __init__(self, name, size):
