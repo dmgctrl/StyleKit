@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-21 15:38:37
+//Theme Generated:2015-10-21 16:16:12
 
 import UIKit
 
@@ -9,7 +9,8 @@ class Theme: NSObject {
     let primaryFontLight: String = "BrandonGrotesque-Light"    
     let primaryFontBold: String = "BrandonGrotesque-Bold"    
     
-    let primaryColor: = UIColor(red: 220.00, green: 20.00, blue: 60.00, alpha: 1.00)    
+    let secondaryColor = UIColor(red: 255.00, green: 255.00, blue: 255.00, alpha: 1.00)    
+    let primaryColor = UIColor(red: 220.00, green: 20.00, blue: 60.00, alpha: 1.00)    
     
     @IBOutlet var H1Label: [UILabel]! {        
         didSet {            
@@ -31,15 +32,15 @@ class Theme: NSObject {
     
     func styleH1Label(labels: [UILabel]) {        
         for object in H1Label {        
-            object.font = UIFont (name: BrandonGrotesque-Bold, size: 14)            
-            object.textColor = 220,20,60,1            
+            object.font = UIFont (name: primaryFontBold, size: 14)            
+            object.textColor = secondaryColor            
             }            
         }    
     
     func styleH7Label(labels: [UILabel]) {        
         for object in H7Label {        
-            object.font = UIFont (name: BrandonGrotesque-Light, size: 20)            
-            object.textColor = 220,20,60            
+            object.font = UIFont (name: primaryFontLight, size: 34)            
+            object.textColor = primaryColor            
             }            
         }    
     
