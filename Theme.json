@@ -6,35 +6,36 @@
         "primaryFontBlack":"BrandonGrotesque-Black"
     },
     "Colors": {
-        "lightColor": {
-            "rgba": "1, 1, 1, 1"
-        },
-        "darkColor": {
-            "rgba": "0, 0, 0, 1"
+        "primaryColor": {
+            "red": 220,
+            "green": 20,
+            "blue": 60,
+            "alpha": 1
         }
     },
     "Labels": {
         "H7": {
-            "font": "primaryFontLight",
+            "font": "BrandonGrotesque-Light",
             "size": "20",
             "textColor": "220,20,60"
         },
         "H1": {
-          "font": "primaryFontBold",
-          "size": "14"
+          "font": "BrandonGrotesque-Bold",
+          "size": "14",
+          "textColor": "220,20,60,1"
         }
     },
     "Buttons": {
-        "B1": {
+          "B1": {
+            "font": "primaryFontBold",
+            "size": "14",
+            "backgroudColor": "220,20,60,1",
             "normal": {
-                "backgroudColor": "lightColor",
-                "titleColor": "darkColor",
-                "font": "primaryFontLight"
+                "titleColor": "255,255,255,1",
+                "titleShadowColor" : "primaryFontLight"
             },
             "highlighted": {
-                "backgroudColor": "darkColor",
-                "titleColor": "lightColor",
-                "font": "primaryFontBold"
+                "titleColor": "220,20,60,1"
             }
         }
     }
