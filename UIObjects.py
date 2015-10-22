@@ -29,9 +29,6 @@ class Button:
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
 
-    # def setTitleLabelFont(self, titleLabelFont):
-    #     self.titleLabelFont = titleLabelFont
-
     def setTitleColor(self, titleColor):
         self.titleColor = titleColor
 
