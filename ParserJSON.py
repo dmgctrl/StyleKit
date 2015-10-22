@@ -4,7 +4,6 @@ from SwiftGenerator import SwiftGenerator
 class ParserJSON:
 
     theme = json.loads(open("Theme.json").read())
-    print(theme)
     swiftGenerator = SwiftGenerator()
     ui = UIObjects
 
@@ -45,14 +44,15 @@ class ParserJSON:
 
     for key, value in theme['Buttons'].iteritems():
         Button = ui.Button(key + "Button")
+        if "backgroundColor" in value:
+            Button.setBackgroundColor(value['backgroundColor'])
+            Button.titleLabelFont = ui.Font(value['titleLabelFont'], value['size'])
         if "normal" in value:
             normal = value["normal"]
             if "titleColor" in normal:
-                print(normal['titleColor'])
-                lightColor = ui.Color(1,1,1,1)
+                Button.setTitleColor(normal['titleColor'])
         if "highlighted" in value:
             highlighted = value["highlighted"]
-            print(highlighted['titleColor'])
         if "disabled" in value:
             print("disabled")
         if "selected" in value:
@@ -61,7 +61,7 @@ class ParserJSON:
             print("application")
         if "reserved" in value:
             print ("reserved")
-        swiftGenerator.buildButtonStyleFunctions([Button])
+    swiftGenerator.buildButtonStyleFunctions([Button])
 
     swiftGenerator.closeClass()
 

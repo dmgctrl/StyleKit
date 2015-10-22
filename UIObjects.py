@@ -13,6 +13,7 @@ class Button:
         self.name = name
         self.state = None
         self.backgroundColor = None
+        self.titleLabelFont = None
         self.titleColor = None
         self.titleShadowColor = None
         self.titleForState = None
@@ -27,6 +28,9 @@ class Button:
 
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
+
+    # def setTitleLabelFont(self, titleLabelFont):
+    #     self.titleLabelFont = titleLabelFont
 
     def setTitleColor(self, titleColor):
         self.titleColor = titleColor
