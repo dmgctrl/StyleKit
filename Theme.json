@@ -3,7 +3,8 @@
         "primaryFontLight":"BrandonGrotesque-Light",
         "primaryFontMedium":"BrandonGrotesque-Medium",
         "primaryFontBold":"BrandonGrotesque-Bold",
-        "primaryFontBlack":"BrandonGrotesque-Black"
+        "primaryFontBlack":"BrandonGrotesque-Black",
+        "primaryFontLightItalic":"BrandonGrotesque-LightItalic"
     },
     "Colors": {
         "primaryColor": {
@@ -19,6 +20,9 @@
           "alpha": 1
         }
     },
+    "Images": {
+      "buttonImage1": "black_button_image"
+    },
     "Labels": {
         "H1": {
             "font": "primaryFontLight",
@@ -26,8 +30,8 @@
             "textColor": "primaryColor"
         },
         "H2": {
-          "font": "primaryFontBold",
-          "size": "14",
+          "font": "primaryFontLightItalic",
+          "size": "20",
           "textColor": "secondaryColor"
         },
         "H3": {
@@ -67,6 +71,11 @@
              "normal": {
                  "titleColor": "primaryColor"
              }
-         }
-    }
+         },
+         "B4": {
+            "normal": {
+                "backgroundImage": "buttonImage1"
+              }
+          }
+      }
 }

@@ -19,19 +19,20 @@ class ParserJSON:
         colorDefinitions = theme['Colors']
         swiftGenerator.buildColorConstants(colorDefinitions)
 
+    if 'Images' in theme:
+        imageDefinitions = theme['Images']
+        swiftGenerator.buildImageConstants(imageDefinitions)
+
+
     if 'Labels' in theme:
         for key, value in theme['Labels'].iteritems():
             Label = ui.Label(key + "Label")
             swiftGenerator.labelOutletCollections([Label])
-    else:
-        print "No Labels Defined"
 
     if 'Buttons' in theme:
         for key, value in theme['Buttons'].iteritems():
             Button = ui.Button(key + "Button")
             swiftGenerator.buttonOutletCollections([Button])
-    else:
-        print "No Buttons Defined"
 
     for key, value in theme['Labels'].iteritems():
         Label = ui.Label(key + "Label")
@@ -58,6 +59,8 @@ class ParserJSON:
             normal = value["normal"]
             if "titleColor" in normal:
                 Button.setTitleColor(normal['titleColor'])
+            if "backgroundImage" in normal:
+                Button.backgroundImage = normal['backgroundImage']
         if "highlighted" in value:
             highlighted = value["highlighted"]
         if "disabled" in value:

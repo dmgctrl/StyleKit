@@ -25,6 +25,7 @@ class Button:
         self.backgroundImageForState = None
         self.imageForState = None
         self.reversesTitleShadowWhenHighlighted = None
+        self.backgroundImage = None
 
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
@@ -60,20 +61,8 @@ class Button:
         self.backgroundImageForState = backgroundImageForState
         self.state = state
 
-    def setImageForState(self, imageForState, state):
-        self.imageForState = imageForState
-        self.state = state
-
     def setReversesTitleShadowWhenHighlighted(self,reversesTitleShadowWhenHighlighted = bool ):
         self.reversesTitleShadowWhenHighlighted = reversesTitleShadowWhenHighlighted
-
-class Image:
-    def __init__(self, name, filename):
-        self.name = name
-        self.filename = filename
-
-    def toSwift(self):
-        return "UIImage (named: %s)" % (self.filename)
 
 class Font:
     def __init__(self, name, size):

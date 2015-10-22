@@ -12,6 +12,7 @@ class SwiftGenerator:
         self.labelArgument = "(labels: [UILabel])"
         self.buttonArgument = "(buttons: [UIButton])"
         self.ui = UIObjects
+        self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
 
     def timestamp(self):
         ts = time.time()
@@ -30,8 +31,8 @@ class SwiftGenerator:
         self.indent()
         self.newline()
 
-    def buildFontConstants(self, fonts = {}):
-        for key, value in fonts.iteritems():
+    def buildFontConstants(self, fontDefinitions = {}):
+        for key, value in fontDefinitions.iteritems():
             self.write("let %s: String = \"%s\"" % (key, value))
             self.newline()
         self.newline()
@@ -40,6 +41,12 @@ class SwiftGenerator:
         for key, value in colorDefinitions.iteritems():
             color = self.ui.Color(value['red'], value['green'],value['blue'],value['alpha'])
             self.write("let %s = %s" % (key, color.toSwiftRGBA()))
+            self.newline()
+        self.newline()
+
+    def buildImageConstants(self, imageDefinitions = {}):
+        for key, value in imageDefinitions.iteritems():
+            image = self.write("let %s = UIImage(named: \"%s\")" % (key, value))
             self.newline()
         self.newline()
 
@@ -90,6 +97,7 @@ class SwiftGenerator:
             if button.borderColor: set([self.write("object.layer.borderColor = " + button.borderColor + ".CGColor")]), self.newline()
             if button.borderWidth: set([self.write("object.layer.borderWidth = " + str(button.borderWidth))]), self.newline()
             if button.titleShadowColor: set([self.write("object.setTitleShadowColor(" + button.titleShadowColor + ", forState: .Normal)")]),self.newline()
+            if button.backgroundImage: set([self.write("object.setBackgroundImage(" + button.backgroundImage + ", forState: .Normal)")]),self.newline(), self.write(self.clearBackground),self.newline()
             self.closeFunction()
             self.nextFunction()
 
