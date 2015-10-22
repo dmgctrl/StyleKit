@@ -34,14 +34,23 @@
     "Buttons": {
           "B1": {
             "titleLabelFont": "primaryFontBold",
-            "size": "14",
+            "size": "34",
             "backgroundColor": "secondaryColor",
+            "cornerRadius": 22,
             "normal": {
                 "titleColor": "primaryColor",
-                "titleShadowColor" : "primaryFontLight"
+                "titleShadowColor" : "primaryColor"
             },
             "highlighted": {
                 "titleColor": "secondaryColor"
+            }
+        },
+          "B2": {
+            "backgroundColor": "primaryColor",
+            "cornerRadius": 8,
+            "normal": {
+                "titleColor": "secondaryColor",
+                "titleShadowColor" : "primaryColor"
             }
         }
     }

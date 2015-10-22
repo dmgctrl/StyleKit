@@ -46,7 +46,10 @@ class ParserJSON:
         Button = ui.Button(key + "Button")
         if "backgroundColor" in value:
             Button.setBackgroundColor(value['backgroundColor'])
+        if "titleLabelFont" in value:
             Button.titleLabelFont = ui.Font(value['titleLabelFont'], value['size'])
+        if "cornerRadius" in value:
+            Button.cornerRadius = value['cornerRadius']
         if "normal" in value:
             normal = value["normal"]
             if "titleColor" in normal:
@@ -61,7 +64,7 @@ class ParserJSON:
             print("application")
         if "reserved" in value:
             print ("reserved")
-    swiftGenerator.buildButtonStyleFunctions([Button])
+        swiftGenerator.buildButtonStyleFunctions([Button])
 
     swiftGenerator.closeClass()
 

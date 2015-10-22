@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-22 10:08:39
+//Theme Generated:2015-10-22 10:41:42
 
 import UIKit
 
@@ -30,6 +30,12 @@ class Theme: NSObject {
         }        
     }    
     
+    @IBOutlet var B2Button: [UIButton]! {        
+        didSet {            
+            styleB2Button(B2Button)            
+        }        
+    }    
+    
     func styleH1Label(labels: [UILabel]) {        
         for object in H1Label {        
             object.font = UIFont (name: primaryFontBold, size: 14)            
@@ -48,7 +54,16 @@ class Theme: NSObject {
         for object in B1Button {            
             object.backgroundColor = secondaryColor            
             object.setTitleColor(primaryColor, forState: .Normal)            
-            object.titleLabel?.font = UIFont (name: primaryFontBold, size: 14)            
+            object.titleLabel?.font = UIFont (name: primaryFontBold, size: 34)            
+            object.layer.cornerRadius = 22            
+            }            
+        }    
+    
+    func styleB2Button(buttons: [UIButton]) {        
+        for object in B2Button {            
+            object.backgroundColor = primaryColor            
+            object.setTitleColor(secondaryColor, forState: .Normal)            
+            object.layer.cornerRadius = 8            
             }            
         }    
     
