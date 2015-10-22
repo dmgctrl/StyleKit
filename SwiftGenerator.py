@@ -76,7 +76,7 @@ class SwiftGenerator:
         for label in labels:
             self.write("func " + "style" + label.name + self.labelArgument + " {" )
             self.enter()
-            self.write("for object in " + label.name + " {")
+            self.write("for object in labels {")
             self.newline()
             self.indent()
             if label.font: set([self.write("object.font = " + label.font.toSwift())]),  self.newline()
@@ -88,7 +88,7 @@ class SwiftGenerator:
         for button in buttons:
             self.write("func " + "style" + button.name + self.buttonArgument + " {" )
             self.enter()
-            self.write("for object in " + button.name + " {")
+            self.write("for object in buttons {")
             self.enter()
             if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
             if button.titleColor: set([self.write("object.setTitleColor(" + button.titleColor + ", forState: .Normal)")]), self.newline()
