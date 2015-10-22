@@ -46,7 +46,7 @@ class ParserJSON:
     for key, value in theme['Buttons'].iteritems():
         Button = ui.Button(key + "Button")
         if "backgroundColor" in value:
-            Button.setBackgroundColor(value['backgroundColor'])
+            Button.backgroundColor = (value['backgroundColor'])
         if "titleLabelFont" in value:
             Button.titleLabelFont = ui.Font(value['titleLabelFont'], value['size'])
         if "cornerRadius" in value:
@@ -58,7 +58,7 @@ class ParserJSON:
         if "normal" in value:
             normal = value["normal"]
             if "titleColor" in normal:
-                Button.setTitleColor(normal['titleColor'])
+                Button.titleColor = (normal['titleColor'])
             if "backgroundImage" in normal:
                 Button.backgroundImage = normal['backgroundImage']
         if "highlighted" in value:

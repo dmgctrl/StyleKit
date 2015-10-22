@@ -30,40 +30,6 @@ class Button:
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
 
-    def setTitleColor(self, titleColor):
-        self.titleColor = titleColor
-
-    def setTitleShadowColor(self, titleShadowColor):
-        self.titleShadowColor = titleShadowColor
-
-    def setTitleForState(self, titleForState, state):
-        self.titleForState = titleForState
-        self.state = state
-
-    def setTitleColorForState(self, titleColorForState, state):
-        self.titleColorForState = titleColorForState
-        self.state = state
-
-    def titleShadowColorForState(self, titleShadowColorForState, state):
-        self.titleShadowColorForState = titleShadowColorForState
-        self.state = state
-
-    def setCornerRadius(self, cornerRadius):
-        self.cornerRadius = cornerRadius
-
-    def setBorderColor(self, borderColor):
-        self.borderColor = borderColor
-
-    def setBorderWidth(self, borderWidth):
-        self.borderWidth = borderWidth
-
-    def setBackgroundImageForState(self, backgroundImageForState, state):
-        self.backgroundImageForState = backgroundImageForState
-        self.state = state
-
-    def setReversesTitleShadowWhenHighlighted(self,reversesTitleShadowWhenHighlighted = bool ):
-        self.reversesTitleShadowWhenHighlighted = reversesTitleShadowWhenHighlighted
-
 class Font:
     def __init__(self, name, size):
         self.name = name
