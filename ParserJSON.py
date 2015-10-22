@@ -50,6 +50,10 @@ class ParserJSON:
             Button.titleLabelFont = ui.Font(value['titleLabelFont'], value['size'])
         if "cornerRadius" in value:
             Button.cornerRadius = value['cornerRadius']
+        if "borderColor" in value:
+            Button.borderColor = value['borderColor']
+        if "borderWidth" in value:
+            Button.borderWidth = value['borderWidth']
         if "normal" in value:
             normal = value["normal"]
             if "titleColor" in normal:

@@ -20,15 +20,19 @@
         }
     },
     "Labels": {
-        "H7": {
+        "H1": {
             "font": "primaryFontLight",
             "size": "34",
             "textColor": "primaryColor"
         },
-        "H1": {
+        "H2": {
           "font": "primaryFontBold",
           "size": "14",
           "textColor": "secondaryColor"
+        },
+        "H3": {
+          "font": "primaryFontBlack",
+          "size": "24"
         }
     },
     "Buttons": {
@@ -46,12 +50,23 @@
             }
         },
           "B2": {
+            "titleLabelFont": "primaryFontBold",
+            "size": "24",
             "backgroundColor": "primaryColor",
             "cornerRadius": 8,
             "normal": {
                 "titleColor": "secondaryColor",
                 "titleShadowColor" : "primaryColor"
             }
-        }
+        },
+         "B3": {
+             "titleLabelFont": "primaryFontMedium",
+             "size": "22",
+             "borderColor": "primaryColor",
+             "borderWidth": 2,
+             "normal": {
+                 "titleColor": "primaryColor"
+             }
+         }
     }
 }
