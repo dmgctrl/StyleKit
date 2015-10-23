@@ -23,7 +23,6 @@ class ParserJSON:
         imageDefinitions = theme['Images']
         swiftGenerator.buildImageConstants(imageDefinitions)
 
-
     if 'Labels' in theme:
         for key, value in theme['Labels'].iteritems():
             Label = ui.Label(key + "Label")
@@ -34,11 +33,15 @@ class ParserJSON:
             Button = ui.Button(key + "Button")
             swiftGenerator.buttonOutletCollections([Button])
 
+    if 'TextFields' in theme:
+        for key, value in theme['TextFields'].iteritems():
+            TextField = ui.TextField(key + "TextField")
+            swiftGenerator.textFieldOutletCollection([TextField])
+
     for key, value in theme['Labels'].iteritems():
         Label = ui.Label(key + "Label")
         if "font" in value:
             Label.font = ui.Font(value['font'], value['size'])
-
         if "textColor" in value:
             Label.setTextColor(value['textColor'])
         swiftGenerator.buildLabelStyleFunctions([Label])
@@ -72,6 +75,19 @@ class ParserJSON:
         if "reserved" in value:
             print ("reserved")
         swiftGenerator.buildButtonStyleFunctions([Button])
+
+    for key, value in theme['TextFields'] .iteritems():
+        TextField = ui.TextField(key + "TextField")
+        if "backgroundColor" in value:
+            TextField.backgroundColor = value['backgroundColor']
+        if "borderColor" in value:
+            TextField.borderColor = value['borderColor']
+        if "borderWidth" in value:
+            TextField.borderWidth = value['borderWidth']
+        if "textColor" in value:
+            TextField.textColor = (value['textColor'])
+        swiftGenerator.buildTextFieldStyleFunctions([TextField])
+
 
     swiftGenerator.closeClass()
 

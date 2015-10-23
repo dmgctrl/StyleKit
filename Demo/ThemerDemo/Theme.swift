@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-22 16:04:32
+//Theme Generated:2015-10-23 16:18:16
 
 import UIKit
 
@@ -59,6 +59,12 @@ class Theme: NSObject {
         }
     }
     
+    @IBOutlet var T1TextField: [UITextField]! {
+        didSet {
+            styleT1TextField(T1TextField)
+        }
+    }
+    
     func styleH2Label(labels: [UILabel]) {
         for object in labels {
             object.font = UIFont (name: primaryFontLightItalic, size: 20)
@@ -110,6 +116,15 @@ class Theme: NSObject {
             object.titleLabel?.font = UIFont (name: primaryFontMedium, size: 22)
             object.layer.borderColor = primaryColor.CGColor
             object.layer.borderWidth = 2
+        }
+    }
+    
+    func styleT1TextField(textfields: [UITextField]) {
+        for object in textfields {
+            object.backgroundColor = secondaryColor
+            object.layer.borderColor = primaryColor.CGColor
+            object.layer.borderWidth = 1
+            object.textColor = primaryColor
         }
     }
     

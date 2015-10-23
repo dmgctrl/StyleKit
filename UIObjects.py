@@ -30,6 +30,15 @@ class Button:
     def setBackgroundColor(self, backgroundColor):
         self.backgroundColor = backgroundColor
 
+class TextField:
+    def __init__(self, name):
+        self.name = name
+        self.backgroundColor = None
+        self.borderColor = None
+        self.borderWidth = None
+        self.cornerRadius = None
+        self.textColor = None
+
 class Font:
     def __init__(self, name, size):
         self.name = name

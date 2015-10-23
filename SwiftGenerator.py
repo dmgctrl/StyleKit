@@ -9,8 +9,10 @@ class SwiftGenerator:
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
         self.buttonArray = "[UIButton]! "
+        self.textFieldArray = "[UITextField]! "
         self.labelArgument = "(labels: [UILabel])"
         self.buttonArgument = "(buttons: [UIButton])"
+        self.textFieldArgument = "(textfields: [UITextField])"
         self.ui = UIObjects
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
 
@@ -63,6 +65,13 @@ class SwiftGenerator:
             self.enter()
             self.didSet(button.name)
             self.closeCollection()
+
+    def textFieldOutletCollection(self, textfields = []):
+        for textfield in textfields:
+            self.write(self.iboutlet + textfield.name + ": "+ self.textFieldArray + "{" )
+            self.enter()
+            self.didSet(textfield.name)
+            self.closeCollection()
         
     def didSet(self, name):
         self.write("didSet {")
@@ -101,6 +110,20 @@ class SwiftGenerator:
             self.closeFunction()
             self.nextFunction()
 
+    def buildTextFieldStyleFunctions(self, textfields = []):
+        for textfield in textfields:
+            self.write("func " + "style" + textfield.name + self.textFieldArgument + " {" )
+            self.enter()
+            self.write("for object in textfields {")
+            self.enter()
+            if textfield.backgroundColor: set([self.write("object.backgroundColor = " + textfield.backgroundColor)]), self.newline()
+            if textfield.borderColor: set([self.write("object.layer.borderColor = " + textfield.borderColor + ".CGColor")]), self.newline()
+            if textfield.borderWidth: set([self.write("object.layer.borderWidth = " + str(textfield.borderWidth))]), self.newline()
+            if textfield.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(textfield.cornerRadius))]), self.newline()
+            if textfield.textColor: set([self.write("object.textColor = " + textfield.textColor)]), self.newline()
+            self.closeFunction()
+            self.nextFunction()
+
     def write(self, string):
         self.code.append(self.tab * self.indentLevel + string)
         
@@ -129,6 +152,9 @@ class SwiftGenerator:
         self.write("class Theme: NSObject {\n")
         self.newline()
         self.indent()
+        self.write("static let sharedInstance = Theme()")
+        self.newline()
+        self.newline()
 
     def closeCollection(self):
         self.newline()

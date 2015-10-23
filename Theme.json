@@ -77,5 +77,14 @@
                 "backgroundImage": "buttonImage1"
               }
           }
+      },
+      "TextFields": {
+          "T1": {
+              "textColor": "primaryColor",
+              "backgroundColor": "secondaryColor",
+              "borderColor": "primaryColor",
+              "borderWidth": 1,
+              "cornerRadius": 8
+          }
       }
 }

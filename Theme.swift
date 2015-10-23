@@ -1,9 +1,11 @@
-//Theme Generated:2015-10-22 18:44:49
+//Theme Generated:2015-10-23 16:18:16
 
 import UIKit
 
 class Theme: NSObject {
 
+    static let sharedInstance = Theme()    
+    
     let primaryFontMedium: String = "BrandonGrotesque-Medium"    
     let primaryFontBlack: String = "BrandonGrotesque-Black"    
     let primaryFontLight: String = "BrandonGrotesque-Light"    
@@ -54,6 +56,12 @@ class Theme: NSObject {
     @IBOutlet var B3Button: [UIButton]! {        
         didSet {            
             styleB3Button(B3Button)            
+        }        
+    }    
+    
+    @IBOutlet var T1TextField: [UITextField]! {        
+        didSet {            
+            styleT1TextField(T1TextField)            
         }        
     }    
     
@@ -108,6 +116,15 @@ class Theme: NSObject {
             object.titleLabel?.font = UIFont (name: primaryFontMedium, size: 22)            
             object.layer.borderColor = primaryColor.CGColor            
             object.layer.borderWidth = 2            
+            }            
+        }    
+    
+    func styleT1TextField(textfields: [UITextField]) {        
+        for object in textfields {            
+            object.backgroundColor = secondaryColor            
+            object.layer.borderColor = primaryColor.CGColor            
+            object.layer.borderWidth = 1            
+            object.textColor = primaryColor            
             }            
         }    
     
