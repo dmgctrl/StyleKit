@@ -3,39 +3,79 @@
         "primaryFontLight":"BrandonGrotesque-Light",
         "primaryFontMedium":"BrandonGrotesque-Medium",
         "primaryFontBold":"BrandonGrotesque-Bold",
-        "primaryFontBlack":"BrandonGrotesque-Black"
+        "primaryFontBlack":"BrandonGrotesque-Black",
+        "primaryFontLightItalic":"BrandonGrotesque-LightItalic"
     },
     "Colors": {
-        "lightColor": {
-            "rgba": "1, 1, 1, 1"
+        "primaryColor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1
         },
-        "darkColor": {
-            "rgba": "0, 0, 0, 1"
+        "secondaryColor": {
+          "red": 0,
+          "green": 0,
+          "blue": 0,
+          "alpha": 1
         }
     },
+    "Images": {
+      "buttonImage1": "black_button_image"
+    },
     "Labels": {
-        "H7": {
-            "font": "primaryFontLight",
-            "size": "20",
-            "textColor": "220,20,60"
-        },
         "H1": {
-          "font": "primaryFontBold",
-          "size": "14"
+            "font": "primaryFontLight",
+            "size": "34",
+            "textColor": "primaryColor"
+        },
+        "H2": {
+          "font": "primaryFontLightItalic",
+          "size": "20",
+          "textColor": "secondaryColor"
+        },
+        "H3": {
+          "font": "primaryFontBlack",
+          "size": "24"
         }
     },
     "Buttons": {
-        "B1": {
+          "B1": {
+            "titleLabelFont": "primaryFontBold",
+            "size": "34",
+            "backgroundColor": "secondaryColor",
+            "cornerRadius": 22,
             "normal": {
-                "backgroudColor": "lightColor",
-                "titleColor": "darkColor",
-                "font": "primaryFontLight"
+                "titleColor": "primaryColor",
+                "titleShadowColor" : "primaryColor"
             },
             "highlighted": {
-                "backgroudColor": "darkColor",
-                "titleColor": "lightColor",
-                "font": "primaryFontBold"
+                "titleColor": "secondaryColor"
             }
-        }
-    }
+        },
+          "B2": {
+            "titleLabelFont": "primaryFontBold",
+            "size": "24",
+            "backgroundColor": "primaryColor",
+            "cornerRadius": 8,
+            "normal": {
+                "titleColor": "secondaryColor",
+                "titleShadowColor" : "primaryColor"
+            }
+        },
+         "B3": {
+             "titleLabelFont": "primaryFontMedium",
+             "size": "22",
+             "borderColor": "primaryColor",
+             "borderWidth": 2,
+             "normal": {
+                 "titleColor": "primaryColor"
+             }
+         },
+         "B4": {
+            "normal": {
+                "backgroundImage": "buttonImage1"
+              }
+          }
+      }
 }

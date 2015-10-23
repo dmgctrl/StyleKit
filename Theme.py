@@ -35,7 +35,7 @@ H3Label.font.size = 14
 H3Label.setTextColor(tertiaryColor.toSwiftRGBA())
 
 B1Button = ui.Button("B1Button")
-B1ButtonTitleColor = ui.Color(1, 0, 0, 1)
+B1Button.titleColor = ui.Color(1, 0, 0, 1)
 B1Button.setBackgroundColor(buttonPrimaryColor.toSwiftRGBA())
 B1Button.setTitleColor(lightColor.toSwiftRGBA())
 
