@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-22 15:20:47
+//Theme Generated:2015-10-22 16:04:32
 
 import UIKit
 
@@ -58,34 +58,34 @@ class Theme: NSObject {
     }    
     
     func styleH2Label(labels: [UILabel]) {        
-        for object in H2Label {        
+        for object in labels {        
             object.font = UIFont (name: primaryFontLightItalic, size: 20)            
             object.textColor = secondaryColor            
             }            
         }    
     
     func styleH3Label(labels: [UILabel]) {        
-        for object in H3Label {        
+        for object in labels {        
             object.font = UIFont (name: primaryFontBlack, size: 24)            
             }            
         }    
     
     func styleH1Label(labels: [UILabel]) {        
-        for object in H1Label {        
+        for object in labels {        
             object.font = UIFont (name: primaryFontLight, size: 34)            
             object.textColor = primaryColor            
             }            
         }    
     
     func styleB4Button(buttons: [UIButton]) {        
-        for object in B4Button {            
+        for object in buttons {            
             object.setBackgroundImage(buttonImage1, forState: .Normal)            
             object.backgroundColor = UIColor.clearColor()            
             }            
         }    
     
     func styleB1Button(buttons: [UIButton]) {        
-        for object in B1Button {            
+        for object in buttons {            
             object.backgroundColor = secondaryColor            
             object.setTitleColor(primaryColor, forState: .Normal)            
             object.titleLabel?.font = UIFont (name: primaryFontBold, size: 34)            
@@ -94,7 +94,7 @@ class Theme: NSObject {
         }    
     
     func styleB2Button(buttons: [UIButton]) {        
-        for object in B2Button {            
+        for object in buttons {            
             object.backgroundColor = primaryColor            
             object.setTitleColor(secondaryColor, forState: .Normal)            
             object.titleLabel?.font = UIFont (name: primaryFontBold, size: 24)            
@@ -103,7 +103,7 @@ class Theme: NSObject {
         }    
     
     func styleB3Button(buttons: [UIButton]) {        
-        for object in B3Button {            
+        for object in buttons {            
             object.setTitleColor(primaryColor, forState: .Normal)            
             object.titleLabel?.font = UIFont (name: primaryFontMedium, size: 22)            
             object.layer.borderColor = primaryColor.CGColor            
