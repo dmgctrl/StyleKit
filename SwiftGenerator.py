@@ -10,9 +10,6 @@ class SwiftGenerator:
         self.labelArray = "[UILabel]! "
         self.buttonArray = "[UIButton]! "
         self.textFieldArray = "[UITextField]! "
-        self.labelArgument = "(labels: [UILabel])"
-        self.buttonArgument = "(buttons: [UIButton])"
-        self.textFieldArgument = "(textfields: [UITextField])"
         self.ui = UIObjects
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
 
@@ -80,9 +77,6 @@ class SwiftGenerator:
         self.newline()
         self.outdent()
         self.write("}")
-
-    def objectArgument(self, object):
-        self.write("(objects: [UI" + object + "])")
 
     def buildStyleFunctions(self, objects = []):
         for object in objects:
