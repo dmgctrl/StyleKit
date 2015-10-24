@@ -80,47 +80,27 @@ class SwiftGenerator:
         self.newline()
         self.outdent()
         self.write("}")
-       
-    def buildLabelStyleFunctions(self, labels = []):
-        for label in labels:
-            self.write("func " + "style" + label.name + self.labelArgument + " {" )
+
+    def objectArgument(self, object):
+        self.write("(objects: [UI" + object + "])")
+
+    def buildStyleFunctions(self, objects = []):
+        for object in objects:
+            self.write("func style" + object.name + "(objects: [" + object.type + "]) {")
             self.enter()
-            self.write("for object in labels {")
+            self.write("for object in objects {")
             self.newline()
             self.indent()
-            if label.font: set([self.write("object.font = " + label.font.toSwift())]),  self.newline()
-            if label.textColor: set([self.write("object.textColor = " + label.textColor)]), self.newline()
-            self.closeFunction()
-            self.nextFunction()
-
-    def buildButtonStyleFunctions(self, buttons = []):
-        for button in buttons:
-            self.write("func " + "style" + button.name + self.buttonArgument + " {" )
-            self.enter()
-            self.write("for object in buttons {")
-            self.enter()
-            if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
-            if button.titleColor: set([self.write("object.setTitleColor(" + button.titleColor + ", forState: .Normal)")]), self.newline()
-            if button.titleLabelFont: set([self.write("object.titleLabel?.font = " + button.titleLabelFont.toSwift())]), self.newline()
-            if button.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(button.cornerRadius))]), self.newline()
-            if button.borderColor: set([self.write("object.layer.borderColor = " + button.borderColor + ".CGColor")]), self.newline()
-            if button.borderWidth: set([self.write("object.layer.borderWidth = " + str(button.borderWidth))]), self.newline()
-            if button.titleShadowColor: set([self.write("object.setTitleShadowColor(" + button.titleShadowColor + ", forState: .Normal)")]),self.newline()
-            if button.backgroundImage: set([self.write("object.setBackgroundImage(" + button.backgroundImage + ", forState: .Normal)")]),self.newline(), self.write(self.clearBackground),self.newline()
-            self.closeFunction()
-            self.nextFunction()
-
-    def buildTextFieldStyleFunctions(self, textfields = []):
-        for textfield in textfields:
-            self.write("func " + "style" + textfield.name + self.textFieldArgument + " {" )
-            self.enter()
-            self.write("for object in textfields {")
-            self.enter()
-            if textfield.backgroundColor: set([self.write("object.backgroundColor = " + textfield.backgroundColor)]), self.newline()
-            if textfield.borderColor: set([self.write("object.layer.borderColor = " + textfield.borderColor + ".CGColor")]), self.newline()
-            if textfield.borderWidth: set([self.write("object.layer.borderWidth = " + str(textfield.borderWidth))]), self.newline()
-            if textfield.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(textfield.cornerRadius))]), self.newline()
-            if textfield.textColor: set([self.write("object.textColor = " + textfield.textColor)]), self.newline()
+            if object.font: set([self.write("object.font = " + object.font.toSwift())]),  self.newline()
+            if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
+            if object.backgroundColor: set([self.write("object.backgroundColor = " + object.backgroundColor)]), self.newline()
+            if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Normal)")]), self.newline()
+            if object.titleLabel: set([self.write("object.titleLabel?.font = " + object.titleLabelFont.toSwift())]), self.newline()
+            if object.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(object.cornerRadius))]), self.newline()
+            if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
+            if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
+            if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
+            if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)")]),
             self.closeFunction()
             self.nextFunction()
 
