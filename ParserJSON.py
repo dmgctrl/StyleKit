@@ -25,7 +25,7 @@ class ParserJSON:
 
     if 'Labels' in theme:
         for key, value in theme['Labels'].iteritems():
-            Label = ui.uiObject(key + "label", "UILabel")
+            Label = ui.uiObject(key + "Label", "UILabel")
             swiftGenerator.labelOutletCollections([Label])
 
     if 'Buttons' in theme:
@@ -51,7 +51,7 @@ class ParserJSON:
         if "backgroundColor" in value:
             object.backgroundColor = (value['backgroundColor'])
         if "titleLabelFont" in value:
-            object.titleLabelFont = ui.Font(value['titleLabelFont'], value['size'])
+            object.titleLabel = ui.Font(value['titleLabelFont'], value['size'])
         if "cornerRadius" in value:
             object.cornerRadius = value['cornerRadius']
         if "borderColor" in value:
@@ -77,7 +77,7 @@ class ParserJSON:
         swiftGenerator.buildStyleFunctions([object])
 
     for key, value in theme['TextFields'] .iteritems():
-        object = ui.uiObject(key + "TextField", "UIButton")
+        object = ui.uiObject(key + "TextField", "UITextField")
         if "backgroundColor" in value:
             object.backgroundColor = value['backgroundColor']
         if "borderColor" in value:

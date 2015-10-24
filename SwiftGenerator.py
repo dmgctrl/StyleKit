@@ -95,7 +95,7 @@ class SwiftGenerator:
             if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
             if object.backgroundColor: set([self.write("object.backgroundColor = " + object.backgroundColor)]), self.newline()
             if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Normal)")]), self.newline()
-            if object.titleLabel: set([self.write("object.titleLabel?.font = " + object.titleLabelFont.toSwift())]), self.newline()
+            if object.titleLabel: set([self.write("object.titleLabel?.font = " + object.titleLabel.toSwift())]), self.newline()
             if object.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(object.cornerRadius))]), self.newline()
             if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
             if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
