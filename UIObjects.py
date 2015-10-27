@@ -1,34 +1,17 @@
-class Label:
-    def __init__(self, name):
+class uiObject:
+    def __init__(self, name, type):
         self.name = name
+        self.type = type
         self.textColor = None
         self.font = None
-        self.fontSize = None
-
-    def setTextColor(self, textColor):
-        self.textColor = textColor
-
-class Button:
-    def __init__(self, name):
-        self.name = name
-        self.state = None
         self.backgroundColor = None
-        self.titleLabelFont = None
         self.titleColor = None
-        self.titleShadowColor = None
-        self.titleForState = None
-        self.titleColorForState = None
-        self.titleShadowColorForState = None
+        self.titleLabel = None
         self.cornerRadius = None
         self.borderColor = None
         self.borderWidth = None
-        self.backgroundImageForState = None
-        self.imageForState = None
-        self.reversesTitleShadowWhenHighlighted = None
+        self.titleShadowColor = None
         self.backgroundImage = None
-
-    def setBackgroundColor(self, backgroundColor):
-        self.backgroundColor = backgroundColor
 
 class Font:
     def __init__(self, name, size):

@@ -23,44 +23,47 @@ class ParserJSON:
         imageDefinitions = theme['Images']
         swiftGenerator.buildImageConstants(imageDefinitions)
 
-
     if 'Labels' in theme:
         for key, value in theme['Labels'].iteritems():
-            Label = ui.Label(key + "Label")
+            Label = ui.uiObject(key + "Label", "UILabel")
             swiftGenerator.labelOutletCollections([Label])
 
     if 'Buttons' in theme:
         for key, value in theme['Buttons'].iteritems():
-            Button = ui.Button(key + "Button")
-            swiftGenerator.buttonOutletCollections([Button])
+            object = ui.uiObject(key + "Button", "UIButton")
+            swiftGenerator.buttonOutletCollections([object])
+
+    if 'TextFields' in theme:
+        for key, value in theme['TextFields'].iteritems():
+            object = ui.uiObject(key + "TextField", "UITextField")
+            swiftGenerator.textFieldOutletCollection([object])
 
     for key, value in theme['Labels'].iteritems():
-        Label = ui.Label(key + "Label")
+        object = ui.uiObject(key + "Label", "UILabel")
         if "font" in value:
-            Label.font = ui.Font(value['font'], value['size'])
-
+            object.font = ui.Font(value['font'], value['size'])
         if "textColor" in value:
-            Label.setTextColor(value['textColor'])
-        swiftGenerator.buildLabelStyleFunctions([Label])
+            object.textColor = (value['textColor'])
+        swiftGenerator.buildStyleFunctions([object])
 
     for key, value in theme['Buttons'].iteritems():
-        Button = ui.Button(key + "Button")
+        object = ui.uiObject(key + "Button", "UIButton")
         if "backgroundColor" in value:
-            Button.backgroundColor = (value['backgroundColor'])
+            object.backgroundColor = (value['backgroundColor'])
         if "titleLabelFont" in value:
-            Button.titleLabelFont = ui.Font(value['titleLabelFont'], value['size'])
+            object.titleLabel = ui.Font(value['titleLabelFont'], value['size'])
         if "cornerRadius" in value:
-            Button.cornerRadius = value['cornerRadius']
+            object.cornerRadius = value['cornerRadius']
         if "borderColor" in value:
-            Button.borderColor = value['borderColor']
+            object.borderColor = value['borderColor']
         if "borderWidth" in value:
-            Button.borderWidth = value['borderWidth']
+            object.borderWidth = value['borderWidth']
         if "normal" in value:
             normal = value["normal"]
             if "titleColor" in normal:
-                Button.titleColor = (normal['titleColor'])
+                object.titleColor = (normal['titleColor'])
             if "backgroundImage" in normal:
-                Button.backgroundImage = normal['backgroundImage']
+                object.backgroundImage = normal['backgroundImage']
         if "highlighted" in value:
             highlighted = value["highlighted"]
         if "disabled" in value:
@@ -71,7 +74,20 @@ class ParserJSON:
             print("application")
         if "reserved" in value:
             print ("reserved")
-        swiftGenerator.buildButtonStyleFunctions([Button])
+        swiftGenerator.buildStyleFunctions([object])
+
+    for key, value in theme['TextFields'] .iteritems():
+        object = ui.uiObject(key + "TextField", "UITextField")
+        if "backgroundColor" in value:
+            object.backgroundColor = value['backgroundColor']
+        if "borderColor" in value:
+            object.borderColor = value['borderColor']
+        if "borderWidth" in value:
+            object.borderWidth = value['borderWidth']
+        if "textColor" in value:
+            object.textColor = (value['textColor'])
+        swiftGenerator.buildStyleFunctions([object])
+
 
     swiftGenerator.closeClass()
 
