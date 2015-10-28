@@ -94,7 +94,7 @@ class SwiftGenerator:
             if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
             if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
             if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
-            if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)")]),
+            if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
             self.closeFunction()
             self.nextFunction()
 
