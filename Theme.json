@@ -132,7 +132,7 @@
     "TextFields": {
         "T1": {
             "borderWidth": 1,
-            "cornerRadius": 8
+            "cornerRadius": "8"
         }
     }
 }

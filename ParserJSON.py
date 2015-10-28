@@ -4,16 +4,12 @@ import sys, string, json, UIObjects
 
 from SwiftGenerator import SwiftGenerator
 
-from jsonspec.validators import load
+from jsonschema import validators
 
 theme = json.loads(open("Theme.json").read())
 schema = json.loads(open("Theme.schema.json").read())
 
-# data will validate against this schema
-validator = load(schema)
-
-# validate this data
-validator.validate(theme)
+validators.validate(theme, schema)
 
 class ParserJSON:
 
