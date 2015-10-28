@@ -9,8 +9,9 @@ class SwiftGenerator:
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
         self.buttonArray = "[UIButton]! "
-        self.labelArgument = "(labels: [UILabel])"
-        self.buttonArgument = "(buttons: [UIButton])"
+        self.textFieldArray = "[UITextField]! "
+        self.ui = UIObjects
+        self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
 
     def timestamp(self):
         ts = time.time()
@@ -29,10 +30,22 @@ class SwiftGenerator:
         self.indent()
         self.newline()
 
-    def buildFontConstants(self, fonts = {}):
-        print (fonts)
-        for key, value in fonts.iteritems():
+    def buildFontConstants(self, fontDefinitions = {}):
+        for key, value in fontDefinitions.iteritems():
             self.write("let %s: String = \"%s\"" % (key, value))
+            self.newline()
+        self.newline()
+
+    def buildColorConstants(self, colorDefinitions = {}):
+        for key, value in colorDefinitions.iteritems():
+            color = self.ui.Color(value['red'], value['green'],value['blue'],value['alpha'])
+            self.write("let %s = %s" % (key, color.toSwiftRGBA()))
+            self.newline()
+        self.newline()
+
+    def buildImageConstants(self, imageDefinitions = {}):
+        for key, value in imageDefinitions.iteritems():
+            image = self.write("let %s = UIImage(named: \"%s\")" % (key, value))
             self.newline()
         self.newline()
 
@@ -49,6 +62,13 @@ class SwiftGenerator:
             self.enter()
             self.didSet(button.name)
             self.closeCollection()
+
+    def textFieldOutletCollection(self, textfields = []):
+        for textfield in textfields:
+            self.write(self.iboutlet + textfield.name + ": "+ self.textFieldArray + "{" )
+            self.enter()
+            self.didSet(textfield.name)
+            self.closeCollection()
         
     def didSet(self, name):
         self.write("didSet {")
@@ -57,30 +77,24 @@ class SwiftGenerator:
         self.newline()
         self.outdent()
         self.write("}")
-       
-    def buildLabelStyleFunctions(self, labels = []):
-        for label in labels:
-            self.write("func " + "style" + label.name + self.labelArgument + " {" )
+
+    def buildStyleFunctions(self, objects = []):
+        for object in objects:
+            self.write("func style" + object.name + "(objects: [" + object.type + "]) {")
             self.enter()
-            self.write("for object in " + label.name + " {")
+            self.write("for object in objects {")
             self.newline()
             self.indent()
-            if label.font: set([self.write("object.font = " + label.font.toSwift())]),  self.newline()
-            if label.textColor: set([self.write("object.textColor = " + label.textColor)]), self.newline()
-            self.closeFunction()
-            self.nextFunction()
-
-    def buildButtonStyleFunctions(self, buttons = []):
-        for button in buttons:
-            self.write("func " + "style" + button.name + self.buttonArgument + " {" )
-            self.enter()
-            self.write("for object in " + button.name + " {")
-            self.enter()
-            if button.backgroundColor: set([self.write("object.backgroundColor = " + button.backgroundColor)]), self.newline()
-            if button.titleColor: set([self.write("object.setTitleColor(" + button.titleColor + ", forState: .Normal)")]), self.newline()
-            if button.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(button.cornerRadius))]), self.newline()
-            if button.borderColor: set([self.write("object.layer.borderColor = " + button.borderColor + ".CGColor")]), self.newline()
-            if button.borderWidth: set([self.write("object.layer.borderWidth = " + str(button.borderWidth))]), self.newline()
+            if object.font: set([self.write("object.font = " + object.font.toSwift())]),  self.newline()
+            if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
+            if object.backgroundColor: set([self.write("object.backgroundColor = " + object.backgroundColor)]), self.newline()
+            if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Normal)")]), self.newline()
+            if object.titleLabel: set([self.write("object.titleLabel?.font = " + object.titleLabel.toSwift())]), self.newline()
+            if object.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(object.cornerRadius))]), self.newline()
+            if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
+            if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
+            if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
+            if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
             self.closeFunction()
             self.nextFunction()
 
@@ -112,6 +126,9 @@ class SwiftGenerator:
         self.write("class Theme: NSObject {\n")
         self.newline()
         self.indent()
+        self.write("static let sharedInstance = Theme()")
+        self.newline()
+        self.newline()
 
     def closeCollection(self):
         self.newline()

@@ -1,36 +1,17 @@
-class Label:
-    def __init__(self, name):
+class uiObject:
+    def __init__(self, name, type):
         self.name = name
+        self.type = type
         self.textColor = None
         self.font = None
-        self.fontSize = None
-
-    def setTextColor(self, textColor):
-        self.textColor = textColor
-
-class Button:
-    def __init__(self, name):
-        self.name = name
         self.backgroundColor = None
         self.titleColor = None
+        self.titleLabel = None
         self.cornerRadius = None
         self.borderColor = None
         self.borderWidth = None
-
-    def setBackgroundColor(self, backgroundColor):
-        self.backgroundColor = backgroundColor
-
-    def setTitleColor(self, titleColor):
-        self.titleColor = titleColor
-
-    def setCornerRadius(self, cornerRadius):
-        self.cornerRadius = cornerRadius
-
-    def setBorderColor(self, borderColor):
-        self.borderColor = borderColor
-
-    def setBorderWidth(self, borderWidth):
-        self.borderWidth = borderWidth
+        self.titleShadowColor = None
+        self.backgroundImage = None
 
 class Font:
     def __init__(self, name, size):
@@ -52,3 +33,8 @@ class Color:
 
     def rgb_to_hex(self, r,g,b):
         return "#%02X%02X%02X" % (r,g,b)
+
+    def hex_to_rgb(value):
+        value = value.lstrip('#')
+        lv = len(value)
+        return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
