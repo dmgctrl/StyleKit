@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-28 11:18:38
+//Theme Generated:2015-10-28 13:41:42
 
 import UIKit
 
@@ -12,10 +12,20 @@ class Theme: NSObject {
     let primaryFontLightItalic: String = "BrandonGrotesque-LightItalic"    
     let primaryFontBold: String = "BrandonGrotesque-Bold"    
     
-    let secondaryColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)    
-    let primaryColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)    
-    
-    let buttonImage1 = UIImage(named: "black_button_image")    
+    let baseColorRedLight = UIColor(red: 250.0/255.0, green: 110.0/255.0, blue: 92.0/255.0, alpha: 1.0)    
+    let baseColorGreyLight = UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)    
+    let activityTertiary = UIColor(red: 185.0/255.0, green: 80.0/255.0, blue: 71.0/255.0, alpha: 1.0)    
+    let baseColorBlueMedium = UIColor(red: 77.0/255.0, green: 191.0/255.0, blue: 213.0/255.0, alpha: 1.0)    
+    let baseColorWhite = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)    
+    let activitySecondary = UIColor(red: 219.0/255.0, green: 96.0/255.0, blue: 85.0/255.0, alpha: 1.0)    
+    let baseColorRedDark = UIColor(red: 197.0/255.0, green: 35.0/255.0, blue: 38.0/255.0, alpha: 1.0)    
+    let baseColorGreyDark = UIColor(red: 102.0/255.0, green: 102.0/255.0, blue: 102.0/255.0, alpha: 1.0)    
+    let baseColorRedMedium = UIColor(red: 234.0/255.0, green: 75.0/255.0, blue: 44.0/255.0, alpha: 1.0)    
+    let activityPrimary = UIColor(red: 242.0/255.0, green: 114.0/255.0, blue: 101.0/255.0, alpha: 1.0)    
+    let baseColorGreyMedium = UIColor(red: 135.0/255.0, green: 135.0/255.0, blue: 135.0/255.0, alpha: 1.0)    
+    let baseColorBlueDark = UIColor(red: 65.0/255.0, green: 162.0/255.0, blue: 182.0/255.0, alpha: 1.0)    
+    let baseColorBlueLight = UIColor(red: 73.0/255.0, green: 208.0/255.0, blue: 223.0/255.0, alpha: 1.0)    
+    let baseColorGreyVeryLight = UIColor(red: 62.0/255.0, green: 62.0/255.0, blue: 62.0/255.0, alpha: 1.0)    
     
     @IBOutlet var H2Label: [UILabel]! {        
         didSet {            
@@ -32,12 +42,6 @@ class Theme: NSObject {
     @IBOutlet var H1Label: [UILabel]! {        
         didSet {            
             styleH1Label(H1Label)            
-        }        
-    }    
-    
-    @IBOutlet var B4Button: [UIButton]! {        
-        didSet {            
-            styleB4Button(B4Button)            
         }        
     }    
     
@@ -67,8 +71,7 @@ class Theme: NSObject {
     
     func styleH2Label(objects: [UILabel]) {        
         for object in objects {        
-            object.font = UIFont (name: primaryFontLightItalic, size: 20)            
-            object.textColor = secondaryColor            
+            object.font = UIFont (name: primaryFontLightItalic, size: 30)            
             }            
         }    
     
@@ -80,50 +83,30 @@ class Theme: NSObject {
     
     func styleH1Label(objects: [UILabel]) {        
         for object in objects {        
-            object.font = UIFont (name: primaryFontLight, size: 34)            
-            object.textColor = primaryColor            
-            }            
-        }    
-    
-    func styleB4Button(objects: [UIButton]) {        
-        for object in objects {        
-            object.setBackgroundImage(buttonImage1, forState: .Normal)            
-            object.backgroundColor = UIColor.clearColor()            
+            object.font = UIFont (name: primaryFontMedium, size: 40)            
             }            
         }    
     
     func styleB1Button(objects: [UIButton]) {        
         for object in objects {        
-            object.backgroundColor = secondaryColor            
-            object.setTitleColor(primaryColor, forState: .Normal)            
-            object.titleLabel?.font = UIFont (name: primaryFontBold, size: 34)            
-            object.layer.cornerRadius = 22            
+            object.titleLabel?.font = UIFont (name: primaryFontBlack, size: 19)            
             }            
         }    
     
     func styleB2Button(objects: [UIButton]) {        
         for object in objects {        
-            object.backgroundColor = primaryColor            
-            object.setTitleColor(secondaryColor, forState: .Normal)            
-            object.titleLabel?.font = UIFont (name: primaryFontBold, size: 24)            
-            object.layer.cornerRadius = 8            
+            object.titleLabel?.font = UIFont (name: primaryFontBlack, size: 17)            
             }            
         }    
     
     func styleB3Button(objects: [UIButton]) {        
         for object in objects {        
-            object.setTitleColor(primaryColor, forState: .Normal)            
-            object.titleLabel?.font = UIFont (name: primaryFontMedium, size: 22)            
-            object.layer.borderColor = primaryColor.CGColor            
-            object.layer.borderWidth = 2            
+            object.titleLabel?.font = UIFont (name: primaryFontBlack, size: 17)            
             }            
         }    
     
     func styleT1TextField(objects: [UITextField]) {        
         for object in objects {        
-            object.textColor = primaryColor            
-            object.backgroundColor = secondaryColor            
-            object.layer.borderColor = primaryColor.CGColor            
             object.layer.borderWidth = 1            
             }            
         }    

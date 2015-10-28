@@ -7,84 +7,130 @@
         "primaryFontLightItalic":"BrandonGrotesque-LightItalic"
     },
     "Colors": {
-        "primaryColor": {
-            "red": 1,
-            "green": 1,
-            "blue": 1,
+        "baseColorRedLight": {
+            "red": 250,
+            "green": 110,
+            "blue": 92,
             "alpha": 1
         },
-        "secondaryColor": {
-          "red": 0,
-          "green": 0,
-          "blue": 0,
+        "baseColorRedMedium": {
+          "red": 234,
+          "green": 75,
+          "blue": 44,
+          "alpha": 1
+        },
+        "baseColorRedDark": {
+          "red": 197,
+          "green": 35,
+          "blue": 38,
+          "alpha": 1
+        },
+        "baseColorBlueLight": {
+          "red": 73,
+          "green": 208,
+          "blue": 223,
+          "alpha": 1
+        },
+        "baseColorBlueMedium": {
+          "red": 77,
+          "green": 191,
+          "blue": 213,
+          "alpha": 1
+        },
+        "baseColorBlueDark": {
+          "red": 65,
+          "green": 162,
+          "blue": 182,
+          "alpha": 1
+        },
+        "baseColorGreyVeryLight": {
+          "red": 242,
+          "green": 242,
+          "blue": 242,
+          "alpha": 1
+        },
+        "baseColorGreyLight": {
+          "red": 194,
+          "green": 194,
+          "blue": 194,
+          "alpha": 1
+        },
+        "baseColorGreyMedium": {
+          "red": 135,
+          "green": 135,
+          "blue": 135,
+          "alpha": 1
+        },
+        "baseColorGreyDark": {
+          "red": 102,
+          "green": 102,
+          "blue": 102,
+          "alpha": 1
+        },
+        "baseColorGreyVeryLight": {
+          "red": 62,
+          "green": 62,
+          "blue": 62,
+          "alpha": 1
+        },
+        "baseColorWhite": {
+          "red": 255,
+          "green": 255,
+          "blue": 255,
+          "alpha": 1
+        },
+        "activityPrimary" :{
+          "red": 242,
+          "green": 114,
+          "blue": 101,
+          "alpha": 1
+        },
+        "activitySecondary": {
+          "red": 219,
+          "green": 96,
+          "blue": 85,
+          "alpha": 1
+        },
+        "activityTertiary": {
+          "red": 185,
+          "green": 80,
+          "blue": 71,
           "alpha": 1
         }
-    },
-    "Images": {
-      "buttonImage1": "black_button_image"
-    },
+      },
     "Labels": {
-        "H1": {
-            "font": "primaryFontLight",
-            "size": "34",
-            "textColor": "primaryColor"
+          "H1": {
+          "font": "primaryFontMedium",
+          "size": "40"
         },
-        "H2": {
+          "H2": {
           "font": "primaryFontLightItalic",
-          "size": "20",
-          "textColor": "secondaryColor"
+          "size": "30"
         },
-        "H3": {
+          "H3": {
           "font": "primaryFontBlack",
           "size": "24"
         }
     },
     "Buttons": {
           "B1": {
-            "titleLabelFont": "primaryFontBold",
-            "size": "34",
-            "backgroundColor": "secondaryColor",
-            "cornerRadius": 22,
-            "normal": {
-                "titleColor": "primaryColor",
-                "titleShadowColor" : "primaryColor"
-            },
-            "highlighted": {
-                "titleColor": "secondaryColor"
-            }
+            "titleLabelFont": "primaryFontBlack",
+            "size": "19"
         },
           "B2": {
-            "titleLabelFont": "primaryFontBold",
-            "size": "24",
-            "backgroundColor": "primaryColor",
-            "cornerRadius": 8,
-            "normal": {
-                "titleColor": "secondaryColor",
-                "titleShadowColor" : "primaryColor"
-            }
+            "titleLabelFont": "primaryFontBlack",
+            "size": "17"
         },
          "B3": {
-             "titleLabelFont": "primaryFontMedium",
-             "size": "22",
-             "borderColor": "primaryColor",
-             "borderWidth": 2,
-             "normal": {
-                 "titleColor": "primaryColor"
-             }
+             "titleLabelFont": "primaryFontBlack",
+             "size": "17"
+           }
          },
-         "B4": {
-            "normal": {
-                "backgroundImage": "buttonImage1"
-              }
-          }
-      },
-      "TextFields": {
+    "TextFields": {
           "T1": {
-              "textColor": "primaryColor",
-              "backgroundColor": "secondaryColor",
-              "borderColor": "primaryColor",
               "borderWidth": 1,
               "cornerRadius": 8
           }
-      }
+        }
+
 }
