@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-24 11:56:54
+//Theme Generated:2015-10-28 11:18:38
 
 import UIKit
 
@@ -87,7 +87,9 @@ class Theme: NSObject {
     
     func styleB4Button(objects: [UIButton]) {        
         for object in objects {        
-            object.setBackgroundImage(buttonImage1, forState: .Normal)            }            
+            object.setBackgroundImage(buttonImage1, forState: .Normal)            
+            object.backgroundColor = UIColor.clearColor()            
+            }            
         }    
     
     func styleB1Button(objects: [UIButton]) {        
