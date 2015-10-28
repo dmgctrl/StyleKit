@@ -1,16 +1,11 @@
-import sys, string
-
-from jsonspec.validators import load
-
-# data will validate against this schema
-validator = load({
+{
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type" : "object",
     "properties" : {
         "Fonts" : {
             "type" : "object",
             "patternProperties": {
-                "^.*$" : { "$ref": "#/definitions/bundleKey" }
+                "^.*$" : { "type" : "string" }
             }
         },
         "Colors" : {
@@ -18,7 +13,6 @@ validator = load({
             "patternProperties": {
                 "^.*$" : {
                     "type" : "object",
-                    "pattern": "^[a-zA-Z0-9\-\_]+$",
                     "properties" : {
                         "red": { "$ref": "#/definitions/colorValue" },
                         "green": { "$ref": "#/definitions/colorValue" },
@@ -32,7 +26,7 @@ validator = load({
         "Images" : {
             "type" : "object",
             "patternProperties": {
-                "^.*$" : { "$ref": "#/definitions/bundleKey" }
+                "^.*$" : { "type" : "string" }
             }
         },
         "Labels" : {
@@ -101,10 +95,6 @@ validator = load({
         }
     },
     "definitions": {
-        "bundleKey" : {
-            "type" : "string",
-            "pattern": "^[a-zA-Z0-9\-\_]+$"
-        },
         "colorValue" : {
             "type" : "integer",
             "minimum": 0,
@@ -123,60 +113,4 @@ validator = load({
             }
         }
     }
-})
-
-# validate this data
-validator.validate({
-    "Fonts": {
-        "fontKey": "font-bundle-identifier"
-    },
-    "Colors": {
-        "colorKey": {
-            "red": 1,
-            "green": 1,
-            "blue": 1,
-            "alpha": 1
-        }
-    },
-    "Images": {
-        "imageKey": "image-bundle-identifier"
-    },
-    "Labels": {
-        "LabelName": {
-            "font": "fontKey",
-            "size": 34,
-            "textColor": "colorKey"
-        }
-    },
-    "Buttons": {
-        "ButtonName": {
-            "titleLabelFont": "fontKey",
-            "size": 34,
-            "backgroundColor": "colorKey",
-            "cornerRadius": 22,
-            "normal": {
-                "titleColor": "colorKey",
-                "titleShadowColor" : "colorKey"
-            },
-            "highlighted": {
-                "titleColor": "colorKey",
-                "titleShadowColor" : "colorKey"
-            },
-            "selected": {
-                "titleColor": "colorKey",
-                "titleShadowColor" : "colorKey"
-            }
-        }
-    },
-    "TextFields": {
-        "T1": {
-            "textColor": "colorKey",
-            "backgroundColor": "colorKey",
-            "borderColor": "colorKey",
-            "borderWidth": 1,
-            "cornerRadius": 8,
-            "textAlignment" : "Center",
-            "borderStyle" : "None"
-        }
-    }
-})
+}

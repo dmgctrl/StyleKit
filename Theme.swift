@@ -1,4 +1,4 @@
-//Theme Generated:2015-10-28 11:18:38
+//Theme Generated:2015-10-28 13:54:16
 
 import UIKit
 
@@ -32,12 +32,6 @@ class Theme: NSObject {
     @IBOutlet var H1Label: [UILabel]! {        
         didSet {            
             styleH1Label(H1Label)            
-        }        
-    }    
-    
-    @IBOutlet var B4Button: [UIButton]! {        
-        didSet {            
-            styleB4Button(B4Button)            
         }        
     }    
     
@@ -85,13 +79,6 @@ class Theme: NSObject {
             }            
         }    
     
-    func styleB4Button(objects: [UIButton]) {        
-        for object in objects {        
-            object.setBackgroundImage(buttonImage1, forState: .Normal)            
-            object.backgroundColor = UIColor.clearColor()            
-            }            
-        }    
-    
     func styleB1Button(objects: [UIButton]) {        
         for object in objects {        
             object.backgroundColor = secondaryColor            
@@ -121,9 +108,9 @@ class Theme: NSObject {
     
     func styleT1TextField(objects: [UITextField]) {        
         for object in objects {        
-            object.textColor = primaryColor            
-            object.backgroundColor = secondaryColor            
-            object.layer.borderColor = primaryColor.CGColor            
+            object.textColor = colorKey            
+            object.backgroundColor = colorKey            
+            object.layer.borderColor = colorKey.CGColor            
             object.layer.borderWidth = 1            
             }            
         }    

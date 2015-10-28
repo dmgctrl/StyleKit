@@ -26,23 +26,23 @@
     "Labels": {
         "H1": {
             "font": "primaryFontLight",
-            "size": "34",
+            "size": 34,
             "textColor": "primaryColor"
         },
         "H2": {
           "font": "primaryFontLightItalic",
-          "size": "20",
+          "size": 20,
           "textColor": "secondaryColor"
         },
         "H3": {
           "font": "primaryFontBlack",
-          "size": "24"
+          "size": 24
         }
     },
     "Buttons": {
-          "B1": {
+        "B1": {
             "titleLabelFont": "primaryFontBold",
-            "size": "34",
+            "size": 34,
             "backgroundColor": "secondaryColor",
             "cornerRadius": 22,
             "normal": {
@@ -53,9 +53,9 @@
                 "titleColor": "secondaryColor"
             }
         },
-          "B2": {
+        "B2": {
             "titleLabelFont": "primaryFontBold",
-            "size": "24",
+            "size": 24,
             "backgroundColor": "primaryColor",
             "cornerRadius": 8,
             "normal": {
@@ -63,28 +63,25 @@
                 "titleShadowColor" : "primaryColor"
             }
         },
-         "B3": {
+        "B3": {
              "titleLabelFont": "primaryFontMedium",
-             "size": "22",
+             "size": 22,
              "borderColor": "primaryColor",
              "borderWidth": 2,
              "normal": {
                  "titleColor": "primaryColor"
              }
-         },
-         "B4": {
-            "normal": {
-                "backgroundImage": "buttonImage1"
-              }
-          }
-      },
-      "TextFields": {
-          "T1": {
-              "textColor": "primaryColor",
-              "backgroundColor": "secondaryColor",
-              "borderColor": "primaryColor",
-              "borderWidth": 1,
-              "cornerRadius": 8
-          }
-      }
+         }
+    },
+    "TextFields": {
+        "T1": {
+            "textColor": "colorKey",
+            "backgroundColor": "colorKey",
+            "borderColor": "colorKey",
+            "borderWidth": 1,
+            "cornerRadius": 8,
+            "textAlignment" : "Center",
+            "borderStyle" : "None"
+        }
+    }
 }
