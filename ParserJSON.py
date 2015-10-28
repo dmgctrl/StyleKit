@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import sys, string, json, UIObjects
 
 from SwiftGenerator import SwiftGenerator
