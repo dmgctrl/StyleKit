@@ -229,7 +229,10 @@ def main(argv):
        if "borderWidth" in value:
            object.borderWidth = value['borderWidth']
        if "textColor" in value:
-           object.textColor = (value['textColor'])
+           object.textColor = value['textColor']
+        if "cornerRadius" in value:
+            object.cornerRadius = value['cornerRadius']
+
        swiftGenerator.buildStyleFunctions([object])
 
    swiftGenerator.closeClass()
