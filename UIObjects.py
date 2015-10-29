@@ -29,7 +29,7 @@ class Color:
         self.alpha = alpha
 
     def toSwiftRGBA(self):
-        return "UIColor(red: %.2f, green: %.2f, blue: %.2f, alpha: %.2f)" % (self.red, self.green, self.blue, self.alpha)
+        return "UIColor(red: %.1f/255.0, green: %.1f/255.0, blue: %.1f/255.0, alpha: %.1f)" % (self.red, self.green, self.blue, self.alpha)
 
     def rgb_to_hex(self, r,g,b):
         return "#%02X%02X%02X" % (r,g,b)
