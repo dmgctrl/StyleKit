@@ -152,7 +152,6 @@ def main(argv):
    ui = UIObjects
 
    file = open(outputfile, "w+")
-   swiftGenerator.timestamp()
    swiftGenerator.openClass()
 
    if 'Fonts' in theme:
