@@ -46,7 +46,7 @@ def main(argv):
                         "red": { "$ref": "#/definitions/colorValue" },
                         "green": { "$ref": "#/definitions/colorValue" },
                         "blue": { "$ref": "#/definitions/colorValue" },
-                        "alpha": { "$ref": "#/definitions/colorValue" }
+                        "alpha": { "$ref": "#/definitions/alphaValue" }
                     },
                     "required": [ "red", "green", "blue", "alpha" ]
                 }
@@ -132,6 +132,11 @@ def main(argv):
             "type" : "integer",
             "minimum": 0,
             "maximum": 255
+        },
+        "alphaValue" : {
+            "type" : "number",
+            "minimum": 0.0,
+            "maximum" : 1.0
         },
         "buttonState" : {
             "properties" : {
