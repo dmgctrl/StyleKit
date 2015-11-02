@@ -13,13 +13,6 @@ class SwiftGenerator:
         self.ui = UIObjects
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
 
-    def timestamp(self):
-        ts = time.time()
-        timeStamp = ("//Theme Generated:" + datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'))
-        self.write(timeStamp)
-        self.newline()
-        self.newline()
-
     def end(self):
         return string.join(self.code, "")
         
