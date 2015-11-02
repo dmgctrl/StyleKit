@@ -185,6 +185,8 @@ def main(argv):
        object = ui.uiObject(key + "Label", "UILabel")
        if "font" in value:
            object.font = ui.Font(value['font'], value['size'])
+       if "backgroundColor" in value:
+           object.backgroundColor = (value['backgroundColor'])
        if "textColor" in value:
            object.textColor = (value['textColor'])
        swiftGenerator.buildStyleFunctions([object])
