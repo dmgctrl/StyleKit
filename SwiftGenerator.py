@@ -111,10 +111,10 @@ class SwiftGenerator:
             self.write("let attributes = [ ")
             self.indent(),self.newline()
             if object.attributedFont: set([self.write("NSFontAttributeName: " + object.attributedFont)]),self.addSeperator(object),self.newline()
-            if object.attributedForegroundColor: set([self.write("NSForegroundColorAttributeName: " + object.attributedForegroundColor + self.seperator)]),self.newline()
-            if object.attributedBackgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.attributedBackgroundColor + self.seperator)]),self.newline()
-            if object.attributedKerning: set([self.write("NSKernAttributeName: " + str(object.attributedKerning) + self.seperator)]),self.newline()
-            if object.attributedLigature: set([self.write("NSLigatureAttributeName: " + str(object.attributedLigature))])
+            if object.attributedForegroundColor: set([self.write("NSForegroundColorAttributeName: " + object.attributedForegroundColor)]),self.addSeperator(object),self.newline()
+            if object.attributedBackgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.attributedBackgroundColor)]),self.addSeperator(object),self.newline()
+            if object.attributedKerning: set([self.write("NSKernAttributeName: " + str(object.attributedKerning))]),self.addSeperator(object),self.newline()
+            if object.attributedLigature: set([self.write("NSLigatureAttributeName: " + str(object.attributedLigature))]),self.addSeperator(object),self.newline()
             self.newline()
             self.outdent()
             self.write(" ]")
@@ -124,9 +124,11 @@ class SwiftGenerator:
             self.nextFunction()
 
     def addSeperator(self, object):
-        if object.seperatorCount > 0:
-            self.seperator
-            object.seperatorCount - 1
+        count = object.seperatorCount
+        if count > 0:
+            self.write(self.seperator)
+            count = count - 1
+            object.seperatorCount = count
 
     def write(self, string):
         self.code.append(self.tab * self.indentLevel + string)

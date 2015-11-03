@@ -243,8 +243,7 @@ for key, value in theme['TextFields'].iteritems():
         object.cornerRadius = value['cornerRadius']
     if "attributes" in value:
         attributes = value["attributes"]
-        object.seperatorCount = len(attributes)
-        print(object.seperatorCount) - 1
+        object.seperatorCount = len(attributes) - 2
         if "font" in attributes:
             object.attributedFont = attributes['font']
             object.attributes.append(attributes['font'])
