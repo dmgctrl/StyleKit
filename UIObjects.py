@@ -12,6 +12,17 @@ class uiObject:
         self.borderWidth = None
         self.titleShadowColor = None
         self.backgroundImage = None
+        self.attributes = []
+        self.parsedAttributes = None
+        #
+        self.attributedFont = None
+        self.attributedBackgroundColor = None
+        self.attributedForegroundColor = None
+        self.attributedKerning = None
+        self.attributedLigature = None
+        self.attributedParagraphStyle = None
+        self.attributedSuperScript = None
+        self.attributedUnderlineStylenderlineStyle = None
 
 class Font:
     def __init__(self, name, size):
