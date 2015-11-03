@@ -110,11 +110,11 @@ class SwiftGenerator:
             self.enter()
             self.write("let attributes = [ ")
             self.indent(),self.newline()
-            if object.attributedFont: set([self.write("NSFontAttributeName: " + object.attributedFont + self.seperator)]),self.newline()
+            if object.attributedFont: set([self.write("NSFontAttributeName: " + object.attributedFont)]),self.addSeperator(object),self.newline()
             if object.attributedForegroundColor: set([self.write("NSForegroundColorAttributeName: " + object.attributedForegroundColor + self.seperator)]),self.newline()
             if object.attributedBackgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.attributedBackgroundColor + self.seperator)]),self.newline()
-            if object.attributedKerning: set([self.write("NSKernAttributeName: " + str(object.attributedKerning))])
-            if object.attributedLigature: set([self.write("NSLigatureAttributeName: " + object.attributedLigature)])
+            if object.attributedKerning: set([self.write("NSKernAttributeName: " + str(object.attributedKerning) + self.seperator)]),self.newline()
+            if object.attributedLigature: set([self.write("NSLigatureAttributeName: " + str(object.attributedLigature))])
             self.newline()
             self.outdent()
             self.write(" ]")
@@ -122,6 +122,11 @@ class SwiftGenerator:
             self.write("return attributes")
             self.closeFunction()
             self.nextFunction()
+
+    def addSeperator(self, object):
+        if object.seperatorCount > 0:
+            self.seperator
+            object.seperatorCount - 1
 
     def write(self, string):
         self.code.append(self.tab * self.indentLevel + string)

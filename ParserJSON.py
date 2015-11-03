@@ -243,6 +243,8 @@ for key, value in theme['TextFields'].iteritems():
         object.cornerRadius = value['cornerRadius']
     if "attributes" in value:
         attributes = value["attributes"]
+        object.seperatorCount = len(attributes)
+        print(object.seperatorCount) - 1
         if "font" in attributes:
             object.attributedFont = attributes['font']
             object.attributes.append(attributes['font'])
@@ -251,10 +253,13 @@ for key, value in theme['TextFields'].iteritems():
             object.attributes.append(attributes['forgroundColor'])
         if "backgroundColor" in attributes:
             object.attributedBackgroundColor = attributes['backgroundColor']
+            object.attributes.append(attributes['backgroundColor'])
         if "kern" in attributes:
             object.attributedKerning = attributes['kern']
+            object.attributes.append(attributes['kern'])
         if "ligature" in attributes:
             object.attributedLigature = attributes['ligature']
+            object.attributes.append(attributes['ligature'])
         swiftGenerator.buildAttributesForObjects([object])
 
 swiftGenerator.buildStyleFunctions([object])

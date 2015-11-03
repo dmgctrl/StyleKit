@@ -217,7 +217,8 @@
                 "font": "primaryFontBlack",
                 "size": 16,
                 "forgroundColor": "baseBlackColor",
-                "kern": 3
+                "kern": 3,
+                "ligature": 2
             },
             "textColor": "baseColorWhite",
             "cornerRadius": 15

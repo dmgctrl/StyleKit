@@ -23,6 +23,7 @@ class uiObject:
         self.attributedParagraphStyle = None
         self.attributedSuperScript = None
         self.attributedUnderlineStylenderlineStyle = None
+        self.seperatorCount = int
 
 class Font:
     def __init__(self, name, size):
