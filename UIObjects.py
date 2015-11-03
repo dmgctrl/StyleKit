@@ -13,7 +13,6 @@ class uiObject:
         self.titleShadowColor = None
         self.backgroundImage = None
         self.attributes = []
-        self.parsedAttributes = None
         #
         self.attributedFont = None
         self.attributedBackgroundColor = None

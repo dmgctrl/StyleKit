@@ -14,6 +14,7 @@ class SwiftGenerator:
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
         self.attributeDictionary = " Dictionary<String, AnyObject>"
         self.seperator = ","
+        self.unwrap = "!"
 
     def end(self):
         return string.join(self.code, "")
@@ -94,23 +95,13 @@ class SwiftGenerator:
             self.closeFunction()
             self.nextFunction()
 
-    # func attributesForH1TextField() -> Dictionary<String, AnyObject> {
-    #     let attributes = [
-    #         NSForegroundColorAttributeName: baseColorWhite,
-    #         NSFontAttributeName : primaryFontBlack
-    #     ]
-    #     return attributes
-    # }
-
     def buildAttributesForObjects(self, objects = []):
         for object in objects:
-            parsedAttributes = len(object.attributes)
-            numberOfSeperators = parsedAttributes - 1
             self.write("func attributesFor" + object.name + "() -> " + self.attributeDictionary + " { ")
             self.enter()
             self.write("let attributes = [ ")
             self.indent(),self.newline()
-            if object.attributedFont: set([self.write("NSFontAttributeName: " + object.attributedFont)]),self.addSeperator(object),self.newline()
+            if object.attributedFont: set([self.write("NSFontAttributeName: " + object.attributedFont.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
             if object.attributedForegroundColor: set([self.write("NSForegroundColorAttributeName: " + object.attributedForegroundColor)]),self.addSeperator(object),self.newline()
             if object.attributedBackgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.attributedBackgroundColor)]),self.addSeperator(object),self.newline()
             if object.attributedKerning: set([self.write("NSKernAttributeName: " + str(object.attributedKerning))]),self.addSeperator(object),self.newline()
