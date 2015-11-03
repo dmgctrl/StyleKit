@@ -115,7 +115,6 @@ class SwiftGenerator:
             if object.attributedBackgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.attributedBackgroundColor)]),self.addSeperator(object),self.newline()
             if object.attributedKerning: set([self.write("NSKernAttributeName: " + str(object.attributedKerning))]),self.addSeperator(object),self.newline()
             if object.attributedLigature: set([self.write("NSLigatureAttributeName: " + str(object.attributedLigature))]),self.addSeperator(object),self.newline()
-            self.newline()
             self.outdent()
             self.write(" ]")
             self.newline()
@@ -126,9 +125,12 @@ class SwiftGenerator:
     def addSeperator(self, object):
         count = object.seperatorCount
         if count > 0:
-            self.write(self.seperator)
+            self.append(self.seperator)
             count = count - 1
             object.seperatorCount = count
+
+    def append(self, string):
+        self.code.append(string)
 
     def write(self, string):
         self.code.append(self.tab * self.indentLevel + string)
