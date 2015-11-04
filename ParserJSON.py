@@ -24,9 +24,9 @@ def main(argv):
     print 'Input file is "', inputfile
     print 'Output file is "', outputfile
 
-    theme = json.loads(open(inputfile).read())
+    style = json.loads(open(inputfile).read())
 
-    validators.validate(theme, {
+    validators.validate(style, {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",
         "properties": {
@@ -160,34 +160,34 @@ def main(argv):
     file = open(outputfile, "w+")
     swiftGenerator.openClass()
 
-    if 'Fonts' in theme:
-        fontDefinitions = theme['Fonts']
+    if 'Fonts' in style:
+        fontDefinitions = style['Fonts']
         swiftGenerator.buildFontConstants(fontDefinitions)
 
-    if 'Colors' in theme:
-        colorDefinitions = theme['Colors']
+    if 'Colors' in style:
+        colorDefinitions = style['Colors']
         swiftGenerator.buildColorConstants(colorDefinitions)
 
-    if 'Images' in theme:
-        imageDefinitions = theme['Images']
+    if 'Images' in style:
+        imageDefinitions = style['Images']
         swiftGenerator.buildImageConstants(imageDefinitions)
 
-    if 'Labels' in theme:
-        for key, value in theme['Labels'].iteritems():
+    if 'Labels' in style:
+        for key, value in style['Labels'].iteritems():
             Label = ui.uiObject(key + "Label", "UILabel")
             swiftGenerator.labelOutletCollections([Label])
 
-    if 'Buttons' in theme:
-        for key, value in theme['Buttons'].iteritems():
+    if 'Buttons' in style:
+        for key, value in style['Buttons'].iteritems():
             object = ui.uiObject(key + "Button", "UIButton")
             swiftGenerator.buttonOutletCollections([object])
 
-    if 'TextFields' in theme:
-        for key, value in theme['TextFields'].iteritems():
+    if 'TextFields' in style:
+        for key, value in style['TextFields'].iteritems():
             object = ui.uiObject(key + "TextField", "UITextField")
             swiftGenerator.textFieldOutletCollection([object])
 
-    for key, value in theme['Labels'].iteritems():
+    for key, value in style['Labels'].iteritems():
         object = ui.uiObject(key + "Label", "UILabel")
         if "font" in value:
             object.font = ui.Font(value['font'], value['size'])
@@ -197,7 +197,7 @@ def main(argv):
             object.textColor = (value['textColor'])
         swiftGenerator.buildStyleFunctions([object])
 
-    for key, value in theme['Buttons'].iteritems():
+    for key, value in style['Buttons'].iteritems():
         object = ui.uiObject(key + "Button", "UIButton")
         if "backgroundColor" in value:
             object.backgroundColor = (value['backgroundColor'])
@@ -227,7 +227,7 @@ def main(argv):
             print ("reserved")
         swiftGenerator.buildStyleFunctions([object])
 
-    for key, value in theme['TextFields'].iteritems():
+    for key, value in style['TextFields'].iteritems():
         object = ui.uiObject(key + "TextField", "UITextField")
         if "backgroundColor" in value:
             object.backgroundColor = value['backgroundColor']
