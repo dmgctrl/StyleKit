@@ -5,8 +5,6 @@ import sys, getopt, string, json, UIObjects
 from SwiftGenerator import SwiftGenerator
 from jsonschema import validators
 
-#theme = json.loads(open("Style.json").read())
-#file = open("Theme.swift", "w+")
 def main(argv):
     inputfile = ''
     outputfile = ''
