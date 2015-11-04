@@ -222,7 +222,7 @@ class Theme: NSObject {
     
     func attributesForT1TextField() ->  Dictionary<String, AnyObject> {         
         let attributes = [             
-            NSFontAttributeName: primaryFontBlack,            
+            NSFontAttributeName: UIFont (name: primaryFontBlack, size: 16)!,            
             NSForegroundColorAttributeName: baseBlackColor,            
             NSKernAttributeName: 3,            
             NSLigatureAttributeName: 2            
