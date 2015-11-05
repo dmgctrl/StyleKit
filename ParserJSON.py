@@ -195,6 +195,25 @@ def main(argv):
             object.backgroundColor = (value['backgroundColor'])
         if "textColor" in value:
             object.textColor = (value['textColor'])
+        if "attributes" in value:
+            attributes = value["attributes"]
+            object.seperatorCount = len(attributes) - 2
+            if "font" in attributes:
+                object.attributedFont = ui.Font(attributes['font'], attributes['size'])
+                object.attributes.append(attributes['font'])
+            if "foregroundColor" in attributes:
+                object.attributedForegroundColor = attributes['foregroundColor']
+                object.attributes.append(attributes['foregroundColor'])
+            if "backgroundColor" in attributes:
+                object.attributedBackgroundColor = attributes['backgroundColor']
+                object.attributes.append(attributes['backgroundColor'])
+            if "kern" in attributes:
+                object.attributedKerning = attributes['kern']
+                object.attributes.append(attributes['kern'])
+            if "ligature" in attributes:
+                object.attributedLigature = attributes['ligature']
+                object.attributes.append(attributes['ligature'])
+            swiftGenerator.buildAttributesForObjects([object])
         swiftGenerator.buildStyleFunctions([object])
 
     for key, value in style['Buttons'].iteritems():
@@ -225,6 +244,25 @@ def main(argv):
             print("application")
         if "reserved" in value:
             print ("reserved")
+        if "attributes" in value:
+            attributes = value["attributes"]
+            object.seperatorCount = len(attributes) - 2
+            if "font" in attributes:
+                object.attributedFont = ui.Font(attributes['font'], attributes['size'])
+                object.attributes.append(attributes['font'])
+            if "foregroundColor" in attributes:
+                object.attributedForegroundColor = attributes['foregroundColor']
+                object.attributes.append(attributes['foregroundColor'])
+            if "backgroundColor" in attributes:
+                object.attributedBackgroundColor = attributes['backgroundColor']
+                object.attributes.append(attributes['backgroundColor'])
+            if "kern" in attributes:
+                object.attributedKerning = attributes['kern']
+                object.attributes.append(attributes['kern'])
+            if "ligature" in attributes:
+                object.attributedLigature = attributes['ligature']
+                object.attributes.append(attributes['ligature'])
+            swiftGenerator.buildAttributesForObjects([object])
         swiftGenerator.buildStyleFunctions([object])
 
     for key, value in style['TextFields'].iteritems():
@@ -245,9 +283,9 @@ def main(argv):
             if "font" in attributes:
                 object.attributedFont = ui.Font(attributes['font'], attributes['size'])
                 object.attributes.append(attributes['font'])
-            if "forgroundColor" in attributes:
-                object.attributedForegroundColor = attributes['forgroundColor']
-                object.attributes.append(attributes['forgroundColor'])
+            if "foregroundColor" in attributes:
+                object.attributedForegroundColor = attributes['foregroundColor']
+                object.attributes.append(attributes['foregroundColor'])
             if "backgroundColor" in attributes:
                 object.attributedBackgroundColor = attributes['backgroundColor']
                 object.attributes.append(attributes['backgroundColor'])
