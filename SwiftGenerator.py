@@ -110,11 +110,13 @@ class SwiftGenerator:
             self.enter()
             self.write("let attributes = [ ")
             self.indent(),self.newline()
-            if object.attributedFont: set([self.write("NSFontAttributeName: " + object.attributedFont.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
-            if object.attributedForegroundColor: set([self.write("NSForegroundColorAttributeName: " + object.attributedForegroundColor)]),self.addSeperator(object),self.newline()
-            if object.attributedBackgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.attributedBackgroundColor)]),self.addSeperator(object),self.newline()
-            if object.attributedKerning: set([self.write("NSKernAttributeName: " + str(object.attributedKerning))]),self.addSeperator(object),self.newline()
-            if object.attributedLigature: set([self.write("NSLigatureAttributeName: " + str(object.attributedLigature))]),self.addSeperator(object),self.newline()
+            if isinstance(object, UIObjects.Attributes):
+                object.seperatorCount = len(object.properties) - 2 ## Font is 2 key, value pairs
+                if object.font: set([self.write("NSFontAttributeName: " + object.font.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
+                if object.foregroundColor: set([self.write("NSForegroundColorAttributeName: " + object.foregroundColor)]),self.addSeperator(object),self.newline()
+                if object.backgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.backgroundColor)]),self.addSeperator(object),self.newline()
+                if object.kerning: set([self.write("NSKernAttributeName: " + str(object.kerning))]),self.addSeperator(object),self.newline()
+                if object.ligature: set([self.write("NSLigatureAttributeName: " + str(object.ligature))]),self.addSeperator(object),self.newline()
             self.outdent()
             self.write(" ]")
             self.newline()

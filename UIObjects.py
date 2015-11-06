@@ -22,7 +22,6 @@ class uiObject:
         self.attributedParagraphStyle = None
         self.attributedSuperScript = None
         self.attributedUnderlineStylenderlineStyle = None
-        self.seperatorCount = int
 
 class asView:
     @property
@@ -44,10 +43,50 @@ class asView:
         if "cornerRadius" in self.properties:
             return (self.properties['cornerRadius'])
 
-class Button(asView):
+class Attributes:
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
+        self.seperatorCount = None
+
+    @property
+    def font(self):
+        if "font" in self.properties:
+            return Font(self.properties['font'], self.properties['size'])
+
+    @property
+    def foregroundColor(self):
+        if "foregroundColor" in self.properties:
+            return self.properties['foregroundColor']
+
+    @property
+    def backgroundColor(self):
+        if "backgroundColor" in self.properties:
+            return self.properties['backgroundColor']
+
+    @property
+    def kerning(self):
+         if "kerning" in self.properties:
+            return self.properties['kerning']
+
+    @property
+    def ligature(self):
+         if "ligature" in self.properties:
+            return self.properties['ligature']
+
+    # @property
+    # def seperatorCount(self):
+    #         return len(self.properties) - 1
+
+class Button(asView, Attributes):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def attributes(self):
+        if "attributes" in self.properties:
+            return Attributes(self.name, self.properties['attributes'])
 
     @property
     def titleColor(self):
@@ -73,10 +112,15 @@ class Button(asView):
         return "UIButton"
 
 
-class Label(asView):
+class Label(asView, Attributes):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
+
+    @property
+    def attributes(self):
+        if "attributes" in self.properties:
+            return Attributes(self.name, self.properties['attributes'])
 
     @property
     def textColor(self):
@@ -92,10 +136,15 @@ class Label(asView):
         if "font" in self.properties:
             return Font(self.properties['font'], self.properties['size'])
 
-class TextField(asView):
+class TextField(asView, Attributes):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
+
+    @property
+    def attributes(self):
+        if "attributes" in self.properties:
+            return Attributes(self.name, self.properties['attributes'])
 
     @property
     def textColor(self):
@@ -105,6 +154,8 @@ class TextField(asView):
     @property
     def type(self):
         return "UITextField"
+
+
 
 class Font:
     def __init__(self, name, size):
