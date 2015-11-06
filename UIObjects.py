@@ -24,6 +24,88 @@ class uiObject:
         self.attributedUnderlineStylenderlineStyle = None
         self.seperatorCount = int
 
+class asView:
+    @property
+    def backgroundColor(self):
+        if "backgroundColor" in self.properties:
+            return (self.properties['backgroundColor'])
+    @property
+    def borderColor(self):
+        if "borderColor" in self.properties:
+            return (self.properties['borderColor'])
+
+    @property
+    def borderWidth(self):
+        if "borderWidth" in self.properties:
+            return (self.properties['borderWidth'])
+
+    @property
+    def cornerRadius(self):
+        if "cornerRadius" in self.properties:
+            return (self.properties['cornerRadius'])
+
+class Button(asView):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def titleColor(self):
+        if "titleColor" in self.properties:
+            return (self.properties['titleColor'])
+
+    @property
+    def titleShadowColor(self):
+        if "titleShadowColor" in self.properties:
+            return (self.properties['titleShadowColor'])
+
+    @property
+    def backgroundImage(self):
+        if "backgroundImage" in self.properties:
+            return (self.properties['backgroundImage'])
+
+    @property
+    def titleLabelFont(self):
+        if "titleLabelFont" in self.properties:
+            return Font(self.properties['titleLabelFont'], self.properties['size'])
+    @property
+    def type(self):
+        return "UIButton"
+
+
+class Label(asView):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def textColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
+
+    @property
+    def type(self):
+        return "UILabel"
+
+    @property
+    def font(self):
+        if "font" in self.properties:
+            return Font(self.properties['font'], self.properties['size'])
+
+class TextField(asView):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def textColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
+
+    @property
+    def type(self):
+        return "UITextField"
+
 class Font:
     def __init__(self, name, size):
         self.name = name

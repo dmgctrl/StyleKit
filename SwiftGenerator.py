@@ -81,16 +81,25 @@ class SwiftGenerator:
             self.write("for object in objects {")
             self.newline()
             self.indent()
-            if object.font: set([self.write("object.font = " + object.font.toSwift())]),  self.newline()
-            if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
-            if object.backgroundColor: set([self.write("object.backgroundColor = " + object.backgroundColor)]), self.newline()
-            if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Normal)")]), self.newline()
-            if object.titleLabel: set([self.write("object.titleLabel?.font = " + object.titleLabel.toSwift())]), self.newline()
-            if object.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(object.cornerRadius))]), self.newline()
-            if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
-            if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
-            if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
-            if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
+            if isinstance(object, UIObjects.asView):
+                if object.backgroundColor: set([self.write("object.backgroundColor = " + object.backgroundColor)]), self.newline()
+                if object.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(object.cornerRadius))]), self.newline()
+                if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
+                if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
+
+            if isinstance(object, UIObjects.Label):
+                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
+                if object.font: set([self.write("object.font = " + object.font.toSwift())]),  self.newline()
+
+            if isinstance(object, UIObjects.Button):
+                if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Normal)")]), self.newline()
+                if object.titleLabelFont: set([self.write("object.titleLabel?.font = " + object.titleLabelFont.toSwift())]), self.newline()
+                if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
+                if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
+
+            if isinstance(object, UIObjects.TextField):
+                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
+
             self.write("}")
             self.closeFunction()
             self.nextFunction()
