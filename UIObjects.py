@@ -74,10 +74,6 @@ class Attributes:
          if "ligature" in self.properties:
             return self.properties['ligature']
 
-    # @property
-    # def seperatorCount(self):
-    #         return len(self.properties) - 1
-
 class Button(asView, Attributes):
     def __init__(self, name, properties = {}):
         self.name = name
