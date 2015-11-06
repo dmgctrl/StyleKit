@@ -62,14 +62,14 @@ def main(argv):
             swiftGenerator.textFieldOutletCollection([object])
 
     for key, value in style['Labels'].iteritems():
-        label = ui.Label(key, value)
+        label = ui.Label(key + "Label", value)
         if label.attributes:
             attributes = value["attributes"]
             swiftGenerator.buildAttributesForObjects([label.attributes])
         swiftGenerator.buildStyleFunctions([label])
 
     for key, value in style['Buttons'].iteritems():
-        button = ui.Button(key, value)
+        button = ui.Button(key + "Button", value)
         if "normal" in value:
             normal = value["normal"]
             if "titleColor" in normal:
@@ -88,17 +88,15 @@ def main(argv):
             print ("reserved")
         if button.attributes:
             attributes = value["attributes"]
-            object.seperatorCount = len(attributes) - 2
             swiftGenerator.buildAttributesForObjects([button.attributes])
         swiftGenerator.buildStyleFunctions([button])
 
     for key, value in style['TextFields'].iteritems():
-        textfield = ui.TextField(key, value)
+        textfield = ui.TextField(key + "TextField", value)
         if "textColor" in value:
             object.textColor = value['textColor']
         if textfield.attributes:
             attributes = value["attributes"]
-            object.seperatorCount = len(attributes) - 2
             swiftGenerator.buildAttributesForObjects([textfield.attributes])
         swiftGenerator.buildStyleFunctions([textfield])
 
