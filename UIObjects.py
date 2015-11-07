@@ -23,7 +23,7 @@ class uiObject:
         self.attributedSuperScript = None
         self.attributedUnderlineStylenderlineStyle = None
 
-class asView:
+class View:
     @property
     def backgroundColor(self):
         if "backgroundColor" in self.properties:
@@ -42,6 +42,25 @@ class asView:
     def cornerRadius(self):
         if "cornerRadius" in self.properties:
             return (self.properties['cornerRadius'])
+
+    @property
+    def type(self):
+        return "UIView"
+
+class Normal:
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def titleColor(self):
+        if "titleColor" in self.properties:
+            return (self.properties['titleColor'])
+
+    @property
+    def state(self):
+        return ".Normal"
+
 
 class Attributes:
     def __init__(self, name, properties = {}):
@@ -74,20 +93,20 @@ class Attributes:
          if "ligature" in self.properties:
             return self.properties['ligature']
 
-class Button(asView, Attributes):
+class Button(View, Attributes, Normal):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
 
     @property
+    def normal(self):
+        if "normal" in self.properties:
+            return Normal(self.name, self.properties['normal'])
+
+    @property
     def attributes(self):
         if "attributes" in self.properties:
             return Attributes(self.name, self.properties['attributes'])
-
-    @property
-    def titleColor(self):
-        if "titleColor" in self.properties:
-            return (self.properties['titleColor'])
 
     @property
     def titleShadowColor(self):
@@ -103,12 +122,13 @@ class Button(asView, Attributes):
     def titleLabelFont(self):
         if "titleLabelFont" in self.properties:
             return Font(self.properties['titleLabelFont'], self.properties['size'])
+
     @property
     def type(self):
         return "UIButton"
 
 
-class Label(asView, Attributes):
+class Label(View, Attributes):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -132,7 +152,7 @@ class Label(asView, Attributes):
         if "font" in self.properties:
             return Font(self.properties['font'], self.properties['size'])
 
-class TextField(asView, Attributes):
+class TextField(View, Attributes):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties

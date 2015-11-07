@@ -70,12 +70,12 @@ def main(argv):
 
     for key, value in style['Buttons'].iteritems():
         button = ui.Button(key + "Button", value)
-        if "normal" in value:
+        if button.normal:
             normal = value["normal"]
             if "titleColor" in normal:
-                object.titleColor = (normal['titleColor'])
+                button.titleColor = normal['titleColor']
             if "backgroundImage" in normal:
-                object.backgroundImage = normal['backgroundImage']
+                button.backgroundImage = normal['backgroundImage']
         if "highlighted" in value:
             highlighted = value["highlighted"]
         if "disabled" in value:
