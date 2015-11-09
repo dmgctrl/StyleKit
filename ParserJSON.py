@@ -6,8 +6,8 @@ from SwiftGenerator import SwiftGenerator
 from Validator import Validator
 
 def main(argv):
-    inputfile = 'Style.json'
-    outputfile = 'Style.swift'
+    inputfile = ''
+    outputfile = ''
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
