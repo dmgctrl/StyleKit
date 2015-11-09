@@ -2,26 +2,6 @@ class uiObject:
     def __init__(self, name, type):
         self.name = name
         self.type = type
-        self.textColor = None
-        self.font = None
-        self.backgroundColor = None
-        self.titleColor = None
-        self.titleLabel = None
-        self.cornerRadius = None
-        self.borderColor = None
-        self.borderWidth = None
-        self.titleShadowColor = None
-        self.backgroundImage = None
-        self.attributes = []
-        #
-        self.attributedFont = None
-        self.attributedBackgroundColor = None
-        self.attributedForegroundColor = None
-        self.attributedKerning = None
-        self.attributedLigature = None
-        self.attributedParagraphStyle = None
-        self.attributedSuperScript = None
-        self.attributedUnderlineStylenderlineStyle = None
 
 class View:
     @property
@@ -61,6 +41,19 @@ class Normal:
     def state(self):
         return ".Normal"
 
+class Selected:
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def titleColor(self):
+        if "titleColor" in self.properties:
+            return (self.properties['titleColor'])
+
+    @property
+    def state(self):
+        return ".Selected"
 
 class Attributes:
     def __init__(self, name, properties = {}):
@@ -93,7 +86,7 @@ class Attributes:
          if "ligature" in self.properties:
             return self.properties['ligature']
 
-class Button(View, Attributes, Normal):
+class Button(View, Attributes, Normal, Selected):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -102,6 +95,11 @@ class Button(View, Attributes, Normal):
     def normal(self):
         if "normal" in self.properties:
             return Normal(self.name, self.properties['normal'])
+
+    @property
+    def selected(self):
+        if "selected" in self.properties:
+            return Selected(self.name, self.properties['selected'])
 
     @property
     def attributes(self):

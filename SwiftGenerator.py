@@ -92,15 +92,13 @@ class SwiftGenerator:
                 if object.font: set([self.write("object.font = " + object.font.toSwift())]),  self.newline()
 
             if isinstance(object, UIObjects.Button):
-                if object.titleColor: set([self.write("object.setTitleColor(" + object.normal.titleColor + ", forState: .Normal)")]), self.newline()
                 if object.titleLabelFont: set([self.write("object.titleLabel?.font = " + object.titleLabelFont.toSwift())]), self.newline()
                 if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
                 if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
-                if object.normal:
-                    print
             if isinstance(object, UIObjects.Normal):
                 if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Normal)")]), self.newline()
-
+            if isinstance(object, UIObjects.Selected):
+                if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Selected)")]), self.newline()
             if isinstance(object, UIObjects.TextField):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
 

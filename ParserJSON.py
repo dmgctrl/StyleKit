@@ -76,6 +76,12 @@ def main(argv):
                 button.titleColor = normal['titleColor']
             if "backgroundImage" in normal:
                 button.backgroundImage = normal['backgroundImage']
+        if button.selected:
+            selected = value["selected"]
+            if "titleColor" in selected:
+                button.titleColor = selected['titleColor']
+            if "backgroundImage" in selected:
+                button.backgroundImage = selected['backgroundImage']
         if "highlighted" in value:
             highlighted = value["highlighted"]
         if "disabled" in value:
