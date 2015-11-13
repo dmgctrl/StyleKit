@@ -1,6 +1,6 @@
 # StyleKit
 
-StyleKit is a native iOS library that styles native controls with a CSS like JSON format. With StyleKit, you can replace many complicated lines of Swift with a few lines of StyleKit JSON. This simplifies and centralizes your styling code, and offers other benefits as well. Styles are wired up to their objects via IBOutlet collections and generates methods per style that can be applied in code if necessary.
+StyleKit is a iOS library that styles native controls with a CSS like JSON format. With StyleKit, you can replace many complicated lines of Swift with a few lines of StyleKit JSON. This simplifies and centralizes your styling code, and offers other benefits as well. Styles are wired up to their objects via IBOutlet collections and generates methods per style that can be applied in code if necessary.
 
 ## Requirements
 
