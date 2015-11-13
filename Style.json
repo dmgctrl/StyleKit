@@ -1,0 +1,227 @@
+{
+    "Fonts": {
+        "primaryFontLight": "BrandonGrotesque-Light",
+        "primaryFontMedium": "BrandonGrotesque-Medium",
+        "primaryFontBold": "BrandonGrotesque-Bold",
+        "primaryFontBlack": "BrandonGrotesque-Black",
+        "primaryFontLightItalic": "BrandonGrotesque-LightItalic"
+    },
+    "Colors": {
+        "baseColorRedLight": {
+            "red": 250,
+            "green": 110,
+            "blue": 92,
+            "alpha": 1
+        },
+        "baseColorRedMedium": {
+            "red": 234,
+            "green": 75,
+            "blue": 44,
+            "alpha": 1
+        },
+        "baseColorRedDark": {
+            "red": 197,
+            "green": 35,
+            "blue": 38,
+            "alpha": 1
+        },
+        "baseColorBlueLight": {
+            "red": 73,
+            "green": 208,
+            "blue": 223,
+            "alpha": 1
+        },
+        "baseColorBlueMedium": {
+            "red": 77,
+            "green": 191,
+            "blue": 213,
+            "alpha": 1
+        },
+        "baseColorBlueDark": {
+            "red": 65,
+            "green": 162,
+            "blue": 182,
+            "alpha": 1
+        },
+        "baseColorGreyVeryLight": {
+            "red": 62,
+            "green": 62,
+            "blue": 62,
+            "alpha": 1
+        },
+        "baseColorGreyLight": {
+            "red": 194,
+            "green": 194,
+            "blue": 194,
+            "alpha": 1
+        },
+        "baseColorGreyMedium": {
+            "red": 135,
+            "green": 135,
+            "blue": 135,
+            "alpha": 1
+        },
+        "baseColorGreyDark": {
+            "red": 102,
+            "green": 102,
+            "blue": 102,
+            "alpha": 1
+        },
+        "baseColorWhite": {
+            "red": 255,
+            "green": 255,
+            "blue": 255,
+            "alpha": 1
+        },
+        "activityPrimaryColor": {
+            "red": 242,
+            "green": 114,
+            "blue": 101,
+            "alpha": 1
+        },
+        "activitySecondaryColor": {
+            "red": 219,
+            "green": 96,
+            "blue": 85,
+            "alpha": 1
+        },
+        "activityTertiaryColor": {
+            "red": 185,
+            "green": 80,
+            "blue": 71,
+            "alpha": 1
+        },
+        "baseClearColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "alpha": 0
+        },
+        "baseBlackColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "alpha": 0.5
+        }
+    },
+    "Images": {
+        "buttonImage1": "black_button_image"
+    },
+    "Labels": {
+        "H1": {
+            "font": "primaryFontMedium",
+            "size": 40
+        },
+        "H2": {
+            "font": "primaryFontLightItalic",
+            "size": 30
+        },
+        "H3": {
+            "font": "primaryFontBlack",
+            "size": 24
+        },
+        "H6": {
+            "font": "primaryFontLight",
+            "size": 23
+        },
+        "P1": {
+            "font": "primaryFontMedium",
+            "size": 16
+        },
+        "P2": {
+            "font": "primaryFontLight",
+            "size": 16
+        }
+    },
+    "Buttons": {
+        "B1": {
+            "titleLabelFont": "primaryFontBlack",
+            "size": 14
+        },
+        "B2": {
+            "titleLabelFont": "primaryFontBlack",
+            "size": 13
+        },
+        "B3": {
+            "titleLabelFont": "primaryFontBlack",
+            "size": 13
+        },
+        "B4": {
+            "titleLabelFont": "primaryFontMedium",
+            "size": 16,
+            "normal": {
+                "titleColor": "baseColorWhite"
+            }
+        },
+        "B3TrackerRangeLevel": {
+            "titleLabelFont": "primaryFontBlack",
+            "size": 13,
+            "borderWidth": 1,
+            "borderColor": "baseColorWhite",
+            "cornerRadius": 15,
+            "normal": {
+                "titleColor": "baseColorWhite",
+                "backgroundColor": "activitySecondaryColor"
+            },
+            "selected": {
+                "titleColor": "activityPrimaryColor",
+                "backgroundColor": "baseWhiteColor"
+            }
+        },
+        "B3TrackerEnumLevel": {
+            "titleLabelFont": "primaryFontBlack",
+            "size": 13,
+            "cornerRadius": 15,
+            "normal": {
+                "titleColor": "baseColorWhite"
+            },
+            "selected": {
+                "titleColor": "activityPrimaryColor",
+                "backgroundColor": "baseWhiteColor"
+            }
+        },
+        "B1WhiteButtons": {
+            "titleLabelFont": "primaryFontBlack",
+            "backgroundColor": "baseClearColor",
+            "size": 15,
+            "cornerRadius": 20,
+            "borderWidth": 1,
+            "borderColor": "baseColorWhite",
+            "normal": {
+                "titleColor": "baseColorWhite"
+            },
+            "selected": {
+                "titleColor": "activityPrimaryColor",
+                "backgroundColor": "baseWhiteColor"
+            }
+        },
+        "B1BlackButtons": {
+            "titleLabelFont": "primaryFontMedium",
+            "backgroundColor": "baseClearColor",
+            "size": 13,
+            "cornerRadius": 20,
+            "borderWidth": 1,
+            "borderColor": "baseBlackColor",
+            "normal": {
+                "titleColor": "baseBlackColor"
+            },
+            "selected": {
+                "titleColor": "activityPrimaryColor",
+                "backgroundColor": "baseWhiteColor"
+            }
+        }
+    },
+    "TextFields": {
+        "T1": {
+            "attributes": {
+                "font": "primaryFontBlack",
+                "size": 16,
+                "forgroundColor": "baseBlackColor",
+                "kern": 3,
+                "ligature": 2
+            },
+            "textColor": "baseColorWhite",
+            "cornerRadius": 15
+        }
+    }
+}

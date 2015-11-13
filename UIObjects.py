@@ -12,6 +12,17 @@ class uiObject:
         self.borderWidth = None
         self.titleShadowColor = None
         self.backgroundImage = None
+        self.attributes = []
+        #
+        self.attributedFont = None
+        self.attributedBackgroundColor = None
+        self.attributedForegroundColor = None
+        self.attributedKerning = None
+        self.attributedLigature = None
+        self.attributedParagraphStyle = None
+        self.attributedSuperScript = None
+        self.attributedUnderlineStylenderlineStyle = None
+        self.seperatorCount = int
 
 class Font:
     def __init__(self, name, size):
@@ -29,7 +40,7 @@ class Color:
         self.alpha = alpha
 
     def toSwiftRGBA(self):
-        return "UIColor(red: %.2f, green: %.2f, blue: %.2f, alpha: %.2f)" % (self.red, self.green, self.blue, self.alpha)
+        return "UIColor(red: %.1f/255.0, green: %.1f/255.0, blue: %.1f/255.0, alpha: %.1f)" % (self.red, self.green, self.blue, self.alpha)
 
     def rgb_to_hex(self, r,g,b):
         return "#%02X%02X%02X" % (r,g,b)
