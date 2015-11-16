@@ -88,19 +88,19 @@ class SwiftGenerator:
                 if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
 
             if isinstance(object, UIObjects.Label):
-                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
+                if object.textColor: set([self.write("object.textcolor = " + object.textColor)]), self.newline()
                 if object.font: set([self.write("object.font = " + object.font.toSwift())]),  self.newline()
 
             if isinstance(object, UIObjects.Button):
+                if object.titleColorNormal: set([self.write("object.setTitleColor(" + object.titleColorNormal + ", forState: .Normal)")]), self.newline()
+                if object.titleColorSelected: set([self.write("object.setTitleColor(" + object.titleColorSelected + ", forState: .Selected)")]), self.newline()
+                if object.titleColorHighlighted: set([self.write("object.setTitleColor(" + object.titleColorHighlighted + ", forState: .Highlighted)")]), self.newline()
                 if object.titleLabelFont: set([self.write("object.titleLabel?.font = " + object.titleLabelFont.toSwift())]), self.newline()
                 if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
                 if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
-            if isinstance(object, UIObjects.Normal):
-                if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Normal)")]), self.newline()
-            if isinstance(object, UIObjects.Selected):
-                if object.titleColor: set([self.write("object.setTitleColor(" + object.titleColor + ", forState: .Selected)")]), self.newline()
+
             if isinstance(object, UIObjects.TextField):
-                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
+                if object.textColor: set([self.write("object.textcolor = " + object.textColor)]), self.newline()
 
             self.write("}")
             self.closeFunction()

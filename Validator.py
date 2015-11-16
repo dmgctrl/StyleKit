@@ -73,7 +73,7 @@ class Validator:
                         "type": "object",
                         "properties": {
                             "attributes": {"type": "object"},
-                            "textColor": {"type": "string"},
+                            "textcolor": {"type": "string"},
                             "backgroundColor": {"type": "string"},
                             "borderColor": {"type": "string"},
                             "borderWidth": {"type": "integer"},

@@ -1,13 +1,16 @@
 #!/usr/bin/python
 
-import sys, getopt, string, json, UIObjects
-
+import UIObjects
+import getopt
+import json
+import sys
 from SwiftGenerator import SwiftGenerator
 from Validator import Validator
 
+
 def main(argv):
-    inputfile = ''
-    outputfile = ''
+    inputfile = 'Style.json'
+    outputfile = 'Style.swift'
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
@@ -28,90 +31,83 @@ def main(argv):
 
     validator = Validator()
     validator.validate(style)
-    swiftGenerator = SwiftGenerator()
+    swiftgenerator = SwiftGenerator()
     ui = UIObjects
 
-    file = open(outputfile, "w+")
-    swiftGenerator.openClass()
+    _file = open(outputfile, "w+")
+    swiftgenerator.openClass()
 
     if 'Fonts' in style:
-        fontDefinitions = style['Fonts']
-        swiftGenerator.buildFontConstants(fontDefinitions)
+        fontdefinitions = style['Fonts']
+        swiftgenerator.buildFontConstants(fontdefinitions)
 
     if 'Colors' in style:
-        colorDefinitions = style['Colors']
-        swiftGenerator.buildColorConstants(colorDefinitions)
+        colordefinitions = style['Colors']
+        swiftgenerator.buildColorConstants(colordefinitions)
 
     if 'Images' in style:
-        imageDefinitions = style['Images']
-        swiftGenerator.buildImageConstants(imageDefinitions)
+        imagedefinitions = style['Images']
+        swiftgenerator.buildImageConstants(imagedefinitions)
 
     if 'Labels' in style:
         for key, value in style['Labels'].iteritems():
-            Label = ui.uiObject(key + "Label", "UILabel")
-            swiftGenerator.labelOutletCollections([Label])
+            label = ui.uiObject(key + "Label", "UILabel")
+            swiftgenerator.labelOutletCollections([label])
 
     if 'Buttons' in style:
         for key, value in style['Buttons'].iteritems():
-            object = ui.uiObject(key + "Button", "UIButton")
-            swiftGenerator.buttonOutletCollections([object])
+            button = ui.uiObject(key + "Button", "UIButton")
+            swiftgenerator.buttonOutletCollections([button])
 
     if 'TextFields' in style:
         for key, value in style['TextFields'].iteritems():
-            object = ui.uiObject(key + "TextField", "UITextField")
-            swiftGenerator.textFieldOutletCollection([object])
+            textfield = ui.uiObject(key + "TextField", "UITextField")
+            swiftgenerator.textFieldOutletCollection([textfield])
 
     for key, value in style['Labels'].iteritems():
         label = ui.Label(key + "Label", value)
         if label.attributes:
-            attributes = value["attributes"]
-            swiftGenerator.buildAttributesForObjects([label.attributes])
-        swiftGenerator.buildStyleFunctions([label])
+            swiftgenerator.buildAttributesForObjects([label.attributes])
+        swiftgenerator.buildStyleFunctions([label])
 
     for key, value in style['Buttons'].iteritems():
         button = ui.Button(key + "Button", value)
         if button.normal:
             normal = value["normal"]
             if "titleColor" in normal:
-                button.titleColor = normal['titleColor']
-            if "backgroundImage" in normal:
-                button.backgroundImage = normal['backgroundImage']
+                button.titleColorNormal = normal['titleColor']
+            if "backgroundimage" in normal:
+                button.backgroundimage = normal['backgroundimage']
         if button.selected:
             selected = value["selected"]
             if "titleColor" in selected:
-                button.titleColor = selected['titleColor']
-            if "backgroundImage" in selected:
-                button.backgroundImage = selected['backgroundImage']
-        if "highlighted" in value:
+                button.titleColorSelected = selected['titleColor']
+            if "backgroundimage" in selected:
+                button.backgroundimage = selected['backgroundimage']
+        if button.highlighted:
             highlighted = value["highlighted"]
-        if "disabled" in value:
-            print("disabled")
-        if "selected" in value:
-            print("selected")
-        if "application" in value:
-            print("application")
-        if "reserved" in value:
-            print ("reserved")
+            if "titleColor" in highlighted:
+                button.titlecolorhighlighted = highlighted['titleColor']
+
         if button.attributes:
-            attributes = value["attributes"]
-            swiftGenerator.buildAttributesForObjects([button.attributes])
-        swiftGenerator.buildStyleFunctions([button])
+            swiftgenerator.buildAttributesForObjects([button.attributes])
+        swiftgenerator.buildStyleFunctions([button])
 
     for key, value in style['TextFields'].iteritems():
         textfield = ui.TextField(key + "TextField", value)
-        if "textColor" in value:
-            object.textColor = value['textColor']
+        if "textcolor" in value:
+            textfield.textcolor = value['textcolor']
         if textfield.attributes:
-            attributes = value["attributes"]
-            swiftGenerator.buildAttributesForObjects([textfield.attributes])
-        swiftGenerator.buildStyleFunctions([textfield])
+            swiftgenerator.buildAttributesForObjects([textfield.attributes])
+        swiftgenerator.buildStyleFunctions([textfield])
 
-        swiftGenerator.closeClass()
+        swiftgenerator.closeClass()
 
-        ## write and close file
-        file.write(swiftGenerator.end())
-        file.close()
-        print swiftGenerator.end()
+        # write and close file
+        _file.write(swiftgenerator.end())
+        _file.close()
+        print swiftgenerator.end()
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

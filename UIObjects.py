@@ -33,7 +33,7 @@ class Normal:
         self.properties = properties
 
     @property
-    def titleColor(self):
+    def titleColorNormal(self):
         if "titleColor" in self.properties:
             return (self.properties['titleColor'])
 
@@ -41,13 +41,23 @@ class Normal:
     def state(self):
         return ".Normal"
 
+class Highlighted:
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def titleColorHighlighted(self):
+        if "titleColor" in self.properties:
+            return (self.properties['titleColor'])
+
 class Selected:
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
 
     @property
-    def titleColor(self):
+    def titleColorSelected(self):
         if "titleColor" in self.properties:
             return (self.properties['titleColor'])
 
@@ -86,7 +96,7 @@ class Attributes:
          if "ligature" in self.properties:
             return self.properties['ligature']
 
-class Button(View, Attributes, Normal, Selected):
+class Button(View, Attributes, Normal, Selected, Highlighted):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -102,6 +112,11 @@ class Button(View, Attributes, Normal, Selected):
             return Selected(self.name, self.properties['selected'])
 
     @property
+    def highlighted(self):
+        if "highlighted" in self.properties:
+            return Selected(self.name, self.properties['highlighted'])
+
+    @property
     def attributes(self):
         if "attributes" in self.properties:
             return Attributes(self.name, self.properties['attributes'])
@@ -113,8 +128,8 @@ class Button(View, Attributes, Normal, Selected):
 
     @property
     def backgroundImage(self):
-        if "backgroundImage" in self.properties:
-            return (self.properties['backgroundImage'])
+        if "backgroundimage" in self.properties:
+            return (self.properties['backgroundimage'])
 
     @property
     def titleLabelFont(self):
@@ -138,8 +153,8 @@ class Label(View, Attributes):
 
     @property
     def textColor(self):
-        if "textColor" in self.properties:
-            return (self.properties['textColor'])
+        if "textcolor" in self.properties:
+            return (self.properties['textcolor'])
 
     @property
     def type(self):
@@ -162,8 +177,8 @@ class TextField(View, Attributes):
 
     @property
     def textColor(self):
-        if "textColor" in self.properties:
-            return (self.properties['textColor'])
+        if "textcolor" in self.properties:
+            return (self.properties['textcolor'])
 
     @property
     def type(self):
