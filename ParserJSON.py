@@ -82,12 +82,12 @@ def main(argv):
             selected = value["selected"]
             if "titleColor" in selected:
                 button.titleColorSelected = selected['titleColor']
-            if "backgroundimage" in selected:
+            if "backgroundImage" in selected:
                 button.backgroundimage = selected['backgroundimage']
         if button.highlighted:
             highlighted = value["highlighted"]
             if "titleColor" in highlighted:
-                button.titlecolorhighlighted = highlighted['titleColor']
+                button.titleColorHighlighted = highlighted['titleColor']
 
         if button.attributes:
             swiftgenerator.buildAttributesForObjects([button.attributes])

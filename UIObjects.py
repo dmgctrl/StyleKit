@@ -114,7 +114,7 @@ class Button(View, Attributes, Normal, Selected, Highlighted):
     @property
     def highlighted(self):
         if "highlighted" in self.properties:
-            return Selected(self.name, self.properties['highlighted'])
+            return Highlighted(self.name, self.properties['highlighted'])
 
     @property
     def attributes(self):
