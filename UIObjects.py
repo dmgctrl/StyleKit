@@ -27,13 +27,13 @@ class View:
     def type(self):
         return "UIView"
 
- class FontStyle:
-    def __init__(self, name, size):
-        self.name = name
+class FontStyle:
+    def __init__(self, font, size):
+        self.font = font
         self.size = size
 
     def toSwift(self):
-        return "UIFont (name: %s, size: %s)" % (self.name, self.size)
+        return "UIFont (name: %s, size: %s)" % (self.font, self.size)
 
 class Normal:
     def __init__(self, name, properties = {}):
@@ -104,7 +104,7 @@ class Attributes:
          if "ligature" in self.properties:
             return self.properties['ligature']
 
-class Button(View, Attributes, Normal, Selected, Highlighted):
+class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -140,9 +140,9 @@ class Button(View, Attributes, Normal, Selected, Highlighted):
             return (self.properties['backgroundimage'])
 
     @property
-    def titleLabelFont(self):
-        if "titleLabelFont" in self.properties:
-            return Font(self.properties['titleLabelFont'], self.properties['size'])
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.name, self.properties['fontStyle'])
 
     @property
     def type(self):

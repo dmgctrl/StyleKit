@@ -40,11 +40,9 @@ class Validator:
                     "^.*$": {
                         "type": "object",
                         "properties": {
-                            "font": {"type": "string"},
-                            "size": {"type": "integer"},
+                            "fontStyle": {"$ref": "#/definitions/fontStyle"},
                             "color": {"type": "string"}
-                        },
-                        "required": ["font", "size"]
+                        }
                     }
                 }
             },
@@ -104,6 +102,17 @@ class Validator:
             "bundleKey": {
                 "type": "string",
                 "pattern": "^[a-zA-Z0-9\-\_]+$"
+            },
+            "fontStyle": {
+                "properties": {
+                    "font": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "number"
+                    }
+                },
+                "required": ["font", "size"]
             },
             "colorValue": {
                 "type": "integer",

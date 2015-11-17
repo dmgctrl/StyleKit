@@ -66,9 +66,12 @@ def main(argv):
 
     for key, value in style['Labels'].iteritems():
         label = ui.Label(key + "Label", value)
+        if label.fontStyle:
+            fontStyle = value["fontStyle"]
+            label.font = fontStyle
         if label.attributes:
             swiftgenerator.buildAttributesForObjects([label.attributes])
-        swiftgenerator.buildStyleFunctions([label])
+            swiftgenerator.buildStyleFunctions([label])
 
     for key, value in style['Buttons'].iteritems():
         button = ui.Button(key + "Button", value)
@@ -91,7 +94,13 @@ def main(argv):
 
         if button.attributes:
             swiftgenerator.buildAttributesForObjects([button.attributes])
-        swiftgenerator.buildStyleFunctions([button])
+
+        if button.fontStyle:
+            fontStyle = value["fontStyle"]
+            label.titleLabelFont = fontStyle
+
+            swiftgenerator.buildStyleFunctions([button])
+
 
     for key, value in style['TextFields'].iteritems():
         textfield = ui.TextField(key + "TextField", value)

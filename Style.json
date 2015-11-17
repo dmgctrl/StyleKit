@@ -1,0 +1,107 @@
+{
+    "Fonts": {
+        "primaryFontLight":"BrandonGrotesque-Light",
+        "primaryFontMedium":"BrandonGrotesque-Medium",
+        "primaryFontBold":"BrandonGrotesque-Bold",
+        "primaryFontBlack":"BrandonGrotesque-Black",
+        "primaryFontLightItalic":"BrandonGrotesque-LightItalic"
+    },
+    "Colors": {
+        "whiteColor": {
+            "red": 1,
+            "green": 1,
+            "blue": 1,
+            "alpha": 1
+        },
+        "blackColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "alpha": 1
+        },
+        "purpleColor": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "alpha": 1
+        }
+    },
+    "Images": {
+        "buttonImage1": "black_button_image"
+    },
+    "Labels": {
+        "H1": {
+          "fontStyle": {
+            "font": "primaryFontLight",
+            "size": 34
+          },
+          "textColor": "whiteColor"
+        },
+        "H2": {
+            "font": "primaryFontLightItalic",
+            "size": 20,
+            "textColor": "blackColor"
+        },
+        "H3": {
+            "font": "primaryFontBlack",
+            "size": 24
+        }
+    },
+    "Buttons": {
+        "B1": {
+            "titleLabelFont": "primaryFontLight",
+            "size": 20,
+            "backgroundColor": "blackColor",
+            "cornerRadius": 15,
+            "normal": {
+                "titleColor": "whiteColor",
+                "titleShadowColor" : "whiteColor"
+            },
+            "highlighted": {
+                "titleColor": "blackColor",
+                "backgroundColor": "whiteColor"
+            }
+        },
+        "B2": {
+            "titleLabelFont": "primaryFontMedium",
+            "size": 22,
+            "backgroundColor": "whiteColor",
+            "cornerRadius": 10,
+            "normal": {
+                "titleColor": "blackColor",
+                "titleShadowColor" : "whiteColor"
+            }
+        },
+        "B3": {
+            "titleLabelFont": "primaryFontBold",
+            "size": 24,
+            "borderColor": "whiteColor",
+            "borderWidth": 5,
+            "cornerRadius": 5,
+            "normal": {
+                "titleColor": "whiteColor"
+            }
+        },
+        "B4": {
+            "titleLabelFont": "primaryFontBlack",
+            "size": 26,
+            "borderColor": "blackColor",
+            "borderWidth": 1,
+            "normal": {
+                "titleColor": "blackColor"
+            }
+        }
+    },
+    "TextFields": {
+        "T1": {
+            "font": "primaryFontLightItalic",
+            "textColor": "blackColor",
+            "backgroundColor": "whiteColor",
+            "borderColor": "blackColor",
+            "textAlignment": "Center",
+            "borderWidth": 0,
+            "cornerRadius": 20,
+            "borderStyle": "None"
+        }
+    }
+}
