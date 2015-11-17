@@ -28,9 +28,9 @@ class View:
         return "UIView"
 
 class FontStyle:
-    def __init__(self, font, size):
-        self.font = font
-        self.size = size
+    def __init__(self, fontStyle):
+        self.font = fontStyle["font"]
+        self.size = fontStyle["size"]
 
     def toSwift(self):
         return "UIFont (name: %s, size: %s)" % (self.font, self.size)
@@ -82,7 +82,7 @@ class Attributes:
     @property
     def font(self):
         if "font" in self.properties:
-            return Font(self.properties['font'], self.properties['size'])
+            return Font(self.properties['fontStyle'])
 
     @property
     def foregroundColor(self):
@@ -142,7 +142,7 @@ class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
     @property
     def fontStyle(self):
         if "fontStyle" in self.properties:
-            return FontStyle(self.name, self.properties['fontStyle'])
+            return FontStyle(self.properties['fontStyle'])
 
     @property
     def type(self):
@@ -165,13 +165,18 @@ class Label(View, Attributes, FontStyle):
             return (self.properties['textcolor'])
 
     @property
+    def backgroundColor(self):
+        if "backgroundColor" in self.properties:
+            return (self.properties['backgroundColor'])
+
+    @property
     def type(self):
         return "UILabel"
 
     @property
     def fontStyle(self):
         if "fontStyle" in self.properties:
-            return FontStyle(self.name, self.properties['fontStyle'])
+            return FontStyle(self.properties['fontStyle'])
 
 class TextField(View, Attributes):
     def __init__(self, name, properties = {}):

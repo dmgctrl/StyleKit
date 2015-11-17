@@ -89,13 +89,13 @@ class SwiftGenerator:
 
             if isinstance(object, UIObjects.Label):
                 if object.textColor: set([self.write("object.textcolor = " + object.textColor)]), self.newline()
-                if object.font: set([self.write("object.font = " + object.font.toSwift())]),  self.newline()
+                if object.fontStyle: set([self.write("object.font = " + object.fontStyle.toSwift())]),  self.newline()
 
             if isinstance(object, UIObjects.Button):
                 if object.titleColorNormal: set([self.write("object.setTitleColor(" + object.titleColorNormal + ", forState: .Normal)")]), self.newline()
                 if object.titleColorSelected: set([self.write("object.setTitleColor(" + object.titleColorSelected + ", forState: .Selected)")]), self.newline()
                 if object.titleColorHighlighted: set([self.write("object.setTitleColor(" + object.titleColorHighlighted + ", forState: .Highlighted)")]), self.newline()
-                if object.titleLabelFont: set([self.write("object.titleLabel?.font = " + object.titleLabelFont.toSwift())]), self.newline()
+                if object.fontStyle: set([self.write("object.titleLabel?.font = " + object.fontStyle.toSwift())]), self.newline()
                 if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
                 if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
 

@@ -64,6 +64,62 @@ class Style: NSObject {
         }        
     }    
     
+    func styleH2Label(objects: [UILabel]) {        
+        for object in objects {        
+            object.textcolor = blackColor            
+            object.font = UIFont (name: primaryFontLightItalic, size: 20)            
+            }            
+        }    
+    
+    func styleH3Label(objects: [UILabel]) {        
+        for object in objects {        
+            object.textcolor = blackColor            
+            object.font = UIFont (name: primaryFontBlack, size: 24)            
+            }            
+        }    
+    
+    func styleH1Label(objects: [UILabel]) {        
+        for object in objects {        
+            object.backgroundColor = whiteColor            
+            object.textcolor = whiteColor            
+            object.font = UIFont (name: primaryFontLight, size: 34)            
+            }            
+        }    
+    
+    func styleB4Button(objects: [UIButton]) {        
+        for object in objects {        
+            object.layer.borderColor = blackColor.CGColor            
+            object.layer.borderWidth = 1            
+            object.setTitleColor(blackColor, forState: .Normal)            
+            }            
+        }    
+    
+    func styleB1Button(objects: [UIButton]) {        
+        for object in objects {        
+            object.backgroundColor = blackColor            
+            object.layer.cornerRadius = 15            
+            object.setTitleColor(whiteColor, forState: .Normal)            
+            object.setTitleColor(blackColor, forState: .Highlighted)            
+            }            
+        }    
+    
+    func styleB2Button(objects: [UIButton]) {        
+        for object in objects {        
+            object.backgroundColor = whiteColor            
+            object.layer.cornerRadius = 10            
+            object.setTitleColor(blackColor, forState: .Normal)            
+            }            
+        }    
+    
+    func styleB3Button(objects: [UIButton]) {        
+        for object in objects {        
+            object.layer.cornerRadius = 5            
+            object.layer.borderColor = whiteColor.CGColor            
+            object.layer.borderWidth = 5            
+            object.setTitleColor(whiteColor, forState: .Normal)            
+            }            
+        }    
+    
     func styleT1TextField(objects: [UITextField]) {        
         for object in objects {        
             object.backgroundColor = whiteColor            

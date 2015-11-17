@@ -35,16 +35,22 @@
             "font": "primaryFontLight",
             "size": 34
           },
-          "textColor": "whiteColor"
+          "textColor": "whiteColor",
+          "backgroundColor": "whiteColor"
         },
         "H2": {
+          "fontStyle": {
             "font": "primaryFontLightItalic",
-            "size": 20,
-            "textColor": "blackColor"
+            "size": 20
+          },
+          "textColor": "blackColor"
         },
         "H3": {
+          "fontStyle": {
             "font": "primaryFontBlack",
             "size": 24
+          },
+          "textColor": "blackColor"
         }
     },
     "Buttons": {
