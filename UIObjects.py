@@ -187,6 +187,10 @@ class TextField(View, Attributes):
 
 
 class Font:
+    def __init__(self, name):
+        self.name = name
+
+class FontStyle:
     def __init__(self, name, size):
         self.name = name
         self.size = size
