@@ -112,8 +112,8 @@ Currently supports button states ` normal `, ` selected `, `  highlighted `
 "Buttons": {
   "primaryButton": {
       "fontStyle": {
-        "font": "primaryFontLight", // fontKey
-        "size": 34
+          "font": "primaryFontLight", // fontKey
+          "size": 34
       },
       "backgroundColor": "baseClearColor",   // colorKey
       "size": 13,
@@ -121,11 +121,11 @@ Currently supports button states ` normal `, ` selected `, `  highlighted `
       "borderWidth": 1,
       "borderColor": "baseBlackColor",
       "normal": {
-        "titleColor": "baseBlackColor"    // colorKey
+          "titleColor": "baseBlackColor"    // colorKey
       },
       "selected": {
-        "titleColor": "activityPrimaryColor",
-        "backgroundColor": "baseWhiteColor"
+          "titleColor": "activityPrimaryColor",
+          "backgroundColor": "baseWhiteColor"
       }
   }
 }
