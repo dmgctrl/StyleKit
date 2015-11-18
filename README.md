@@ -61,6 +61,16 @@ Steps to add author styles and apply them to UIKit elements
 
 ```
 
+#### Font Styles
+
+```
+
+"fontStyle": {
+    "font": "primaryFontLightItalic",
+    "size": 20
+}
+
+
 #### Colors
 
 ```
