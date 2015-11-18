@@ -70,6 +70,7 @@ Steps to add author styles and apply them to UIKit elements
     "size": 20
 }
 
+```
 
 #### Colors
 
