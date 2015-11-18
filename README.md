@@ -105,7 +105,7 @@ Steps to add author styles and apply them to UIKit elements
 
 #### Buttons
 
-Currently supports button states ` normal `, ` selected `, `  highlighted `
+To use titleColor for button state you must set the button as "Custom" type in interface builder. Currently supports button states ` normal `, ` selected `, `  highlighted `
 
 ```
 

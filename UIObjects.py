@@ -165,11 +165,6 @@ class Label(View, Attributes, FontStyle):
             return (self.properties['textColor'])
 
     @property
-    def backgroundColor(self):
-        if "backgroundColor" in self.properties:
-            return (self.properties['backgroundColor'])
-
-    @property
     def type(self):
         return "UILabel"
 

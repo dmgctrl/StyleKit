@@ -71,8 +71,6 @@ def main(argv):
             label.font = fontStyle
         if "textAlignment" in value:
             label.textAlignment = value['textAlignment']
-        if "backgroundColor" in value:
-            label.backgroundColor = value['backgroundColor']
         if "textColor" in value:
             label.textColor = value['textColor']
         if label.attributes:
