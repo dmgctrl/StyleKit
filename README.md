@@ -135,8 +135,7 @@ To use titleColor for button state you must set the button as "Custom" type in i
           "titleColor": "baseBlackColor"    // colorKey
       },
       "selected": {
-          "titleColor": "activityPrimaryColor",
-          "backgroundColor": "baseWhiteColor"
+          "titleColor": "activityPrimaryColor"
       }
   }
 }
