@@ -35,8 +35,7 @@
             "font": "primaryFontLight",
             "size": 34
           },
-          "textColor": "whiteColor",
-          "backgroundColor": "whiteColor"
+          "textColor": "whiteColor"
         },
         "H2": {
           "fontStyle": {

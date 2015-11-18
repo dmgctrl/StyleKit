@@ -66,22 +66,21 @@ class Style: NSObject {
     
     func styleH2Label(objects: [UILabel]) {        
         for object in objects {        
-            object.textcolor = blackColor            
+            object.textColor = blackColor            
             object.font = UIFont (name: primaryFontLightItalic, size: 20)            
             }            
         }    
     
     func styleH3Label(objects: [UILabel]) {        
         for object in objects {        
-            object.textcolor = blackColor            
+            object.textColor = blackColor            
             object.font = UIFont (name: primaryFontBlack, size: 24)            
             }            
         }    
     
     func styleH1Label(objects: [UILabel]) {        
         for object in objects {        
-            object.backgroundColor = whiteColor            
-            object.textcolor = whiteColor            
+            object.textColor = whiteColor            
             object.font = UIFont (name: primaryFontLight, size: 34)            
             }            
         }    

@@ -88,7 +88,7 @@ class SwiftGenerator:
                 if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
 
             if isinstance(object, UIObjects.Label):
-                if object.textColor: set([self.write("object.textcolor = " + object.textColor)]), self.newline()
+                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
                 if object.fontStyle: set([self.write("object.font = " + object.fontStyle.toSwift())]),  self.newline()
 
             if isinstance(object, UIObjects.Button):
