@@ -100,14 +100,17 @@
     },
     "TextFields": {
         "T1": {
-            "font": "primaryFontLightItalic",
-            "textColor": "blackColor",
-            "backgroundColor": "whiteColor",
-            "borderColor": "blackColor",
-            "textAlignment": "Center",
-            "borderWidth": 0,
-            "cornerRadius": 20,
-            "borderStyle": "None"
+          "fontStyle": {
+            "font": "primaryFontLight",
+            "size": 34
+          },
+          "textColor": "blackColor",
+          "backgroundColor": "whiteColor",
+          "borderColor": "blackColor",
+          "textAlignment": "Center",
+          "borderWidth": 0,
+          "cornerRadius": 20,
+          "borderStyle": "None"
         }
     }
 }

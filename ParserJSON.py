@@ -110,6 +110,9 @@ def main(argv):
         textfield = ui.TextField(key + "TextField", value)
         if "textcolor" in value:
             textfield.textcolor = value['textcolor']
+        if textfield.fontStyle:
+            fontStyle = value["fontStyle"]
+            textfield.font = fontStyle
         if textfield.attributes:
             swiftgenerator.buildAttributesForObjects([textfield.attributes])
         swiftgenerator.buildStyleFunctions([textfield])

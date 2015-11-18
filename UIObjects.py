@@ -197,7 +197,10 @@ class TextField(View, Attributes):
     def type(self):
         return "UITextField"
 
-
+    @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
 
 class Font:
     def __init__(self, name):

@@ -125,6 +125,7 @@ class Style: NSObject {
             object.backgroundColor = whiteColor            
             object.layer.cornerRadius = 20            
             object.layer.borderColor = blackColor.CGColor            
+            object.font = UIFont (name: primaryFontLight, size: 34)            
             }            
         }    
     
