@@ -69,6 +69,8 @@ def main(argv):
         if label.fontStyle:
             fontStyle = value["fontStyle"]
             label.font = fontStyle
+        if "textAlignment" in value:
+            label.textAlignment = value['textAlignment']
         if "backgroundColor" in value:
             label.backgroundColor = value['backgroundColor']
         if "textColor" in value:

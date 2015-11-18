@@ -35,7 +35,8 @@
             "font": "primaryFontLight",
             "size": 34
           },
-          "textColor": "whiteColor"
+          "textColor": "whiteColor",
+          "textAlignment": "Center"
         },
         "H2": {
           "fontStyle": {

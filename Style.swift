@@ -82,6 +82,7 @@ class Style: NSObject {
         for object in objects {        
             object.textColor = whiteColor            
             object.font = UIFont (name: primaryFontLight, size: 34)            
+            object.textAlignment = NSTextAlignment.Center            
             }            
         }    
     

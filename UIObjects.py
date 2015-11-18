@@ -174,6 +174,11 @@ class Label(View, Attributes, FontStyle):
         return "UILabel"
 
     @property
+    def textAlignment(self):
+        if "textAlignment" in self.properties:
+            return (self.properties['textAlignment'])
+
+    @property
     def fontStyle(self):
         if "fontStyle" in self.properties:
             return FontStyle(self.properties['fontStyle'])

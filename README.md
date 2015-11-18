@@ -92,8 +92,12 @@ Steps to add author styles and apply them to UIKit elements
 
 "Labels": {
     "H1": {
-        "font": "primaryFontMedium",  // fontKey
-        "size": 40       
+        "fontStyle": {
+            "font": "primaryFontLight",
+            "size": 34
+        },
+        "textColor": "whiteColor",
+        "textAlignment": "Center"
     }
 }
 
@@ -106,19 +110,22 @@ Currently supports button states ` normal `, ` selected `, `  highlighted `
 ```
 
 "Buttons": {
-  "buttonKey": {
-      "titleLabelFont": "primaryFontMedium", // fontKey
+  "primaryButton": {
+      "fontStyle": {
+        "font": "primaryFontLight", // fontKey
+        "size": 34
+      },
       "backgroundColor": "baseClearColor",   // colorKey
       "size": 13,
       "cornerRadius": 20,
       "borderWidth": 1,
       "borderColor": "baseBlackColor",
       "normal": {
-          "titleColor": "baseBlackColor"    // colorKey
+        "titleColor": "baseBlackColor"    // colorKey
       },
       "selected": {
-          "titleColor": "activityPrimaryColor",
-          "backgroundColor": "baseWhiteColor"
+        "titleColor": "activityPrimaryColor",
+        "backgroundColor": "baseWhiteColor"
       }
   }
 }
@@ -133,7 +140,10 @@ Currently supports button states ` normal `, ` selected `, `  highlighted `
 ```
 "TextFields": {
         "T1": {
-            "font": "primaryFontBlack",    // colorKey
+            "fontStyle": {
+                "font": "primaryFontLight", // fontKey
+                "size": 34
+            },
             "textColor": "baseColorWhite", // colorKey
             "borderColor": "colorKey"      // colorKey
             "borderWidth": 1,

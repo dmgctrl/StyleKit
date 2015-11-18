@@ -90,6 +90,7 @@ class SwiftGenerator:
             if isinstance(object, UIObjects.Label):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
                 if object.fontStyle: set([self.write("object.font = " + object.fontStyle.toSwift())]),  self.newline()
+                if object.textAlignment: set([self.write("object.textAlignment = NSTextAlignment." + object.textAlignment)]), self.newline()
 
             if isinstance(object, UIObjects.Button):
                 if object.titleColorNormal: set([self.write("object.setTitleColor(" + object.titleColorNormal + ", forState: .Normal)")]), self.newline()
