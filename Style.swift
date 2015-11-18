@@ -130,6 +130,8 @@ class Style: NSObject {
             object.layer.borderColor = blackColor.CGColor            
             object.textColor = blackColor            
             object.font = UIFont (name: primaryFontLight, size: 34)            
+            object.textAlignment = NSTextAlignment.Center            
+            object.borderStyle = UITextBorderStyle.None            
             }            
         }    
     

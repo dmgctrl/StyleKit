@@ -102,6 +102,8 @@ class SwiftGenerator:
             if isinstance(object, UIObjects.TextField):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
                 if object.fontStyle: set([self.write("object.font = " + object.fontStyle.toSwift())]),  self.newline()
+                if object.textAlignment: set([self.write("object.textAlignment = NSTextAlignment." + object.textAlignment)]), self.newline()
+                if object.borderStyle: set([self.write("object.borderStyle = UITextBorderStyle." + object.borderStyle)]), self.newline()
 
             self.write("}")
             self.closeFunction()

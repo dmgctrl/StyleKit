@@ -110,6 +110,10 @@ def main(argv):
         textfield = ui.TextField(key + "TextField", value)
         if "textColor" in value:
             textfield.textColor = value['textColor']
+        if "textAlignment" in value:
+            textfield.textAlignment = value['textAlignment']
+        if "borderStyle" in value:
+            textfield.borderStyle = value['borderStyle']
         if textfield.fontStyle:
             fontStyle = value["fontStyle"]
             textfield.font = fontStyle

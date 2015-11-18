@@ -202,6 +202,16 @@ class TextField(View, Attributes):
         if "fontStyle" in self.properties:
             return FontStyle(self.properties['fontStyle'])
 
+    @property
+    def textAlignment(self):
+        if "textAlignment" in self.properties:
+            return (self.properties['textAlignment'])
+
+    @property
+    def borderStyle(self):
+        if "borderStyle" in self.properties:
+            return (self.properties['borderStyle'])
+
 class Font:
     def __init__(self, name):
         self.name = name
