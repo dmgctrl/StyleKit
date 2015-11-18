@@ -100,7 +100,7 @@ class SwiftGenerator:
                 if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
 
             if isinstance(object, UIObjects.TextField):
-                if object.textColor: set([self.write("object.textcolor = " + object.textColor)]), self.newline()
+                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
                 if object.fontStyle: set([self.write("object.font = " + object.fontStyle.toSwift())]),  self.newline()
 
             self.write("}")

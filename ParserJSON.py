@@ -108,8 +108,8 @@ def main(argv):
 
     for key, value in style['TextFields'].iteritems():
         textfield = ui.TextField(key + "TextField", value)
-        if "textcolor" in value:
-            textfield.textcolor = value['textcolor']
+        if "textColor" in value:
+            textfield.textColor = value['textColor']
         if textfield.fontStyle:
             fontStyle = value["fontStyle"]
             textfield.font = fontStyle

@@ -161,8 +161,8 @@ class Label(View, Attributes, FontStyle):
 
     @property
     def textColor(self):
-        if "textcolor" in self.properties:
-            return (self.properties['textcolor'])
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
 
     @property
     def backgroundColor(self):
@@ -190,8 +190,8 @@ class TextField(View, Attributes):
 
     @property
     def textColor(self):
-        if "textcolor" in self.properties:
-            return (self.properties['textcolor'])
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
 
     @property
     def type(self):
