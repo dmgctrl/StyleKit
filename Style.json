@@ -55,8 +55,10 @@
     },
     "Buttons": {
         "B1": {
-            "titleLabelFont": "primaryFontLight",
-            "size": 20,
+            "fontStyle": {
+              "font": "primaryFontLight",
+              "size": 34
+            },
             "backgroundColor": "blackColor",
             "cornerRadius": 15,
             "normal": {
@@ -69,8 +71,10 @@
             }
         },
         "B2": {
-            "titleLabelFont": "primaryFontMedium",
-            "size": 22,
+            "fontStyle": {
+              "font": "primaryFontLight",
+              "size": 34
+            },
             "backgroundColor": "whiteColor",
             "cornerRadius": 10,
             "normal": {
@@ -79,8 +83,10 @@
             }
         },
         "B3": {
-            "titleLabelFont": "primaryFontBold",
-            "size": 24,
+            "fontStyle": {
+              "font": "primaryFontLight",
+              "size": 34
+            },
             "borderColor": "whiteColor",
             "borderWidth": 5,
             "cornerRadius": 5,
@@ -89,8 +95,10 @@
             }
         },
         "B4": {
-            "titleLabelFont": "primaryFontBlack",
-            "size": 26,
+            "fontStyle": {
+              "font": "primaryFontLight",
+              "size": 34
+            },
             "borderColor": "blackColor",
             "borderWidth": 1,
             "normal": {

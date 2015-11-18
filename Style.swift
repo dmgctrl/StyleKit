@@ -91,6 +91,7 @@ class Style: NSObject {
             object.layer.borderColor = blackColor.CGColor            
             object.layer.borderWidth = 1            
             object.setTitleColor(blackColor, forState: .Normal)            
+            object.titleLabel?.font = UIFont (name: primaryFontLight, size: 34)            
             }            
         }    
     
@@ -100,6 +101,7 @@ class Style: NSObject {
             object.layer.cornerRadius = 15            
             object.setTitleColor(whiteColor, forState: .Normal)            
             object.setTitleColor(blackColor, forState: .Highlighted)            
+            object.titleLabel?.font = UIFont (name: primaryFontLight, size: 34)            
             }            
         }    
     
@@ -108,6 +110,7 @@ class Style: NSObject {
             object.backgroundColor = whiteColor            
             object.layer.cornerRadius = 10            
             object.setTitleColor(blackColor, forState: .Normal)            
+            object.titleLabel?.font = UIFont (name: primaryFontLight, size: 34)            
             }            
         }    
     
@@ -117,6 +120,7 @@ class Style: NSObject {
             object.layer.borderColor = whiteColor.CGColor            
             object.layer.borderWidth = 5            
             object.setTitleColor(whiteColor, forState: .Normal)            
+            object.titleLabel?.font = UIFont (name: primaryFontLight, size: 34)            
             }            
         }    
     

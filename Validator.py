@@ -52,7 +52,7 @@ class Validator:
                     "^.*$": {
                         "type": "object",
                         "properties": {
-                            "titleLabelFont": {"type": "string"},
+                            "fontStyle": {"$ref": "#/definitions/fontStyle"},
                             "size": {"type": "integer"},
                             "backgroundColor": {"type": "string"},
                             "cornerRadius": {"type": "integer"},
@@ -60,7 +60,7 @@ class Validator:
                             "highlighted": {"$ref": "#/definitions/buttonState"},
                             "selected": {"$ref": "#/definitions/buttonState"}
                         },
-                        "required": ["titleLabelFont", "size"]
+                        "required": ["fontStyle"]
                     }
                 }
             },
