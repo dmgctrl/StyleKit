@@ -97,6 +97,21 @@ Steps to add author styles and apply them to UIKit elements
 
 ```
 
+#### Views
+
+```
+
+"Views": {
+    "viewName": {
+        "backgroundColor": "blueColor",
+        "borderColor": "blackColor",
+        "borderWidth": 5,
+        "cornerRadius": 5
+    }
+}
+
+```
+
 #### Labels
 
 ```
