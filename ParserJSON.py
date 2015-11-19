@@ -54,6 +54,11 @@ def main(argv):
             label = ui.uiObject(key + "Label", "UILabel")
             swiftgenerator.labelOutletCollections([label])
 
+    if 'Views' in style:
+        for key, value in style['Views'].iteritems():
+            view = ui.uiObject(key + "View", "UIView")
+            swiftgenerator.viewOutletCollections([view])
+
     if 'Buttons' in style:
         for key, value in style['Buttons'].iteritems():
             button = ui.uiObject(key + "Button", "UIButton")
@@ -76,6 +81,19 @@ def main(argv):
         if label.attributes:
             swiftgenerator.buildAttributesForObjects([label.attributes])
         swiftgenerator.buildStyleFunctions([label])
+
+    for key, value in style['Views'].iteritems():
+        view = ui.View(key + "View", value)
+        if "backgroundColor" in value:
+            view.backgroundColor = value['backgroundColor']
+        if "cornerRadius" in value:
+            view.cornerRadius = value['cornerRadius']
+        if "borderColor" in value:
+            view.borderColor = value['borderColor']
+        if "borderWidth" in value:
+            view.borderWidth = value['borderWidth']
+
+        swiftgenerator.buildStyleFunctions([view])
 
     for key, value in style['Buttons'].iteritems():
         button = ui.Button(key + "Button", value)

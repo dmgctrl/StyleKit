@@ -8,6 +8,7 @@ class SwiftGenerator:
         self.indentLevel = 0
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
+        self.viewArray = "[UIView]! "
         self.buttonArray = "[UIButton]! "
         self.textFieldArray = "[UITextField]! "
         self.ui = UIObjects
@@ -50,6 +51,13 @@ class SwiftGenerator:
             self.write(self.iboutlet + label.name + ": "+ self.labelArray + "{" )
             self.enter()
             self.didSet(label.name)
+            self.closeCollection()
+
+    def viewOutletCollections(self, views = []):
+        for view in views:
+            self.write(self.iboutlet + view.name + ": "+ self.viewArray + "{" )
+            self.enter()
+            self.didSet(view.name)
             self.closeCollection()
 
     def buttonOutletCollections(self, buttons = []):
