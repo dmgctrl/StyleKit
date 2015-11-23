@@ -221,19 +221,14 @@ class Font:
         self.name = name
 
 class Color:
-    def __init__(self, red, green, blue, alpha):
-        self.red = red
-        self.green = green
-        self.blue = blue
+    def __init__(self, hexValue, alpha):
+        value = hexValue.lstrip('#')
+        lv = len(value)
+        rgbTuple = tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+        self.red = rgbTuple[0]
+        self.green = rgbTuple[1]
+        self.blue = rgbTuple[2]
         self.alpha = alpha
 
     def toSwiftRGBA(self):
         return "UIColor(red: %.1f/255.0, green: %.1f/255.0, blue: %.1f/255.0, alpha: %.1f)" % (self.red, self.green, self.blue, self.alpha)
-
-    def rgb_to_hex(self, r,g,b):
-        return "#%02X%02X%02X" % (r,g,b)
-
-    def hex_to_rgb(value):
-        value = value.lstrip('#')
-        lv = len(value)
-        return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))

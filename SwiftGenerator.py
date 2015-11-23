@@ -35,7 +35,12 @@ class SwiftGenerator:
 
     def buildColorConstants(self, colorDefinitions = {}):
         for key, value in colorDefinitions.iteritems():
-            color = self.ui.Color(value['red'], value['green'],value['blue'],value['alpha'])
+            if 'alpha' in value:
+                alpha = value['alpha']
+            else:
+                alpha = 1.0
+            color = self.ui.Color(value['hex'], alpha)
+
             self.write("let %s = %s" % (key, color.toSwiftRGBA()))
             self.newline()
         self.newline()

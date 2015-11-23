@@ -19,12 +19,10 @@ class Validator:
                         "type": "object",
                         "pattern": "^[a-zA-Z0-9\-\_]+$",
                         "properties": {
-                            "red": {"$ref": "#/definitions/colorValue"},
-                            "green": {"$ref": "#/definitions/colorValue"},
-                            "blue": {"$ref": "#/definitions/colorValue"},
+                            # "hex": {"$ref": "#/definitions/hexValue"},
                             "alpha": {"$ref": "#/definitions/alphaValue"}
                         },
-                        "required": ["red", "green", "blue", "alpha"]
+                        "required": ["hex"]
                     }
                 }
             },
