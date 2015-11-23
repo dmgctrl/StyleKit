@@ -74,7 +74,7 @@ Steps to add author styles and apply them to UIKit elements
 
 #### Colors
 
-You can specify a color with either a Hex value or an RGB value. Alpha is optional either way. (defaults to 1.0). See examples below:
+You can specify a color with either a Hex value or an RGB value. Alpha is optional in both (default is 1.0). See examples below:
 
 ```
 
@@ -86,8 +86,8 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
           "alpha": 1    // Alpha Value between 0.0-1.0
     },
     "colorKey2": {
-          "hex": "#000000",   // Hex value
-          "alpha": 1 // Alpha Value between 0.0-1.0
+          "hex": "#000000", // Hex value
+          "alpha": 1        // Alpha Value between 0.0-1.0
     }
 }
 
