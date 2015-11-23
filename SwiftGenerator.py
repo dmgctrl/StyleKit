@@ -39,7 +39,10 @@ class SwiftGenerator:
                 alpha = value['alpha']
             else:
                 alpha = 1.0
-            color = self.ui.Color(value['hex'], alpha)
+            if 'hex' in value:
+                color = self.ui.HexColor(value['hex'], alpha)
+            else:
+                color = self.ui.RGBColor(value['red'], value['green'], value['blue'], alpha)
 
             self.write("let %s = %s" % (key, color.toSwiftRGBA()))
             self.newline()
