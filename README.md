@@ -61,6 +61,17 @@ Steps to add author styles and apply them to UIKit elements
 
 ```
 
+#### Font Styles
+
+```
+
+"fontStyle": {
+    "font": "primaryFontLightItalic",
+    "size": 20
+}
+
+```
+
 #### Colors
 
 ```
@@ -92,8 +103,12 @@ Steps to add author styles and apply them to UIKit elements
 
 "Labels": {
     "H1": {
-        "font": "primaryFontMedium",  // fontKey
-        "size": 40       
+        "fontStyle": {
+            "font": "primaryFontLight",
+            "size": 34
+        },
+        "textColor": "whiteColor",
+        "textAlignment": "Center"
     }
 }
 
@@ -101,13 +116,16 @@ Steps to add author styles and apply them to UIKit elements
 
 #### Buttons
 
-Currently supports button states ` normal `, ` selected `, `  highlighted `
+To use titleColor for button state you must set the button as "Custom" type in interface builder. Currently supports button states ` normal `, ` selected `, `  highlighted `
 
 ```
 
 "Buttons": {
-  "buttonKey": {
-      "titleLabelFont": "primaryFontMedium", // fontKey
+  "primaryButton": {
+      "fontStyle": {
+          "font": "primaryFontLight", // fontKey
+          "size": 34
+      },
       "backgroundColor": "baseClearColor",   // colorKey
       "size": 13,
       "cornerRadius": 20,
@@ -117,8 +135,7 @@ Currently supports button states ` normal `, ` selected `, `  highlighted `
           "titleColor": "baseBlackColor"    // colorKey
       },
       "selected": {
-          "titleColor": "activityPrimaryColor",
-          "backgroundColor": "baseWhiteColor"
+          "titleColor": "activityPrimaryColor"
       }
   }
 }
@@ -133,7 +150,10 @@ Currently supports button states ` normal `, ` selected `, `  highlighted `
 ```
 "TextFields": {
         "T1": {
-            "font": "primaryFontBlack",    // colorKey
+            "fontStyle": {
+                "font": "primaryFontLight", // fontKey
+                "size": 34
+            },
             "textColor": "baseColorWhite", // colorKey
             "borderColor": "colorKey"      // colorKey
             "borderWidth": 1,

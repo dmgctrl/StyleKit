@@ -27,6 +27,14 @@ class View:
     def type(self):
         return "UIView"
 
+class FontStyle:
+    def __init__(self, fontStyle):
+        self.font = fontStyle["font"]
+        self.size = fontStyle["size"]
+
+    def toSwift(self):
+        return "UIFont (name: %s, size: %s)" % (self.font, self.size)
+
 class Normal:
     def __init__(self, name, properties = {}):
         self.name = name
@@ -74,7 +82,7 @@ class Attributes:
     @property
     def font(self):
         if "font" in self.properties:
-            return Font(self.properties['font'], self.properties['size'])
+            return Font(self.properties['fontStyle'])
 
     @property
     def foregroundColor(self):
@@ -96,7 +104,7 @@ class Attributes:
          if "ligature" in self.properties:
             return self.properties['ligature']
 
-class Button(View, Attributes, Normal, Selected, Highlighted):
+class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -132,16 +140,16 @@ class Button(View, Attributes, Normal, Selected, Highlighted):
             return (self.properties['backgroundimage'])
 
     @property
-    def titleLabelFont(self):
-        if "titleLabelFont" in self.properties:
-            return Font(self.properties['titleLabelFont'], self.properties['size'])
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
 
     @property
     def type(self):
         return "UIButton"
 
 
-class Label(View, Attributes):
+class Label(View, Attributes, FontStyle):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -153,17 +161,22 @@ class Label(View, Attributes):
 
     @property
     def textColor(self):
-        if "textcolor" in self.properties:
-            return (self.properties['textcolor'])
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
 
     @property
     def type(self):
         return "UILabel"
 
     @property
-    def font(self):
-        if "font" in self.properties:
-            return Font(self.properties['font'], self.properties['size'])
+    def textAlignment(self):
+        if "textAlignment" in self.properties:
+            return (self.properties['textAlignment'])
+
+    @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
 
 class TextField(View, Attributes):
     def __init__(self, name, properties = {}):
@@ -177,22 +190,31 @@ class TextField(View, Attributes):
 
     @property
     def textColor(self):
-        if "textcolor" in self.properties:
-            return (self.properties['textcolor'])
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
 
     @property
     def type(self):
         return "UITextField"
 
+    @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
 
+    @property
+    def textAlignment(self):
+        if "textAlignment" in self.properties:
+            return (self.properties['textAlignment'])
+
+    @property
+    def borderStyle(self):
+        if "borderStyle" in self.properties:
+            return (self.properties['borderStyle'])
 
 class Font:
-    def __init__(self, name, size):
+    def __init__(self, name):
         self.name = name
-        self.size = size
-
-    def toSwift(self):
-        return "UIFont (name: %s, size: %s)" % (self.name, self.size)
 
 class Color:
     def __init__(self, red, green, blue, alpha):
