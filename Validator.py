@@ -40,11 +40,9 @@ class Validator:
                     "^.*$": {
                         "type": "object",
                         "properties": {
-                            "font": {"type": "string"},
-                            "size": {"type": "integer"},
+                            "fontStyle": {"$ref": "#/definitions/fontStyle"},
                             "color": {"type": "string"}
-                        },
-                        "required": ["font", "size"]
+                        }
                     }
                 }
             },
@@ -54,7 +52,7 @@ class Validator:
                     "^.*$": {
                         "type": "object",
                         "properties": {
-                            "titleLabelFont": {"type": "string"},
+                            "fontStyle": {"$ref": "#/definitions/fontStyle"},
                             "size": {"type": "integer"},
                             "backgroundColor": {"type": "string"},
                             "cornerRadius": {"type": "integer"},
@@ -62,7 +60,7 @@ class Validator:
                             "highlighted": {"$ref": "#/definitions/buttonState"},
                             "selected": {"$ref": "#/definitions/buttonState"}
                         },
-                        "required": ["titleLabelFont", "size"]
+                        "required": ["fontStyle"]
                     }
                 }
             },
@@ -104,6 +102,17 @@ class Validator:
             "bundleKey": {
                 "type": "string",
                 "pattern": "^[a-zA-Z0-9\-\_]+$"
+            },
+            "fontStyle": {
+                "properties": {
+                    "font": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "number"
+                    }
+                },
+                "required": ["font", "size"]
             },
             "colorValue": {
                 "type": "integer",

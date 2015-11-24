@@ -66,6 +66,13 @@ def main(argv):
 
     for key, value in style['Labels'].iteritems():
         label = ui.Label(key + "Label", value)
+        if label.fontStyle:
+            fontStyle = value["fontStyle"]
+            label.font = fontStyle
+        if "textAlignment" in value:
+            label.textAlignment = value['textAlignment']
+        if "textColor" in value:
+            label.textColor = value['textColor']
         if label.attributes:
             swiftgenerator.buildAttributesForObjects([label.attributes])
         swiftgenerator.buildStyleFunctions([label])
@@ -91,12 +98,25 @@ def main(argv):
 
         if button.attributes:
             swiftgenerator.buildAttributesForObjects([button.attributes])
+
+        if button.fontStyle:
+            fontStyle = value["fontStyle"]
+            label.titleLabelFont = fontStyle
+
         swiftgenerator.buildStyleFunctions([button])
+
 
     for key, value in style['TextFields'].iteritems():
         textfield = ui.TextField(key + "TextField", value)
-        if "textcolor" in value:
-            textfield.textcolor = value['textcolor']
+        if "textColor" in value:
+            textfield.textColor = value['textColor']
+        if "textAlignment" in value:
+            textfield.textAlignment = value['textAlignment']
+        if "borderStyle" in value:
+            textfield.borderStyle = value['borderStyle']
+        if textfield.fontStyle:
+            fontStyle = value["fontStyle"]
+            textfield.font = fontStyle
         if textfield.attributes:
             swiftgenerator.buildAttributesForObjects([textfield.attributes])
         swiftgenerator.buildStyleFunctions([textfield])

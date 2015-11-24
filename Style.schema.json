@@ -39,7 +39,7 @@
                         "size" : { "type" : "integer" },
                         "color" : { "type" : "string" }
                     },
-                    "required": [ "font", "size" ]
+                    "required": ["fontStyle"]
                 }
             }
         },
@@ -57,7 +57,7 @@
                         "highlighted" : { "$ref": "#/definitions/buttonState" },
                         "selected" : { "$ref": "#/definitions/buttonState" }
                     },
-                    "required": [ "titleLabelFont", "size" ]
+                    "required": ["fontStyle"]
                 }
             }
         },
@@ -104,6 +104,17 @@
             "type" : "float",
             "minimum": 0.0,
             "maximum" : 1.0
+        },
+        "fontStyle": {
+            "properties": {
+                "font": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "number"
+                }
+            },
+            "required": ["font", "size"]
         },
         "buttonState" : {
             "properties" : {
