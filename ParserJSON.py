@@ -54,6 +54,11 @@ def main(argv):
             label = ui.uiObject(key + "Label", "UILabel")
             swiftgenerator.labelOutletCollections([label])
 
+    if 'Views' in style:
+        for key, value in style['Views'].iteritems():
+            view = ui.uiObject(key + "View", "UIView")
+            swiftgenerator.viewOutletCollections([view])
+
     if 'Buttons' in style:
         for key, value in style['Buttons'].iteritems():
             button = ui.uiObject(key + "Button", "UIButton")
@@ -64,62 +69,74 @@ def main(argv):
             textfield = ui.uiObject(key + "TextField", "UITextField")
             swiftgenerator.textFieldOutletCollection([textfield])
 
-    for key, value in style['Labels'].iteritems():
-        label = ui.Label(key + "Label", value)
-        if label.fontStyle:
-            fontStyle = value["fontStyle"]
-            label.font = fontStyle
-        if "textAlignment" in value:
-            label.textAlignment = value['textAlignment']
-        if "textColor" in value:
-            label.textColor = value['textColor']
-        if label.attributes:
-            swiftgenerator.buildAttributesForObjects([label.attributes])
-        swiftgenerator.buildStyleFunctions([label])
+    if 'Labels' in style:
+        for key, value in style['Labels'].iteritems():
+            label = ui.Label(key + "Label", value)
+            if label.fontStyle:
+                fontStyle = value["fontStyle"]
+                label.font = fontStyle
+            if "textAlignment" in value:
+                label.textAlignment = value['textAlignment']
+            if "textColor" in value:
+                label.textColor = value['textColor']
+            if label.attributes:
+                swiftgenerator.buildAttributesForObjects([label.attributes])
+            swiftgenerator.buildStyleFunctions([label])
 
-    for key, value in style['Buttons'].iteritems():
-        button = ui.Button(key + "Button", value)
-        if button.normal:
-            normal = value["normal"]
-            if "titleColor" in normal:
-                button.titleColorNormal = normal['titleColor']
-            if "backgroundimage" in normal:
-                button.backgroundimage = normal['backgroundimage']
-        if button.selected:
-            selected = value["selected"]
-            if "titleColor" in selected:
-                button.titleColorSelected = selected['titleColor']
-            if "backgroundImage" in selected:
-                button.backgroundimage = selected['backgroundimage']
-        if button.highlighted:
-            highlighted = value["highlighted"]
-            if "titleColor" in highlighted:
-                button.titleColorHighlighted = highlighted['titleColor']
+    if 'Views' in style:
+        for key, value in style['Views'].iteritems():
+            view = ui.View(key + "View", value)
+            if "backgroundColor" in value:
+                view.backgroundColor = value['backgroundColor']
+            if "cornerRadius" in value:
+                view.cornerRadius = value['cornerRadius']
+            if "borderColor" in value:
+                view.borderColor = value['borderColor']
+            if "borderWidth" in value:
+                view.borderWidth = value['borderWidth']
+            swiftgenerator.buildStyleFunctions([view])
 
-        if button.attributes:
-            swiftgenerator.buildAttributesForObjects([button.attributes])
+    if 'Buttons' in style:
+        for key, value in style['Buttons'].iteritems():
+            button = ui.Button(key + "Button", value)
+            if button.normal:
+                normal = value["normal"]
+                if "titleColor" in normal:
+                    button.titleColorNormal = normal['titleColor']
+                if "backgroundimage" in normal:
+                    button.backgroundimage = normal['backgroundimage']
+            if button.selected:
+                selected = value["selected"]
+                if "titleColor" in selected:
+                    button.titleColorSelected = selected['titleColor']
+                if "backgroundImage" in selected:
+                    button.backgroundimage = selected['backgroundimage']
+            if button.highlighted:
+                highlighted = value["highlighted"]
+                if "titleColor" in highlighted:
+                    button.titleColorHighlighted = highlighted['titleColor']
+            if button.attributes:
+                swiftgenerator.buildAttributesForObjects([button.attributes])
+            if button.fontStyle:
+                fontStyle = value["fontStyle"]
+                label.titleLabelFont = fontStyle
+            swiftgenerator.buildStyleFunctions([button])
 
-        if button.fontStyle:
-            fontStyle = value["fontStyle"]
-            label.titleLabelFont = fontStyle
-
-        swiftgenerator.buildStyleFunctions([button])
-
-
-    for key, value in style['TextFields'].iteritems():
-        textfield = ui.TextField(key + "TextField", value)
-        if "textColor" in value:
-            textfield.textColor = value['textColor']
-        if "textAlignment" in value:
-            textfield.textAlignment = value['textAlignment']
-        if "borderStyle" in value:
-            textfield.borderStyle = value['borderStyle']
-        if textfield.fontStyle:
-            fontStyle = value["fontStyle"]
-            textfield.font = fontStyle
-        if textfield.attributes:
-            swiftgenerator.buildAttributesForObjects([textfield.attributes])
-        swiftgenerator.buildStyleFunctions([textfield])
+    if 'TextFields' in style:
+        for key, value in style['TextFields'].iteritems():
+            textfield = ui.TextField(key + "TextField", value)
+            if "textColor" in value:
+                textfield.textColor = value['textColor']
+            if "textAlignment" in value:
+                textfield.textAlignment = value['textAlignment']
+            if "borderStyle" in value:
+                textfield.borderStyle = value['borderStyle']
+            if textfield.fontStyle:
+                fontStyle = value["fontStyle"]
+                textfield.font = fontStyle
+            if textfield.attributes:
+                swiftgenerator.buildAttributesForObjects([textfield.attributes])
+            swiftgenerator.buildStyleFunctions([textfield])
 
         swiftgenerator.closeClass()
 
