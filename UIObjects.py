@@ -4,6 +4,10 @@ class uiObject:
         self.type = type
 
 class View:
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
     @property
     def backgroundColor(self):
         if "backgroundColor" in self.properties:
