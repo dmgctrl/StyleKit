@@ -133,7 +133,7 @@ class SwiftGenerator:
             self.write("let attributes = [ ")
             self.indent(),self.newline()
             if isinstance(object, UIObjects.Attributes):
-                object.seperatorCount = len(object.properties) - 2 ## Font is 2 key, value pairs
+                object.seperatorCount = len(object.properties) - 1
                 if object.font: set([self.write("NSFontAttributeName: " + object.font.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
                 if object.foregroundColor: set([self.write("NSForegroundColorAttributeName: " + object.foregroundColor)]),self.addSeperator(object),self.newline()
                 if object.backgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.backgroundColor)]),self.addSeperator(object),self.newline()
