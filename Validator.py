@@ -12,22 +12,22 @@ class Validator:
                     "^.*$": {"$ref": "#/definitions/bundleKey"}
                 }
             },
-            "Colors": {
-                "type": "object",
-                "patternProperties": {
-                    "^.*$": {
-                        "type": "object",
-                        "pattern": "^[a-zA-Z0-9\-\_]+$",
-                        "properties": {
-                            "red": {"$ref": "#/definitions/colorValue"},
-                            "green": {"$ref": "#/definitions/colorValue"},
-                            "blue": {"$ref": "#/definitions/colorValue"},
-                            "alpha": {"$ref": "#/definitions/alphaValue"}
-                        },
-                        "required": ["red", "green", "blue", "alpha"]
-                    }
-                }
-            },
+            # "Colors": {
+            #     "type": "object",
+            #     "patternProperties": {
+            #         "^.*$": {
+            #             "type": "object",
+            #             "pattern": "^[a-zA-Z0-9\-\_]+$",
+            #             "properties": {
+            #                 "red": {"$ref": "#/definitions/colorValue"},
+            #                 "green": {"$ref": "#/definitions/colorValue"},
+            #                 "blue": {"$ref": "#/definitions/colorValue"},
+            #                 "alpha": {"$ref": "#/definitions/alphaValue"}
+            #             },
+            #             "required": ["red", "green", "blue"]
+            #         }
+            #     }
+            # },
             "Images": {
                 "type": "object",
                 "patternProperties": {
