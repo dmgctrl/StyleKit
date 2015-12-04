@@ -69,6 +69,11 @@ def main(argv):
             textfield = ui.uiObject(key + "TextField", "UITextField")
             swiftgenerator.textFieldOutletCollection([textfield])
 
+    if 'SegmentedControls' in style:
+        for key, value in style['SegmentedControls'].iteritems():
+            textfield = ui.uiObject(key + "SegmentedControl", "UISegmentedControl")
+            swiftgenerator.textFieldOutletCollection([textfield])
+
     if 'Labels' in style:
         for key, value in style['Labels'].iteritems():
             label = ui.Label(key + "Label", value)
@@ -135,6 +140,19 @@ def main(argv):
                 fontStyle = value["fontStyle"]
                 textfield.font = fontStyle
             if textfield.attributes:
+                swiftgenerator.buildAttributesForObjects([textfield.attributes])
+            swiftgenerator.buildStyleFunctions([textfield])
+
+    if 'SegmentedControls' in style:
+        for key, value in style['SegmentedControls'].iteritems():
+            segmentedControl = ui.SegmentedControl(key + "SegmentedControl", value)
+            if "normalColor" in value:
+                segmentedControl.normalColor = value['normalColor']
+            if "selectedColor" in value:
+                segmentedControl.selectedColor = value['selectedColor']
+            if "dividerColor" in value:
+                segmentedControl.dividerColor = value['dividerColor']
+            if segmentedControl.attributes:
                 swiftgenerator.buildAttributesForObjects([textfield.attributes])
             swiftgenerator.buildStyleFunctions([textfield])
 
