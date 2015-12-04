@@ -222,6 +222,10 @@ class SegmentedControl(View, Attributes):
         self.properties = properties
 
     @property
+    def type(self):
+        return "UISegmentedControl"
+
+    @property
     def normalColor(self):
         if "textColor" in self.properties:
             return (self.properties['normalColor'])
