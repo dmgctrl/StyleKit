@@ -154,7 +154,7 @@ def main(argv):
                 segmentedControl.dividerColor = value['dividerColor']
             if segmentedControl.attributes:
                 swiftgenerator.buildAttributesForObjects([segmentedControl.attributes])
-            swiftgenerator.buildStyleFunctions([textfield])
+            swiftgenerator.buildStyleFunctions([segmentedControl])
 
         swiftgenerator.closeClass()
 
