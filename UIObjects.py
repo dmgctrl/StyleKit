@@ -216,6 +216,31 @@ class TextField(View, Attributes):
         if "borderStyle" in self.properties:
             return (self.properties['borderStyle'])
 
+class SegmentedControl(View, Attributes):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def normalColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['normalColor'])
+
+    @property
+    def selectedColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['selectedColor'])
+
+    @property
+    def dividerColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['dividerColor'])
+
+    @property
+    def attributes(self):
+        if "attributes" in self.properties:
+            return Attributes(self.name, self.properties['attributes'])
+
 class Font:
     def __init__(self, name):
         self.name = name
