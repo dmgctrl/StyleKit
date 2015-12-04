@@ -11,6 +11,7 @@ class SwiftGenerator:
         self.viewArray = "[UIView]! "
         self.buttonArray = "[UIButton]! "
         self.textFieldArray = "[UITextField]! "
+        self.segmentedControlArray = "[UISegmentedControl]! "
         self.ui = UIObjects
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
         self.attributeDictionary = " Dictionary<String, AnyObject>"
@@ -81,6 +82,13 @@ class SwiftGenerator:
             self.enter()
             self.didSet(textfield.name)
             self.closeCollection()
+
+    def segmentedControlOutletCollection(self, segmentedControls = []):
+        for segmentedControl in segmentedControls:
+            self.write(self.iboutlet + segmentedControl.name + ": "+ self.segmentedControlArray + "{" )
+            self.enter()
+            self.didSet(segmentedControl.name)
+            self.closeCollection()
         
     def didSet(self, name):
         self.write("didSet {")
@@ -121,6 +129,11 @@ class SwiftGenerator:
                 if object.fontStyle: set([self.write("object.font = " + object.fontStyle.toSwift())]),  self.newline()
                 if object.textAlignment: set([self.write("object.textAlignment = NSTextAlignment." + object.textAlignment)]), self.newline()
                 if object.borderStyle: set([self.write("object.borderStyle = UITextBorderStyle." + object.borderStyle)]), self.newline()
+
+            if isinstance(object, UIObjects.SegmentedControl):
+                if object.normalColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.normalColor + "), forState: .Normal, barMetrics: .Default)")]), self.newline()
+                if object.selectedColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.selectedColor + "), forState: .Selected, barMetrics: .Default)")]), self.newline()
+                if object.dividerColor: set([self.write("object.setDividerImage(UIImage.imageWithColor(" + object.dividerColor + "), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)")]), self.newline()
 
             self.write("}")
             self.closeFunction()

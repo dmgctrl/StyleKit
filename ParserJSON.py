@@ -9,8 +9,8 @@ from Validator import Validator
 
 
 def main(argv):
-    inputfile = ''
-    outputfile = ''
+    inputfile = 'Style.json'
+    outputfile = 'Style.swift'
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
@@ -71,8 +71,8 @@ def main(argv):
 
     if 'SegmentedControls' in style:
         for key, value in style['SegmentedControls'].iteritems():
-            textfield = ui.uiObject(key + "SegmentedControl", "UISegmentedControl")
-            swiftgenerator.textFieldOutletCollection([textfield])
+            segmentedControl = ui.uiObject(key + "SegmentedControl", "UISegmentedControl")
+            swiftgenerator.segmentedControlOutletCollection([segmentedControl])
 
     if 'Labels' in style:
         for key, value in style['Labels'].iteritems():
@@ -153,7 +153,7 @@ def main(argv):
             if "dividerColor" in value:
                 segmentedControl.dividerColor = value['dividerColor']
             if segmentedControl.attributes:
-                swiftgenerator.buildAttributesForObjects([textfield.attributes])
+                swiftgenerator.buildAttributesForObjects([segmentedControl.attributes])
             swiftgenerator.buildStyleFunctions([textfield])
 
         swiftgenerator.closeClass()
