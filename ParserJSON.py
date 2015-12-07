@@ -104,27 +104,8 @@ def main(argv):
     if 'Buttons' in style:
         for key, value in style['Buttons'].iteritems():
             button = ui.Button(key + "Button", value)
-            if button.normal:
-                normal = value["normal"]
-                if "titleColor" in normal:
-                    button.titleColorNormal = normal['titleColor']
-                if "backgroundimage" in normal:
-                    button.backgroundimage = normal['backgroundimage']
-            if button.selected:
-                selected = value["selected"]
-                if "titleColor" in selected:
-                    button.titleColorSelected = selected['titleColor']
-                if "backgroundImage" in selected:
-                    button.backgroundimage = selected['backgroundimage']
-            if button.highlighted:
-                highlighted = value["highlighted"]
-                if "titleColor" in highlighted:
-                    button.titleColorHighlighted = highlighted['titleColor']
             if button.attributes:
                 swiftgenerator.buildAttributesForObjects([button.attributes])
-            if button.fontStyle:
-                fontStyle = value["fontStyle"]
-                label.titleLabelFont = fontStyle
             swiftgenerator.buildStyleFunctions([button])
 
     if 'TextFields' in style:

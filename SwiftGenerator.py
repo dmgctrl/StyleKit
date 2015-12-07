@@ -123,6 +123,11 @@ class SwiftGenerator:
                 if object.fontStyle: set([self.write("object.titleLabel?.font = " + object.fontStyle.toSwift())]), self.newline()
                 if object.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.titleShadowColor + ", forState: .Normal)")]),self.newline()
                 if object.backgroundImage: set([self.write("object.setBackgroundImage(" + object.backgroundImage + ", forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
+                if object.attributes:
+                    if object.attributes.normal:
+                        set([self.write("object.setTitleTextAttributes(normalAttributesFor" + object.name + "(), forState: .Normal)")]), self.newline()
+                    if object.attributes.highlighted:
+                        set([self.write("object.setTitleTextAttributes(highlightedAttributesFor" + object.name + "(), forState: .Highlighted)")]), self.newline()
 
             if isinstance(object, UIObjects.TextField):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
@@ -134,6 +139,11 @@ class SwiftGenerator:
                 if object.normalColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.normalColor + "), forState: .Normal, barMetrics: .Default)")]), self.newline()
                 if object.selectedColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.selectedColor + "), forState: .Selected, barMetrics: .Default)")]), self.newline()
                 if object.dividerColor: set([self.write("object.setDividerImage(UIImage.imageWithColor(" + object.dividerColor + "), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)")]), self.newline()
+                if object.attributes:
+                    if object.attributes.normal:
+                        set([self.write("object.setTitleTextAttributes(attributesFor" + object.name + "(), forState: .Normal)")]), self.newline()
+                    if object.attributes.selected:
+                        set([self.write("object.setTitleTextAttributes(attributesFor" + object.name + "(), forState: .Selected)")]), self.newline()
 
             self.write("}")
             self.closeFunction()
@@ -141,23 +151,63 @@ class SwiftGenerator:
 
     def buildAttributesForObjects(self, objects = []):
         for object in objects:
-            self.write("func attributesFor" + object.name + "() -> " + self.attributeDictionary + " { ")
-            self.enter()
-            self.write("let attributes = [ ")
-            self.indent(),self.newline()
-            if isinstance(object, UIObjects.Attributes):
-                object.seperatorCount = len(object.properties) - 1
-                if object.font: set([self.write("NSFontAttributeName: " + object.font.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
-                if object.foregroundColor: set([self.write("NSForegroundColorAttributeName: " + object.foregroundColor)]),self.addSeperator(object),self.newline()
-                if object.backgroundColor: set([self.write("NSBackgroundColorAttributeName: " + object.backgroundColor)]),self.addSeperator(object),self.newline()
-                if object.kerning: set([self.write("NSKernAttributeName: " + str(object.kerning))]),self.addSeperator(object),self.newline()
-                if object.ligature: set([self.write("NSLigatureAttributeName: " + str(object.ligature))]),self.addSeperator(object),self.newline()
-            self.outdent()
-            self.write(" ]")
-            self.newline()
-            self.write("return attributes")
-            self.closeFunction()
-            self.nextFunction()
+            if object.normal:
+                normalObject = object.normal
+                self.write("func normalAttributesFor" + object.name + "() -> " + self.attributeDictionary + " { ")
+                self.enter()
+                self.write("let attributes = [ ")
+                self.indent(),self.newline()
+                if isinstance(normalObject, UIObjects.Normal):
+                    normalObject.seperatorCount = len(normalObject.properties) - 1
+                    if normalObject.fontStyle: set([self.write("NSFontAttributeName: " + normalObject.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(normalObject),self.newline()
+                    if normalObject.foregroundColor: set([self.write("NSForegroundColorAttributeName: " + normalObject.foregroundColor)]),self.addSeperator(normalObject),self.newline()
+                    if normalObject.backgroundColor: set([self.write("NSBackgroundColorAttributeName: " + normalObject.backgroundColor)]),self.addSeperator(normalObject),self.newline()
+                    if normalObject.kerning: set([self.write("NSKernAttributeName: " + str(normalObject.kerning))]),self.addSeperator(normalObject),self.newline()
+                    if normalObject.ligature: set([self.write("NSLigatureAttributeName: " + str(normalObject.ligature))]),self.addSeperator(normalObject),self.newline()
+                self.outdent()
+                self.write(" ]")
+                self.newline()
+                self.write("return attributes")
+                self.closeFunction()
+                self.nextFunction()
+            if object.selected:
+                selectedObject = object.selected
+                self.write("func selectedAttributesFor" + selectedObject.name + "() -> " + self.attributeDictionary + " { ")
+                self.enter()
+                self.write("let attributes = [ ")
+                self.indent(),self.newline()
+                if isinstance(selectedObject, UIObjects.Selected):
+                    selectedObject.seperatorCount = len(selectedObject.properties) - 1
+                    if selectedObject.font: set([self.write("NSFontAttributeName: " + selectedObject.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(selectedObject),self.newline()
+                    if selectedObject.foregroundColor: set([self.write("NSForegroundColorAttributeName: " + selectedObject.foregroundColor)]),self.addSeperator(selectedObject),self.newline()
+                    if selectedObject.backgroundColor: set([self.write("NSBackgroundColorAttributeName: " + selectedObject.backgroundColor)]),self.addSeperator(selectedObject),self.newline()
+                    if selectedObject.kerning: set([self.write("NSKernAttributeName: " + str(selectedObject.kerning))]),self.addSeperator(selectedObject),self.newline()
+                    if selectedObject.ligature: set([self.write("NSLigatureAttributeName: " + str(selectedObject.ligature))]),self.addSeperator(selectedObject),self.newline()
+                self.outdent()
+                self.write(" ]")
+                self.newline()
+                self.write("return attributes")
+                self.closeFunction()
+                self.nextFunction()
+            if object.highlighted:
+                highlightedObject = object.highlighted
+                self.write("func highlightedAttributesFor" + highlightedObject.name + "() -> " + self.attributeDictionary + " { ")
+                self.enter()
+                self.write("let attributes = [ ")
+                self.indent(),self.newline()
+                if isinstance(highlightedObject, UIObjects.Highlighted):
+                    highlightedObject.seperatorCount = len(selectedObject.properties) - 1
+                    if highlightedObject.font: set([self.write("NSFontAttributeName: " + highlightedObject.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(highlightedObject),self.newline()
+                    if highlightedObject.foregroundColor: set([self.write("NSForegroundColorAttributeName: " + highlightedObject.foregroundColor)]),self.addSeperator(highlightedObject),self.newline()
+                    if highlightedObject.backgroundColor: set([self.write("NSBackgroundColorAttributeName: " + highlightedObject.backgroundColor)]),self.addSeperator(highlightedObject),self.newline()
+                    if highlightedObject.kerning: set([self.write("NSKernAttributeName: " + str(highlightedObject.kerning))]),self.addSeperator(highlightedObject),self.newline()
+                    if highlightedObject.ligature: set([self.write("NSLigatureAttributeName: " + str(highlightedObject.ligature))]),self.addSeperator(highlightedObject),self.newline()
+                self.outdent()
+                self.write(" ]")
+                self.newline()
+                self.write("return attributes")
+                self.closeFunction()
+                self.nextFunction()
 
     def addSeperator(self, object):
         count = object.seperatorCount
