@@ -39,16 +39,6 @@ class FontStyle:
     def toSwift(self):
         return "UIFont (name: %s, size: %s)" % (self.font, self.size)
 
-    @property
-    def kerning(self):
-         if "kerning" in self.properties:
-            return self.properties['kerning']
-
-    @property
-    def ligature(self):
-         if "ligature" in self.properties:
-            return self.properties['ligature']
-
 class NormalState:
     def __init__(self, name, properties = {}):
         self.name = name
@@ -79,7 +69,7 @@ class NormalState:
             return self.properties['backgroundColor']
 
     @property
-    def backgroundImage(self:
+    def backgroundImage(self):
         if "backgroundImage" in self.properties:
             return self.properties['backgroundImage']
 
@@ -118,7 +108,7 @@ class HighlightedState:
             return self.properties['backgroundColor']
 
     @property
-    def backgroundImage(self:
+    def backgroundImage(self):
         if "backgroundImage" in self.properties:
             return self.properties['backgroundImage']
 
@@ -157,7 +147,7 @@ class SelectedState:
             return self.properties['backgroundColor']
 
     @property
-    def backgroundImage(self:
+    def backgroundImage(self):
         if "backgroundImage" in self.properties:
             return self.properties['backgroundImage']
 
@@ -166,7 +156,28 @@ class SelectedState:
         if "titleShadowColor" in self.properties:
             return (self.properties['titleShadowColor'])
 
-class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
+class TextAttributes:
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+        self.seperatorCount = None
+
+    @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
+
+    @property
+    def kerning(self):
+         if "kerning" in self.properties:
+            return self.properties['kerning']
+
+    @property
+    def ligature(self):
+         if "ligature" in self.properties:
+            return self.properties['ligature']
+
+class Button(View, FontStyle):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -174,6 +185,11 @@ class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
     @property
     def type(self):
         return "UIButton"
+
+    @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
 
     @property
     def normalState(self):
@@ -190,7 +206,7 @@ class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
         if "highlightedState" in self.properties:
             return HighlightedState(self.name, self.properties['highlightedState'])
 
-class Label(View, Attributes, FontStyle):
+class Label(View, FontStyle):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -210,11 +226,11 @@ class Label(View, Attributes, FontStyle):
             return (self.properties['textAlignment'])
 
     @property
-    def fontStyle(self):
-        if "fontStyle" in self.properties:
-            return FontStyle(self.properties['fontStyle'])
+    def attributes(self):
+        if "attributes" in self.properties:
+            return TextAttributes(self.name, self.properties['attributes'])
 
-class TextField(View, Attributes):
+class TextField(View):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
@@ -239,11 +255,31 @@ class TextField(View, Attributes):
             return (self.properties['textAlignment'])
 
     @property
+    def backgroundColor(self):
+        if "backgroundColor" in self.properties:
+            return self.properties['backgroundColor']
+
+    @property
     def borderStyle(self):
         if "borderStyle" in self.properties:
             return (self.properties['borderStyle'])
 
-class SegmentedControl(View, Attributes):
+    @property
+    def borderColor(self):
+        if "borderColor" in self.properties:
+            return (self.properties['borderColor'])
+
+    @property
+    def borderWidth(self):
+        if "borderWidth" in self.properties:
+            return (self.properties['borderWidth'])
+
+    @property
+    def cornerRadius(self):
+        if "cornerRadius" in self.properties:
+            return (self.properties['cornerRadius'])
+
+class SegmentedControl(View):
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties

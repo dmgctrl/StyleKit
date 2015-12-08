@@ -77,9 +77,6 @@ def main(argv):
     if 'Labels' in style:
         for key, value in style['Labels'].iteritems():
             label = ui.Label(key + "Label", value)
-            if label.fontStyle:
-                fontStyle = value["fontStyle"]
-                label.font = fontStyle
             if "textAlignment" in value:
                 label.textAlignment = value['textAlignment']
             if "textColor" in value:
@@ -104,8 +101,6 @@ def main(argv):
     if 'Buttons' in style:
         for key, value in style['Buttons'].iteritems():
             button = ui.Button(key + "Button", value)
-            if button.attributes:
-                swiftgenerator.buildAttributesForObjects([button.attributes])
             swiftgenerator.buildStyleFunctions([button])
 
     if 'TextFields' in style:
@@ -120,8 +115,6 @@ def main(argv):
             if textfield.fontStyle:
                 fontStyle = value["fontStyle"]
                 textfield.font = fontStyle
-            if textfield.attributes:
-                swiftgenerator.buildAttributesForObjects([textfield.attributes])
             swiftgenerator.buildStyleFunctions([textfield])
 
     if 'SegmentedControls' in style:
@@ -133,8 +126,8 @@ def main(argv):
                 segmentedControl.selectedColor = value['selectedColor']
             if "dividerColor" in value:
                 segmentedControl.dividerColor = value['dividerColor']
-            if segmentedControl.attributes:
-                swiftgenerator.buildAttributesForObjects([segmentedControl.attributes])
+            # if segmentedControl.attributes:
+            #     swiftgenerator.buildAttributesForObjects([segmentedControl.attributes])
             swiftgenerator.buildStyleFunctions([segmentedControl])
 
         swiftgenerator.closeClass()
