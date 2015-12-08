@@ -39,198 +39,29 @@ class FontStyle:
     def toSwift(self):
         return "UIFont (name: %s, size: %s)" % (self.font, self.size)
 
-class Normal:
+    @property
+    def kerning(self):
+         if "kerning" in self.properties:
+            return self.properties['kerning']
+
+    @property
+    def ligature(self):
+         if "ligature" in self.properties:
+            return self.properties['ligature']
+
+class NormalState:
     def __init__(self, name, properties = {}):
         self.name = name
         self.properties = properties
-
-    @property
-    def fontStyle(self):
-        if "fontStyle" in self.properties:
-            return FontStyle(self.properties['fontStyle'])
-
-    @property
-    def titleColorNormal(self):
-        if "titleColor" in self.properties:
-            return (self.properties['titleColor'])
 
     @property
     def state(self):
         return ".Normal"
 
     @property
-    def font(self):
-        if "font" in self.properties:
-            return Font(self.properties['fontStyle'])
-
-    @property
-    def foregroundColor(self):
-        if "foregroundColor" in self.properties:
-            return self.properties['foregroundColor']
-
-    @property
-    def backgroundColor(self):
-        if "backgroundColor" in self.properties:
-            return self.properties['backgroundColor']
-
-    @property
-    def kerning(self):
-         if "kerning" in self.properties:
-            return self.properties['kerning']
-
-    @property
-    def ligature(self):
-         if "ligature" in self.properties:
-            return self.properties['ligature']
-
-class Highlighted:
-    def __init__(self, name, properties = {}):
-        self.name = name
-        self.properties = properties
-
-    @property
     def fontStyle(self):
         if "fontStyle" in self.properties:
             return FontStyle(self.properties['fontStyle'])
-
-    @property
-    def titleColorHighlighted(self):
-        if "titleColor" in self.properties:
-            return (self.properties['titleColor'])
-
-    @property
-    def state(self):
-        return ".Highlighted"
-
-    @property
-    def font(self):
-        if "font" in self.properties:
-            return Font(self.properties['fontStyle'])
-
-    @property
-    def foregroundColor(self):
-        if "foregroundColor" in self.properties:
-            return self.properties['foregroundColor']
-
-    @property
-    def backgroundColor(self):
-        if "backgroundColor" in self.properties:
-            return self.properties['backgroundColor']
-
-    @property
-    def kerning(self):
-         if "kerning" in self.properties:
-            return self.properties['kerning']
-
-    @property
-    def ligature(self):
-         if "ligature" in self.properties:
-            return self.properties['ligature']
-
-class Selected:
-    def __init__(self, name, properties = {}):
-        self.name = name
-        self.properties = properties
-
-    @property
-    def fontStyle(self):
-        if "fontStyle" in self.properties:
-            return FontStyle(self.properties['fontStyle'])
-
-    @property
-    def titleColorSelected(self):
-        if "titleColor" in self.properties:
-            return (self.properties['titleColor'])
-
-    @property
-    def state(self):
-        return ".Selected"
-
-    @property
-    def font(self):
-        if "font" in self.properties:
-            return Font(self.properties['fontStyle'])
-
-    @property
-    def foregroundColor(self):
-        if "foregroundColor" in self.properties:
-            return self.properties['foregroundColor']
-
-    @property
-    def backgroundColor(self):
-        if "backgroundColor" in self.properties:
-            return self.properties['backgroundColor']
-
-    @property
-    def kerning(self):
-         if "kerning" in self.properties:
-            return self.properties['kerning']
-
-    @property
-    def ligature(self):
-         if "ligature" in self.properties:
-            return self.properties['ligature']
-
-class Attributes:
-    def __init__(self, name, properties = {}):
-        self.name = name
-        self.properties = properties
-        self.seperatorCount = None
-
-    @property
-    def normal(self):
-        if "normal" in self.properties:
-            return Normal(self.name, self.properties['normal'])
-
-    @property
-    def selected(self):
-        if "selected" in self.properties:
-            return Selected(self.name, self.properties['selected'])
-
-    @property
-    def highlighted(self):
-        if "highlighted" in self.properties:
-            return Highlighted(self.name, self.properties['highlighted'])
-
-class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
-    def __init__(self, name, properties = {}):
-        self.name = name
-        self.properties = properties
-
-    @property
-    def attributes(self):
-        if "attributes" in self.properties:
-            return Attributes(self.name, self.properties['attributes'])
-
-    @property
-    def titleShadowColor(self):
-        if "titleShadowColor" in self.properties:
-            return (self.properties['titleShadowColor'])
-
-    @property
-    def backgroundImage(self):
-        if "backgroundimage" in self.properties:
-            return (self.properties['backgroundimage'])
-
-    @property
-    def fontStyle(self):
-        if "fontStyle" in self.properties:
-            return FontStyle(self.properties['fontStyle'])
-
-    @property
-    def type(self):
-        return "UIButton"
-
-
-class Label(View, Attributes, FontStyle):
-    def __init__(self, name, properties = {}):
-        self.name = name
-        self.properties = properties
-
-    @property
-    def attributes(self):
-        if "attributes" in self.properties:
-            return Attributes(self.name, self.properties['attributes'])
 
     @property
     def textColor(self):
@@ -238,8 +69,140 @@ class Label(View, Attributes, FontStyle):
             return (self.properties['textColor'])
 
     @property
+    def foregroundColor(self):
+        if "foregroundColor" in self.properties:
+            return self.properties['foregroundColor']
+
+    @property
+    def backgroundColor(self):
+        if "backgroundColor" in self.properties:
+            return self.properties['backgroundColor']
+
+    @property
+    def backgroundImage(self:
+        if "backgroundImage" in self.properties:
+            return self.properties['backgroundImage']
+
+    @property
+    def titleShadowColor(self):
+        if "titleShadowColor" in self.properties:
+            return (self.properties['titleShadowColor'])
+
+class HighlightedState:
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def state(self):
+        return ".Highlighted"
+
+    @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
+
+    @property
+    def textColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
+
+    @property
+    def foregroundColor(self):
+        if "foregroundColor" in self.properties:
+            return self.properties['foregroundColor']
+
+    @property
+    def backgroundColor(self):
+        if "backgroundColor" in self.properties:
+            return self.properties['backgroundColor']
+
+    @property
+    def backgroundImage(self:
+        if "backgroundImage" in self.properties:
+            return self.properties['backgroundImage']
+
+    @property
+    def titleShadowColor(self):
+        if "titleShadowColor" in self.properties:
+            return (self.properties['titleShadowColor'])
+
+class SelectedState:
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def state(self):
+        return ".Selected"
+
+    @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
+
+    @property
+    def textColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
+
+    @property
+    def foregroundColor(self):
+        if "foregroundColor" in self.properties:
+            return self.properties['foregroundColor']
+
+    @property
+    def backgroundColor(self):
+        if "backgroundColor" in self.properties:
+            return self.properties['backgroundColor']
+
+    @property
+    def backgroundImage(self:
+        if "backgroundImage" in self.properties:
+            return self.properties['backgroundImage']
+
+    @property
+    def titleShadowColor(self):
+        if "titleShadowColor" in self.properties:
+            return (self.properties['titleShadowColor'])
+
+class Button(View, Attributes, Normal, Selected, Highlighted, FontStyle):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def type(self):
+        return "UIButton"
+
+    @property
+    def normalState(self):
+        if "normalState" in self.properties:
+            return NormalState(self.name, self.properties['normalState'])
+
+    @property
+    def selectedState(self):
+        if "selectedState" in self.properties:
+            return SelectedState(self.name, self.properties['selectedState'])
+
+    @property
+    def highlightedState(self):
+        if "highlightedState" in self.properties:
+            return HighlightedState(self.name, self.properties['highlightedState'])
+
+class Label(View, Attributes, FontStyle):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
     def type(self):
         return "UILabel"
+
+    @property
+    def textColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
 
     @property
     def textAlignment(self):
@@ -257,18 +220,13 @@ class TextField(View, Attributes):
         self.properties = properties
 
     @property
-    def attributes(self):
-        if "attributes" in self.properties:
-            return Attributes(self.name, self.properties['attributes'])
+    def type(self):
+        return "UITextField"
 
     @property
     def textColor(self):
         if "textColor" in self.properties:
             return (self.properties['textColor'])
-
-    @property
-    def type(self):
-        return "UITextField"
 
     @property
     def fontStyle(self):
@@ -295,19 +253,19 @@ class SegmentedControl(View, Attributes):
         return "UISegmentedControl"
 
     @property
-    def attributes(self):
-        if "attributes" in self.properties:
-            return Attributes(self.name, self.properties['attributes'])
+    def normalState(self):
+        if "normalState" in self.properties:
+            return NormalState(self.name, self.properties['normalState'])
 
     @property
-    def normalColor(self):
-        if "textColor" in self.properties:
-            return (self.properties['normalColor'])
+    def selectedState(self):
+        if "selectedState" in self.properties:
+            return SelectedState(self.name, self.properties['selectedState'])
 
     @property
-    def selectedColor(self):
-        if "textColor" in self.properties:
-            return (self.properties['selectedColor'])
+    def highlightedState(self):
+        if "highlightedState" in self.properties:
+            return HighlightedState(self.name, self.properties['highlightedState'])
 
     @property
     def dividerColor(self):
