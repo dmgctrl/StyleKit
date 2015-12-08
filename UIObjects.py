@@ -37,7 +37,7 @@ class FontStyle:
         self.size = fontStyle["size"]
 
     def toSwift(self):
-        return "UIFont (name: %s, size: %s)" % (self.font, self.size)
+        return "UIFont(name: %s, size: %s)" % (self.font, self.size)
 
 class NormalState:
     def __init__(self, name, properties = {}):
