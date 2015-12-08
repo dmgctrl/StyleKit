@@ -145,14 +145,17 @@ class SwiftGenerator:
                 if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
 
             if isinstance(object, UIObjects.SegmentedControl):
-                if object.normalColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.normalColor + "), forState: .Normal, barMetrics: .Default)")]), self.newline()
-                if object.selectedColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.selectedColor + "), forState: .Selected, barMetrics: .Default)")]), self.newline()
+                if object.fontStyle: set([self.write("object.titleLabel?.font = " + object.fontStyle.toSwift())]), self.newline()
                 if object.dividerColor: set([self.write("object.setDividerImage(UIImage.imageWithColor(" + object.dividerColor + "), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)")]), self.newline()
-                # if object.attributes:
-                #     if object.attributes.normal:
-                #         set([self.write("object.setTitleTextAttributes(attributesFor" + object.name + "(), forState: .Normal)")]), self.newline()
-                #     if object.attributes.selected:
-                #         set([self.write("object.setTitleTextAttributes(attributesFor" + object.name + "(), forState: .Selected)")]), self.newline()
+                if object.normalState:
+                    if object.normalState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.normalState.backgroundColor + "), forState: .Normal, barMetrics: .Default)")]), self.newline()
+                    if object.normalState.textColor: set([self.write("object.setTitleTextAttributes([NSForegroundColorAttributeName: " + object.normalState.textColor + "], forState: .Normal)")]),self.newline()
+                if object.highlightedState:
+                    if object.highlightedState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.highlightedState.backgroundColor + "), forState: .Highlighted, barMetrics: .Default)")]), self.newline()
+                    if object.highlightedState.textColor: set([self.write("object.setTitleTextAttributes([NSForegroundColorAttributeName: " + object.highlightedState.textColor + "], forState: .Highlighted)")]),self.newline()
+                if object.selectedState:
+                    if object.selectedState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.selectedState.backgroundColor + "), forState: .Selected, barMetrics: .Default)")]), self.newline()
+                    if object.selectedState.textColor: set([self.write("object.setTitleTextAttributes([NSForegroundColorAttributeName: " + object.selectedState.textColor + "], forState: .Selected)")]),self.newline()
 
             self.write("}")
             self.closeFunction()

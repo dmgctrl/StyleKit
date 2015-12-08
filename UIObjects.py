@@ -289,6 +289,11 @@ class SegmentedControl(View):
         return "UISegmentedControl"
 
     @property
+    def fontStyle(self):
+        if "fontStyle" in self.properties:
+            return FontStyle(self.properties['fontStyle'])
+
+    @property
     def normalState(self):
         if "normalState" in self.properties:
             return NormalState(self.name, self.properties['normalState'])

@@ -101,6 +101,15 @@ def main(argv):
     if 'Buttons' in style:
         for key, value in style['Buttons'].iteritems():
             button = ui.Button(key + "Button", value)
+            if "cornerRadius" in value:
+                view.cornerRadius = value['cornerRadius']
+            if "borderColor" in value:
+                view.borderColor = value['borderColor']
+            if "borderWidth" in value:
+                view.borderWidth = value['borderWidth']
+            if button.fontStyle:
+                fontStyle = value["fontStyle"]
+                button.font = fontStyle
             swiftgenerator.buildStyleFunctions([button])
 
     if 'TextFields' in style:
@@ -120,14 +129,15 @@ def main(argv):
     if 'SegmentedControls' in style:
         for key, value in style['SegmentedControls'].iteritems():
             segmentedControl = ui.SegmentedControl(key + "SegmentedControl", value)
+            if segmentedControl.fontStyle:
+                fontStyle = value["fontStyle"]
+                segmentedControl.font = fontStyle
             if "normalColor" in value:
                 segmentedControl.normalColor = value['normalColor']
             if "selectedColor" in value:
                 segmentedControl.selectedColor = value['selectedColor']
             if "dividerColor" in value:
                 segmentedControl.dividerColor = value['dividerColor']
-            # if segmentedControl.attributes:
-            #     swiftgenerator.buildAttributesForObjects([segmentedControl.attributes])
             swiftgenerator.buildStyleFunctions([segmentedControl])
 
         swiftgenerator.closeClass()
