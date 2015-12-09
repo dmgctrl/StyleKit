@@ -172,8 +172,8 @@ class SwiftGenerator:
             if isinstance(object, UIObjects.TextAttributes):
                 object.seperatorCount = len(object.properties) - 1
                 if object.fontStyle: set([self.write("NSFontAttributeName: " + object.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
-                if object.kerning:
-                    characterSpacing = object.fontStyle.size * object.kerning / 1000
+                if object.tracking:
+                    characterSpacing = object.fontStyle.size * object.tracking / 1000
                     set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(object),self.newline()
                 if object.ligature: set([self.write("NSLigatureAttributeName: " + str(object.ligature))]),self.addSeperator(object),self.newline()
             self.outdent()

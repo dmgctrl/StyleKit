@@ -168,9 +168,9 @@ class TextAttributes:
             return FontStyle(self.properties['fontStyle'])
 
     @property
-    def kerning(self):
-         if "kerning" in self.properties:
-            return self.properties['kerning']
+    def tracking(self):
+         if "tracking" in self.properties:
+            return self.properties['tracking']
 
     @property
     def ligature(self):
