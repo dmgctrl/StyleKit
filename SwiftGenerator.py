@@ -1,4 +1,6 @@
+from __future__ import division
 import sys, string, UIObjects, datetime, time
+
 
 class SwiftGenerator:
 
@@ -170,7 +172,9 @@ class SwiftGenerator:
             if isinstance(object, UIObjects.TextAttributes):
                 object.seperatorCount = len(object.properties) - 1
                 if object.fontStyle: set([self.write("NSFontAttributeName: " + object.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
-                if object.kerning: set([self.write("NSKernAttributeName: " + str(object.kerning))]),self.addSeperator(object),self.newline()
+                if object.kerning:
+                    characterSpacing = object.fontStyle.size * object.kerning / 1000
+                    set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(object),self.newline()
                 if object.ligature: set([self.write("NSLigatureAttributeName: " + str(object.ligature))]),self.addSeperator(object),self.newline()
             self.outdent()
             self.write(" ]")
