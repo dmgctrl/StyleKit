@@ -115,7 +115,6 @@ class SwiftGenerator:
 
             if isinstance(object, UIObjects.Label):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
-                if object.textAlignment: set([self.write("object.textAlignment = NSTextAlignment." + object.textAlignment)]), self.newline()
                 if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
 
             if isinstance(object, UIObjects.Button):
@@ -168,11 +167,12 @@ class SwiftGenerator:
             attributes = object.attributes
             self.write("func attributesFor" + object.name + "() -> " + self.attributeDictionary + " { ")
             self.enter()
-            if attributes.lineSpacing:
+            if object.textAlignment or attributes.lineSpacing:
                 set([self.write("let style = NSMutableParagraphStyle()")]),self.newline()
-                set([self.write("style.lineSpacing = " + str(attributes.lineSpacing))]),self.newline()
                 if object.textAlignment:
                     set([self.write("style.alignment = NSTextAlignment." + object.textAlignment)]),self.newline()
+                if attributes.lineSpacing:
+                    set([self.write("style.lineSpacing = " + str(attributes.lineSpacing))]),self.newline()
             self.write("let attributes = [ ")
             self.indent(),self.newline()
             if isinstance(attributes, UIObjects.TextAttributes):
