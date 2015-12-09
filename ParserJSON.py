@@ -84,7 +84,7 @@ def main(argv):
             if "lineSpacing" in value:
                 label.lineSpacing = value['lineSpacing']
             if label.attributes:
-                swiftgenerator.buildAttributesForObjects([label.attributes])
+                swiftgenerator.buildAttributesForObjects([label])
             swiftgenerator.buildStyleFunctions([label])
 
     if 'Views' in style:

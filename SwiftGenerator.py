@@ -165,22 +165,25 @@ class SwiftGenerator:
 
     def buildAttributesForObjects(self, objects = []):
         for object in objects:
+            attributes = object.attributes
             self.write("func attributesFor" + object.name + "() -> " + self.attributeDictionary + " { ")
             self.enter()
-            if object.lineSpacing:
+            if attributes.lineSpacing:
                 set([self.write("let style = NSMutableParagraphStyle()")]),self.newline()
-                set([self.write("style.lineSpacing = " + str(object.lineSpacing))]),self.newline()
+                set([self.write("style.lineSpacing = " + str(attributes.lineSpacing))]),self.newline()
+                if object.textAlignment:
+                    set([self.write("style.alignment = NSTextAlignment." + object.textAlignment)]),self.newline()
             self.write("let attributes = [ ")
             self.indent(),self.newline()
-            if isinstance(object, UIObjects.TextAttributes):
-                object.seperatorCount = len(object.properties) - 1
-                if object.fontStyle: set([self.write("NSFontAttributeName: " + object.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(object),self.newline()
-                if object.tracking:
-                    characterSpacing = object.fontStyle.size * object.tracking / 1000
-                    set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(object),self.newline()
-                if object.lineSpacing:
-                    set([self.write("NSParagraphStyleAttributeName: style")]),self.addSeperator(object),self.newline()
-                if object.ligature: set([self.write("NSLigatureAttributeName: " + str(object.ligature))]),self.addSeperator(object),self.newline()
+            if isinstance(attributes, UIObjects.TextAttributes):
+                attributes.seperatorCount = len(attributes.properties) - 1
+                if attributes.fontStyle: set([self.write("NSFontAttributeName: " + attributes.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(attributes),self.newline()
+                if attributes.tracking:
+                    characterSpacing = attributes.fontStyle.size * attributes.tracking / 1000
+                    set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(attributes),self.newline()
+                if attributes.lineSpacing:
+                    set([self.write("NSParagraphStyleAttributeName: style")]),self.addSeperator(attributes),self.newline()
+                if attributes.ligature: set([self.write("NSLigatureAttributeName: " + str(attributes.ligature))]),self.addSeperator(attributes),self.newline()
             self.outdent()
             self.write(" ]")
             self.newline()
