@@ -81,6 +81,8 @@ def main(argv):
                 label.textAlignment = value['textAlignment']
             if "textColor" in value:
                 label.textColor = value['textColor']
+            if "lineSpacing" in value:
+                label.lineSpacing = value['lineSpacing']
             if label.attributes:
                 swiftgenerator.buildAttributesForObjects([label.attributes])
             swiftgenerator.buildStyleFunctions([label])

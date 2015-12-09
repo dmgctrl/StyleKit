@@ -167,6 +167,9 @@ class SwiftGenerator:
         for object in objects:
             self.write("func attributesFor" + object.name + "() -> " + self.attributeDictionary + " { ")
             self.enter()
+            if object.lineSpacing:
+                set([self.write("let style = NSMutableParagraphStyle()")]),self.newline()
+                set([self.write("style.lineSpacing = " + str(object.lineSpacing))]),self.newline()
             self.write("let attributes = [ ")
             self.indent(),self.newline()
             if isinstance(object, UIObjects.TextAttributes):
@@ -175,6 +178,8 @@ class SwiftGenerator:
                 if object.tracking:
                     characterSpacing = object.fontStyle.size * object.tracking / 1000
                     set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(object),self.newline()
+                if object.lineSpacing:
+                    set([self.write("NSParagraphStyleAttributeName: style")]),self.addSeperator(object),self.newline()
                 if object.ligature: set([self.write("NSLigatureAttributeName: " + str(object.ligature))]),self.addSeperator(object),self.newline()
             self.outdent()
             self.write(" ]")

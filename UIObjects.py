@@ -177,6 +177,11 @@ class TextAttributes:
          if "ligature" in self.properties:
             return self.properties['ligature']
 
+    @property
+    def lineSpacing(self):
+        if "lineSpacing" in self.properties:
+            return (self.properties['lineSpacing'])
+
 class Button(View, FontStyle):
     def __init__(self, name, properties = {}):
         self.name = name
