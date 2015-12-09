@@ -181,7 +181,7 @@ class SwiftGenerator:
                 if attributes.tracking:
                     characterSpacing = attributes.fontStyle.size * attributes.tracking / 1000
                     set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(attributes),self.newline()
-                if attributes.lineSpacing:
+                if object.textAlignment or attributes.lineSpacing:
                     set([self.write("NSParagraphStyleAttributeName: style")]),self.addSeperator(attributes),self.newline()
                 if attributes.ligature: set([self.write("NSLigatureAttributeName: " + str(attributes.ligature))]),self.addSeperator(attributes),self.newline()
             self.outdent()
