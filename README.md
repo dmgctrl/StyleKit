@@ -11,8 +11,8 @@ StyleKit is a iOS library that styles native controls with a CSS like JSON forma
 
 1. ` cd ` Into the root of the project you'd like to install StyleKit
 2. add styleKit submodule in ` Libraries/ ` directory ` git submodule add https://github.com/dmgctrl/StyleKit.git Libraries/StyleKit `
-3. create ` Styles/ ` in the ` ${TARGET_NAME}/ ` directory of your project
-4. add your ` Style.json ` file to the ` Styles/ ` directory
+3. create ` Style/ ` in the ` ${TARGET_NAME}/ ` directory of your project
+4. add your ` Style.json ` file to the ` Style/ ` directory
 5. Open Xcode project and navigate to your targets ` Build Phases `
 6. Add a new ` Run Script ` under the ` Target Dependencies ` build phase
 7. Add the following BASH Script :
@@ -80,14 +80,14 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
 
 "Colors": {
     "colorKey": {
-          "red": 250,   // RGB Value between 1-255
-          "green": 110, // RGB Value between 1-255
-          "blue": 92,   // RGB Value between 1-255
-          "alpha": 1    // Alpha Value between 0.0-1.0
+        "red": 250,   // RGB Value between 1-255
+        "green": 110, // RGB Value between 1-255
+        "blue": 92,   // RGB Value between 1-255
+        "alpha": 1    // Alpha Value between 0.0-1.0
     },
     "colorKey2": {
-          "hex": "#000000", // Hex value
-          "alpha": 1        // Alpha Value between 0.0-1.0
+        "hex": "#000000", // Hex value
+        "alpha": 1        // Alpha Value between 0.0-1.0
     }
 }
 
@@ -120,16 +120,23 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
 
 #### Labels
 
+To use attributes the label must be set to attributed text in Interface Builder.
+
 ```
 
 "Labels": {
     "H1": {
-        "fontStyle": {
-            "font": "primaryFontLight",
-            "size": 34
-        },
         "textColor": "whiteColor",
-        "textAlignment": "Center"
+        "textAlignment": "Center",
+        "attributes": {
+            "fontStyle": {
+                "font": "primaryFontLight",
+                "size": 34
+            },
+            "tracking": 100,
+            "lineSpacing": 25,
+            "ligature": 1
+        }
     }
 }
 
@@ -137,28 +144,32 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
 
 #### Buttons
 
-To use titleColor for button state you must set the button as "Custom" type in interface builder. Currently supports button states ` normal `, ` selected `, `  highlighted `
+To use titleColor for button state you must set the button as "Custom" type in Interface Builder. Currently supports button states ` normal `, ` selected `, `  highlighted `
 
 ```
 
 "Buttons": {
-  "primaryButton": {
-      "fontStyle": {
-          "font": "primaryFontLight", // fontKey
-          "size": 34
-      },
-      "backgroundColor": "baseClearColor",   // colorKey
-      "size": 13,
-      "cornerRadius": 20,
-      "borderWidth": 1,
-      "borderColor": "baseBlackColor",
-      "normal": {
-          "titleColor": "baseBlackColor"    // colorKey
-      },
-      "selected": {
-          "titleColor": "activityPrimaryColor"
-      }
-  }
+    "primaryButton": {
+        "borderColor": "whiteColor",
+        "borderWidth": 3,
+        "cornerRadius": 10,
+        "fontStyle": {
+            "font": "primaryFontMedium",
+            "size": 16
+        },
+        "normalState": {
+            "backgroundColor": "blackColor",
+            "textColor": "whiteColor"
+        },
+        "selectedState": {
+            "backgroundColor": "blackColor",
+            "textColor": "purpleColor"
+        },
+        "highlightedState": {
+            "backgroundColor": "blackColor",
+            "textColor": "whiteColor"
+        }
+    }
 }
 
 ```
@@ -170,20 +181,49 @@ To use titleColor for button state you must set the button as "Custom" type in i
 
 ```
 "TextFields": {
-        "T1": {
-            "fontStyle": {
-                "font": "primaryFontLight", // fontKey
-                "size": 34
-            },
-            "textColor": "baseColorWhite", // colorKey
-            "borderColor": "colorKey"      // colorKey
-            "borderWidth": 1,
-            "cornerRadius": 15,
-            "textAlignment": "Center",
-            "borderStyle": "None"
+    "T1": {
+        "fontStyle": {
+            "font": "primaryFontMedium",
+            "size": 15
+        },
+        "textColor": "whiteColor",
+        "backgroundColor": "purpleColor",
+        "borderColor": "blackColor",
+        "textAlignment": "Center",
+        "borderWidth": 2,
+        "cornerRadius": 5,
+        "borderStyle": "RoundedRect"
+    }
+}
+
+```
+
+#### SegmentedControls
+
+```
+
+"SegmentedControls": {
+    "default": {
+        "fontStyle": {
+            "font": "primaryFontBold",
+            "size": 13
+        },
+        "dividerColor": "whiteColor",
+        "normalState": {
+            "backgroundColor": "whiteColor",
+            "textColor": "blackColor"
+        },
+        "selectedState": {
+            "backgroundColor": "blackColor",
+            "textColor": "purpleColor"
+        },
+        "highlightedState": {
+            "backgroundColor": "blackColor",
+            "textColor": "whiteColor"
         }
     }
-
+}
+    
 ```
 
 #### Xcode Integration
