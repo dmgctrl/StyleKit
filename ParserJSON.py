@@ -9,8 +9,8 @@ from Validator import Validator
 
 
 def main(argv):
-    inputfile = ''
-    outputfile = ''
+    inputfile = 'Style.json'
+    outputfile = 'Style.swift'
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
@@ -69,18 +69,22 @@ def main(argv):
             textfield = ui.uiObject(key + "TextField", "UITextField")
             swiftgenerator.textFieldOutletCollection([textfield])
 
+    if 'SegmentedControls' in style:
+        for key, value in style['SegmentedControls'].iteritems():
+            segmentedControl = ui.uiObject(key + "SegmentedControl", "UISegmentedControl")
+            swiftgenerator.segmentedControlOutletCollection([segmentedControl])
+
     if 'Labels' in style:
         for key, value in style['Labels'].iteritems():
             label = ui.Label(key + "Label", value)
-            if label.fontStyle:
-                fontStyle = value["fontStyle"]
-                label.font = fontStyle
             if "textAlignment" in value:
                 label.textAlignment = value['textAlignment']
             if "textColor" in value:
                 label.textColor = value['textColor']
+            if "lineSpacing" in value:
+                label.lineSpacing = value['lineSpacing']
             if label.attributes:
-                swiftgenerator.buildAttributesForObjects([label.attributes])
+                swiftgenerator.buildAttributesForObjects([label])
             swiftgenerator.buildStyleFunctions([label])
 
     if 'Views' in style:
@@ -99,27 +103,15 @@ def main(argv):
     if 'Buttons' in style:
         for key, value in style['Buttons'].iteritems():
             button = ui.Button(key + "Button", value)
-            if button.normal:
-                normal = value["normal"]
-                if "titleColor" in normal:
-                    button.titleColorNormal = normal['titleColor']
-                if "backgroundimage" in normal:
-                    button.backgroundimage = normal['backgroundimage']
-            if button.selected:
-                selected = value["selected"]
-                if "titleColor" in selected:
-                    button.titleColorSelected = selected['titleColor']
-                if "backgroundImage" in selected:
-                    button.backgroundimage = selected['backgroundimage']
-            if button.highlighted:
-                highlighted = value["highlighted"]
-                if "titleColor" in highlighted:
-                    button.titleColorHighlighted = highlighted['titleColor']
-            if button.attributes:
-                swiftgenerator.buildAttributesForObjects([button.attributes])
+            if "cornerRadius" in value:
+                view.cornerRadius = value['cornerRadius']
+            if "borderColor" in value:
+                view.borderColor = value['borderColor']
+            if "borderWidth" in value:
+                view.borderWidth = value['borderWidth']
             if button.fontStyle:
                 fontStyle = value["fontStyle"]
-                label.titleLabelFont = fontStyle
+                button.font = fontStyle
             swiftgenerator.buildStyleFunctions([button])
 
     if 'TextFields' in style:
@@ -134,9 +126,21 @@ def main(argv):
             if textfield.fontStyle:
                 fontStyle = value["fontStyle"]
                 textfield.font = fontStyle
-            if textfield.attributes:
-                swiftgenerator.buildAttributesForObjects([textfield.attributes])
             swiftgenerator.buildStyleFunctions([textfield])
+
+    if 'SegmentedControls' in style:
+        for key, value in style['SegmentedControls'].iteritems():
+            segmentedControl = ui.SegmentedControl(key + "SegmentedControl", value)
+            if segmentedControl.fontStyle:
+                fontStyle = value["fontStyle"]
+                segmentedControl.font = fontStyle
+            if "normalColor" in value:
+                segmentedControl.normalColor = value['normalColor']
+            if "selectedColor" in value:
+                segmentedControl.selectedColor = value['selectedColor']
+            if "dividerColor" in value:
+                segmentedControl.dividerColor = value['dividerColor']
+            swiftgenerator.buildStyleFunctions([segmentedControl])
 
         swiftgenerator.closeClass()
 
