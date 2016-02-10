@@ -7,6 +7,10 @@ StyleKit is a iOS library that styles native controls with a CSS like JSON forma
 1. ` Python ` version 2.7 or newer
 2. ` pip ` -  to install ` brew install python ` this will install all of pythons developer tools along with it
 
+## Install StyleKit using Carthage
+
+`github "dmgctrl/StyleKit"`
+
 ## Install StyleKit in New Project
 
 1. ` cd ` Into the root of the project you'd like to install StyleKit
