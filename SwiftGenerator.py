@@ -126,15 +126,15 @@ class SwiftGenerator:
                 if object.normalState:
                     if object.normalState.textColor: set([self.write("object.setTitleColor(" + object.normalState.textColor + ", forState: .Normal)")]), self.newline()
                     if object.normalState.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.normalState.titleShadowColor + ", forState: .Normal)")]),self.newline()
-                    if object.normalState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.normalState.backgroundColor + "), forState: .Normal)",)]),self.newline(), self.write(self.clearBackground),self.newline()
+                    if object.normalState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.normalState.backgroundColor + "), forState: .Normal)",)]),self.newline()
                 if object.highlightedState:
                     if object.highlightedState.textColor: set([self.write("object.setTitleColor(" + object.highlightedState.textColor + ", forState: .Highlighted)")]), self.newline()
                     if object.highlightedState.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.highlightedState.titleShadowColor + ", forState: .Highlighted)")]),self.newline()
-                    if object.highlightedState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.highlightedState.backgroundColor + "), forState: .Highlighted)",)]),self.newline(), self.write(self.clearBackground),self.newline()
+                    if object.highlightedState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.highlightedState.backgroundColor + "), forState: .Highlighted)",)]),self.newline()
                 if object.selectedState:
                     if object.selectedState.textColor: set([self.write("object.setTitleColor(" + object.selectedState.textColor + ", forState: .Selected)")]), self.newline()
                     if object.selectedState.titleShadowColor: set([self.write("object.setTitleShadowColor(" + object.selectedState.titleShadowColor + ", forState: .Selected)")]),self.newline()
-                    if object.selectedState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.selectedState.backgroundColor + "), forState: .Selected)",)]),self.newline(), self.write(self.clearBackground),self.newline()
+                    if object.selectedState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.selectedState.backgroundColor + "), forState: .Selected)",)]),self.newline()
 
             if isinstance(object, UIObjects.TextField):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
