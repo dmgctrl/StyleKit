@@ -9,8 +9,8 @@ from Validator import Validator
 
 
 def main(argv):
-    inputfile = 'Style.json'
-    outputfile = 'Style.swift'
+    inputfile = 'StyleKit.json'
+    outputfile = 'StyleKit.swift'
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
@@ -104,11 +104,11 @@ def main(argv):
         for key, value in style['Buttons'].iteritems():
             button = ui.Button(key + "Button", value)
             if "cornerRadius" in value:
-                view.cornerRadius = value['cornerRadius']
+                button.cornerRadius = value['cornerRadius']
             if "borderColor" in value:
-                view.borderColor = value['borderColor']
+                button.borderColor = value['borderColor']
             if "borderWidth" in value:
-                view.borderWidth = value['borderWidth']
+                button.borderWidth = value['borderWidth']
             if button.fontStyle:
                 fontStyle = value["fontStyle"]
                 button.font = fontStyle

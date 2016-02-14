@@ -225,10 +225,10 @@ class SwiftGenerator:
     def openClass(self):
         self.write("import UIKit\n")
         self.newline()
-        self.write("class Style: NSObject {\n")
+        self.write("class StyleKit: NSObject {\n")
         self.newline()
         self.indent()
-        self.write("static let sharedInstance = Style()")
+        self.write("static let sharedInstance = StyleKit()")
         self.newline()
         self.newline()
 
