@@ -315,7 +315,7 @@ class SegmentedControl(View):
 
     @property
     def dividerColor(self):
-        if "textColor" in self.properties:
+        if "dividerColor" in self.properties:
             return (self.properties['dividerColor'])
 
 class Font:

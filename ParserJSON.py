@@ -144,10 +144,10 @@ def main(argv):
 
         swiftgenerator.closeClass()
 
-        # write and close file
-        _file.write(swiftgenerator.end())
-        _file.close()
-        print swiftgenerator.end()
+    # write and close file
+    _file.write(swiftgenerator.end())
+    _file.close()
+    print swiftgenerator.end()
 
 
 if __name__ == "__main__":
