@@ -111,11 +111,16 @@ class SwiftGenerator:
                 if object.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(object.cornerRadius))]), self.newline()
                 if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
                 if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
-
+            
             if isinstance(object, UIObjects.Label):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
-                if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
-
+                if object.attributes:
+                    set([self.write("if let text = object.text {")]), self.newline()
+                    self.indent()
+                    set([self.write("object.attributedText = NSAttributedString(string: text, attributes:attributesFor" + object.name + "())")]), self.newline()
+                    self.outdent()
+                    set([self.write("}")]), self.newline()
+            
             if isinstance(object, UIObjects.Button):
                 set([self.write("object.layer.masksToBounds = true")]), self.newline()
                 if object.fontStyle: set([self.write("object.titleLabel?.font = " + object.fontStyle.toSwift())]), self.newline()
