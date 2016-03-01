@@ -19,11 +19,11 @@ StyleKit is a iOS library that styles native controls with a CSS like JSON forma
 ## Configure StyleKit
 
 1. create ` Style/ ` in the ` ${TARGET_NAME}/ ` directory of your project
-2. add your ` Style.json ` file to the ` Style/ ` directory
+2. add your ` StyleKit.json ` file to the ` Style/ ` directory
 3. Open Xcode project and navigate to your targets ` Build Phases `
 4. Add a new ` Run Script ` under the ` Target Dependencies ` build phase
 5. Add the following BASH Script :
-  * *please note* : this assumes the location of ` Libraries/StyleKit/ ` & ` ${TARGET_NAME}/Style/Style.json ` those requirements must be added as described by the previous instructions or this BASH script must altered to reflect there location.
+  * *please note* : this assumes the location of ` Libraries/StyleKit/ ` & ` ${TARGET_NAME}/Style/StyleKit.json ` those requirements must be added as described by the previous instructions or this BASH script must altered to reflect there location.
 
 ```
 
@@ -43,18 +43,18 @@ if [ $? -ne 0 ]; then
     fi
 fi
 
-./Libraries/StyleKit/ParserJSON.py -i ${TARGET_NAME}/Style/Style.json -o ${TARGET_NAME}/Style/Style.swift
+./Libraries/StyleKit/ParserJSON.py -i ${TARGET_NAME}/Style/StyleKit.json -o ${TARGET_NAME}/Style/StyleKit.swift
 
 ```
 
 8. Build the project
-9. Add ` Style.json ` & the generated ` Style.swift ` to the Xcode project
+9. Add ` StyleKit.json ` & the generated ` StyleKit.swift ` to the Xcode project
 
 ## Usage
 
 Steps to add author styles and apply them to UIKit elements
 
-1.) Your ` Style.json ` file is you single location to define the style for you application
+1.) Your ` StyleKit.json ` file is you single location to define the style for you application
 2.) Below are examples for the currently supported features
  * Full support & validation documentation can be found in the ` Style.json.schema `
 
