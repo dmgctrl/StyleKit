@@ -18,7 +18,6 @@ class SwiftGenerator:
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
         self.attributeDictionary = " Dictionary<String, AnyObject>"
         self.seperator = ","
-        self.unwrap = "!"
 
     def end(self):
         return string.join(self.code, "")
@@ -177,7 +176,7 @@ class SwiftGenerator:
             self.indent(),self.newline()
             if isinstance(attributes, UIObjects.TextAttributes):
                 attributes.seperatorCount = len(attributes.properties) - 1
-                if attributes.fontStyle: set([self.write("NSFontAttributeName: " + attributes.fontStyle.toSwift() + self.unwrap)]),self.addSeperator(attributes),self.newline()
+                if attributes.fontStyle: set([self.write("NSFontAttributeName: " + attributes.fontStyle.toSwift() + "!")]),self.addSeperator(attributes),self.newline()
                 if attributes.tracking:
                     characterSpacing = attributes.fontStyle.size * attributes.tracking / 1000
                     set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(attributes),self.newline()
