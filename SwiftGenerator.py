@@ -157,7 +157,7 @@ class SwiftGenerator:
                 if object.selectedState:
                     if object.selectedState.backgroundColor: set([self.write("object.setBackgroundImage(UIImage.imageWithColor(" + object.selectedState.backgroundColor + "), forState: .Selected, barMetrics: .Default)")]), self.newline()
                     if object.selectedState.textColor: set([self.write("object.setTitleTextAttributes([NSFontAttributeName: " + object.fontStyle.toSwift() + "!, NSForegroundColorAttributeName: " + object.selectedState.textColor + "], forState: .Selected)")]),self.newline()
-
+            self.outdent()
             self.write("}")
             self.closeFunction()
             self.nextFunction()
