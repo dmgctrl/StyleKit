@@ -57,7 +57,7 @@ def main(argv):
     if 'TextViews' in style:
         for key, value in style['TextViews'].iteritems():
             textView = ui.uiObject(key + "TextView", "UITextView")
-            swiftgenerator.labelOutletCollections([textView])
+            swiftgenerator.textViewOutletCollections([textView])
 
     if 'Views' in style:
         for key, value in style['Views'].iteritems():
@@ -94,7 +94,7 @@ def main(argv):
 
     if 'TextViews' in style:
         for key, value in style['TextViews'].iteritems():
-            textView = ui.Label(key + "TextView", value)
+            textView = ui.TextView(key + "TextView", value)
             if "textAlignment" in value:
                 textView.textAlignment = value['textAlignment']
             if "textColor" in value:
