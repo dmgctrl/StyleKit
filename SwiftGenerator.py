@@ -126,8 +126,8 @@ class SwiftGenerator:
                 if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
 
             if isinstance(object, UIObjects.TextView):
-                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
                 if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
+                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
 
             if isinstance(object, UIObjects.Button):
                 set([self.write("object.layer.masksToBounds = true")]), self.newline()
