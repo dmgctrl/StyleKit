@@ -235,6 +235,30 @@ class Label(View, FontStyle):
         if "attributes" in self.properties:
             return TextAttributes(self.name, self.properties['attributes'])
 
+class TextView(View, FontStyle):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def type(self):
+        return "UITextView"
+
+    @property
+    def textColor(self):
+        if "textColor" in self.properties:
+            return (self.properties['textColor'])
+
+    @property
+    def textAlignment(self):
+        if "textAlignment" in self.properties:
+            return (self.properties['textAlignment'])
+
+    @property
+    def attributes(self):
+        if "attributes" in self.properties:
+            return TextAttributes(self.name, self.properties['attributes'])
+
 class TextField(View):
     def __init__(self, name, properties = {}):
         self.name = name
