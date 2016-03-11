@@ -344,3 +344,7 @@ class RGBColor:
 
     def toSwiftRGBA(self):
         return "UIColor(red: %.1f/255.0, green: %.1f/255.0, blue: %.1f/255.0, alpha: %.1f)" % (self.red, self.green, self.blue, self.alpha)
+
+class Sliders:
+    def __init__(self, name):
+        self.name = name
