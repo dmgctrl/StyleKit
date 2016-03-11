@@ -3,16 +3,7 @@ import UIKit
 class Style: NSObject {
     
     static let sharedInstance = Style()
-    
-    let primaryFontMedium: String = "BrandonGrotesque-Medium"
-    let primaryFontBlack: String = "BrandonGrotesque-Black"
-    let primaryFontLight: String = "BrandonGrotesque-Light"
-    let primaryFontLightItalic: String = "BrandonGrotesque-LightItalic"
-    let primaryFontBold: String = "BrandonGrotesque-Bold"
-    
-    let baseColorWhite = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-    let baseColorBlack = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
-    
+        
     var fonts = [String: String]()
     var colors = [String: UIColor]()
     var imageNames: [String: String]? = nil
