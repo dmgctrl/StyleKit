@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2932CEDD1C93603200F83F34 /* SKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932CEDC1C93603200F83F34 /* SKButton.swift */; };
+		2932CEDF1C9363D700F83F34 /* SKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932CEDE1C9363D700F83F34 /* SKTextField.swift */; };
+		2932CEE11C93642E00F83F34 /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932CEE01C93642E00F83F34 /* SKLabel.swift */; };
 		295D21791C9214AA001626BD /* Style.json in Resources */ = {isa = PBXBuildFile; fileRef = 295D21781C9214AA001626BD /* Style.json */; };
 		298DC60B1C92073E00BB0D29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DC60A1C92073E00BB0D29 /* AppDelegate.swift */; };
 		298DC60D1C92073E00BB0D29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DC60C1C92073E00BB0D29 /* ViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2932CEDC1C93603200F83F34 /* SKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKButton.swift; sourceTree = "<group>"; };
+		2932CEDE1C9363D700F83F34 /* SKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTextField.swift; sourceTree = "<group>"; };
+		2932CEE01C93642E00F83F34 /* SKLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLabel.swift; sourceTree = "<group>"; };
 		295D21781C9214AA001626BD /* Style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Style.json; sourceTree = "<group>"; };
 		298DC6071C92073E00BB0D29 /* StyleKitSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleKitSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		298DC60A1C92073E00BB0D29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +72,9 @@
 				298DC6111C92073E00BB0D29 /* Assets.xcassets */,
 				298DC6131C92073E00BB0D29 /* LaunchScreen.storyboard */,
 				298DC6161C92073E00BB0D29 /* Info.plist */,
+				2932CEDC1C93603200F83F34 /* SKButton.swift */,
+				2932CEDE1C9363D700F83F34 /* SKTextField.swift */,
+				2932CEE01C93642E00F83F34 /* SKLabel.swift */,
 			);
 			path = StyleKitSample;
 			sourceTree = "<group>";
@@ -142,9 +151,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2932CEE11C93642E00F83F34 /* SKLabel.swift in Sources */,
 				298DC60D1C92073E00BB0D29 /* ViewController.swift in Sources */,
 				298DC61E1C9209AA00BB0D29 /* Style.swift in Sources */,
+				2932CEDF1C9363D700F83F34 /* SKTextField.swift in Sources */,
 				298DC60B1C92073E00BB0D29 /* AppDelegate.swift in Sources */,
+				2932CEDD1C93603200F83F34 /* SKButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

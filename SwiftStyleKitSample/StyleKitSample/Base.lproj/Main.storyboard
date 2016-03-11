@@ -104,27 +104,36 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzu-Ex-ktO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzu-Ex-ktO" customClass="SKButton" customModule="StyleKitSample" customModuleProvider="target">
                                 <rect key="frame" x="200" y="320" width="200" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Mzr-5d-cjI"/>
                                 </constraints>
-                                <state key="normal" title="B3"/>
+                                <state key="normal" title="B3 Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="style" value="B3"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-ih-Pf9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-ih-Pf9" customClass="SKButton" customModule="StyleKitSample" customModuleProvider="target">
                                 <rect key="frame" x="200" y="246" width="200" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Gvs-j5-4TP"/>
                                     <constraint firstAttribute="height" constant="44" id="XUA-pd-HAu"/>
                                 </constraints>
-                                <state key="normal" title="B2"/>
+                                <state key="normal" title="B2 Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="style" value="B2"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icX-zT-bTI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icX-zT-bTI" customClass="SKButton" customModule="StyleKitSample" customModuleProvider="target">
                                 <rect key="frame" x="200" y="172" width="200" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Pes-dw-Fab"/>
                                 </constraints>
-                                <state key="normal" title="B1"/>
+                                <state key="normal" title="B1 Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="style" value="B1"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,9 +152,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffV-ef-yeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="A1A-sd-DCj" customClass="Style" customModule="StyleKitSample" customModuleProvider="target">
                     <connections>
-                        <outletCollection property="B1Button" destination="icX-zT-bTI" collectionClass="NSMutableArray" id="DVe-LU-bQK"/>
-                        <outletCollection property="B2Button" destination="Ic9-ih-Pf9" collectionClass="NSMutableArray" id="GWy-I3-bQk"/>
-                        <outletCollection property="B3Button" destination="nzu-Ex-ktO" collectionClass="NSMutableArray" id="7rX-0k-FU3"/>
+                        <outletCollection property="StyleButton" destination="icX-zT-bTI" collectionClass="NSMutableArray" id="pa3-6l-9Q9"/>
+                        <outletCollection property="StyleButton" destination="Ic9-ih-Pf9" collectionClass="NSMutableArray" id="2T8-R9-VgM"/>
+                        <outletCollection property="StyleButton" destination="nzu-Ex-ktO" collectionClass="NSMutableArray" id="R2E-kT-RDY"/>
                     </connections>
                 </customObject>
             </objects>
@@ -163,17 +172,23 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H1 Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-Cl-LZ5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H1 Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xd-Cl-LZ5" customClass="SKLabel" customModule="StyleKitSample" customModuleProvider="target">
                                 <rect key="frame" x="266" y="258" width="68.5" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="H1"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H2 Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7we-U8-y0c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H2 Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7we-U8-y0c" customClass="SKLabel" customModule="StyleKitSample" customModuleProvider="target">
                                 <rect key="frame" x="266" y="306" width="68.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="H2"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,8 +203,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYx-7M-ZFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="MK6-uB-rQZ" customClass="Style" customModule="StyleKitSample" customModuleProvider="target">
                     <connections>
-                        <outletCollection property="H1Label" destination="3xd-Cl-LZ5" collectionClass="NSMutableArray" id="GLb-CX-bgr"/>
-                        <outletCollection property="H2Label" destination="7we-U8-y0c" collectionClass="NSMutableArray" id="Mxz-zD-ain"/>
+                        <outletCollection property="StyleLabel" destination="3xd-Cl-LZ5" collectionClass="NSMutableArray" id="YNl-pR-yuh"/>
+                        <outletCollection property="StyleLabel" destination="7we-U8-y0c" collectionClass="NSMutableArray" id="UWt-l4-oUx"/>
                     </connections>
                 </customObject>
             </objects>
@@ -207,7 +222,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="T1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-5P-MCh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="T1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-5P-MCh" customClass="SKTextField" customModule="StyleKitSample" customModuleProvider="target">
                                 <rect key="frame" x="200.5" y="245.5" width="200" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ADM-1U-4Gt"/>
@@ -215,6 +230,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="T1"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,11 +245,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dY-zw-EeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="w4L-Zp-OcD" customClass="Style" customModule="StyleKitSample" customModuleProvider="target">
                     <connections>
-                        <outletCollection property="T1TextField" destination="qUd-5P-MCh" collectionClass="NSMutableArray" id="iz7-3t-89c"/>
+                        <outletCollection property="StyleTextField" destination="qUd-5P-MCh" collectionClass="NSMutableArray" id="HPB-3r-1ic"/>
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1226" y="1560"/>
+            <point key="canvasLocation" x="1414" y="1724"/>
         </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="Byg-9O-NQA">

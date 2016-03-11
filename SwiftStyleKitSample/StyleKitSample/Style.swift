@@ -16,39 +16,22 @@ class Style: NSObject {
         serialize()
     }
     
-    @IBOutlet var H2Label: [UILabel]! {
+    
+    @IBOutlet var StyleLabel: [SKLabel]! {
         didSet {
-            styleH2Label(H2Label)
+            styleLabel(StyleLabel)
         }
     }
     
-    @IBOutlet var H1Label: [UILabel]! {
+    @IBOutlet var StyleButton: [SKButton]! {
         didSet {
-            styleH1Label(H1Label)
+            styleButton(StyleButton)
         }
     }
     
-    @IBOutlet var B1Button: [UIButton]! {
+    @IBOutlet var StyleTextField: [SKTextField]! {
         didSet {
-            styleB1Button(B1Button)
-        }
-    }
-    
-    @IBOutlet var B2Button: [UIButton]! {
-        didSet {
-            styleB2Button(B2Button)
-        }
-    }
-    
-    @IBOutlet var B3Button: [UIButton]! {
-        didSet {
-            styleB3Button(B3Button)
-        }
-    }
-    
-    @IBOutlet var T1TextField: [UITextField]! {
-        didSet {
-            styleT1TextField(T1TextField)
+            styleTextField(StyleTextField)
         }
     }
     
@@ -232,27 +215,30 @@ class Style: NSObject {
     
     //MARK: Apply Styles
     
-    func styleLabel(tag:String, objects: [UILabel]) {
-        if let styles = labelStyles[tag] {
+    func styleLabel(objects: [SKLabel]) {
+        
             for object in objects {
-                for (key, value) in styles {
-                    switch key {
-                    case "fontStyle":
-                        let name = (value as! FontStyle).fontName
-                        let size = (value as! FontStyle).size
-                        object.font = UIFont (name: name, size: CGFloat(size))
-                    default:
-                        assert(false, "\"\(key)\": Unknown Key")
+                if let styleTag = object.styleTag, styles = labelStyles[styleTag] {
+                    for (key, value) in styles {
+                        switch key {
+                        case "fontStyle":
+                            let name = (value as! FontStyle).fontName
+                            let size = (value as! FontStyle).size
+                            object.font = UIFont (name: name, size: CGFloat(size))
+                        default:
+                            assert(false, "\"\(key)\": Unknown Key")
+                        }
                     }
                 }
             }
-        }
+        
     }
     
 
-    func styleButton(tag:String, objects: [UIButton]) {
-        if let styles = buttonStyles[tag]  {
-            for object in objects {
+    func styleButton(objects: [SKButton]) {
+        
+        for object in objects {
+            if let styleTag = object.style, styles = buttonStyles[styleTag] {
                 for (key, value) in styles {
                     switch key {
                     case "fontStyle":
@@ -274,11 +260,12 @@ class Style: NSObject {
                 }
             }
         }
+        
     }
     
-    func styleTextField(tag:String, objects: [UITextField]) {
-        if let styles = textFieldStyles[tag]  {
-            for object in objects {
+    func styleTextField(objects: [SKTextField]) {
+        for object in objects {
+            if let styleTag = object.styleTag, styles = textFieldStyles[styleTag] {
                 for (key, value) in styles {
                     switch key {
                     case "fontStyle":
@@ -306,29 +293,4 @@ class Style: NSObject {
             }
         }
     }
-    
-    
-    func styleH2Label(objects: [UILabel]) {
-        styleLabel("H2", objects: objects)
-    }
-    
-    func styleH1Label(objects: [UILabel]) {
-        styleLabel("H1", objects: objects)
-    }
-    
-    func styleB1Button(objects: [UIButton]) {
-        styleButton("B1", objects: objects)
-    }
-    func styleB2Button(objects: [UIButton]) {
-        styleButton("B2", objects: objects)
-    }
-    
-    func styleB3Button(objects: [UIButton]) {
-        styleButton("B3", objects: objects)
-    }
-    
-    func styleT1TextField(objects: [UITextField]) {
-        styleTextField("T1", objects: objects)
-    }
-    
 }
