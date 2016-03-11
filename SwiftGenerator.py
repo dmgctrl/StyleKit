@@ -10,6 +10,7 @@ class SwiftGenerator:
         self.indentLevel = 0
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
+        self.textViewArray = "[UITextView]! "
         self.viewArray = "[UIView]! "
         self.buttonArray = "[UIButton]! "
         self.textFieldArray = "[UITextField]! "
@@ -63,6 +64,13 @@ class SwiftGenerator:
             self.didSet(label.name)
             self.closeCollection()
 
+    def textViewOutletCollections(self, textViews = []):
+        for textView in textViews:
+            self.write(self.iboutlet + textView.name + ": "+ self.textViewArray + "{" )
+            self.enter()
+            self.didSet(textView.name)
+            self.closeCollection()
+
     def viewOutletCollections(self, views = []):
         for view in views:
             self.write(self.iboutlet + view.name + ": "+ self.viewArray + "{" )
@@ -114,12 +122,11 @@ class SwiftGenerator:
             
             if isinstance(object, UIObjects.Label):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
-                if object.attributes:
-                    set([self.write("if let text = object.text {")]), self.newline()
-                    self.indent()
-                    set([self.write("object.attributedText = NSAttributedString(string: text, attributes:attributesFor" + object.name + "())")]), self.newline()
-                    self.outdent()
-                    set([self.write("}")]), self.newline()
+                if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
+
+            if isinstance(object, UIObjects.TextView):
+                if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
+                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
             
             if isinstance(object, UIObjects.Button):
                 set([self.write("object.layer.masksToBounds = true")]), self.newline()
