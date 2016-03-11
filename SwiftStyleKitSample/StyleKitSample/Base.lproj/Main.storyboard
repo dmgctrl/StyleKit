@@ -112,6 +112,7 @@
                                 <state key="normal" title="B3 Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="style" value="B3"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="B3"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic9-ih-Pf9" customClass="SKButton" customModule="StyleKitSample" customModuleProvider="target">
@@ -123,6 +124,7 @@
                                 <state key="normal" title="B2 Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="style" value="B2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="B2"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icX-zT-bTI" customClass="SKButton" customModule="StyleKitSample" customModuleProvider="target">
@@ -133,6 +135,7 @@
                                 <state key="normal" title="B1 Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="style" value="B1"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="B1"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
@@ -152,9 +155,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffV-ef-yeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="A1A-sd-DCj" customClass="Style" customModule="StyleKitSample" customModuleProvider="target">
                     <connections>
-                        <outletCollection property="StyleButton" destination="icX-zT-bTI" collectionClass="NSMutableArray" id="pa3-6l-9Q9"/>
-                        <outletCollection property="StyleButton" destination="Ic9-ih-Pf9" collectionClass="NSMutableArray" id="2T8-R9-VgM"/>
-                        <outletCollection property="StyleButton" destination="nzu-Ex-ktO" collectionClass="NSMutableArray" id="R2E-kT-RDY"/>
+                        <outletCollection property="StyleButton" destination="icX-zT-bTI" collectionClass="NSMutableArray" id="axV-qH-73F"/>
+                        <outletCollection property="StyleButton" destination="Ic9-ih-Pf9" collectionClass="NSMutableArray" id="OLy-1i-HB7"/>
+                        <outletCollection property="StyleButton" destination="nzu-Ex-ktO" collectionClass="NSMutableArray" id="BR7-se-Q9E"/>
                     </connections>
                 </customObject>
             </objects>

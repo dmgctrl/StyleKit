@@ -45,6 +45,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2932CEE21C93691E00F83F34 /* StyleKit */ = {
+			isa = PBXGroup;
+			children = (
+				295D21781C9214AA001626BD /* Style.json */,
+				298DC61C1C9209AA00BB0D29 /* Style.swift */,
+				2932CEDC1C93603200F83F34 /* SKButton.swift */,
+				2932CEDE1C9363D700F83F34 /* SKTextField.swift */,
+				2932CEE01C93642E00F83F34 /* SKLabel.swift */,
+			);
+			name = StyleKit;
+			sourceTree = "<group>";
+		};
 		298DC5FE1C92073E00BB0D29 = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +76,13 @@
 		298DC6091C92073E00BB0D29 /* StyleKitSample */ = {
 			isa = PBXGroup;
 			children = (
-				295D21781C9214AA001626BD /* Style.json */,
-				298DC61C1C9209AA00BB0D29 /* Style.swift */,
+				2932CEE21C93691E00F83F34 /* StyleKit */,
 				298DC60A1C92073E00BB0D29 /* AppDelegate.swift */,
 				298DC60C1C92073E00BB0D29 /* ViewController.swift */,
 				298DC60E1C92073E00BB0D29 /* Main.storyboard */,
 				298DC6111C92073E00BB0D29 /* Assets.xcassets */,
 				298DC6131C92073E00BB0D29 /* LaunchScreen.storyboard */,
 				298DC6161C92073E00BB0D29 /* Info.plist */,
-				2932CEDC1C93603200F83F34 /* SKButton.swift */,
-				2932CEDE1C9363D700F83F34 /* SKTextField.swift */,
-				2932CEE01C93642E00F83F34 /* SKLabel.swift */,
 			);
 			path = StyleKitSample;
 			sourceTree = "<group>";

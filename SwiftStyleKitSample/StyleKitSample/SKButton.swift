@@ -9,5 +9,5 @@
 import UIKit
 
 class SKButton: UIButton {
-    @IBInspectable var style: String?
+    @IBInspectable var styleTag: String?
 }

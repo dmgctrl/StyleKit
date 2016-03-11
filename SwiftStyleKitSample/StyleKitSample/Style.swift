@@ -238,7 +238,7 @@ class Style: NSObject {
     func styleButton(objects: [SKButton]) {
         
         for object in objects {
-            if let styleTag = object.style, styles = buttonStyles[styleTag] {
+            if let styleTag = object.styleTag, styles = buttonStyles[styleTag] {
                 for (key, value) in styles {
                     switch key {
                     case "fontStyle":
