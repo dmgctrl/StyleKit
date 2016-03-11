@@ -3,15 +3,13 @@ import UIKit
 class Style: NSObject {
     
     static let sharedInstance = Style()
-        
+    
     var fonts = [String: String]()
     var colors = [String: UIColor]()
     var imageNames: [String: String]? = nil
     var labelStyles = [String: [String:AnyObject]]()
     var buttonStyles = [String: [String:AnyObject]]()
     var textFieldStyles = [String: [String:AnyObject]]()
-    
-    let landingPageLogo = UIImage(named: "logo-image")
     
     override init() {
         super.init()
@@ -74,7 +72,6 @@ class Style: NSObject {
     func serialize() {
         
         let stylePath = configurationStyleURL()!
-        print("File: \(stylePath)")
         
         do {
             
