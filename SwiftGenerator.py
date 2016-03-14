@@ -141,7 +141,6 @@ class SwiftGenerator:
                 if object.filledTrackColor: set([self.write("object.minimumTrackTintColor = " + object.filledTrackColor)]), self.newline()
                 if object.emptyTrackColor: set([self.write("object.maximumTrackTintColor = " + object.emptyTrackColor)]), self.newline()
                 if object.thumbImage: set([self.write("object.setThumbImage(" + object.thumbImage + ", forState: UIControlState.Normal)")]), self.newline()
-                if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
 
             if isinstance(object, UIObjects.TextView):
                 if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
