@@ -233,6 +233,19 @@ To use titleColor for button state you must set the button as "Custom" type in I
     
 ```
 
+#### Sliders
+
+```
+    "Sliders": {
+        "S1": {
+            "filledTrackColor": "purpleColor",
+            "emptyTrackColor": "whiteColor",
+            "thumbImage": "thumbImageDefault"
+        }
+    }
+    
+```
+
 #### Xcode Integration
 
 The output of a valid ` Style.json ` is a compiled ` Style.swift ` that file will contain ` IBOutletCollections ` & specific methods for each element defined in the ` Style.json `. These methods can be applied directly to elements via code or objects can be linked directly to a Style inside storyboards.
