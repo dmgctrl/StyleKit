@@ -9,8 +9,8 @@ from Validator import Validator
 
 
 def main(argv):
-    inputfile = 'StyleKit.json'
-    outputfile = 'StyleKit.swift'
+    inputfile = 'Style.json'
+    outputfile = 'Style.swift'
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["ifile=", "ofile="])
     except getopt.GetoptError:
@@ -53,6 +53,11 @@ def main(argv):
         for key, value in style['Labels'].iteritems():
             label = ui.uiObject(key + "Label", "UILabel")
             swiftgenerator.labelOutletCollections([label])
+
+    if 'TextViews' in style:
+        for key, value in style['TextViews'].iteritems():
+            textView = ui.uiObject(key + "TextView", "UITextView")
+            swiftgenerator.textViewOutletCollections([textView])
 
     if 'Views' in style:
         for key, value in style['Views'].iteritems():
@@ -100,6 +105,19 @@ def main(argv):
             if "emptyTrackColor" in value:
                 slider.textColor = value['emptyTrackColor']
             swiftgenerator.buildStyleFunctions([slider])
+
+    if 'TextViews' in style:
+        for key, value in style['TextViews'].iteritems():
+            textView = ui.TextView(key + "TextView", value)
+            if "textAlignment" in value:
+                textView.textAlignment = value['textAlignment']
+            if "textColor" in value:
+                textView.textColor = value['textColor']
+            if "lineSpacing" in value:
+                textView.lineSpacing = value['lineSpacing']
+            if textView.attributes:
+                swiftgenerator.buildAttributesForObjects([textView])
+            swiftgenerator.buildStyleFunctions([textView])
 
     if 'Views' in style:
         for key, value in style['Views'].iteritems():

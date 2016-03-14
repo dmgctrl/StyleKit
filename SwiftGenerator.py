@@ -10,6 +10,7 @@ class SwiftGenerator:
         self.indentLevel = 0
         self.iboutlet = "@IBOutlet var "
         self.labelArray = "[UILabel]! "
+        self.textViewArray = "[UITextView]! "
         self.viewArray = "[UIView]! "
         self.buttonArray = "[UIButton]! "
         self.textFieldArray = "[UITextField]! "
@@ -62,6 +63,13 @@ class SwiftGenerator:
             self.write(self.iboutlet + label.name + ": "+ self.labelArray + "{" )
             self.enter()
             self.didSet(label.name)
+            self.closeCollection()
+
+    def textViewOutletCollections(self, textViews = []):
+        for textView in textViews:
+            self.write(self.iboutlet + textView.name + ": "+ self.textViewArray + "{" )
+            self.enter()
+            self.didSet(textView.name)
             self.closeCollection()
 
     def viewOutletCollections(self, views = []):
@@ -133,6 +141,11 @@ class SwiftGenerator:
                 if object.filledTrackColor: set([self.write("object.minimumTrackTintColor = " + object.filledTrackColor)]), self.newline()
                 if object.emptyTrackColor: set([self.write("object.maximumTrackTintColor = " + object.emptyTrackColor)]), self.newline()
                 if object.thumbImage: set([self.write("object.setThumbImage(" + object.thumbImage + ", forState: UIControlState.Normal)")]), self.newline()
+                if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
+
+            if isinstance(object, UIObjects.TextView):
+                if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
+                if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
             
             if isinstance(object, UIObjects.Button):
                 set([self.write("object.layer.masksToBounds = true")]), self.newline()
