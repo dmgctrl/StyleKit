@@ -92,14 +92,14 @@ def main(argv):
                 swiftgenerator.buildAttributesForObjects([label])
             swiftgenerator.buildStyleFunctions([label])
 
-    # if 'Sliders' in style:
-    #     for key, value in style['Sliders'].interitems():
-    #         slider = ui.Slider(key + "Slider", value)
-    #         if "filledTrackColor" in value:
-    #             slider.textColor = value['filledTrackColor']
-    #         if "emptyTrackColor" in value:
-    #             slider.textColor = value['emptyTrackColor']
-    #         swiftgenerator.buildStyleFunctions([slider])
+    if 'Sliders' in style:
+        for key, value in style['Sliders'].iteritems():
+            slider = ui.Slider(key + "Slider", value)
+            if "filledTrackColor" in value:
+                slider.textColor = value['filledTrackColor']
+            if "emptyTrackColor" in value:
+                slider.textColor = value['emptyTrackColor']
+            swiftgenerator.buildStyleFunctions([slider])
 
     if 'Views' in style:
         for key, value in style['Views'].iteritems():
