@@ -132,7 +132,7 @@ class SwiftGenerator:
             if isinstance(object, UIObjects.Slider):
                 if object.filledTrackColor: set([self.write("object.minimumTrackTintColor = " + object.filledTrackColor)]), self.newline()
                 if object.emptyTrackColor: set([self.write("object.maximumTrackTintColor = " + object.emptyTrackColor)]), self.newline()
-                if object.thumbImage: set([self.write("object.thumbImage = " + object.thumbImage)]), self.newline()
+                if object.thumbImage: set([self.write("object.setThumbImage(" + object.thumbImage + ", forState: UIControlState.Normal)")]), self.newline()
             
             if isinstance(object, UIObjects.Button):
                 set([self.write("object.layer.masksToBounds = true")]), self.newline()
