@@ -14,6 +14,7 @@ class SwiftGenerator:
         self.buttonArray = "[UIButton]! "
         self.textFieldArray = "[UITextField]! "
         self.segmentedControlArray = "[UISegmentedControl]! "
+        self.sliderArray = "[UISlider]! "
         self.ui = UIObjects
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
         self.attributeDictionary = " Dictionary<String, AnyObject>"
@@ -77,6 +78,13 @@ class SwiftGenerator:
             self.didSet(button.name)
             self.closeCollection()
 
+    def sliderOutletCollection(self, sliders = []):
+        for slider in sliders:
+            self.write(self.iboutlet + slider.name + ": "+ self.sliderArray + "{" )
+            self.enter()
+            self.didSet(slider.name)
+            self.closeCollection()
+
     def textFieldOutletCollection(self, textfields = []):
         for textfield in textfields:
             self.write(self.iboutlet + textfield.name + ": "+ self.textFieldArray + "{" )
@@ -120,6 +128,11 @@ class SwiftGenerator:
                     set([self.write("object.attributedText = NSAttributedString(string: text, attributes:attributesFor" + object.name + "())")]), self.newline()
                     self.outdent()
                     set([self.write("}")]), self.newline()
+
+            if isinstance(object, UIObjects.Slider):
+                if object.filledTrackColor: set([self.write("object.minimumTrackTintColor = " + object.filledTrackColor)]), self.newline()
+                if object.emptyTrackColor: set([self.write("object.maximumTrackTintColor = " + object.emptyTrackColor)]), self.newline()
+                if object.thumbImage: set([self.write("object.thumbImage = " + object.thumbImage)]), self.newline()
             
             if isinstance(object, UIObjects.Button):
                 set([self.write("object.layer.masksToBounds = true")]), self.newline()
