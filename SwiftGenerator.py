@@ -15,6 +15,7 @@ class SwiftGenerator:
         self.buttonArray = "[UIButton]! "
         self.textFieldArray = "[UITextField]! "
         self.segmentedControlArray = "[UISegmentedControl]! "
+        self.sliderArray = "[UISlider]! "
         self.ui = UIObjects
         self.clearBackground = "object.backgroundColor = UIColor.clearColor()"
         self.attributeDictionary = " Dictionary<String, AnyObject>"
@@ -85,6 +86,13 @@ class SwiftGenerator:
             self.didSet(button.name)
             self.closeCollection()
 
+    def sliderOutletCollection(self, sliders = []):
+        for slider in sliders:
+            self.write(self.iboutlet + slider.name + ": "+ self.sliderArray + "{" )
+            self.enter()
+            self.didSet(slider.name)
+            self.closeCollection()
+
     def textFieldOutletCollection(self, textfields = []):
         for textfield in textfields:
             self.write(self.iboutlet + textfield.name + ": "+ self.textFieldArray + "{" )
@@ -122,7 +130,17 @@ class SwiftGenerator:
             
             if isinstance(object, UIObjects.Label):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
-                if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
+                if object.attributes:
+                    set([self.write("if let text = object.text {")]), self.newline()
+                    self.indent()
+                    set([self.write("object.attributedText = NSAttributedString(string: text, attributes:attributesFor" + object.name + "())")]), self.newline()
+                    self.outdent()
+                    set([self.write("}")]), self.newline()
+
+            if isinstance(object, UIObjects.Slider):
+                if object.filledTrackColor: set([self.write("object.minimumTrackTintColor = " + object.filledTrackColor)]), self.newline()
+                if object.emptyTrackColor: set([self.write("object.maximumTrackTintColor = " + object.emptyTrackColor)]), self.newline()
+                if object.thumbImage: set([self.write("object.setThumbImage(" + object.thumbImage + ", forState: UIControlState.Normal)")]), self.newline()
 
             if isinstance(object, UIObjects.TextView):
                 if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()

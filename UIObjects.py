@@ -308,6 +308,30 @@ class TextField(View):
         if "cornerRadius" in self.properties:
             return (self.properties['cornerRadius'])
 
+class Slider(View):
+    def __init__(self, name, properties = {}):
+        self.name = name
+        self.properties = properties
+
+    @property
+    def type(self):
+        return "UISlider"
+
+    @property
+    def filledTrackColor(self):
+        if "filledTrackColor" in self.properties:
+            return (self.properties['filledTrackColor'])
+
+    @property
+    def emptyTrackColor(self):
+        if "emptyTrackColor" in self.properties:
+            return (self.properties['emptyTrackColor'])
+
+    @property
+    def thumbImage(self):
+        if "thumbImage" in self.properties:
+            return (self.properties['thumbImage'])
+
 class SegmentedControl(View):
     def __init__(self, name, properties = {}):
         self.name = name
