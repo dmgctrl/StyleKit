@@ -79,6 +79,11 @@ def main(argv):
             segmentedControl = ui.uiObject(key + "SegmentedControl", "UISegmentedControl")
             swiftgenerator.segmentedControlOutletCollection([segmentedControl])
 
+    if 'Sliders' in style:
+        for key, value in style['Sliders'].iteritems():
+            slider = ui.uiObject(key + "Slider", "UISlider")
+            swiftgenerator.sliderOutletCollection([slider])
+
     if 'Labels' in style:
         for key, value in style['Labels'].iteritems():
             label = ui.Label(key + "Label", value)
@@ -91,6 +96,15 @@ def main(argv):
             if label.attributes:
                 swiftgenerator.buildAttributesForObjects([label])
             swiftgenerator.buildStyleFunctions([label])
+
+    if 'Sliders' in style:
+        for key, value in style['Sliders'].iteritems():
+            slider = ui.Slider(key + "Slider", value)
+            if "filledTrackColor" in value:
+                slider.textColor = value['filledTrackColor']
+            if "emptyTrackColor" in value:
+                slider.textColor = value['emptyTrackColor']
+            swiftgenerator.buildStyleFunctions([slider])
 
     if 'TextViews' in style:
         for key, value in style['TextViews'].iteritems():
