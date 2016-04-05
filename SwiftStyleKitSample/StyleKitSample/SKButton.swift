@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SKButton: UIButton {
+class SKButton: UIButton, StyleKitTaggable {
     @IBInspectable var styleTag: String?
 }

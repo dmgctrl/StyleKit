@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SKTextField: UITextField {
+class SKTextField: UITextField, StyleKitTaggable {
     @IBInspectable var styleTag: String?
 }

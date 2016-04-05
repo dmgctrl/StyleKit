@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SKLabel: UILabel {
+class SKLabel: UILabel, StyleKitTaggable {
     @IBInspectable var styleTag: String?
 }
