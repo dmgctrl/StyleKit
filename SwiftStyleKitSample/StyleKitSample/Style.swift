@@ -245,7 +245,7 @@ class Style: NSObject {
             
             for (property, value) in styles {
                 switch property {
-                case "fontStyle":
+                case LabelProperties.FontStyle:
                     if let fontStyle = value as? FontStyle {
                         element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
                     }
@@ -268,23 +268,23 @@ class Style: NSObject {
             
             for (property, value) in styles {
                 switch property {
-                case "fontStyle":
+                case ButtonProperties.FontStyle:
                     if let fontStyle = value as? FontStyle {
                         element.titleLabel?.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
                     }
-                case "borderWidth":
+                case ButtonProperties.BorderWidth:
                     if let borderWidth = value as? Int {
                         element.layer.borderWidth = CGFloat(borderWidth)
                     }
-                case "borderColor":
+                case ButtonProperties.BorderColor:
                     if let borderColor = value as? UIColor {
                         element.layer.borderColor = borderColor.CGColor
                     }
-                case "cornerRadius":
+                case ButtonProperties.CornerRadius:
                     if let cornerRadius = value as? Int {
                         element.layer.cornerRadius = CGFloat(cornerRadius)
                     }
-                case "normal":
+                case ButtonProperties.Normal:
                     if let color = value as? UIColor {
                         element.setTitleColor(color, forState: .Normal)
                     }
@@ -307,37 +307,37 @@ class Style: NSObject {
             
             for (property, value) in styles {
                 switch property {
-                case "fontStyle":
+                case TextFieldProperties.FontStyle:
                     if let fontStyle = value as? FontStyle {
                         element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
                     }
-                case "borderWidth":
+                case TextFieldProperties.BorderWidth:
                     if let borderWidth = value as? Int {
                         element.layer.borderWidth = CGFloat(borderWidth)
                     }
-                case "borderColor":
+                case TextFieldProperties.BorderColor:
                     if let borderColor = value as? UIColor {
                         element.layer.borderColor = borderColor.CGColor
                     }
-                case "textAlignment":
+                case TextFieldProperties.TextAlignment:
                     if let aValue = value as? Int {
                         guard let textAlignment = NSTextAlignment(rawValue: aValue) else {
                             break
                         }
                         element.textAlignment = textAlignment
                     }
-                case "borderStyle":
+                case TextFieldProperties.BorderStyle:
                     if let aValue = value as? Int {
                         guard let textBorderStyle = UITextBorderStyle(rawValue: aValue) else {
                             break
                         }
                         element.borderStyle = textBorderStyle
                     }
-                case "cornerRadius":
+                case TextFieldProperties.CornerRadius:
                     if let cornerRadius = value as? Int {
                         element.layer.cornerRadius = CGFloat(cornerRadius)
                     }
-                case "textColor":
+                case TextFieldProperties.TextColor:
                     element.textColor = value as? UIColor
                 default:
                     return

@@ -15,6 +15,7 @@
 		298DC6151C92073E00BB0D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298DC6131C92073E00BB0D29 /* LaunchScreen.storyboard */; };
 		C446D61D1CB540CA00EBC929 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61B1CB540CA00EBC929 /* Style.swift */; };
 		C446D61E1CB540CA00EBC929 /* UIView+StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */; };
+		C446D6201CB5430C00EBC929 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61F1CB5430C00EBC929 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		298DC6161C92073E00BB0D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C446D61B1CB540CA00EBC929 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+StyleKit.swift"; sourceTree = "<group>"; };
+		C446D61F1CB5430C00EBC929 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 				C446D61B1CB540CA00EBC929 /* Style.swift */,
 				C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */,
 				295D21781C9214AA001626BD /* Style.json */,
+				C446D61F1CB5430C00EBC929 /* Constants.swift */,
 			);
 			name = StyleKit;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C446D6201CB5430C00EBC929 /* Constants.swift in Sources */,
 				298DC60D1C92073E00BB0D29 /* ViewController.swift in Sources */,
 				C446D61E1CB540CA00EBC929 /* UIView+StyleKit.swift in Sources */,
 				C446D61D1CB540CA00EBC929 /* Style.swift in Sources */,

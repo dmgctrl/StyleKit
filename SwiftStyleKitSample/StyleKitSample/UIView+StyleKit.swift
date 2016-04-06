@@ -13,7 +13,7 @@ extension UIView {
         static var styleTag = ""
     }
     
-    var styleTag: String? {
+    @IBInspectable var styleTag: String? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.styleTag) as? String
         }
