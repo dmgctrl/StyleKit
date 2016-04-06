@@ -17,21 +17,39 @@ class Style: NSObject {
     }
     
     
-    @IBOutlet var StyleLabel: [SKLabel]! {
+    @IBOutlet var StyleLabel: [UILabel]! {
         didSet {
-            styleLabel(StyleLabel)
+            var info = [String: UILabel]()
+            for label in StyleLabel {
+                if let styleTag = label.styleTag {
+                    info[styleTag] = label
+                }
+            }
+            self.style(withLabelsAndStyles: info)
         }
     }
     
-    @IBOutlet var StyleButton: [SKButton]! {
+    @IBOutlet var StyleButton: [UIButton]! {
         didSet {
-            styleButton(StyleButton)
+            var info = [String: UIButton]()
+            for button in StyleButton {
+                if let styleTag = button.styleTag {
+                    info[styleTag] = button
+                }
+            }
+            self.style(withButtonsAndStyles: info)
         }
     }
     
-    @IBOutlet var StyleTextField: [SKTextField]! {
+    @IBOutlet var StyleTextField: [UITextField]! {
         didSet {
-            styleTextField(StyleTextField)
+            var info = [String: UITextField]()
+            for textField in StyleTextField {
+                if let styleTag = textField.styleTag {
+                    info[styleTag] = textField
+                }
+            }
+            self.style(withTextFieldsAndStyles: info)
         }
     }
     
@@ -215,80 +233,114 @@ class Style: NSObject {
     
     //MARK: Apply Styles
     
-    func styleLabel(objects: [SKLabel]) {
+    func style(withLabelsAndStyles labelInfo: [String: UILabel]?) {
+        guard let info = labelInfo else {
+            return
+        }
         
-            for object in objects {
-                if let styleTag = object.styleTag, styles = labelStyles[styleTag] {
-                    for (key, value) in styles {
-                        switch key {
-                        case "fontStyle":
-                            let name = (value as! FontStyle).fontName
-                            let size = (value as! FontStyle).size
-                            object.font = UIFont (name: name, size: CGFloat(size))
-                        default:
-                            assert(false, "\"\(key)\": Unknown Key")
-                        }
-                    }
-                }
+        for (styleKey, element) in info {
+            guard let styles = labelStyles[styleKey] else {
+                return
             }
-        
-    }
-    
-
-    func styleButton(objects: [SKButton]) {
-        
-        for object in objects {
-            if let styleTag = object.styleTag, styles = buttonStyles[styleTag] {
-                for (key, value) in styles {
-                    switch key {
-                    case "fontStyle":
-                        let name = (value as! FontStyle).fontName
-                        let size = (value as! FontStyle).size
-                        object.titleLabel?.font = UIFont (name: name, size: CGFloat(size))
-                    case "borderWidth":
-                        object.layer.borderWidth = value as! CGFloat
-                    case "borderColor":
-                        object.layer.borderColor = (value as! UIColor).CGColor
-                    case "cornerRadius":
-                        object.layer.cornerRadius = value as! CGFloat
-                    case "normal":
-                        let color = value as! UIColor
-                        object.setTitleColor(color, forState: .Normal)
-                    default:
-                        assert(false,"Unkown Key: \(key)")
+            
+            for (property, value) in styles {
+                switch property {
+                case "fontStyle":
+                    if let fontStyle = value as? FontStyle {
+                        element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
                     }
+                default:
+                    return
                 }
             }
         }
-        
     }
     
-    func styleTextField(objects: [SKTextField]) {
-        for object in objects {
-            if let styleTag = object.styleTag, styles = textFieldStyles[styleTag] {
-                for (key, value) in styles {
-                    switch key {
-                    case "fontStyle":
-                        let name = (value as! FontStyle).fontName
-                        let size = (value as! FontStyle).size
-                        object.font = UIFont (name: name, size: CGFloat(size))
-                    case "borderWidth":
-                        object.layer.borderWidth = value as! CGFloat
-                    case "borderColor":
-                        object.layer.borderColor = (value as! UIColor).CGColor
-                    case "textAlignment":
-                        let rawValue = value as! Int
-                        object.textAlignment = NSTextAlignment(rawValue: rawValue)!
-                    case "borderStyle":
-                        let rawValue = value as! Int
-                        object.borderStyle = UITextBorderStyle(rawValue: rawValue)!
-                    case "cornerRadius":
-                        object.layer.cornerRadius = value as! CGFloat
-                    case "textColor":
-                        object.textColor = value as? UIColor
-                    default:
-                        assert(false,"Unkown Key: \(key)")
+    func style(withButtonsAndStyles buttonInfo: [String: UIButton]?) {
+        guard let info = buttonInfo else {
+            return
+        }
+        
+        for (styleKey, element) in info {
+            guard let styles = buttonStyles[styleKey] else {
+                return
+            }
+            
+            for (property, value) in styles {
+                switch property {
+                case "fontStyle":
+                    if let fontStyle = value as? FontStyle {
+                        element.titleLabel?.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
                     }
+                case "borderWidth":
+                    if let borderWidth = value as? Int {
+                        element.layer.borderWidth = CGFloat(borderWidth)
+                    }
+                case "borderColor":
+                    if let borderColor = value as? UIColor {
+                        element.layer.borderColor = borderColor.CGColor
+                    }
+                case "cornerRadius":
+                    if let cornerRadius = value as? Int {
+                        element.layer.cornerRadius = CGFloat(cornerRadius)
+                    }
+                case "normal":
+                    if let color = value as? UIColor {
+                        element.setTitleColor(color, forState: .Normal)
+                    }
+                default:
+                    return
+                }
+            }
+        }
+    }
+    
+    func style(withTextFieldsAndStyles textFieldInfo: [String: UITextField]?) {
+        guard let info = textFieldInfo else {
+            return
+        }
+        
+        for (styleKey, element) in info {
+            guard let styles = textFieldStyles[styleKey] else {
+                return
+            }
+            
+            for (property, value) in styles {
+                switch property {
+                case "fontStyle":
+                    if let fontStyle = value as? FontStyle {
+                        element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
+                    }
+                case "borderWidth":
+                    if let borderWidth = value as? Int {
+                        element.layer.borderWidth = CGFloat(borderWidth)
+                    }
+                case "borderColor":
+                    if let borderColor = value as? UIColor {
+                        element.layer.borderColor = borderColor.CGColor
+                    }
+                case "textAlignment":
+                    if let aValue = value as? Int {
+                        guard let textAlignment = NSTextAlignment(rawValue: aValue) else {
+                            break
+                        }
+                        element.textAlignment = textAlignment
+                    }
+                case "borderStyle":
+                    if let aValue = value as? Int {
+                        guard let textBorderStyle = UITextBorderStyle(rawValue: aValue) else {
+                            break
+                        }
+                        element.borderStyle = textBorderStyle
+                    }
+                case "cornerRadius":
+                    if let cornerRadius = value as? Int {
+                        element.layer.cornerRadius = CGFloat(cornerRadius)
+                    }
+                case "textColor":
+                    element.textColor = value as? UIColor
+                default:
+                    return
                 }
             }
         }
