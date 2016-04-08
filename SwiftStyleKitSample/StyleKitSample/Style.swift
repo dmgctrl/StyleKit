@@ -103,14 +103,14 @@ class Style: NSObject {
             }
             
             if let buttonDict = json["Buttons"] as? [String: [String:AnyObject]] {
-                for (labelKey, specification) in buttonDict {
-                    buttonStyles[labelKey] = serializeButtonSpec(specification)
+                for (buttonKey, specification) in buttonDict {
+                    buttonStyles[buttonKey] = serializeButtonSpec(specification)
                 }
             }
             
-            if let itemDict = json["TextFields"] as? [String: [String:AnyObject]] {
-                for (labelKey, specification) in itemDict {
-                    textFieldStyles[labelKey] = serializeTextFieldSpec(specification)
+            if let textFieldDict = json["TextFields"] as? [String: [String:AnyObject]] {
+                for (textFieldKey, specification) in textFieldDict {
+                    textFieldStyles[textFieldKey] = serializeTextFieldSpec(specification)
                 }
             }
             

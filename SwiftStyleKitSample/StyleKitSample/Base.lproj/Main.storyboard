@@ -158,7 +158,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1791" y="375"/>
+            <point key="canvasLocation" x="1808" y="315"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="VuI-LI-baE">
@@ -208,7 +208,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1763" y="1039"/>
+            <point key="canvasLocation" x="1808" y="1030"/>
         </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="6ZJ-9G-qcK">
@@ -249,7 +249,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1414" y="1724"/>
+            <point key="canvasLocation" x="993" y="1754"/>
         </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="Byg-9O-NQA">
