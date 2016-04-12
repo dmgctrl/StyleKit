@@ -1,0 +1,112 @@
+{
+    "Fonts": {
+        "primaryFontLight": "MarkerFelt-Thin",
+        "primaryFontMedium": "MarkerFelt-Wide",
+    },
+    "Colors": {
+        "baseColorWhite": {
+            "red": 255,
+            "green": 255,
+            "blue": 255,
+            "alpha": 1
+        },
+        "baseColorBlack": {
+            "red": 0,
+            "green": 0,
+            "blue": 0,
+            "alpha": 1
+        },
+        "baseColorBlue": {
+            "red": 0,
+            "green": 0,
+            "blue": 255,
+            "alpha": 1
+        },
+        "purpleColor": {
+            "red": 128,
+            "green": 0,
+            "blue": 128,
+            "alpha": 1
+        }
+    },
+    "Labels": {
+        "H1": {
+            "fontStyle": {
+                "font": "primaryFontLight",
+                "size": 20
+            }
+        },
+        "H2": {
+            "fontStyle": {
+                "font": "primaryFontMedium",
+                "size": 30
+            }
+        }        
+    },
+    "Buttons": {
+        "B1": {
+            "fontStyle": {
+                "font": "primaryFontMedium",
+                "size": 19
+            },
+            "borderWidth": 1,
+            "borderColor": "baseColorBlue",
+            "cornerRadius": 5,
+            "normal": {
+                "titleColor": "baseColorWhite"
+            }
+        },
+        "B2": {
+            "fontStyle": {
+                "font": "primaryFontMedium",
+                "size": 19
+            },
+            "normal": {
+                "titleColor": "baseColorWhite"
+            }
+        },
+        "B3": {
+            "fontStyle": {
+                "font": "primaryFontMedium",
+                "size": 19
+            },
+            "borderWidth": 1,
+            "borderColor": "baseColorBlack",
+            "cornerRadius": 5,
+            "normal": {
+                "titleColor": "baseColorBlack"
+            }
+        }
+    },
+    
+    "TextFields": {
+        "T1": {
+            "fontStyle": {
+                "font": "primaryFontLight",
+                "size": 25
+            },
+            "textColor": "baseColorWhite",
+            "borderColor": "baseColorBlack",
+            "borderWidth": 1,
+            "cornerRadius": 10,
+            "textAlignment": "Center",
+            "borderStyle": "None"
+        }
+    },
+    
+    "SegmentedControls": {
+        "default": {
+            "fontStyle": {
+                "font": "primaryFontLight",
+                "size": 13
+            },
+            "tintColor": "baseColorBlack",
+            "normalState": {
+                "textColor": "baseColorWhite"
+            },
+            "selectedState": {
+                "textColor": "purpleColor"
+            }
+        }
+    }
+}
