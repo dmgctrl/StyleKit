@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct FontProperties {
+    static let Name = "font"
+    static let Size = "size"
+}
+
 struct LabelProperties {
     static let FontStyle = "fontStyle"
 }
@@ -28,4 +33,15 @@ struct TextFieldProperties {
     static let TextAlignment = "textAlignment"
     static let BorderStyle = "borderStyle"
     static let TextColor = "textColor"
+}
+
+struct SegmentedControlProperties {
+    static let FontStyle = "fontStyle"
+    static let NormalState = "normalState"
+    static let SelectedState = "selectedState"
+    static let TintColor = "tintColor"
+}
+
+struct UIElements {
+    static let SegmentedControls = "SegmentedControls"
 }

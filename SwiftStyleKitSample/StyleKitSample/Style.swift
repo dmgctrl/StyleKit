@@ -10,47 +10,11 @@ class Style: NSObject {
     var labelStyles = [String: [String:AnyObject]]()
     var buttonStyles = [String: [String:AnyObject]]()
     var textFieldStyles = [String: [String:AnyObject]]()
+    var segmentedControlStyles = [String: [String: AnyObject]]()
     
     override init() {
         super.init()
         serialize()
-    }
-    
-    
-    @IBOutlet var StyleLabel: [UILabel]! {
-        didSet {
-            var info = [String: UILabel]()
-            for label in StyleLabel {
-                if let styleTag = label.styleTag {
-                    info[styleTag] = label
-                }
-            }
-            self.style(withLabelsAndStyles: info)
-        }
-    }
-    
-    @IBOutlet var StyleButton: [UIButton]! {
-        didSet {
-            var info = [String: UIButton]()
-            for button in StyleButton {
-                if let styleTag = button.styleTag {
-                    info[styleTag] = button
-                }
-            }
-            self.style(withButtonsAndStyles: info)
-        }
-    }
-    
-    @IBOutlet var StyleTextField: [UITextField]! {
-        didSet {
-            var info = [String: UITextField]()
-            for textField in StyleTextField {
-                if let styleTag = textField.styleTag {
-                    info[styleTag] = textField
-                }
-            }
-            self.style(withTextFieldsAndStyles: info)
-        }
     }
     
     //Mark: Serialize
@@ -111,6 +75,12 @@ class Style: NSObject {
             if let textFieldDict = json["TextFields"] as? [String: [String:AnyObject]] {
                 for (textFieldKey, specification) in textFieldDict {
                     textFieldStyles[textFieldKey] = serializeTextFieldSpec(specification)
+                }
+            }
+            
+            if let segmentedControlDict = json[UIElements.SegmentedControls] as? [String: [String: AnyObject]] {
+                for (segmentedControlKey, specification) in segmentedControlDict {
+                    segmentedControlStyles[segmentedControlKey] = specification
                 }
             }
             
@@ -345,4 +315,63 @@ class Style: NSObject {
             }
         }
     }
+    
+    func style(withSegmentedControlsAndStyles segmentedControlInfo: [String: UISegmentedControl]?) {
+        guard let info = segmentedControlInfo else {
+            return
+        }
+        
+        for (styleKey, element) in info {
+            guard let styles = segmentedControlStyles[styleKey] else {
+                return
+            }
+            
+            var normalAttributes = [String: AnyObject]()
+            var selectedAttributes = [String: AnyObject]()
+            
+            for (property, value) in styles {
+                
+                switch property {
+                    case SegmentedControlProperties.FontStyle:
+                        guard let fontInfo = value as? [String: AnyObject], fontKey = fontInfo[FontProperties.Name] as? String,
+                            fontSize = fontInfo[FontProperties.Size] as? Int else {
+                            break
+                        }
+                        guard let fontName = fonts[fontKey], font = UIFont(name: fontName, size: CGFloat(fontSize)) else {
+                            break
+                        }
+                        normalAttributes[NSFontAttributeName] = font
+                        selectedAttributes[NSFontAttributeName] = font
+                        break
+                        
+                    case SegmentedControlProperties.NormalState:
+                        if let textColorInfo = value as? [String: String], textColorKey = textColorInfo["textColor"],
+                            color = colors[textColorKey] {
+                            normalAttributes[NSForegroundColorAttributeName] = color
+                        }
+                        break
+                        
+                    case SegmentedControlProperties.SelectedState:
+                        if let textColorInfo = value as? [String: String], textColorKey = textColorInfo["textColor"],
+                            color = colors[textColorKey] {
+                            selectedAttributes[NSForegroundColorAttributeName] = color
+                        }
+                        break
+                    
+                case SegmentedControlProperties.TintColor:
+                    if let tintColorKey = value as? String, tintColor = colors[tintColorKey] {
+                        element.tintColor = tintColor
+                    }
+                    break
+                    
+                    default:
+                        return
+                }
+                
+                element.setTitleTextAttributes(normalAttributes, forState: .Normal)
+                element.setTitleTextAttributes(selectedAttributes, forState: .Selected)
+            }
+        }
+    }
+    
 }

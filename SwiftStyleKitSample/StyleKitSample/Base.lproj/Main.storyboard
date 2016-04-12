@@ -76,6 +76,26 @@
                                             <segue destination="t7z-in-sVF" kind="show" id="dZ0-aZ-KpQ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="kc7-j1-NuP" style="IBUITableViewCellStyleDefault" id="Dqf-Dl-B98">
+                                        <rect key="frame" x="0.0" y="132" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dqf-Dl-B98" id="JfR-E5-Gre">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Segmented Controls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kc7-j1-NuP">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ezk-Bm-kBn" kind="show" id="Slx-rx-J1f"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -92,10 +112,47 @@
             </objects>
             <point key="canvasLocation" x="993" y="494"/>
         </scene>
-        <!--View Controller-->
+        <!--Segmented Controls View Controller-->
+        <scene sceneID="tfm-8m-FkY">
+            <objects>
+                <viewController id="Ezk-Bm-kBn" customClass="SegmentedControlsViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TE9-Cf-ozf"/>
+                        <viewControllerLayoutGuide type="bottom" id="s96-cd-4b9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rS4-6e-S2B">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZdI-IT-Ary">
+                                <rect key="frame" x="240" y="254" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="default"/>
+                                </userDefinedRuntimeAttributes>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZdI-IT-Ary" firstAttribute="centerX" secondItem="rS4-6e-S2B" secondAttribute="centerX" id="6TC-cN-59X"/>
+                            <constraint firstItem="ZdI-IT-Ary" firstAttribute="centerY" secondItem="rS4-6e-S2B" secondAttribute="centerY" id="vQ8-Ws-Zmw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="segmentedControls" destination="ZdI-IT-Ary" collectionClass="NSMutableArray" id="IDB-ro-AsJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJB-Ok-ciY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="-477"/>
+        </scene>
+        <!--Buttons View Controller-->
         <scene sceneID="VWn-Ip-GFd">
             <objects>
-                <viewController id="312-H6-JHP" sceneMemberID="viewController">
+                <viewController id="312-H6-JHP" customClass="ButtonsViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xg5-9m-vKf"/>
                         <viewControllerLayoutGuide type="bottom" id="OzG-S9-fcS"/>
@@ -130,6 +187,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Pes-dw-Fab"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="B1 Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="B1"/>
@@ -148,22 +206,20 @@
                             <constraint firstItem="nzu-Ex-ktO" firstAttribute="top" secondItem="Ic9-ih-Pf9" secondAttribute="bottom" constant="30" id="tcX-bB-Lp8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="buttons" destination="icX-zT-bTI" collectionClass="NSMutableArray" id="r8y-Or-nBI"/>
+                        <outletCollection property="buttons" destination="Ic9-ih-Pf9" collectionClass="NSMutableArray" id="lDs-32-4ZL"/>
+                        <outletCollection property="buttons" destination="nzu-Ex-ktO" collectionClass="NSMutableArray" id="pjV-lj-kp3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffV-ef-yeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="A1A-sd-DCj" customClass="Style" customModule="StyleKitSample" customModuleProvider="target">
-                    <connections>
-                        <outletCollection property="StyleButton" destination="icX-zT-bTI" collectionClass="NSMutableArray" id="axV-qH-73F"/>
-                        <outletCollection property="StyleButton" destination="Ic9-ih-Pf9" collectionClass="NSMutableArray" id="OLy-1i-HB7"/>
-                        <outletCollection property="StyleButton" destination="nzu-Ex-ktO" collectionClass="NSMutableArray" id="BR7-se-Q9E"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="1808" y="315"/>
         </scene>
-        <!--View Controller-->
+        <!--Labels View Controller-->
         <scene sceneID="VuI-LI-baE">
             <objects>
-                <viewController id="1GU-1n-2au" sceneMemberID="viewController">
+                <viewController id="1GU-1n-2au" customClass="LabelsViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Trd-we-Kjs"/>
                         <viewControllerLayoutGuide type="bottom" id="4Yc-ua-LXe"/>
@@ -199,21 +255,19 @@
                             <constraint firstItem="3xd-Cl-LZ5" firstAttribute="centerX" secondItem="7we-U8-y0c" secondAttribute="centerX" id="dn2-CW-fsA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="labels" destination="3xd-Cl-LZ5" collectionClass="NSMutableArray" id="t1r-iv-RfJ"/>
+                        <outletCollection property="labels" destination="7we-U8-y0c" collectionClass="NSMutableArray" id="fpF-iS-2bN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYx-7M-ZFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="MK6-uB-rQZ" customClass="Style" customModule="StyleKitSample" customModuleProvider="target">
-                    <connections>
-                        <outletCollection property="StyleLabel" destination="3xd-Cl-LZ5" collectionClass="NSMutableArray" id="YNl-pR-yuh"/>
-                        <outletCollection property="StyleLabel" destination="7we-U8-y0c" collectionClass="NSMutableArray" id="UWt-l4-oUx"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="1808" y="1030"/>
         </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="6ZJ-9G-qcK">
             <objects>
-                <viewController title="StyleKit Catalog" id="t7z-in-sVF" sceneMemberID="viewController">
+                <viewController title="StyleKit Catalog" id="t7z-in-sVF" customClass="TextFieldsViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="42e-db-5HM"/>
                         <viewControllerLayoutGuide type="bottom" id="Qib-E6-Yf4"/>
@@ -241,13 +295,11 @@
                             <constraint firstItem="qUd-5P-MCh" firstAttribute="centerY" secondItem="SAa-y9-LV9" secondAttribute="centerY" id="Oxw-ym-vX7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outletCollection property="textFields" destination="qUd-5P-MCh" collectionClass="NSMutableArray" id="UEn-LC-2ho"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dY-zw-EeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="w4L-Zp-OcD" customClass="Style" customModule="StyleKitSample" customModuleProvider="target">
-                    <connections>
-                        <outletCollection property="StyleTextField" destination="qUd-5P-MCh" collectionClass="NSMutableArray" id="HPB-3r-1ic"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="993" y="1754"/>
         </scene>
