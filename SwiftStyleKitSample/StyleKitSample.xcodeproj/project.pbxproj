@@ -16,6 +16,7 @@
 		C446D61D1CB540CA00EBC929 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61B1CB540CA00EBC929 /* Style.swift */; };
 		C446D61E1CB540CA00EBC929 /* UIView+StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */; };
 		C446D6201CB5430C00EBC929 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61F1CB5430C00EBC929 /* Constants.swift */; };
+		C46B9D3F1CBED54200B50F17 /* SlidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B9D3E1CBED54200B50F17 /* SlidersViewController.swift */; };
 		C4DC5FF61CBD35300006132D /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC5FF51CBD35300006132D /* LabelsViewController.swift */; };
 		C4DC5FF81CBD360E0006132D /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC5FF71CBD360E0006132D /* ButtonsViewController.swift */; };
 		C4DC5FFA1CBD365C0006132D /* TextFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DC5FF91CBD365C0006132D /* TextFieldsViewController.swift */; };
@@ -34,6 +35,7 @@
 		C446D61B1CB540CA00EBC929 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+StyleKit.swift"; sourceTree = "<group>"; };
 		C446D61F1CB5430C00EBC929 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C46B9D3E1CBED54200B50F17 /* SlidersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidersViewController.swift; sourceTree = "<group>"; };
 		C4DC5FF51CBD35300006132D /* LabelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
 		C4DC5FF71CBD360E0006132D /* ButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		C4DC5FF91CBD365C0006132D /* TextFieldsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				C4DC5FF71CBD360E0006132D /* ButtonsViewController.swift */,
 				C4DC5FF91CBD365C0006132D /* TextFieldsViewController.swift */,
 				C4DC5FFB1CBD36D50006132D /* SegmentedControlsViewController.swift */,
+				C46B9D3E1CBED54200B50F17 /* SlidersViewController.swift */,
 			);
 			name = StyleKit;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				C4DC5FFC1CBD36D50006132D /* SegmentedControlsViewController.swift in Sources */,
 				C4DC5FFA1CBD365C0006132D /* TextFieldsViewController.swift in Sources */,
 				C4DC5FF81CBD360E0006132D /* ButtonsViewController.swift in Sources */,
+				C46B9D3F1CBED54200B50F17 /* SlidersViewController.swift in Sources */,
 				C446D61D1CB540CA00EBC929 /* Style.swift in Sources */,
 				298DC60B1C92073E00BB0D29 /* AppDelegate.swift in Sources */,
 			);

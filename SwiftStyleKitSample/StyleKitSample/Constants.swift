@@ -96,6 +96,25 @@ enum SegmentedControlProperties: String {
     }
 }
 
+enum SliderProperties: String {
+    case FilledTrackColor = "filledTrackColor"
+    case EmptyTrackColor = "emptyTrackColor"
+    case ThumbImage = "thumbImage"
+    
+    init?(rawValue: String) {
+        switch rawValue {
+            case "filledTrackColor":
+                self = .FilledTrackColor
+            case "emptyTrackColor":
+                self = .EmptyTrackColor
+            case "thumbImage":
+                self = .ThumbImage
+            default:
+                return nil
+        }
+    }
+}
+
 enum ColorProperties: String {
     case Red = "red"
     case Green = "green"
@@ -108,6 +127,7 @@ enum UIElements: String {
     case TextFields = "TextFields"
     case Buttons = "Buttons"
     case Labels = "Labels"
+    case Sliders = "Sliders"
 }
 
 enum CommonObjects: String {

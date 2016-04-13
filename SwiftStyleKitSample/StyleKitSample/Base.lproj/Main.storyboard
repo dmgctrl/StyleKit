@@ -3,8 +3,44 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Sliders View Controller-->
+        <scene sceneID="2rX-fQ-G0D">
+            <objects>
+                <viewController id="EYY-0p-ZaI" customClass="SlidersViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uKu-Ga-APy"/>
+                        <viewControllerLayoutGuide type="bottom" id="7ZJ-pZ-Y89"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sf0-JM-Cnm">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mK1-PD-Cms">
+                                <rect key="frame" x="18" y="253" width="564" height="31"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S1"/>
+                                </userDefinedRuntimeAttributes>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mK1-PD-Cms" firstAttribute="leading" secondItem="sf0-JM-Cnm" secondAttribute="leadingMargin" id="Dv9-bS-PR5"/>
+                            <constraint firstItem="mK1-PD-Cms" firstAttribute="centerY" secondItem="sf0-JM-Cnm" secondAttribute="centerY" id="Hro-Me-6XW"/>
+                            <constraint firstItem="mK1-PD-Cms" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="SzI-di-ci4"/>
+                            <constraint firstItem="mK1-PD-Cms" firstAttribute="trailing" secondItem="sf0-JM-Cnm" secondAttribute="trailingMargin" id="ZGF-UX-b0k"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="sliders" destination="mK1-PD-Cms" collectionClass="NSMutableArray" id="IcP-jg-F0j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWD-OT-fkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1738" y="-441"/>
+        </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="92v-eU-MGr">
             <objects>
@@ -96,6 +132,26 @@
                                             <segue destination="Ezk-Bm-kBn" kind="show" id="Slx-rx-J1f"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="U9N-wo-dZ4" style="IBUITableViewCellStyleDefault" id="8BJ-Nz-a6u">
+                                        <rect key="frame" x="0.0" y="176" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8BJ-Nz-a6u" id="zjh-CI-vM8">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sliders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U9N-wo-dZ4">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="EYY-0p-ZaI" kind="show" id="yvw-Sy-rqY"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -147,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJB-Ok-ciY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="-477"/>
+            <point key="canvasLocation" x="2567" y="-84"/>
         </scene>
         <!--Buttons View Controller-->
         <scene sceneID="VWn-Ip-GFd">
@@ -214,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffV-ef-yeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808" y="315"/>
+            <point key="canvasLocation" x="2361" y="671"/>
         </scene>
         <!--Labels View Controller-->
         <scene sceneID="VuI-LI-baE">
@@ -262,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYx-7M-ZFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808" y="1030"/>
+            <point key="canvasLocation" x="2171" y="1455"/>
         </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="6ZJ-9G-qcK">

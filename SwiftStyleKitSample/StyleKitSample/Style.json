@@ -3,8 +3,11 @@
         "primaryFontLight": "MarkerFelt-Thin",
         "primaryFontMedium": "MarkerFelt-Wide",
     },
+    "Images": {
+        "defaultThumbImage": "BlueDot"
+    },
     "Colors": {
-        "baseColorWhite": {
+        "whiteColor": {
             "red": 255,
             "green": 255,
             "blue": 255,
@@ -53,7 +56,7 @@
             "borderColor": "baseColorBlue",
             "cornerRadius": 5,
             "normal": {
-                "titleColor": "baseColorWhite"
+                "titleColor": "whiteColor"
             }
         },
         "B2": {
@@ -62,7 +65,7 @@
                 "size": 19
             },
             "normal": {
-                "titleColor": "baseColorWhite"
+                "titleColor": "whiteColor"
             }
         },
         "B3": {
@@ -71,7 +74,7 @@
                 "size": 19
             },
             "borderWidth": 1,
-            "borderColor": "baseColorBlack",
+            "borderColor": "whiteColor",
             "cornerRadius": 5,
             "normal": {
                 "titleColor": "baseColorBlack"
@@ -85,7 +88,7 @@
                 "font": "primaryFontLight",
                 "size": 25
             },
-            "textColor": "baseColorWhite",
+            "textColor": "whiteColor",
             "borderColor": "baseColorBlack",
             "borderWidth": 1,
             "cornerRadius": 10,
@@ -102,11 +105,19 @@
             },
             "tintColor": "baseColorBlack",
             "normalState": {
-                "textColor": "baseColorWhite"
+                "textColor": "whiteColor"
             },
             "selectedState": {
                 "textColor": "purpleColor"
             }
+        }
+    },
+    
+    "Sliders": {
+        "S1": {
+            "filledTrackColor": "purpleColor",
+            "emptyTrackColor": "baseColorBlue",
+            "thumbImage": "defaultThumbImage"
         }
     }
 }
