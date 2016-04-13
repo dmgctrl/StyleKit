@@ -95,7 +95,7 @@
     },
     
     "SegmentedControls": {
-        "default": {
+        "SC1": {
             "fontStyle": {
                 "font": "primaryFontLight",
                 "size": 13
@@ -106,6 +106,45 @@
             },
             "selectedState": {
                 "textColor": "purpleColor"
+            }
+        },
+        "SC2": {
+            "fontStyle": {
+                "font": "primaryFontMedium",
+                "size": 15
+            },
+            "tintColor": "baseColorWhite",
+            "normalState": {
+                "textColor": "baseColorWhite"
+            },
+            "selectedState": {
+                "textColor": "purpleColor"
+            }
+        },
+        "SC3": {
+            "fontStyle": {
+                "font": "primaryFontLight",
+                "size": 17
+            },
+            "tintColor": "baseColorWhite",
+            "normalState": {
+                "textColor": "baseColorBlack"
+            },
+            "selectedState": {
+                "textColor": "baseColorBlue"
+            }
+        },
+        "SC4": {
+            "fontStyle": {
+                "font": "primaryFontMedium",
+                "size": 19
+            },
+            "tintColor": "purpleColor",
+            "normalState": {
+                "textColor": "baseColorWhite"
+            },
+            "selectedState": {
+                "textColor": "baseColorBlue"
             }
         }
     }

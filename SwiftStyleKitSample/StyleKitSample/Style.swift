@@ -330,42 +330,38 @@ class Style: NSObject {
             var selectedAttributes = [String: AnyObject]()
             
             for (property, value) in styles {
+                guard let segProperty = SegmentedControlProperties(rawValue: property) else {
+                    assertionFailure("Invalid JSON : Unsupported property for SegmentedControl: \(property)")
+                    return
+                }
                 
-                switch property {
-                    case SegmentedControlProperties.FontStyle.rawValue:
+                switch segProperty {
+                    case .FontStyle:
                         guard let fontInfo = value as? [String: AnyObject], fontKey = fontInfo[FontProperties.Name.rawValue] as? String,
                             fontSize = fontInfo[FontProperties.Size.rawValue] as? Int else {
-                            break
+                            assertionFailure("Invalid JSON : SegmentedControl : FontStyle")
+                            return
                         }
                         guard let fontName = fonts[fontKey], font = UIFont(name: fontName, size: CGFloat(fontSize)) else {
-                            break
+                            assertionFailure("Invalid JSON : SegmentedControl : FontStyle")
+                            return
                         }
                         normalAttributes[NSFontAttributeName] = font
                         selectedAttributes[NSFontAttributeName] = font
-                        break
-                        
-                    case SegmentedControlProperties.NormalState.rawValue:
+                    case .NormalState:
                         if let textColorInfo = value as? [String: String], textColorKey = textColorInfo[CommonProperties.TextColor.rawValue],
                             color = colors[textColorKey] {
                             normalAttributes[NSForegroundColorAttributeName] = color
                         }
-                        break
-                        
-                    case SegmentedControlProperties.SelectedState.rawValue:
+                    case .SelectedState:
                         if let textColorInfo = value as? [String: String], textColorKey = textColorInfo[CommonProperties.TextColor.rawValue],
                             color = colors[textColorKey] {
                             selectedAttributes[NSForegroundColorAttributeName] = color
                         }
-                        break
-                    
-                case SegmentedControlProperties.TintColor.rawValue:
-                    if let tintColorKey = value as? String, tintColor = colors[tintColorKey] {
-                        element.tintColor = tintColor
-                    }
-                    break
-                    
-                    default:
-                        return
+                    case .TintColor:
+                        if let tintColorKey = value as? String, tintColor = colors[tintColorKey] {
+                            element.tintColor = tintColor
+                        }
                 }
                 
                 element.setTitleTextAttributes(normalAttributes, forState: .Normal)
