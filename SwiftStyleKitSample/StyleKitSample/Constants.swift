@@ -1,39 +1,60 @@
 import Foundation
 
-struct FontProperties {
-    static let Name = "font"
-    static let Size = "size"
+enum FontProperties: String {
+    case Name = "font"
+    case Size = "size"
 }
 
-struct LabelProperties {
-    static let FontStyle = "fontStyle"
+enum LabelProperties: String {
+    case FontStyle = "fontStyle"
 }
 
-struct ButtonProperties {
-    static let FontStyle = "fontStyle"
-    static let BorderWidth = "borderWidth"
-    static let BorderColor = "borderColor"
-    static let CornerRadius = "cornerRadius"
-    static let Normal = "normal"
+enum ButtonProperties: String {
+    case FontStyle = "fontStyle"
+    case BorderWidth = "borderWidth"
+    case BorderColor = "borderColor"
+    case CornerRadius = "cornerRadius"
+    case Normal = "normal"
 }
 
-struct TextFieldProperties {
-    static let FontStyle = "fontStyle"
-    static let BorderWidth = "borderWidth"
-    static let BorderColor = "borderColor"
-    static let CornerRadius = "cornerRadius"
-    static let TextAlignment = "textAlignment"
-    static let BorderStyle = "borderStyle"
-    static let TextColor = "textColor"
+enum TextFieldProperties: String {
+    case FontStyle = "fontStyle"
+    case BorderWidth = "borderWidth"
+    case BorderColor = "borderColor"
+    case CornerRadius = "cornerRadius"
+    case TextAlignment = "textAlignment"
+    case BorderStyle = "borderStyle"
+    case TextColor = "textColor"
 }
 
-struct SegmentedControlProperties {
-    static let FontStyle = "fontStyle"
-    static let NormalState = "normalState"
-    static let SelectedState = "selectedState"
-    static let TintColor = "tintColor"
+enum SegmentedControlProperties: String {
+    case FontStyle = "fontStyle"
+    case NormalState = "normalState"
+    case SelectedState = "selectedState"
+    case TintColor = "tintColor"
 }
 
-struct UIElements {
-    static let SegmentedControls = "SegmentedControls"
+enum ColorProperties: String {
+    case Red = "red"
+    case Green = "green"
+    case Blue = "blue"
+    case Alpha = "alpha"
+}
+
+enum UIElements: String {
+    case SegmentedControls = "SegmentedControls"
+    case TextFields = "TextFields"
+    case Buttons = "Buttons"
+    case Labels = "Labels"
+}
+
+enum CommonObjects: String {
+    case Fonts = "Fonts"
+    case Colors = "Colors"
+    case Images = "Images"
+}
+
+enum CommonProperties: String {
+    case TitleColor = "titleColor"
+    case TextColor = "textColor"
 }
