@@ -10,47 +10,11 @@ class Style: NSObject {
     var labelStyles = [String: [String:AnyObject]]()
     var buttonStyles = [String: [String:AnyObject]]()
     var textFieldStyles = [String: [String:AnyObject]]()
+    var segmentedControlStyles = [String: [String: AnyObject]]()
     
     override init() {
         super.init()
         serialize()
-    }
-    
-    
-    @IBOutlet var StyleLabel: [UILabel]! {
-        didSet {
-            var info = [String: UILabel]()
-            for label in StyleLabel {
-                if let styleTag = label.styleTag {
-                    info[styleTag] = label
-                }
-            }
-            self.style(withLabelsAndStyles: info)
-        }
-    }
-    
-    @IBOutlet var StyleButton: [UIButton]! {
-        didSet {
-            var info = [String: UIButton]()
-            for button in StyleButton {
-                if let styleTag = button.styleTag {
-                    info[styleTag] = button
-                }
-            }
-            self.style(withButtonsAndStyles: info)
-        }
-    }
-    
-    @IBOutlet var StyleTextField: [UITextField]! {
-        didSet {
-            var info = [String: UITextField]()
-            for textField in StyleTextField {
-                if let styleTag = textField.styleTag {
-                    info[styleTag] = textField
-                }
-            }
-            self.style(withTextFieldsAndStyles: info)
-        }
     }
     
     //Mark: Serialize
@@ -79,38 +43,44 @@ class Style: NSObject {
             let data = try NSData(contentsOfURL: stylePath, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
             
-            if let items = json["Fonts"] as? [String: String] {
+            if let items = json[CommonObjects.Fonts.rawValue] as? [String: String] {
                 fonts = items
             }
             
-            if let colorDict = json["Colors"] as? [String: [String: Int]] {
+            if let colorDict = json[CommonObjects.Colors.rawValue] as? [String: [String: Int]] {
                 for (colorKey, components) in colorDict {
-                    if let red = components["red"],
-                        let green = components["green"],
-                        let blue = components["blue"],
-                        let alpha = components["alpha"] {
+                    if let red = components[ColorProperties.Red.rawValue],
+                        let green = components[ColorProperties.Green.rawValue],
+                        let blue = components[ColorProperties.Blue.rawValue],
+                        let alpha = components[ColorProperties.Alpha.rawValue] {
                             colors[colorKey] = UIColor(red: CGFloat(red)/255, green: CGFloat(green)/255, blue: CGFloat(blue)/255, alpha: CGFloat(alpha))
                     }
                 }
             }
             
-            imageNames = json["Images"] as? [String: String]
+            imageNames = json[CommonObjects.Images.rawValue] as? [String: String]
             
-            if let labelDict = json["Labels"] as? [String: [String:AnyObject]] {
+            if let labelDict = json[UIElements.Labels.rawValue] as? [String: [String:AnyObject]] {
                 for (labelKey, specification) in labelDict {
                     labelStyles[labelKey] = serializeLabelSpec(specification)
                 }
             }
             
-            if let buttonDict = json["Buttons"] as? [String: [String:AnyObject]] {
+            if let buttonDict = json[UIElements.Buttons.rawValue] as? [String: [String:AnyObject]] {
                 for (buttonKey, specification) in buttonDict {
                     buttonStyles[buttonKey] = serializeButtonSpec(specification)
                 }
             }
             
-            if let textFieldDict = json["TextFields"] as? [String: [String:AnyObject]] {
+            if let textFieldDict = json[UIElements.TextFields.rawValue] as? [String: [String:AnyObject]] {
                 for (textFieldKey, specification) in textFieldDict {
                     textFieldStyles[textFieldKey] = serializeTextFieldSpec(specification)
+                }
+            }
+            
+            if let segmentedControlDict = json[UIElements.SegmentedControls.rawValue] as? [String: [String: AnyObject]] {
+                for (segmentedControlKey, specification) in segmentedControlDict {
+                    segmentedControlStyles[segmentedControlKey] = specification
                 }
             }
             
@@ -128,87 +98,92 @@ class Style: NSObject {
         }
     }
     
-    func serializeButtonSpec(spec: [String:AnyObject]) -> [String:AnyObject] {
+    func serializeButtonSpec(spec: [String:AnyObject]) -> [String:AnyObject]? {
         var result = [String:AnyObject]()
         for (key,value) in spec {
-            switch key {
-            case "fontStyle":
-                if let nameKey = value["font"] as? String,
-                    font = fonts[nameKey],
-                    size = value["size"] as? Int {
-                        result[key] = FontStyle(fontName: font, size: size)
-                } else {
-                    assert(false)
-                }
-            case "borderWidth":
-                result[key] = spec[key]
-            case "borderColor":
-                if let colorKey = value as? String, color = colors[colorKey]  {
-                    result[key] = color
-                } else {
-                    assert(false)
-                }
-            case "cornerRadius":
-                result[key] = spec[key]
-            case "normal":
-                if let colorKey = value["titleColor"] as? String, color = colors[colorKey]  {
-                    result[key] = color
-                } else {
-                    assert(false)
-                }
-            default:
-                assert(false, "\(key) not Supported")
+            guard let theKey = ButtonProperties(rawValue: key) else {
+                return nil
+            }
+            
+            switch theKey {
+                case ButtonProperties.FontStyle:
+                    if let nameKey = value[FontProperties.Name.rawValue] as? String,
+                        font = fonts[nameKey],
+                        size = value[FontProperties.Size.rawValue] as? Int {
+                            result[key] = FontStyle(fontName: font, size: size)
+                    } else {
+                        assert(false)
+                    }
+                case ButtonProperties.BorderWidth:
+                    result[key] = spec[key]
+                case ButtonProperties.BorderColor:
+                    if let colorKey = value as? String, color = colors[colorKey]  {
+                        result[key] = color
+                    } else {
+                        assert(false)
+                    }
+                case ButtonProperties.CornerRadius:
+                    result[key] = spec[key]
+                case ButtonProperties.Normal:
+                    if let colorKey = value[CommonProperties.TitleColor.rawValue] as? String, color = colors[colorKey]  {
+                        result[key] = color
+                    } else {
+                        assert(false)
+                    }
             }
         }
         return result
     }
     
-    func serializeTextFieldSpec(spec: [String:AnyObject]) -> [String:AnyObject] {
+    func serializeTextFieldSpec(spec: [String:AnyObject]) -> [String:AnyObject]? {
         var result = [String:AnyObject]()
         for (key,value) in spec {
-            switch key {
-            case "fontStyle":
-                if let nameKey = value["font"] as? String,
-                    font = fonts[nameKey],
-                    size = value["size"] as? Int {
-                        result[key] = FontStyle(fontName: font, size: size)
-                } else {
-                    assert(false, "invalid option for key: \(key)")
-                }
-            case "borderWidth":
-                result[key] = spec[key]
-            case "textColor":
-                if let colorKey = value as? String, color = colors[colorKey]  {
-                    result[key] = color
-                } else {
-                    assert(false, "invalid option for key: \(key)")
-                }
-            case "borderColor":
-                if let colorKey = value as? String, color = colors[colorKey]  {
-                    result[key] = color
-                } else {
-                    assert(false, "invalid option for key: \(key)")
-                }
-            case "textAlignment":
-                let allowedValues = ["Left","Center","Right","Justified","Natural"]
-                if allowedValues.contains(value as! String) {
-                    result[key] = allowedValues.indexOf(value as! String)
-                } else {
-                    assert(false, "invalid option for key: \(key)")
-                }
-            case "borderStyle":
-                let allowedValues = ["None","Line","Bezel","RoundedRect"]
-                if allowedValues.contains(value as! String) {
-                    result[key] = allowedValues.indexOf(value as! String)
-                } else {
-                    assert(false, "invalid option for key: \(key)")
-                }
-            case "cornerRadius":
-                result[key] = spec[key]
-            default:
-                assert(false, "\(key) not Supported")
+            guard let theKey = TextFieldProperties(rawValue: key) else {
+                return nil
+            }
+            
+            switch theKey {
+                case TextFieldProperties.FontStyle:
+                    if let nameKey = value[FontProperties.Name.rawValue] as? String,
+                        font = fonts[nameKey],
+                        size = value[FontProperties.Size.rawValue] as? Int {
+                            result[key] = FontStyle(fontName: font, size: size)
+                    } else {
+                        assert(false, "invalid option for key: \(key)")
+                    }
+                case TextFieldProperties.BorderWidth:
+                    result[key] = spec[key]
+                case TextFieldProperties.TextColor:
+                    if let colorKey = value as? String, color = colors[colorKey]  {
+                        result[key] = color
+                    } else {
+                        assert(false, "invalid option for key: \(key)")
+                    }
+                case TextFieldProperties.BorderColor:
+                    if let colorKey = value as? String, color = colors[colorKey]  {
+                        result[key] = color
+                    } else {
+                        assert(false, "invalid option for key: \(key)")
+                    }
+                case TextFieldProperties.TextAlignment:
+                    let allowedValues = ["Left","Center","Right","Justified","Natural"]
+                    if allowedValues.contains(value as! String) {
+                        result[key] = allowedValues.indexOf(value as! String)
+                    } else {
+                        assert(false, "invalid option for key: \(key)")
+                    }
+                case TextFieldProperties.BorderStyle:
+                    let allowedValues = ["None","Line","Bezel","RoundedRect"]
+                    if allowedValues.contains(value as! String) {
+                        result[key] = allowedValues.indexOf(value as! String)
+                    } else {
+                        assert(false, "invalid option for key: \(key)")
+                    }
+                case TextFieldProperties.CornerRadius:
+                    result[key] = spec[key]
             }
         }
+        
         return result
     }
     
@@ -216,10 +191,10 @@ class Style: NSObject {
         var result = [String:AnyObject]()
         for (key,value) in spec {
             switch key {
-            case "fontStyle":
-                if let nameKey = value["font"] as? String,
+            case LabelProperties.FontStyle.rawValue:
+                if let nameKey = value[FontProperties.Name.rawValue] as? String,
                     font = fonts[nameKey],
-                    size = value["size"] as? Int {
+                    size = value[FontProperties.Size.rawValue] as? Int {
                         result[key] = FontStyle(fontName: font, size: size)
                 } else {
                     assert(false)
@@ -244,13 +219,15 @@ class Style: NSObject {
             }
             
             for (property, value) in styles {
-                switch property {
-                case LabelProperties.FontStyle:
-                    if let fontStyle = value as? FontStyle {
-                        element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
-                    }
-                default:
+                guard let theProperty = LabelProperties(rawValue: property) else {
                     return
+                }
+                
+                switch theProperty {
+                    case LabelProperties.FontStyle:
+                        if let fontStyle = value as? FontStyle {
+                            element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
+                        }
                 }
             }
         }
@@ -267,29 +244,31 @@ class Style: NSObject {
             }
             
             for (property, value) in styles {
-                switch property {
-                case ButtonProperties.FontStyle:
-                    if let fontStyle = value as? FontStyle {
-                        element.titleLabel?.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
-                    }
-                case ButtonProperties.BorderWidth:
-                    if let borderWidth = value as? Int {
-                        element.layer.borderWidth = CGFloat(borderWidth)
-                    }
-                case ButtonProperties.BorderColor:
-                    if let borderColor = value as? UIColor {
-                        element.layer.borderColor = borderColor.CGColor
-                    }
-                case ButtonProperties.CornerRadius:
-                    if let cornerRadius = value as? Int {
-                        element.layer.cornerRadius = CGFloat(cornerRadius)
-                    }
-                case ButtonProperties.Normal:
-                    if let color = value as? UIColor {
-                        element.setTitleColor(color, forState: .Normal)
-                    }
-                default:
+                guard let theProperty = ButtonProperties(rawValue: property) else {
                     return
+                }
+                
+                switch theProperty {
+                    case ButtonProperties.FontStyle:
+                        if let fontStyle = value as? FontStyle {
+                            element.titleLabel?.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
+                        }
+                    case ButtonProperties.BorderWidth:
+                        if let borderWidth = value as? Int {
+                            element.layer.borderWidth = CGFloat(borderWidth)
+                        }
+                    case ButtonProperties.BorderColor:
+                        if let borderColor = value as? UIColor {
+                            element.layer.borderColor = borderColor.CGColor
+                        }
+                    case ButtonProperties.CornerRadius:
+                        if let cornerRadius = value as? Int {
+                            element.layer.cornerRadius = CGFloat(cornerRadius)
+                        }
+                    case ButtonProperties.Normal:
+                        if let color = value as? UIColor {
+                            element.setTitleColor(color, forState: .Normal)
+                        }
                 }
             }
         }
@@ -306,43 +285,100 @@ class Style: NSObject {
             }
             
             for (property, value) in styles {
-                switch property {
-                case TextFieldProperties.FontStyle:
-                    if let fontStyle = value as? FontStyle {
-                        element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
-                    }
-                case TextFieldProperties.BorderWidth:
-                    if let borderWidth = value as? Int {
-                        element.layer.borderWidth = CGFloat(borderWidth)
-                    }
-                case TextFieldProperties.BorderColor:
-                    if let borderColor = value as? UIColor {
-                        element.layer.borderColor = borderColor.CGColor
-                    }
-                case TextFieldProperties.TextAlignment:
-                    if let aValue = value as? Int {
-                        guard let textAlignment = NSTextAlignment(rawValue: aValue) else {
-                            break
-                        }
-                        element.textAlignment = textAlignment
-                    }
-                case TextFieldProperties.BorderStyle:
-                    if let aValue = value as? Int {
-                        guard let textBorderStyle = UITextBorderStyle(rawValue: aValue) else {
-                            break
-                        }
-                        element.borderStyle = textBorderStyle
-                    }
-                case TextFieldProperties.CornerRadius:
-                    if let cornerRadius = value as? Int {
-                        element.layer.cornerRadius = CGFloat(cornerRadius)
-                    }
-                case TextFieldProperties.TextColor:
-                    element.textColor = value as? UIColor
-                default:
+                guard let theProperty = TextFieldProperties(rawValue: property) else {
                     return
+                }
+                
+                switch theProperty {
+                    case TextFieldProperties.FontStyle:
+                        if let fontStyle = value as? FontStyle {
+                            element.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
+                        }
+                    case TextFieldProperties.BorderWidth:
+                        if let borderWidth = value as? Int {
+                            element.layer.borderWidth = CGFloat(borderWidth)
+                        }
+                    case TextFieldProperties.BorderColor:
+                        if let borderColor = value as? UIColor {
+                            element.layer.borderColor = borderColor.CGColor
+                        }
+                    case TextFieldProperties.TextAlignment:
+                        if let aValue = value as? Int {
+                            guard let textAlignment = NSTextAlignment(rawValue: aValue) else {
+                                break
+                            }
+                            element.textAlignment = textAlignment
+                        }
+                    case TextFieldProperties.BorderStyle:
+                        if let aValue = value as? Int {
+                            guard let textBorderStyle = UITextBorderStyle(rawValue: aValue) else {
+                                break
+                            }
+                            element.borderStyle = textBorderStyle
+                        }
+                    case TextFieldProperties.CornerRadius:
+                        if let cornerRadius = value as? Int {
+                            element.layer.cornerRadius = CGFloat(cornerRadius)
+                        }
+                    case TextFieldProperties.TextColor:
+                        element.textColor = value as? UIColor
                 }
             }
         }
     }
+    
+    func style(withSegmentedControlsAndStyles segmentedControlInfo: [String: UISegmentedControl]?) {
+        guard let info = segmentedControlInfo else {
+            return
+        }
+        
+        for (styleKey, element) in info {
+            guard let styles = segmentedControlStyles[styleKey] else {
+                return
+            }
+            
+            var normalAttributes = [String: AnyObject]()
+            var selectedAttributes = [String: AnyObject]()
+            
+            for (property, value) in styles {
+                guard let theProperty = SegmentedControlProperties(rawValue: property) else {
+                    return
+                }
+                
+                switch theProperty {
+                    case SegmentedControlProperties.FontStyle:
+                        guard let fontInfo = value as? [String: AnyObject], fontKey = fontInfo[FontProperties.Name.rawValue] as? String,
+                            fontSize = fontInfo[FontProperties.Size.rawValue] as? Int else {
+                            break
+                        }
+                        guard let fontName = fonts[fontKey], font = UIFont(name: fontName, size: CGFloat(fontSize)) else {
+                            break
+                        }
+                        normalAttributes[NSFontAttributeName] = font
+                        selectedAttributes[NSFontAttributeName] = font
+                        
+                    case SegmentedControlProperties.NormalState:
+                        if let textColorInfo = value as? [String: String], textColorKey = textColorInfo[CommonProperties.TextColor.rawValue],
+                            color = colors[textColorKey] {
+                            normalAttributes[NSForegroundColorAttributeName] = color
+                        }
+                        
+                    case SegmentedControlProperties.SelectedState:
+                        if let textColorInfo = value as? [String: String], textColorKey = textColorInfo[CommonProperties.TextColor.rawValue],
+                            color = colors[textColorKey] {
+                            selectedAttributes[NSForegroundColorAttributeName] = color
+                        }
+                    
+                    case SegmentedControlProperties.TintColor:
+                        if let tintColorKey = value as? String, tintColor = colors[tintColorKey] {
+                            element.tintColor = tintColor
+                        }
+                }
+                
+                element.setTitleTextAttributes(normalAttributes, forState: .Normal)
+                element.setTitleTextAttributes(selectedAttributes, forState: .Selected)
+            }
+        }
+    }
+    
 }

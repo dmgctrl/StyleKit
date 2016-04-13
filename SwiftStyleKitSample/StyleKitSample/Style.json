@@ -2,9 +2,6 @@
     "Fonts": {
         "primaryFontLight": "MarkerFelt-Thin",
         "primaryFontMedium": "MarkerFelt-Wide",
-        "primaryFontBold": "MarkerFelt-Bold",
-        "primaryFontBlack": "MarkerFelt-Black",
-        "primaryFontLightItalic": "MarkerFelt-LightItalic"
     },
     "Colors": {
         "baseColorWhite": {
@@ -23,6 +20,12 @@
             "red": 0,
             "green": 0,
             "blue": 255,
+            "alpha": 1
+        },
+        "purpleColor": {
+            "red": 128,
+            "green": 0,
+            "blue": 128,
             "alpha": 1
         }
     },
@@ -43,7 +46,7 @@
     "Buttons": {
         "B1": {
             "fontStyle": {
-                "font": "primaryFontBlack",
+                "font": "primaryFontMedium",
                 "size": 19
             },
             "borderWidth": 1,
@@ -55,7 +58,7 @@
         },
         "B2": {
             "fontStyle": {
-                "font": "primaryFontBlack",
+                "font": "primaryFontMedium",
                 "size": 19
             },
             "normal": {
@@ -88,6 +91,22 @@
             "cornerRadius": 10,
             "textAlignment": "Center",
             "borderStyle": "None"
+        }
+    },
+    
+    "SegmentedControls": {
+        "default": {
+            "fontStyle": {
+                "font": "primaryFontLight",
+                "size": 13
+            },
+            "tintColor": "baseColorBlack",
+            "normalState": {
+                "textColor": "baseColorWhite"
+            },
+            "selectedState": {
+                "textColor": "purpleColor"
+            }
         }
     }
 }
