@@ -1,11 +1,3 @@
-//
-//  Constants.swift
-//  StyleKitSample
-//
-//  Created by Van Nguyen on 4/6/16.
-//  Copyright © 2016 Tonic Design. All rights reserved.
-//
-
 import Foundation
 
 struct FontProperties {
