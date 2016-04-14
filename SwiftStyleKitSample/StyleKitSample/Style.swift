@@ -11,6 +11,7 @@ class Style: NSObject {
     var buttonStyles = [String: [String:AnyObject]]()
     var textFieldStyles = [String: [String:AnyObject]]()
     var segmentedControlStyles = [String: [String: AnyObject]]()
+    var sliderStyles = [String: [String: AnyObject]]()
     
     override init() {
         super.init()
@@ -68,19 +69,29 @@ class Style: NSObject {
             
             if let buttonDict = json[UIElements.Buttons.rawValue] as? [String: [String:AnyObject]] {
                 for (buttonKey, specification) in buttonDict {
-                    buttonStyles[buttonKey] = serializeButtonSpec(specification)
+                    if let spec = serializeButtonSpec(specification) {
+                        buttonStyles[buttonKey] = spec
+                    }
                 }
             }
             
             if let textFieldDict = json[UIElements.TextFields.rawValue] as? [String: [String:AnyObject]] {
                 for (textFieldKey, specification) in textFieldDict {
-                    textFieldStyles[textFieldKey] = serializeTextFieldSpec(specification)
+                    if let spec = serializeTextFieldSpec(specification) {
+                        textFieldStyles[textFieldKey] = spec
+                    }
                 }
             }
             
             if let segmentedControlDict = json[UIElements.SegmentedControls.rawValue] as? [String: [String: AnyObject]] {
                 for (segmentedControlKey, specification) in segmentedControlDict {
                     segmentedControlStyles[segmentedControlKey] = specification
+                }
+            }
+            
+            if let sliderControlDict = json[UIElements.Sliders.rawValue] as? [String: [String: AnyObject]] {
+                for (sliderKey, specification) in sliderControlDict {
+                    sliderStyles[sliderKey] = specification
                 }
             }
             
@@ -379,6 +390,52 @@ class Style: NSObject {
                 element.setTitleTextAttributes(selectedAttributes, forState: .Selected)
             }
         }
+    }
+    
+    func style(withSlidersAndStyles sliderInfo: [String: UISlider]?) {
+        guard let info = sliderInfo else {
+            return
+        }
+        
+        for (styleKey, element) in info {
+            guard let styles = sliderStyles[styleKey] else {
+                return
+            }
+            
+            guard let theImageNames = imageNames else {
+                return
+            }
+            
+            for (property, value) in styles {
+                guard let theProperty = SliderProperties(rawValue: property) else {
+                    return
+                }
+                
+                switch theProperty {
+                    case .EmptyTrackColor:
+                        if let colorKey = value as? String, color = colors[colorKey] {
+                            element.maximumTrackTintColor = color
+                        }
+                    case .FilledTrackColor:
+                        if let colorKey = value as? String, color = colors[colorKey] {
+                            element.minimumTrackTintColor = color
+                        }
+                    case .ThumbImage:
+                        if let imageKey = value as? String, theImageNames = imageNames, imageName = theImageNames[imageKey] {
+                            element.setThumbImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                    case .FilledTrackImage:
+                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
+                            element.setMinimumTrackImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                    case .EmptyTrackImage:
+                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
+                            element.setMaximumTrackImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                }
+            }
+        }
+        
     }
     
 }
