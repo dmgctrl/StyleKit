@@ -412,11 +412,11 @@ class Style: NSObject {
                 }
                 
                 switch theProperty {
-                    case .EmptyTrackColor:
+                    case .MaximumTrackTintColor:
                         if let colorKey = value as? String, color = colors[colorKey] {
                             element.maximumTrackTintColor = color
                         }
-                    case .FilledTrackColor:
+                    case .MinimumTrackTintColor:
                         if let colorKey = value as? String, color = colors[colorKey] {
                             element.minimumTrackTintColor = color
                         }
@@ -424,11 +424,11 @@ class Style: NSObject {
                         if let imageKey = value as? String, theImageNames = imageNames, imageName = theImageNames[imageKey] {
                             element.setThumbImage(UIImage(named: imageName), forState: .Normal)
                         }
-                    case .FilledTrackImage:
+                    case .MinimumTrackImage:
                         if let imageKey = value as? String, imageName = theImageNames[imageKey] {
                             element.setMinimumTrackImage(UIImage(named: imageName), forState: .Normal)
                         }
-                    case .EmptyTrackImage:
+                    case .MaximumTrackImage:
                         if let imageKey = value as? String, imageName = theImageNames[imageKey] {
                             element.setMaximumTrackImage(UIImage(named: imageName), forState: .Normal)
                         }

@@ -35,11 +35,11 @@ enum SegmentedControlProperties: String {
 }
 
 enum SliderProperties: String {
-    case FilledTrackColor = "filledTrackColor"
-    case EmptyTrackColor = "emptyTrackColor"
+    case MinimumTrackTintColor = "minimumTrackTintColor"
+    case MaximumTrackTintColor = "maximumTrackTintColor"
     case ThumbImage = "thumbImage"
-    case FilledTrackImage = "filledTrackImage"
-    case EmptyTrackImage = "emptyTrackImage"
+    case MinimumTrackImage = "minimumTrackImage"
+    case MaximumTrackImage = "maximumTrackImage"
 }
 
 enum ColorProperties: String {

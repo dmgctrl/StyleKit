@@ -117,13 +117,13 @@
     
     "Sliders": {
         "S1": {
-            "filledTrackColor": "purpleColor",
-            "emptyTrackColor": "baseColorBlue",
+            "minimumTrackTintColor": "purpleColor",
+            "maximumTrackTintColor": "baseColorBlue",
             "thumbImage": "defaultThumbImage"
         },
         "S2": {
-            "filledTrackImage": "defaultFilledTrackImage",
-            "emptyTrackImage": "defaultEmptyTrackImage"
+            "minimumTrackImage": "defaultFilledTrackImage",
+            "maximumTrackImage": "defaultEmptyTrackImage"
         }
     }
 }
