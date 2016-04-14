@@ -24,17 +24,27 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S1"/>
                                 </userDefinedRuntimeAttributes>
                             </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5G7-DL-2qt">
+                                <rect key="frame" x="18" y="291" width="564" height="31"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S2"/>
+                                </userDefinedRuntimeAttributes>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5G7-DL-2qt" firstAttribute="leading" secondItem="sf0-JM-Cnm" secondAttribute="leading" constant="20" id="Bx6-P3-aAQ"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="leading" secondItem="sf0-JM-Cnm" secondAttribute="leadingMargin" id="Dv9-bS-PR5"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="centerY" secondItem="sf0-JM-Cnm" secondAttribute="centerY" id="Hro-Me-6XW"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="SzI-di-ci4"/>
+                            <constraint firstItem="5G7-DL-2qt" firstAttribute="top" secondItem="mK1-PD-Cms" secondAttribute="bottom" constant="8" id="YEK-3o-11D"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="trailing" secondItem="sf0-JM-Cnm" secondAttribute="trailingMargin" id="ZGF-UX-b0k"/>
+                            <constraint firstAttribute="trailing" secondItem="5G7-DL-2qt" secondAttribute="trailing" constant="20" id="f9m-ps-ZPd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outletCollection property="sliders" destination="mK1-PD-Cms" collectionClass="NSMutableArray" id="IcP-jg-F0j"/>
+                        <outletCollection property="sliders" destination="5G7-DL-2qt" collectionClass="NSMutableArray" id="HNI-9D-sQK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWD-OT-fkl" userLabel="First Responder" sceneMemberID="firstResponder"/>

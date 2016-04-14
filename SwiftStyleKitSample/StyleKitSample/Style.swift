@@ -402,6 +402,10 @@ class Style: NSObject {
                 return
             }
             
+            guard let theImageNames = imageNames else {
+                return
+            }
+            
             for (property, value) in styles {
                 guard let theProperty = SliderProperties(rawValue: property) else {
                     return
@@ -419,6 +423,14 @@ class Style: NSObject {
                     case .ThumbImage:
                         if let imageKey = value as? String, theImageNames = imageNames, imageName = theImageNames[imageKey] {
                             element.setThumbImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                    case .FilledTrackImage:
+                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
+                            element.setMinimumTrackImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                    case .EmptyTrackImage:
+                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
+                            element.setMaximumTrackImage(UIImage(named: imageName), forState: .Normal)
                         }
                 }
             }

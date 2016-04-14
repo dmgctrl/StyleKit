@@ -4,7 +4,9 @@
         "primaryFontMedium": "MarkerFelt-Wide",
     },
     "Images": {
-        "defaultThumbImage": "BlueDot"
+        "defaultThumbImage": "BlueDot",
+        "defaultFilledTrackImage": "BlueBar",
+        "defaultEmptyTrackImage": "GreenBar"
     },
     "Colors": {
         "whiteColor": {
@@ -118,6 +120,10 @@
             "filledTrackColor": "purpleColor",
             "emptyTrackColor": "baseColorBlue",
             "thumbImage": "defaultThumbImage"
+        },
+        "S2": {
+            "filledTrackImage": "defaultFilledTrackImage",
+            "emptyTrackImage": "defaultEmptyTrackImage"
         }
     }
 }

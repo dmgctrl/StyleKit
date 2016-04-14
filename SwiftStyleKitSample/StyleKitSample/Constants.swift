@@ -100,6 +100,8 @@ enum SliderProperties: String {
     case FilledTrackColor = "filledTrackColor"
     case EmptyTrackColor = "emptyTrackColor"
     case ThumbImage = "thumbImage"
+    case FilledTrackImage = "filledTrackImage"
+    case EmptyTrackImage = "emptyTrackImage"
     
     init?(rawValue: String) {
         switch rawValue {
@@ -109,6 +111,10 @@ enum SliderProperties: String {
                 self = .EmptyTrackColor
             case "thumbImage":
                 self = .ThumbImage
+            case "filledTrackImage":
+                self = .FilledTrackImage
+            case "emptyTrackImage":
+                self = .EmptyTrackImage
             default:
                 return nil
         }
