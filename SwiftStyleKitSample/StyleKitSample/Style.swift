@@ -484,6 +484,7 @@ class Style: NSObject {
                     case .BackgroundImage:
                         if let imageKey = value as? String, imageName = theImageNames[imageKey] {
                             element.setBackgroundImage(UIImage(named: imageName), forState: .Normal)
+                            element.setBackgroundImage(UIImage(named: imageName), forState: .Disabled)
                         }
                 }
             }

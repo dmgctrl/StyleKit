@@ -9,7 +9,7 @@
         "defaultEmptyTrackImage": "GreenBar",
         "defaultIncrementImage": "Star",
         "defaultDecrementImage": "Diamond",
-        "defaultBackgroundImage": "GreenBackground"
+        "defaultBackgroundImage": "Pattern"
     },
     "Colors": {
         "whiteColor": {
