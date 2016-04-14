@@ -12,6 +12,7 @@ class Style: NSObject {
     var textFieldStyles = [String: [String:AnyObject]]()
     var segmentedControlStyles = [String: [String: AnyObject]]()
     var sliderStyles = [String: [String: AnyObject]]()
+    var stepperStyles: [String: [String: AnyObject]]?
     
     override init() {
         super.init()
@@ -89,10 +90,24 @@ class Style: NSObject {
                 }
             }
             
-            if let sliderControlDict = json[UIElements.Sliders.rawValue] as? [String: [String: AnyObject]] {
-                for (sliderKey, specification) in sliderControlDict {
+            if let sliderDict = json[UIElements.Sliders.rawValue] as? [String: [String: AnyObject]] {
+                for (sliderKey, specification) in sliderDict {
                     sliderStyles[sliderKey] = specification
                 }
+            }
+            
+            if let stepperDict = json[UIElements.Steppers.rawValue] as? [String: [String: AnyObject]] {
+                stepperStyles = [String: [String: AnyObject]]()
+                
+                guard var theStepperStyles = stepperStyles else {
+                    return
+                }
+                
+                for (stepperKey, specification) in stepperDict {
+                    theStepperStyles[stepperKey] = specification
+                }
+                
+                stepperStyles = theStepperStyles
             }
             
         } catch {
@@ -436,6 +451,43 @@ class Style: NSObject {
             }
         }
         
+    }
+    
+    func style(withSteppersAndStyles stepperInfo: [String: UIStepper]?) {
+        guard let info = stepperInfo else {
+            return
+        }
+        
+        for (styleKey, element) in info {
+            guard let theStepperStyles = stepperStyles, styles = theStepperStyles[styleKey], theImageNames = imageNames else {
+                return
+            }
+            
+            for (property, value) in styles {
+                guard let theProperty = StepperProperties(rawValue: property) else {
+                    return
+                }
+                
+                switch theProperty {
+                    case .TintColor:
+                        if let colorKey = value as? String, color = colors[colorKey] {
+                            element.tintColor = color
+                        }
+                    case .IncrementImage:
+                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
+                            element.setIncrementImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                    case .DecrementImage:
+                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
+                            element.setDecrementImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                    case .BackgroundImage:
+                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
+                            element.setBackgroundImage(UIImage(named: imageName), forState: .Normal)
+                        }
+                }
+            }
+        }
     }
     
 }

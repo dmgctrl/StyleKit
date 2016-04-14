@@ -6,7 +6,10 @@
     "Images": {
         "defaultThumbImage": "BlueDot",
         "defaultFilledTrackImage": "BlueBar",
-        "defaultEmptyTrackImage": "GreenBar"
+        "defaultEmptyTrackImage": "GreenBar",
+        "defaultIncrementImage": "Star",
+        "defaultDecrementImage": "Diamond",
+        "defaultBackgroundImage": "GreenBackground"
     },
     "Colors": {
         "whiteColor": {
@@ -124,6 +127,25 @@
         "S2": {
             "minimumTrackImage": "defaultFilledTrackImage",
             "maximumTrackImage": "defaultEmptyTrackImage"
+        }
+    },
+    
+    "Steppers": {
+        "S1": {
+            "tintColor": "purpleColor"
+        },
+        "S2": {
+            "incrementImage": "defaultIncrementImage",
+            "decrementImage": "defaultDecrementImage"
+        },
+        "S3": {
+            "backgroundImage": "defaultBackgroundImage"
+        },
+        "S4": {
+            "tintColor": "baseColorBlue",
+            "incrementImage": "defaultIncrementImage",
+            "decrementImage": "defaultDecrementImage",
+            "backgroundImage": "defaultBackgroundImage"
         }
     }
 }

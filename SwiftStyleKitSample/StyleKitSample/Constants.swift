@@ -42,6 +42,13 @@ enum SliderProperties: String {
     case MaximumTrackImage = "maximumTrackImage"
 }
 
+enum StepperProperties: String {
+    case TintColor = "tintColor"
+    case IncrementImage = "incrementImage"
+    case DecrementImage = "decrementImage"
+    case BackgroundImage = "backgroundImage"
+}
+
 enum ColorProperties: String {
     case Red = "red"
     case Green = "green"
@@ -55,6 +62,7 @@ enum UIElements: String {
     case Buttons = "Buttons"
     case Labels = "Labels"
     case Sliders = "Sliders"
+    case Steppers = "Steppers"
 }
 
 enum CommonObjects: String {
