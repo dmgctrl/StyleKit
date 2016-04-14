@@ -233,39 +233,39 @@ To use titleColor for button state you must set the button as "Custom" type in I
 
 "SegmentedControls": {
     "default": {
-        "fontStyle": {
-            "font": "primaryFontBold",
-            "size": 13
-        },
-        "dividerColor": "whiteColor",
-        "normalState": {
-            "backgroundColor": "whiteColor",
-            "textColor": "blackColor"
-        },
-        "selectedState": {
-            "backgroundColor": "blackColor",
-            "textColor": "purpleColor"
-        },
-        "highlightedState": {
-            "backgroundColor": "blackColor",
-            "textColor": "whiteColor"
-        }
+          "fontStyle": {
+              "font": "primaryFontLight",
+              "size": 13
+          },
+          "tintColor": "baseColorBlack",
+          "normalState": {
+              "textColor": "whiteColor"
+          },
+          "selectedState": {
+              "textColor": "purpleColor"
+          }
     }
 }
-    
+
 ```
 
 #### Sliders
 
+* Note: if both the track tint colors and the track images are specified, the tint colors will override the images.
+
 ```
     "Sliders": {
         "S1": {
-            "filledTrackColor": "purpleColor",
-            "emptyTrackColor": "whiteColor",
+            "minimumTrackTintColor": "purpleColor",
+            "maximumTrackTintColor": "whiteColor",
             "thumbImage": "thumbImageDefault"
+        },
+        "S2": {
+          "minimumTrackImage": "defaultFilledTrackImage",
+          "maximumTrackImage": "defaultEmptyTrackImage"
         }
     }
-    
+
 ```
 
 #### Xcode Integration
