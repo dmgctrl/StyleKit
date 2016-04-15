@@ -6,7 +6,10 @@
     "Images": {
         "defaultThumbImage": "BlueDot",
         "defaultFilledTrackImage": "BlueBar",
-        "defaultEmptyTrackImage": "GreenBar"
+        "defaultEmptyTrackImage": "GreenBar",
+        "defaultIncrementImage": "Star",
+        "defaultDecrementImage": "Diamond",
+        "defaultBackgroundImage": "Pattern"
     },
     "Colors": {
         "whiteColor": {
@@ -15,7 +18,7 @@
             "blue": 255,
             "alpha": 1
         },
-        "baseColorBlack": {
+        "blackColor": {
             "red": 0,
             "green": 0,
             "blue": 0,
@@ -57,8 +60,8 @@
             "borderWidth": 1,
             "borderColor": "baseColorBlue",
             "cornerRadius": 5,
-            "normal": {
-                "titleColor": "whiteColor"
+            "titleColor": {
+                "normalState": "whiteColor"
             }
         },
         "B2": {
@@ -66,8 +69,8 @@
                 "font": "primaryFontMedium",
                 "size": 19
             },
-            "normal": {
-                "titleColor": "whiteColor"
+            "titleColor": {
+                "normalState": "whiteColor"
             }
         },
         "B3": {
@@ -78,12 +81,11 @@
             "borderWidth": 1,
             "borderColor": "whiteColor",
             "cornerRadius": 5,
-            "normal": {
-                "titleColor": "baseColorBlack"
+            "titleColor": {
+                "normalState": "blackColor"
             }
         }
     },
-    
     "TextFields": {
         "T1": {
             "fontStyle": {
@@ -91,14 +93,13 @@
                 "size": 25
             },
             "textColor": "whiteColor",
-            "borderColor": "baseColorBlack",
+            "borderColor": "blackColor",
             "borderWidth": 1,
             "cornerRadius": 10,
             "textAlignment": "Center",
             "borderStyle": "None"
         }
     },
-    
     "SegmentedControls": {
         "default": {
             "fontStyle": {
@@ -106,15 +107,12 @@
                 "size": 13
             },
             "tintColor": "baseColorBlack",
-            "normalState": {
-                "textColor": "whiteColor"
-            },
-            "selectedState": {
-                "textColor": "purpleColor"
+            "textColor": {
+                "normalState": "whiteColor",
+                "selectedState": "purpleColor"
             }
         }
     },
-    
     "Sliders": {
         "S1": {
             "minimumTrackTintColor": "purpleColor",
@@ -124,6 +122,48 @@
         "S2": {
             "minimumTrackImage": "defaultFilledTrackImage",
             "maximumTrackImage": "defaultEmptyTrackImage"
+        }
+    },
+    "Steppers": {
+        "S1": {
+            "tintColor": "purpleColor"
+        },
+        "S2": {
+            "incrementImage": {
+                "normalState": "defaultIncrementImage",
+                "disabledState": "defaultIncrementImage",
+                "highlightedState": "defaultIncrementImage"
+            },
+            "decrementImage": {
+                "normalState": "defaultDecrementImage",
+                "disabledState": "defaultDecrementImage",
+                "highlightedState": "defaultDecrementImage"
+            }
+        },
+        "S3": {
+            "backgroundImage": {
+                "normalState": "defaultBackgroundImage",
+                "disabledState": "defaultBackgroundImage",
+                "highlightedState": "defaultBackgroundImage"
+            }
+        },
+        "S4": {
+            "tintColor": "baseColorBlue",
+            "backgroundImage": {
+                "normalState": "defaultBackgroundImage",
+                "disabledState": "defaultBackgroundImage",
+                "highlightedState": "defaultBackgroundImage"
+            },
+            "incrementImage": {
+                "normalState": "defaultIncrementImage",
+                "disabledState": "defaultIncrementImage",
+                "highlightedState": "defaultIncrementImage"
+            },
+            "decrementImage": {
+                "normalState": "defaultDecrementImage",
+                "disabledState": "defaultDecrementImage",
+                "highlightedState": "defaultDecrementImage"
+            }
         }
     }
 }

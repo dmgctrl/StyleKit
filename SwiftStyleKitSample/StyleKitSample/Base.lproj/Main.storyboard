@@ -6,6 +6,66 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Steppers View Controller-->
+        <scene sceneID="VYp-2S-AVl">
+            <objects>
+                <viewController id="w9a-OK-f4a" customClass="SteppersViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U2V-bh-7DZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="S6i-2s-sLd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LwN-3Y-GR6">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="giR-qX-HBQ">
+                                <rect key="frame" x="253" y="216" width="94" height="29"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S1"/>
+                                </userDefinedRuntimeAttributes>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6FY-81-bwn">
+                                <rect key="frame" x="253" y="253" width="94" height="29"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S2"/>
+                                </userDefinedRuntimeAttributes>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="d1x-zr-Ph5">
+                                <rect key="frame" x="253" y="290" width="94" height="29"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S3"/>
+                                </userDefinedRuntimeAttributes>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ty0-5A-FPI">
+                                <rect key="frame" x="253" y="327" width="94" height="29"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S4"/>
+                                </userDefinedRuntimeAttributes>
+                            </stepper>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ty0-5A-FPI" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="CW4-D8-rPn"/>
+                            <constraint firstItem="d1x-zr-Ph5" firstAttribute="top" secondItem="6FY-81-bwn" secondAttribute="bottom" constant="8" id="FRp-s1-uuj"/>
+                            <constraint firstItem="6FY-81-bwn" firstAttribute="top" secondItem="giR-qX-HBQ" secondAttribute="bottom" constant="8" id="RYh-bI-zqh"/>
+                            <constraint firstItem="Ty0-5A-FPI" firstAttribute="top" secondItem="d1x-zr-Ph5" secondAttribute="bottom" constant="8" id="V8e-29-v6v"/>
+                            <constraint firstItem="giR-qX-HBQ" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="b45-Oq-5Ce"/>
+                            <constraint firstItem="6FY-81-bwn" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="hSH-LS-b37"/>
+                            <constraint firstItem="6FY-81-bwn" firstAttribute="centerY" secondItem="LwN-3Y-GR6" secondAttribute="centerY" id="nHD-gJ-wg1"/>
+                            <constraint firstItem="d1x-zr-Ph5" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="xqS-4a-0XX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="steppers" destination="giR-qX-HBQ" collectionClass="NSMutableArray" id="EY3-gA-4uM"/>
+                        <outletCollection property="steppers" destination="6FY-81-bwn" collectionClass="NSMutableArray" id="cjN-lv-HHP"/>
+                        <outletCollection property="steppers" destination="d1x-zr-Ph5" collectionClass="NSMutableArray" id="zlP-ut-io5"/>
+                        <outletCollection property="steppers" destination="Ty0-5A-FPI" collectionClass="NSMutableArray" id="XRp-H0-Pbx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AYr-aQ-j3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1763" y="-471"/>
+        </scene>
         <!--Sliders View Controller-->
         <scene sceneID="2rX-fQ-G0D">
             <objects>
@@ -49,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWD-OT-fkl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="-441"/>
+            <point key="canvasLocation" x="2642" y="-174"/>
         </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="92v-eU-MGr">
@@ -162,6 +222,26 @@
                                             <segue destination="EYY-0p-ZaI" kind="show" id="yvw-Sy-rqY"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hK2-qJ-ffS" style="IBUITableViewCellStyleDefault" id="4MM-Pn-33A">
+                                        <rect key="frame" x="0.0" y="220" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4MM-Pn-33A" id="qyb-a6-lgc">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Steppers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hK2-qJ-ffS">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="w9a-OK-f4a" kind="show" id="4gA-kE-ZPI"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -213,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJB-Ok-ciY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="-84"/>
+            <point key="canvasLocation" x="2642" y="515"/>
         </scene>
         <!--Buttons View Controller-->
         <scene sceneID="VWn-Ip-GFd">
@@ -280,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffV-ef-yeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2361" y="671"/>
+            <point key="canvasLocation" x="2642" y="1265"/>
         </scene>
         <!--Labels View Controller-->
         <scene sceneID="VuI-LI-baE">
@@ -328,7 +408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PYx-7M-ZFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2171" y="1455"/>
+            <point key="canvasLocation" x="1861" y="1754"/>
         </scene>
         <!--StyleKit Catalog-->
         <scene sceneID="6ZJ-9G-qcK">
