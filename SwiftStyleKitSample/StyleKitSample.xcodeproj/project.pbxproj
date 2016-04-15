@@ -13,6 +13,7 @@
 		298DC6101C92073E00BB0D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298DC60E1C92073E00BB0D29 /* Main.storyboard */; };
 		298DC6121C92073E00BB0D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 298DC6111C92073E00BB0D29 /* Assets.xcassets */; };
 		298DC6151C92073E00BB0D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298DC6131C92073E00BB0D29 /* LaunchScreen.storyboard */; };
+		C4451B231CC166C800C9E410 /* ProgressViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4451B221CC166C800C9E410 /* ProgressViewsViewController.swift */; };
 		C446D61D1CB540CA00EBC929 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61B1CB540CA00EBC929 /* Style.swift */; };
 		C446D61E1CB540CA00EBC929 /* UIView+StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */; };
 		C446D6201CB5430C00EBC929 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61F1CB5430C00EBC929 /* Constants.swift */; };
@@ -33,6 +34,7 @@
 		298DC6111C92073E00BB0D29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		298DC6141C92073E00BB0D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		298DC6161C92073E00BB0D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4451B221CC166C800C9E410 /* ProgressViewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewsViewController.swift; sourceTree = "<group>"; };
 		C446D61B1CB540CA00EBC929 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+StyleKit.swift"; sourceTree = "<group>"; };
 		C446D61F1CB5430C00EBC929 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				C4DC5FFB1CBD36D50006132D /* SegmentedControlsViewController.swift */,
 				C46B9D3E1CBED54200B50F17 /* SlidersViewController.swift */,
 				C4946BD01CBFEF8E00361F0B /* SteppersViewController.swift */,
+				C4451B221CC166C800C9E410 /* ProgressViewsViewController.swift */,
 			);
 			name = StyleKit;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				C446D6201CB5430C00EBC929 /* Constants.swift in Sources */,
 				298DC60D1C92073E00BB0D29 /* ViewController.swift in Sources */,
+				C4451B231CC166C800C9E410 /* ProgressViewsViewController.swift in Sources */,
 				C4946BD11CBFEF8E00361F0B /* SteppersViewController.swift in Sources */,
 				C446D61E1CB540CA00EBC929 /* UIView+StyleKit.swift in Sources */,
 				C4DC5FF61CBD35300006132D /* LabelsViewController.swift in Sources */,

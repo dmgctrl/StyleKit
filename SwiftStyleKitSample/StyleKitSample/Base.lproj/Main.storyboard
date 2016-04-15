@@ -242,6 +242,26 @@
                                             <segue destination="w9a-OK-f4a" kind="show" id="4gA-kE-ZPI"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Dwg-f5-sbv" style="IBUITableViewCellStyleDefault" id="sKk-5P-pcE">
+                                        <rect key="frame" x="0.0" y="264" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sKk-5P-pcE" id="cFw-Wi-gdA">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Progress Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dwg-f5-sbv">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5Y8-bE-MAH" kind="show" id="1Kd-jY-853"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -466,6 +486,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7pw-p5-vmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="296" y="614"/>
+        </scene>
+        <!--Progress Views View Controller-->
+        <scene sceneID="L0h-e2-JlJ">
+            <objects>
+                <viewController id="5Y8-bE-MAH" customClass="ProgressViewsViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wi0-Cb-FVh"/>
+                        <viewControllerLayoutGuide type="bottom" id="ym3-ky-ofs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fak-I4-4ff">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CvV-7y-TGr">
+                                <rect key="frame" x="20" y="267" width="560" height="2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="P1"/>
+                                </userDefinedRuntimeAttributes>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iQ8-rj-WAP">
+                                <rect key="frame" x="20" y="290" width="560" height="2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="P2"/>
+                                </userDefinedRuntimeAttributes>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iQ8-rj-WAP" secondAttribute="trailing" constant="20" id="8TN-xd-ae8"/>
+                            <constraint firstItem="CvV-7y-TGr" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="DEB-w4-ikf"/>
+                            <constraint firstItem="CvV-7y-TGr" firstAttribute="centerY" secondItem="fak-I4-4ff" secondAttribute="centerY" id="Swk-pc-iED"/>
+                            <constraint firstAttribute="trailing" secondItem="CvV-7y-TGr" secondAttribute="trailing" constant="20" id="emm-yd-z4B"/>
+                            <constraint firstItem="iQ8-rj-WAP" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="qAa-N5-cxo"/>
+                            <constraint firstItem="iQ8-rj-WAP" firstAttribute="top" secondItem="CvV-7y-TGr" secondAttribute="bottom" constant="21" id="xKM-Le-EuI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="progressViews" destination="CvV-7y-TGr" collectionClass="NSMutableArray" id="8hG-ZY-Ea7"/>
+                        <outletCollection property="progressViews" destination="iQ8-rj-WAP" collectionClass="NSMutableArray" id="4Z1-o8-REx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Yy-ww-3td" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="264" y="1464"/>
         </scene>
     </scenes>
 </document>

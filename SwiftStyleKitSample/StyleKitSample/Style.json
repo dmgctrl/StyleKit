@@ -24,7 +24,7 @@
             "blue": 0,
             "alpha": 1
         },
-        "baseColorBlue": {
+        "blueColor": {
             "red": 0,
             "green": 0,
             "blue": 255,
@@ -58,7 +58,7 @@
                 "size": 19
             },
             "borderWidth": 1,
-            "borderColor": "baseColorBlue",
+            "borderColor": "blueColor",
             "cornerRadius": 5,
             "titleColor": {
                 "normalState": "whiteColor"
@@ -116,7 +116,7 @@
     "Sliders": {
         "S1": {
             "minimumTrackTintColor": "purpleColor",
-            "maximumTrackTintColor": "baseColorBlue",
+            "maximumTrackTintColor": "blueColor",
             "thumbImage": "defaultThumbImage"
         },
         "S2": {
@@ -148,7 +148,7 @@
             }
         },
         "S4": {
-            "tintColor": "baseColorBlue",
+            "tintColor": "blueColor",
             "backgroundImage": {
                 "normalState": "defaultBackgroundImage",
                 "disabledState": "defaultBackgroundImage",
@@ -164,6 +164,18 @@
                 "disabledState": "defaultDecrementImage",
                 "highlightedState": "defaultDecrementImage"
             }
+        }
+    },
+    "ProgressViews": {
+        "P1": {
+            "style": 0,
+            "progressTintColor": "blueColor",
+            "trackTintColor": "purpleColor"
+        },
+        "P2": {
+            "style": 1,
+            "progressImage": "defaultFilledTrackImage",
+            "trackImage": "defaultEmptyTrackImage"
         }
     }
 }
