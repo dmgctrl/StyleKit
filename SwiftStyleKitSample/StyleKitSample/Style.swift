@@ -6,7 +6,7 @@ class Style: NSObject {
     
     var fonts = [String: String]()
     var colors = [String: UIColor]()
-    var imageNames: [String: String]? = nil
+    var imageNames: [String: String]?
     var labelStyles = [String: [String:AnyObject]]()
     var buttonStyles = [String: [String:AnyObject]]()
     var textFieldStyles = [String: [String:AnyObject]]()
@@ -70,9 +70,7 @@ class Style: NSObject {
             
             if let buttonDict = json[UIElements.Buttons.rawValue] as? [String: [String:AnyObject]] {
                 for (buttonKey, specification) in buttonDict {
-                    if let spec = serializeButtonSpec(specification) {
-                        buttonStyles[buttonKey] = spec
-                    }
+                    buttonStyles[buttonKey] = specification
                 }
             }
             
@@ -122,43 +120,6 @@ class Style: NSObject {
             self.size = size
             self.fontName = fontName
         }
-    }
-    
-    func serializeButtonSpec(spec: [String:AnyObject]) -> [String:AnyObject]? {
-        var result = [String:AnyObject]()
-        for (key,value) in spec {
-            guard let theKey = ButtonProperties(rawValue: key) else {
-                return nil
-            }
-            
-            switch theKey {
-                case ButtonProperties.FontStyle:
-                    if let nameKey = value[FontProperties.Name.rawValue] as? String,
-                        font = fonts[nameKey],
-                        size = value[FontProperties.Size.rawValue] as? Int {
-                            result[key] = FontStyle(fontName: font, size: size)
-                    } else {
-                        assert(false)
-                    }
-                case ButtonProperties.BorderWidth:
-                    result[key] = spec[key]
-                case ButtonProperties.BorderColor:
-                    if let colorKey = value as? String, color = colors[colorKey]  {
-                        result[key] = color
-                    } else {
-                        assert(false)
-                    }
-                case ButtonProperties.CornerRadius:
-                    result[key] = spec[key]
-                case ButtonProperties.Normal:
-                    if let colorKey = value[CommonProperties.TitleColor.rawValue] as? String, color = colors[colorKey]  {
-                        result[key] = color
-                    } else {
-                        assert(false)
-                    }
-            }
-        }
-        return result
     }
     
     func serializeTextFieldSpec(spec: [String:AnyObject]) -> [String:AnyObject]? {
@@ -232,6 +193,78 @@ class Style: NSObject {
         return result
     }
     
+    //MARK: Apply values to properties related to states
+    
+    private func assignTitleColor(toButton button: UIButton, withColorsAndStates info: [String: String]) {
+        for (stateKey, colorKey) in info {
+            guard let state = ButtonAllowedStates(rawValue: stateKey), color = colors[colorKey] else {
+                continue
+            }
+            
+            switch state {
+            case .Normal:
+                button.setTitleColor(color, forState: .Normal)
+            case .Highlighted:
+                button.setTitleColor(color, forState: .Highlighted)
+            case .Disabled:
+                button.setTitleColor(color, forState: .Disabled)
+            case .Selected:
+                button.setTitleColor(color, forState: .Selected)
+            }
+        }
+    }
+    
+    private func assignIncrementImage(toStepper stepper: UIStepper, withImagesAndStates info: [String: String]) {
+        for (stateKey, imageKey) in info {
+            guard let state = StepperAllowedStates(rawValue: stateKey), theImageNames = imageNames, imageName = theImageNames[imageKey] else {
+                continue
+            }
+            
+            switch state {
+            case .Normal:
+                stepper.setIncrementImage(UIImage(named: imageName), forState: .Normal)
+            case .Highlighted:
+                stepper.setIncrementImage(UIImage(named: imageName), forState: .Highlighted)
+            case .Disabled:
+                stepper.setIncrementImage(UIImage(named: imageName), forState: .Disabled)
+            }
+        }
+    }
+    
+    private func assignDecrementImage(toStepper stepper: UIStepper, withImagesAndStates info: [String: String]) {
+        for (stateKey, imageKey) in info {
+            guard let state = StepperAllowedStates(rawValue: stateKey), theImageNames = imageNames, imageName = theImageNames[imageKey] else {
+                continue
+            }
+            
+            switch state {
+            case .Normal:
+                stepper.setDecrementImage(UIImage(named: imageName), forState: .Normal)
+            case .Highlighted:
+                stepper.setDecrementImage(UIImage(named: imageName), forState: .Highlighted)
+            case .Disabled:
+                stepper.setDecrementImage(UIImage(named: imageName), forState: .Disabled)
+            }
+        }
+    }
+    
+    private func assignBackgroundImage(toStepper stepper: UIStepper, withImagesAndStates info: [String: String]) {
+        for (stateKey, imageKey) in info {
+            guard let state = StepperAllowedStates(rawValue: stateKey), theImageNames = imageNames, imageName = theImageNames[imageKey] else {
+                continue
+            }
+            
+            switch state {
+            case .Normal:
+                stepper.setBackgroundImage(UIImage(named: imageName), forState: .Normal)
+            case .Highlighted:
+                stepper.setBackgroundImage(UIImage(named: imageName), forState: .Highlighted)
+            case .Disabled:
+                stepper.setBackgroundImage(UIImage(named: imageName), forState: .Disabled)
+            }
+        }
+    }
+    
     //MARK: Apply Styles
     
     func style(withLabelsAndStyles labelInfo: [String: UILabel]?) {
@@ -275,25 +308,29 @@ class Style: NSObject {
                 }
                 
                 switch theProperty {
-                    case ButtonProperties.FontStyle:
-                        if let fontStyle = value as? FontStyle {
-                            element.titleLabel?.font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
+                    case .FontStyle:
+                        if let info = value as? [String: AnyObject] {
+                            guard let nameKey = info[FontProperties.Name.rawValue] as? String, name = fonts[nameKey],
+                                size = info[FontProperties.Size.rawValue] as? Int else {
+                                continue
+                            }
+                            element.titleLabel?.font = UIFont(name: name, size: CGFloat(size))
                         }
-                    case ButtonProperties.BorderWidth:
+                    case .BorderWidth:
                         if let borderWidth = value as? Int {
                             element.layer.borderWidth = CGFloat(borderWidth)
                         }
-                    case ButtonProperties.BorderColor:
+                    case .BorderColor:
                         if let borderColor = value as? UIColor {
                             element.layer.borderColor = borderColor.CGColor
                         }
-                    case ButtonProperties.CornerRadius:
+                    case .CornerRadius:
                         if let cornerRadius = value as? Int {
                             element.layer.cornerRadius = CGFloat(cornerRadius)
                         }
-                    case ButtonProperties.Normal:
-                        if let color = value as? UIColor {
-                            element.setTitleColor(color, forState: .Normal)
+                    case .TitleColor:
+                        if let colorInfo = value as? [String: String] {
+                            self.assignTitleColor(toButton: element, withColorsAndStates: colorInfo)
                         }
                 }
             }
@@ -372,7 +409,7 @@ class Style: NSObject {
                 }
                 
                 switch theProperty {
-                    case SegmentedControlProperties.FontStyle:
+                    case .FontStyle:
                         guard let fontInfo = value as? [String: AnyObject], fontKey = fontInfo[FontProperties.Name.rawValue] as? String,
                             fontSize = fontInfo[FontProperties.Size.rawValue] as? Int else {
                             break
@@ -383,19 +420,23 @@ class Style: NSObject {
                         normalAttributes[NSFontAttributeName] = font
                         selectedAttributes[NSFontAttributeName] = font
                         
-                    case SegmentedControlProperties.NormalState:
-                        if let textColorInfo = value as? [String: String], textColorKey = textColorInfo[CommonProperties.TextColor.rawValue],
-                            color = colors[textColorKey] {
-                            normalAttributes[NSForegroundColorAttributeName] = color
-                        }
-                        
-                    case SegmentedControlProperties.SelectedState:
-                        if let textColorInfo = value as? [String: String], textColorKey = textColorInfo[CommonProperties.TextColor.rawValue],
-                            color = colors[textColorKey] {
-                            selectedAttributes[NSForegroundColorAttributeName] = color
+                    case .TextColor:
+                        if let colorInfo = value as? [String: String] {
+                            for (stateKey, colorKey) in colorInfo {
+                                guard let state = SegmentedControlAllowedStates(rawValue: stateKey), color = colors[colorKey] else {
+                                    continue
+                                }
+                                
+                                switch state {
+                                case .Normal:
+                                    normalAttributes[NSForegroundColorAttributeName] = color
+                                case .Selected:
+                                    selectedAttributes[NSForegroundColorAttributeName] = color
+                                }
+                            }
                         }
                     
-                    case SegmentedControlProperties.TintColor:
+                    case .TintColor:
                         if let tintColorKey = value as? String, tintColor = colors[tintColorKey] {
                             element.tintColor = tintColor
                         }
@@ -459,7 +500,7 @@ class Style: NSObject {
         }
         
         for (styleKey, element) in info {
-            guard let theStepperStyles = stepperStyles, styles = theStepperStyles[styleKey], theImageNames = imageNames else {
+            guard let theStepperStyles = stepperStyles, styles = theStepperStyles[styleKey] else {
                 return
             }
             
@@ -474,17 +515,16 @@ class Style: NSObject {
                             element.tintColor = color
                         }
                     case .IncrementImage:
-                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
-                            element.setIncrementImage(UIImage(named: imageName), forState: .Normal)
+                        if let imageInfo = value as? [String: String] {
+                            self.assignIncrementImage(toStepper: element, withImagesAndStates: imageInfo)
                         }
                     case .DecrementImage:
-                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
-                            element.setDecrementImage(UIImage(named: imageName), forState: .Normal)
+                        if let imageInfo = value as? [String: String] {
+                            self.assignDecrementImage(toStepper: element, withImagesAndStates: imageInfo)
                         }
                     case .BackgroundImage:
-                        if let imageKey = value as? String, imageName = theImageNames[imageKey] {
-                            element.setBackgroundImage(UIImage(named: imageName), forState: .Normal)
-                            element.setBackgroundImage(UIImage(named: imageName), forState: .Disabled)
+                        if let imageInfo = value as? [String: String] {
+                            self.assignBackgroundImage(toStepper: element, withImagesAndStates: imageInfo)
                         }
                 }
             }

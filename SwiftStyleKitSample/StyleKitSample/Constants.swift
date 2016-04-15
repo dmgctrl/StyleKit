@@ -9,13 +9,24 @@ enum LabelProperties: String {
     case FontStyle = "fontStyle"
 }
 
+// MARK: Buttons
+
 enum ButtonProperties: String {
     case FontStyle = "fontStyle"
     case BorderWidth = "borderWidth"
     case BorderColor = "borderColor"
     case CornerRadius = "cornerRadius"
-    case Normal = "normal"
+    case TitleColor = "titleColor"
 }
+
+enum ButtonAllowedStates: String {
+    case Normal = "normalState"
+    case Highlighted = "highlightedState"
+    case Selected = "selectedState"
+    case Disabled = "disabledState"
+}
+
+// MARK: Text Fields
 
 enum TextFieldProperties: String {
     case FontStyle = "fontStyle"
@@ -27,12 +38,20 @@ enum TextFieldProperties: String {
     case TextColor = "textColor"
 }
 
+// MARK: Segmented Controls
+
 enum SegmentedControlProperties: String {
     case FontStyle = "fontStyle"
-    case NormalState = "normalState"
-    case SelectedState = "selectedState"
     case TintColor = "tintColor"
+    case TextColor = "textColor"
 }
+
+enum SegmentedControlAllowedStates: String {
+    case Normal = "normalState"
+    case Selected = "selectedState"
+}
+
+// MARK: Sliders
 
 enum SliderProperties: String {
     case MinimumTrackTintColor = "minimumTrackTintColor"
@@ -42,11 +61,19 @@ enum SliderProperties: String {
     case MaximumTrackImage = "maximumTrackImage"
 }
 
+// MARK: Steppers
+
 enum StepperProperties: String {
     case TintColor = "tintColor"
     case IncrementImage = "incrementImage"
     case DecrementImage = "decrementImage"
     case BackgroundImage = "backgroundImage"
+}
+
+enum StepperAllowedStates: String {
+    case Normal = "normalState"
+    case Highlighted = "highlightedState"
+    case Disabled = "disabledState"
 }
 
 enum ColorProperties: String {
@@ -69,9 +96,4 @@ enum CommonObjects: String {
     case Fonts = "Fonts"
     case Colors = "Colors"
     case Images = "Images"
-}
-
-enum CommonProperties: String {
-    case TitleColor = "titleColor"
-    case TextColor = "textColor"
 }
