@@ -83,26 +83,52 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S1"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sliderOneValueChanged:" destination="EYY-0p-ZaI" eventType="valueChanged" id="nmS-Ns-lNv"/>
+                                </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkd-p3-Ykw">
+                                <rect key="frame" x="279" y="224" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnD-hX-a2a">
+                                <rect key="frame" x="279" y="295" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5G7-DL-2qt">
-                                <rect key="frame" x="18" y="291" width="564" height="31"/>
+                                <rect key="frame" x="18" y="324" width="564" height="31"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S2"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sliderTwoValueChanged:" destination="EYY-0p-ZaI" eventType="valueChanged" id="IeM-Us-NnF"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5G7-DL-2qt" firstAttribute="leading" secondItem="sf0-JM-Cnm" secondAttribute="leading" constant="20" id="Bx6-P3-aAQ"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="leading" secondItem="sf0-JM-Cnm" secondAttribute="leadingMargin" id="Dv9-bS-PR5"/>
+                            <constraint firstItem="Pkd-p3-Ykw" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="HYJ-br-ikT"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="centerY" secondItem="sf0-JM-Cnm" secondAttribute="centerY" id="Hro-Me-6XW"/>
+                            <constraint firstItem="EnD-hX-a2a" firstAttribute="top" secondItem="mK1-PD-Cms" secondAttribute="bottom" constant="12" id="JRV-nS-Zlr"/>
+                            <constraint firstItem="EnD-hX-a2a" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="JmI-3j-i8Q"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="SzI-di-ci4"/>
-                            <constraint firstItem="5G7-DL-2qt" firstAttribute="top" secondItem="mK1-PD-Cms" secondAttribute="bottom" constant="8" id="YEK-3o-11D"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="trailing" secondItem="sf0-JM-Cnm" secondAttribute="trailingMargin" id="ZGF-UX-b0k"/>
                             <constraint firstAttribute="trailing" secondItem="5G7-DL-2qt" secondAttribute="trailing" constant="20" id="f9m-ps-ZPd"/>
+                            <constraint firstItem="5G7-DL-2qt" firstAttribute="top" secondItem="EnD-hX-a2a" secondAttribute="bottom" constant="8" id="hTg-WX-iiF"/>
+                            <constraint firstItem="mK1-PD-Cms" firstAttribute="top" secondItem="Pkd-p3-Ykw" secondAttribute="bottom" constant="8" id="jAp-7m-Fa6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="label1" destination="Pkd-p3-Ykw" id="J9q-3T-HBM"/>
+                        <outlet property="label2" destination="EnD-hX-a2a" id="YjE-ji-0Oc"/>
+                        <outlet property="slider1" destination="mK1-PD-Cms" id="9Lb-Dc-HUc"/>
+                        <outlet property="slider2" destination="5G7-DL-2qt" id="oai-XR-bae"/>
                         <outletCollection property="sliders" destination="mK1-PD-Cms" collectionClass="NSMutableArray" id="IcP-jg-F0j"/>
                         <outletCollection property="sliders" destination="5G7-DL-2qt" collectionClass="NSMutableArray" id="HNI-9D-sQK"/>
                     </connections>
