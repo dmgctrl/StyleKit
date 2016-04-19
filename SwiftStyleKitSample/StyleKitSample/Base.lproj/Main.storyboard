@@ -23,12 +23,18 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S1"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stepperOneValueChanged:" destination="w9a-OK-f4a" eventType="valueChanged" id="u0Z-Yu-CXQ"/>
+                                </connections>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6FY-81-bwn">
                                 <rect key="frame" x="253" y="253" width="94" height="29"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S2"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stepperTwoValueChanged:" destination="w9a-OK-f4a" eventType="valueChanged" id="sUA-5y-hvA"/>
+                                </connections>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="d1x-zr-Ph5">
                                 <rect key="frame" x="253" y="290" width="94" height="29"/>
@@ -42,12 +48,28 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S4"/>
                                 </userDefinedRuntimeAttributes>
                             </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6h-pQ-pmg">
+                                <rect key="frame" x="355" y="220" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKo-jp-729">
+                                <rect key="frame" x="355" y="257" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="q6h-pQ-pmg" firstAttribute="centerY" secondItem="giR-qX-HBQ" secondAttribute="centerY" id="8A1-JF-BnM"/>
+                            <constraint firstItem="MKo-jp-729" firstAttribute="centerY" secondItem="6FY-81-bwn" secondAttribute="centerY" id="Ac6-Rg-8vn"/>
                             <constraint firstItem="Ty0-5A-FPI" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="CW4-D8-rPn"/>
                             <constraint firstItem="d1x-zr-Ph5" firstAttribute="top" secondItem="6FY-81-bwn" secondAttribute="bottom" constant="8" id="FRp-s1-uuj"/>
+                            <constraint firstItem="q6h-pQ-pmg" firstAttribute="leading" secondItem="giR-qX-HBQ" secondAttribute="trailing" constant="8" id="IrW-8e-eey"/>
                             <constraint firstItem="6FY-81-bwn" firstAttribute="top" secondItem="giR-qX-HBQ" secondAttribute="bottom" constant="8" id="RYh-bI-zqh"/>
+                            <constraint firstItem="MKo-jp-729" firstAttribute="leading" secondItem="6FY-81-bwn" secondAttribute="trailing" constant="8" id="Sf9-CJ-O5C"/>
                             <constraint firstItem="Ty0-5A-FPI" firstAttribute="top" secondItem="d1x-zr-Ph5" secondAttribute="bottom" constant="8" id="V8e-29-v6v"/>
                             <constraint firstItem="giR-qX-HBQ" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="b45-Oq-5Ce"/>
                             <constraint firstItem="6FY-81-bwn" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="hSH-LS-b37"/>
@@ -56,6 +78,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="label1" destination="q6h-pQ-pmg" id="akc-8M-W80"/>
+                        <outlet property="label2" destination="MKo-jp-729" id="W53-Uy-SCg"/>
+                        <outlet property="stepper1" destination="giR-qX-HBQ" id="JBK-Kw-rGX"/>
+                        <outlet property="stepper2" destination="6FY-81-bwn" id="MVj-D3-E4N"/>
                         <outletCollection property="steppers" destination="giR-qX-HBQ" collectionClass="NSMutableArray" id="EY3-gA-4uM"/>
                         <outletCollection property="steppers" destination="6FY-81-bwn" collectionClass="NSMutableArray" id="cjN-lv-HHP"/>
                         <outletCollection property="steppers" destination="d1x-zr-Ph5" collectionClass="NSMutableArray" id="zlP-ut-io5"/>
@@ -83,26 +109,52 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S1"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sliderOneValueChanged:" destination="EYY-0p-ZaI" eventType="valueChanged" id="nmS-Ns-lNv"/>
+                                </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkd-p3-Ykw">
+                                <rect key="frame" x="279" y="224" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnD-hX-a2a">
+                                <rect key="frame" x="279" y="295" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5G7-DL-2qt">
-                                <rect key="frame" x="18" y="291" width="564" height="31"/>
+                                <rect key="frame" x="18" y="324" width="564" height="31"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S2"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sliderTwoValueChanged:" destination="EYY-0p-ZaI" eventType="valueChanged" id="IeM-Us-NnF"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5G7-DL-2qt" firstAttribute="leading" secondItem="sf0-JM-Cnm" secondAttribute="leading" constant="20" id="Bx6-P3-aAQ"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="leading" secondItem="sf0-JM-Cnm" secondAttribute="leadingMargin" id="Dv9-bS-PR5"/>
+                            <constraint firstItem="Pkd-p3-Ykw" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="HYJ-br-ikT"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="centerY" secondItem="sf0-JM-Cnm" secondAttribute="centerY" id="Hro-Me-6XW"/>
+                            <constraint firstItem="EnD-hX-a2a" firstAttribute="top" secondItem="mK1-PD-Cms" secondAttribute="bottom" constant="12" id="JRV-nS-Zlr"/>
+                            <constraint firstItem="EnD-hX-a2a" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="JmI-3j-i8Q"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="centerX" secondItem="sf0-JM-Cnm" secondAttribute="centerX" id="SzI-di-ci4"/>
-                            <constraint firstItem="5G7-DL-2qt" firstAttribute="top" secondItem="mK1-PD-Cms" secondAttribute="bottom" constant="8" id="YEK-3o-11D"/>
                             <constraint firstItem="mK1-PD-Cms" firstAttribute="trailing" secondItem="sf0-JM-Cnm" secondAttribute="trailingMargin" id="ZGF-UX-b0k"/>
                             <constraint firstAttribute="trailing" secondItem="5G7-DL-2qt" secondAttribute="trailing" constant="20" id="f9m-ps-ZPd"/>
+                            <constraint firstItem="5G7-DL-2qt" firstAttribute="top" secondItem="EnD-hX-a2a" secondAttribute="bottom" constant="8" id="hTg-WX-iiF"/>
+                            <constraint firstItem="mK1-PD-Cms" firstAttribute="top" secondItem="Pkd-p3-Ykw" secondAttribute="bottom" constant="8" id="jAp-7m-Fa6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="label1" destination="Pkd-p3-Ykw" id="J9q-3T-HBM"/>
+                        <outlet property="label2" destination="EnD-hX-a2a" id="YjE-ji-0Oc"/>
+                        <outlet property="slider1" destination="mK1-PD-Cms" id="9Lb-Dc-HUc"/>
+                        <outlet property="slider2" destination="5G7-DL-2qt" id="oai-XR-bae"/>
                         <outletCollection property="sliders" destination="mK1-PD-Cms" collectionClass="NSMutableArray" id="IcP-jg-F0j"/>
                         <outletCollection property="sliders" destination="5G7-DL-2qt" collectionClass="NSMutableArray" id="HNI-9D-sQK"/>
                     </connections>
@@ -240,6 +292,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="w9a-OK-f4a" kind="show" id="4gA-kE-ZPI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Dwg-f5-sbv" style="IBUITableViewCellStyleDefault" id="sKk-5P-pcE">
+                                        <rect key="frame" x="0.0" y="264" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sKk-5P-pcE" id="cFw-Wi-gdA">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Progress Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dwg-f5-sbv">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5Y8-bE-MAH" kind="show" id="1Kd-jY-853"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -466,6 +538,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7pw-p5-vmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="296" y="614"/>
+        </scene>
+        <!--Progress Views View Controller-->
+        <scene sceneID="L0h-e2-JlJ">
+            <objects>
+                <viewController id="5Y8-bE-MAH" customClass="ProgressViewsViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wi0-Cb-FVh"/>
+                        <viewControllerLayoutGuide type="bottom" id="ym3-ky-ofs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fak-I4-4ff">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CvV-7y-TGr">
+                                <rect key="frame" x="20" y="267" width="560" height="2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="P1"/>
+                                </userDefinedRuntimeAttributes>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iQ8-rj-WAP">
+                                <rect key="frame" x="20" y="290" width="560" height="2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="P2"/>
+                                </userDefinedRuntimeAttributes>
+                            </progressView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1mT-3X-bYd">
+                                <rect key="frame" x="18" y="300" width="564" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="5Y8-bE-MAH" eventType="valueChanged" id="Aip-Zr-vrT"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iQ8-rj-WAP" secondAttribute="trailing" constant="20" id="8TN-xd-ae8"/>
+                            <constraint firstItem="CvV-7y-TGr" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="DEB-w4-ikf"/>
+                            <constraint firstAttribute="trailing" secondItem="1mT-3X-bYd" secondAttribute="trailing" constant="20" id="Eyo-Lo-e1v"/>
+                            <constraint firstItem="1mT-3X-bYd" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="LUz-8p-Ra0"/>
+                            <constraint firstItem="CvV-7y-TGr" firstAttribute="centerY" secondItem="fak-I4-4ff" secondAttribute="centerY" id="Swk-pc-iED"/>
+                            <constraint firstAttribute="trailing" secondItem="CvV-7y-TGr" secondAttribute="trailing" constant="20" id="emm-yd-z4B"/>
+                            <constraint firstItem="1mT-3X-bYd" firstAttribute="top" secondItem="iQ8-rj-WAP" secondAttribute="bottom" constant="8" id="m5Y-Ys-Mv6"/>
+                            <constraint firstItem="iQ8-rj-WAP" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="qAa-N5-cxo"/>
+                            <constraint firstItem="iQ8-rj-WAP" firstAttribute="top" secondItem="CvV-7y-TGr" secondAttribute="bottom" constant="21" id="xKM-Le-EuI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="slider" destination="1mT-3X-bYd" id="S6c-GA-vi8"/>
+                        <outletCollection property="progressViews" destination="CvV-7y-TGr" collectionClass="NSMutableArray" id="8hG-ZY-Ea7"/>
+                        <outletCollection property="progressViews" destination="iQ8-rj-WAP" collectionClass="NSMutableArray" id="4Z1-o8-REx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Yy-ww-3td" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="264" y="1464"/>
         </scene>
     </scenes>
 </document>

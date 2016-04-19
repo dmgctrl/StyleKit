@@ -13,6 +13,7 @@ class Style: NSObject {
     var segmentedControlStyles = [String: [String: AnyObject]]()
     var sliderStyles = [String: [String: AnyObject]]()
     var stepperStyles: [String: [String: AnyObject]]?
+    var progressViewStyles: [String: [String: AnyObject]]?
     
     override init() {
         super.init()
@@ -95,17 +96,23 @@ class Style: NSObject {
             }
             
             if let stepperDict = json[UIElements.Steppers.rawValue] as? [String: [String: AnyObject]] {
-                stepperStyles = [String: [String: AnyObject]]()
-                
-                guard var theStepperStyles = stepperStyles else {
-                    return
-                }
+                var theStepperStyles = [String: [String: AnyObject]]()
                 
                 for (stepperKey, specification) in stepperDict {
                     theStepperStyles[stepperKey] = specification
                 }
                 
                 stepperStyles = theStepperStyles
+            }
+            
+            if let progressViewDict = json[UIElements.ProgressViews.rawValue] as? [String: [String: AnyObject]] {
+                var theProgressViewStyles = [String: [String: AnyObject]]()
+                
+                for (progressViewKey, specification) in progressViewDict {
+                    theProgressViewStyles[progressViewKey] = specification
+                }
+                
+                progressViewStyles = theProgressViewStyles
             }
             
         } catch {
@@ -495,18 +502,18 @@ class Style: NSObject {
     }
     
     func style(withSteppersAndStyles stepperInfo: [String: UIStepper]?) {
-        guard let info = stepperInfo else {
+        guard let info = stepperInfo, theStepperStyles = stepperStyles else {
             return
         }
         
         for (styleKey, element) in info {
-            guard let theStepperStyles = stepperStyles, styles = theStepperStyles[styleKey] else {
-                return
+            guard let styles = theStepperStyles[styleKey] else {
+                continue
             }
             
             for (property, value) in styles {
                 guard let theProperty = StepperProperties(rawValue: property) else {
-                    return
+                    continue
                 }
                 
                 switch theProperty {
@@ -525,6 +532,47 @@ class Style: NSObject {
                     case .BackgroundImage:
                         if let imageInfo = value as? [String: String] {
                             self.assignBackgroundImage(toStepper: element, withImagesAndStates: imageInfo)
+                        }
+                }
+            }
+        }
+    }
+    
+    func style(withProgressViewsAndStyles progressViewInfo: [String: UIProgressView]?) {
+        guard let info = progressViewInfo, theProgressViewStyles = progressViewStyles else {
+            return
+        }
+        
+        for (styleKey, element) in info {
+            guard let styles = theProgressViewStyles[styleKey] else {
+                continue
+            }
+            
+            for (property, value) in styles {
+                guard let theProperty = ProgressViewProperties(rawValue: property) else {
+                    continue
+                }
+                
+                switch theProperty {
+                    case .Style:
+                        if let theValue = value as? Int, progressViewStyle = UIProgressViewStyle(rawValue: theValue) {
+                            element.progressViewStyle = progressViewStyle
+                        }
+                    case .ProgressTintColor:
+                        if let colorKey = value as? String, color = colors[colorKey] {
+                            element.progressTintColor = color
+                        }
+                    case .TrackTintColor:
+                        if let colorKey = value as? String, color = colors[colorKey] {
+                            element.trackTintColor = color
+                        }
+                    case .ProgressImage:
+                        if let imageKey = value as? String, imageName = imageNames?[imageKey] {
+                            element.progressImage = UIImage(named: imageName)
+                        }
+                    case .TrackImage:
+                        if let imageKey = value as? String, imageName = imageNames?[imageKey] {
+                            element.trackImage = UIImage(named: imageName)
                         }
                 }
             }

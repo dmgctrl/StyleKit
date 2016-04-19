@@ -76,6 +76,18 @@ enum StepperAllowedStates: String {
     case Disabled = "disabledState"
 }
 
+// MARK: Progress Views
+
+enum ProgressViewProperties: String {
+    case Style = "style"
+    case ProgressTintColor = "progressTintColor"
+    case TrackTintColor = "trackTintColor"
+    case ProgressImage = "progressImage"
+    case TrackImage = "trackImage"
+}
+
+// MARK: Miscellaneous
+
 enum ColorProperties: String {
     case Red = "red"
     case Green = "green"
@@ -90,6 +102,7 @@ enum UIElements: String {
     case Labels = "Labels"
     case Sliders = "Sliders"
     case Steppers = "Steppers"
+    case ProgressViews = "ProgressViews"
 }
 
 enum CommonObjects: String {
