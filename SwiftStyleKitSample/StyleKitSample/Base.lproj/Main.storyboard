@@ -563,18 +563,28 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="P2"/>
                                 </userDefinedRuntimeAttributes>
                             </progressView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1mT-3X-bYd">
+                                <rect key="frame" x="18" y="300" width="564" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="5Y8-bE-MAH" eventType="valueChanged" id="Aip-Zr-vrT"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iQ8-rj-WAP" secondAttribute="trailing" constant="20" id="8TN-xd-ae8"/>
                             <constraint firstItem="CvV-7y-TGr" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="DEB-w4-ikf"/>
+                            <constraint firstAttribute="trailing" secondItem="1mT-3X-bYd" secondAttribute="trailing" constant="20" id="Eyo-Lo-e1v"/>
+                            <constraint firstItem="1mT-3X-bYd" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="LUz-8p-Ra0"/>
                             <constraint firstItem="CvV-7y-TGr" firstAttribute="centerY" secondItem="fak-I4-4ff" secondAttribute="centerY" id="Swk-pc-iED"/>
                             <constraint firstAttribute="trailing" secondItem="CvV-7y-TGr" secondAttribute="trailing" constant="20" id="emm-yd-z4B"/>
+                            <constraint firstItem="1mT-3X-bYd" firstAttribute="top" secondItem="iQ8-rj-WAP" secondAttribute="bottom" constant="8" id="m5Y-Ys-Mv6"/>
                             <constraint firstItem="iQ8-rj-WAP" firstAttribute="leading" secondItem="fak-I4-4ff" secondAttribute="leading" constant="20" id="qAa-N5-cxo"/>
                             <constraint firstItem="iQ8-rj-WAP" firstAttribute="top" secondItem="CvV-7y-TGr" secondAttribute="bottom" constant="21" id="xKM-Le-EuI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="slider" destination="1mT-3X-bYd" id="S6c-GA-vi8"/>
                         <outletCollection property="progressViews" destination="CvV-7y-TGr" collectionClass="NSMutableArray" id="8hG-ZY-Ea7"/>
                         <outletCollection property="progressViews" destination="iQ8-rj-WAP" collectionClass="NSMutableArray" id="4Z1-o8-REx"/>
                     </connections>

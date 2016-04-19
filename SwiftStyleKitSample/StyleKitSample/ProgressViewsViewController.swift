@@ -14,6 +14,8 @@ class ProgressViewsViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var slider: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +25,12 @@ class ProgressViewsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        for progressView in progressViews {
+            progressView.setProgress(slider.value, animated: true)
+        }
     }
 
 }
