@@ -23,12 +23,18 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S1"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stepperOneValueChanged:" destination="w9a-OK-f4a" eventType="valueChanged" id="u0Z-Yu-CXQ"/>
+                                </connections>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6FY-81-bwn">
                                 <rect key="frame" x="253" y="253" width="94" height="29"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S2"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stepperTwoValueChanged:" destination="w9a-OK-f4a" eventType="valueChanged" id="sUA-5y-hvA"/>
+                                </connections>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="d1x-zr-Ph5">
                                 <rect key="frame" x="253" y="290" width="94" height="29"/>
@@ -42,12 +48,28 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="styleTag" value="S4"/>
                                 </userDefinedRuntimeAttributes>
                             </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6h-pQ-pmg">
+                                <rect key="frame" x="355" y="220" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKo-jp-729">
+                                <rect key="frame" x="355" y="257" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="q6h-pQ-pmg" firstAttribute="centerY" secondItem="giR-qX-HBQ" secondAttribute="centerY" id="8A1-JF-BnM"/>
+                            <constraint firstItem="MKo-jp-729" firstAttribute="centerY" secondItem="6FY-81-bwn" secondAttribute="centerY" id="Ac6-Rg-8vn"/>
                             <constraint firstItem="Ty0-5A-FPI" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="CW4-D8-rPn"/>
                             <constraint firstItem="d1x-zr-Ph5" firstAttribute="top" secondItem="6FY-81-bwn" secondAttribute="bottom" constant="8" id="FRp-s1-uuj"/>
+                            <constraint firstItem="q6h-pQ-pmg" firstAttribute="leading" secondItem="giR-qX-HBQ" secondAttribute="trailing" constant="8" id="IrW-8e-eey"/>
                             <constraint firstItem="6FY-81-bwn" firstAttribute="top" secondItem="giR-qX-HBQ" secondAttribute="bottom" constant="8" id="RYh-bI-zqh"/>
+                            <constraint firstItem="MKo-jp-729" firstAttribute="leading" secondItem="6FY-81-bwn" secondAttribute="trailing" constant="8" id="Sf9-CJ-O5C"/>
                             <constraint firstItem="Ty0-5A-FPI" firstAttribute="top" secondItem="d1x-zr-Ph5" secondAttribute="bottom" constant="8" id="V8e-29-v6v"/>
                             <constraint firstItem="giR-qX-HBQ" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="b45-Oq-5Ce"/>
                             <constraint firstItem="6FY-81-bwn" firstAttribute="centerX" secondItem="LwN-3Y-GR6" secondAttribute="centerX" id="hSH-LS-b37"/>
@@ -56,6 +78,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="label1" destination="q6h-pQ-pmg" id="akc-8M-W80"/>
+                        <outlet property="label2" destination="MKo-jp-729" id="W53-Uy-SCg"/>
+                        <outlet property="stepper1" destination="giR-qX-HBQ" id="JBK-Kw-rGX"/>
+                        <outlet property="stepper2" destination="6FY-81-bwn" id="MVj-D3-E4N"/>
                         <outletCollection property="steppers" destination="giR-qX-HBQ" collectionClass="NSMutableArray" id="EY3-gA-4uM"/>
                         <outletCollection property="steppers" destination="6FY-81-bwn" collectionClass="NSMutableArray" id="cjN-lv-HHP"/>
                         <outletCollection property="steppers" destination="d1x-zr-Ph5" collectionClass="NSMutableArray" id="zlP-ut-io5"/>
