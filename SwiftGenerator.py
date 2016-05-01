@@ -196,12 +196,16 @@ class SwiftGenerator:
             attributes = object.attributes
             self.write("func attributesFor" + object.name + "() -> " + self.attributeDictionary + " { ")
             self.enter()
-            if object.textAlignment or attributes.lineSpacing:
+            if object.textAlignment or attributes.lineSpacing or attributes.minimumLineHeight or attributes.maximumLineHeight:
                 set([self.write("let style = NSMutableParagraphStyle()")]),self.newline()
                 if object.textAlignment:
                     set([self.write("style.alignment = NSTextAlignment." + object.textAlignment)]),self.newline()
                 if attributes.lineSpacing:
                     set([self.write("style.lineSpacing = " + str(attributes.lineSpacing))]),self.newline()
+                if attributes.minimumLineHeight:
+                    set([self.write("style.minimumLineHeight = " + str(attributes.minimumLineHeight))]), self.newline()
+                if attributes.maximumLineHeight :
+                    set([self.write("style.maximumLineHeight = " + str(attributes.maximumLineHeight))]), self.newline()
             self.write("let attributes = [ ")
             self.indent(),self.newline()
             if isinstance(attributes, UIObjects.TextAttributes):
@@ -210,7 +214,7 @@ class SwiftGenerator:
                 if attributes.tracking:
                     characterSpacing = attributes.fontStyle.size * attributes.tracking / 1000
                     set([self.write("NSKernAttributeName: " + str(characterSpacing))]),self.addSeperator(attributes),self.newline()
-                if object.textAlignment or attributes.lineSpacing:
+                if object.textAlignment or attributes.lineSpacing or attributes.minimumLineHeight or attributes.maximumLineHeight:
                     set([self.write("NSParagraphStyleAttributeName: style")]),self.addSeperator(attributes),self.newline()
                 if attributes.ligature: set([self.write("NSLigatureAttributeName: " + str(attributes.ligature))]),self.addSeperator(attributes),self.newline()
             self.outdent()

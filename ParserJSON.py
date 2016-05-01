@@ -93,6 +93,10 @@ def main(argv):
                 label.textColor = value['textColor']
             if "lineSpacing" in value:
                 label.lineSpacing = value['lineSpacing']
+            if "minimumLineHeight" in value:
+                label.minimumLineHeight = value['minimumLineHeight']
+            if "maximumLineHeight" in value:
+                label.maximumLineHeight = value['maximumLineHeight']
             if label.attributes:
                 swiftgenerator.buildAttributesForObjects([label])
             swiftgenerator.buildStyleFunctions([label])
@@ -115,6 +119,10 @@ def main(argv):
                 textView.textColor = value['textColor']
             if "lineSpacing" in value:
                 textView.lineSpacing = value['lineSpacing']
+            if "minimumLineHeight" in value:
+                label.minimumLineHeight = value['minimumLineHeight']
+            if "maximumLineHeight" in value:
+                label.maximumLineHeight = value['maximumLineHeight']
             if textView.attributes:
                 swiftgenerator.buildAttributesForObjects([textView])
             swiftgenerator.buildStyleFunctions([textView])
