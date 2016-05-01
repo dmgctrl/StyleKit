@@ -182,6 +182,16 @@ class TextAttributes:
         if "lineSpacing" in self.properties:
             return (self.properties['lineSpacing'])
 
+    @property
+    def minimumLineHeight(self):
+        if "minimumLineHeight" in self.properties:
+            return (self.properties['minimumLineHeight'])
+
+    @property
+    def maximumLineHeight(self):
+        if "maximumLineHeight" in self.properties:
+            return (self.properties['maximumLineHeight'])
+
 class Button(View, FontStyle):
     def __init__(self, name, properties = {}):
         self.name = name
