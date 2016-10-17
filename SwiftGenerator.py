@@ -23,7 +23,7 @@ class SwiftGenerator:
 
     def end(self):
         return string.join(self.code, "")
-        
+
     def newline(self):
         self.write("\n")
 
@@ -106,7 +106,7 @@ class SwiftGenerator:
             self.enter()
             self.didSet(segmentedControl.name)
             self.closeCollection()
-        
+
     def didSet(self, name):
         self.write("didSet {")
         self.enter()
@@ -127,7 +127,7 @@ class SwiftGenerator:
                 if object.cornerRadius: set([self.write("object.layer.cornerRadius = " + str(object.cornerRadius))]), self.newline()
                 if object.borderColor: set([self.write("object.layer.borderColor = " + object.borderColor + ".CGColor")]), self.newline()
                 if object.borderWidth: set([self.write("object.layer.borderWidth = " + str(object.borderWidth))]), self.newline()
-            
+
             if isinstance(object, UIObjects.Label):
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
                 if object.attributes:
@@ -145,7 +145,7 @@ class SwiftGenerator:
             if isinstance(object, UIObjects.TextView):
                 if object.attributes: set([self.write("object.attributedText = NSAttributedString(string: object.text!, attributes:attributesFor" + object.name + "())")]), self.newline()
                 if object.textColor: set([self.write("object.textColor = " + object.textColor)]), self.newline()
-            
+
             if isinstance(object, UIObjects.Button):
                 set([self.write("object.layer.masksToBounds = true")]), self.newline()
                 if object.fontStyle: set([self.write("object.titleLabel?.font = " + object.fontStyle.toSwift())]), self.newline()
@@ -232,7 +232,7 @@ class SwiftGenerator:
 
     def write(self, string):
         self.code.append(self.tab * self.indentLevel + string)
-        
+
     def indent(self):
         self.indentLevel = self.indentLevel + 1
 
@@ -254,10 +254,10 @@ class SwiftGenerator:
     def openClass(self):
         self.write("import UIKit\n")
         self.newline()
-        self.write("class StyleKit: NSObject {\n")
+        self.write("class Style: NSObject {\n")
         self.newline()
         self.indent()
-        self.write("static let sharedInstance = StyleKit()")
+        self.write("static let sharedInstance = Style()")
         self.newline()
         self.newline()
 
