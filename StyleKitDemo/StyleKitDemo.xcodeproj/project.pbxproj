@@ -72,7 +72,7 @@
 		294526961DC39852003AF49E /* Brandon_med.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Brandon_med.otf; path = StyleKit/Fonts/Brandon_med.otf; sourceTree = SOURCE_ROOT; };
 		294526971DC39852003AF49E /* Brandon_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Brandon_thin.otf; path = StyleKit/Fonts/Brandon_thin.otf; sourceTree = SOURCE_ROOT; };
 		295D21781C9214AA001626BD /* Style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; lineEnding = 0; path = Style.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
-		298DC6071C92073E00BB0D29 /* StyleKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		298DC6071C92073E00BB0D29 /* StyleKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		298DC60A1C92073E00BB0D29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		298DC60C1C92073E00BB0D29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		298DC60F1C92073E00BB0D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		298DC6081C92073E00BB0D29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				298DC6071C92073E00BB0D29 /* StyleKit.app */,
+				298DC6071C92073E00BB0D29 /* StyleKitDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,9 +205,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		298DC6061C92073E00BB0D29 /* StyleKit */ = {
+		298DC6061C92073E00BB0D29 /* StyleKitDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 298DC6191C92073E00BB0D29 /* Build configuration list for PBXNativeTarget "StyleKit" */;
+			buildConfigurationList = 298DC6191C92073E00BB0D29 /* Build configuration list for PBXNativeTarget "StyleKitDemo" */;
 			buildPhases = (
 				298DC6031C92073E00BB0D29 /* Sources */,
 				298DC6041C92073E00BB0D29 /* Frameworks */,
@@ -217,9 +217,9 @@
 			);
 			dependencies = (
 			);
-			name = StyleKit;
+			name = StyleKitDemo;
 			productName = StyleKitSample;
-			productReference = 298DC6071C92073E00BB0D29 /* StyleKit.app */;
+			productReference = 298DC6071C92073E00BB0D29 /* StyleKitDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -238,7 +238,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 298DC6021C92073E00BB0D29 /* Build configuration list for PBXProject "StyleKit" */;
+			buildConfigurationList = 298DC6021C92073E00BB0D29 /* Build configuration list for PBXProject "StyleKitDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -251,7 +251,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				298DC6061C92073E00BB0D29 /* StyleKit */,
+				298DC6061C92073E00BB0D29 /* StyleKitDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -446,7 +446,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		298DC6021C92073E00BB0D29 /* Build configuration list for PBXProject "StyleKit" */ = {
+		298DC6021C92073E00BB0D29 /* Build configuration list for PBXProject "StyleKitDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				298DC6171C92073E00BB0D29 /* Debug */,
@@ -455,7 +455,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		298DC6191C92073E00BB0D29 /* Build configuration list for PBXNativeTarget "StyleKit" */ = {
+		298DC6191C92073E00BB0D29 /* Build configuration list for PBXNativeTarget "StyleKitDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				298DC61A1C92073E00BB0D29 /* Debug */,

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="y3g-6O-uUf">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--StyleKit Catalog-->
+        <!--StyleKitDemo Catalog-->
         <scene sceneID="92v-eU-MGr">
             <objects>
-                <tableViewController title="StyleKit Catalog" id="aYU-mY-bha" sceneMemberID="viewController">
+                <tableViewController title="StyleKitDemo Catalog" id="aYU-mY-bha" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ciM-VT-zAy">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,11 +21,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vS0-dj-m3H" id="3dP-4h-5ad">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Example #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mOS-BD-XuF">
-                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
+                                                    <frame key="frameInset" minX="15" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -42,11 +41,11 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ikE-gz-QWB" id="5gg-qQ-mN0">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Styles Preview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VsT-pf-3sf">
-                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
+                                                    <frame key="frameInset" minX="15" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -62,11 +61,11 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xgS-ga-LRm" id="Ccs-xH-TZj">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Reading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qlz-BO-OHo">
-                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
+                                                    <frame key="frameInset" minX="15" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -86,7 +85,7 @@
                             <outlet property="delegate" destination="aYU-mY-bha" id="UQC-5b-DgB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="StyleKit Catalog" id="gSS-cD-RHS">
+                    <navigationItem key="navigationItem" title="StyleKitDemo Catalog" id="gSS-cD-RHS">
                         <barButtonItem key="backBarButtonItem" title="Catalog" id="D0M-FA-Fwe"/>
                     </navigationItem>
                 </tableViewController>
@@ -509,10 +508,10 @@ Sending out an S.O.S.</string>
             </objects>
             <point key="canvasLocation" x="1388" y="1352.473763118441"/>
         </scene>
-        <!--StyleKit Catalog-->
+        <!--StyleKitDemo Catalog-->
         <scene sceneID="Byg-9O-NQA">
             <objects>
-                <navigationController title="StyleKit Catalog" automaticallyAdjustsScrollViewInsets="NO" id="y3g-6O-uUf" sceneMemberID="viewController">
+                <navigationController title="StyleKitDemo Catalog" automaticallyAdjustsScrollViewInsets="NO" id="y3g-6O-uUf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Nno-YI-l6u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -527,7 +526,7 @@ Sending out an S.O.S.</string>
             </objects>
             <point key="canvasLocation" x="129" y="493"/>
         </scene>
-        <!--StyleKit-->
+        <!--StyleKitDemo-->
         <scene sceneID="sbq-LV-NnS">
             <objects>
                 <viewController id="qI1-q7-C7V" customClass="ViewController" customModule="StyleKitSample" customModuleProvider="target" sceneMemberID="viewController">
@@ -672,7 +671,7 @@ Sending out an S.O.S.</string>
                             <constraint firstItem="ba0-IN-AmL" firstAttribute="centerX" secondItem="oDo-30-HwC" secondAttribute="centerX" id="vqX-OT-8nL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="StyleKit" id="cYX-Id-79P"/>
+                    <navigationItem key="navigationItem" title="StyleKitDemo" id="cYX-Id-79P"/>
                     <connections>
                         <outlet property="button1" destination="dd8-Fy-1jk" id="VlJ-Sv-qMm"/>
                     </connections>
