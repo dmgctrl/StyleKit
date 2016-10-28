@@ -1,7 +1,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     private struct AssociatedKeys {
         static var styleTag = ""
     }
@@ -9,7 +9,7 @@ extension UIView {
     /**
          Setting the styleTag automatically applies styles as defined in the stylesheet
     */
-    @IBInspectable var styleTag: String? {
+    @IBInspectable public var styleTag: String? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.styleTag) as? String
         }

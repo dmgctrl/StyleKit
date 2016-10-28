@@ -20,3 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
+struct Utils {
+    static let documentDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last
+}

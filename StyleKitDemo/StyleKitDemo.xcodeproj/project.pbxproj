@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2908BCE71DBA61360012C924 /* LabelStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCE61DBA61360012C924 /* LabelStylist.swift */; };
-		2908BCE91DBA61BF0012C924 /* ButtonStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCE81DBA61BF0012C924 /* ButtonStylist.swift */; };
-		2908BCEC1DBA621D0012C924 /* ViewStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCEB1DBA621D0012C924 /* ViewStylist.swift */; };
-		2908BCEE1DBA62680012C924 /* TextFieldStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCED1DBA62680012C924 /* TextFieldStylist.swift */; };
-		2908BCF01DBA62AA0012C924 /* SegmentedControlStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCEF1DBA62AA0012C924 /* SegmentedControlStylist.swift */; };
-		2908BCF21DBA62E20012C924 /* SliderStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCF11DBA62E20012C924 /* SliderStylist.swift */; };
-		2908BCF41DBA631E0012C924 /* StepperStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCF31DBA631E0012C924 /* StepperStylist.swift */; };
-		2908BCF61DBA636D0012C924 /* ProgressViewStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCF51DBA636D0012C924 /* ProgressViewStylist.swift */; };
 		2908BCF91DBA89240012C924 /* StylesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BCF81DBA89240012C924 /* StylesViewController.swift */; };
 		2908BD1F1DBC0EC10012C924 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BD1E1DBC0EC10012C924 /* ButtonTableViewCell.swift */; };
 		2908BD211DBC10A20012C924 /* SegmentedControlsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908BD201DBC10A20012C924 /* SegmentedControlsTableViewCell.swift */; };
@@ -38,23 +30,27 @@
 		298DC6121C92073E00BB0D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 298DC6111C92073E00BB0D29 /* Assets.xcassets */; };
 		298DC6151C92073E00BB0D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 298DC6131C92073E00BB0D29 /* LaunchScreen.storyboard */; };
 		298E3BC81DB56D7B00B54DD0 /* Style2.json in Resources */ = {isa = PBXBuildFile; fileRef = 298E3BC71DB56D7B00B54DD0 /* Style2.json */; };
-		29EBA4911DB69EA500CAFFEA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBA4901DB69EA500CAFFEA /* Utils.swift */; };
+		29B64F301DC3AAF600D460B1 /* StyleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B64F2F1DC3AAF600D460B1 /* StyleKit.framework */; };
+		29B64F311DC3AAF600D460B1 /* StyleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29B64F2F1DC3AAF600D460B1 /* StyleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C406E7BC1DBFFF59004865CA /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406E7BB1DBFFF59004865CA /* ReadingViewController.swift */; };
-		C406E7C21DC0F63C004865CA /* TextViewStylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406E7C11DC0F63C004865CA /* TextViewStylist.swift */; };
 		C406E7C41DC0F81D004865CA /* TextViewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406E7C31DC0F81D004865CA /* TextViewsTableViewCell.swift */; };
-		C446D61D1CB540CA00EBC929 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61B1CB540CA00EBC929 /* Style.swift */; };
-		C446D61E1CB540CA00EBC929 /* UIView+StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		29B64F2E1DC3A7B900D460B1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				29B64F311DC3AAF600D460B1 /* StyleKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		2908BCE61DBA61360012C924 /* LabelStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStylist.swift; sourceTree = "<group>"; };
-		2908BCE81DBA61BF0012C924 /* ButtonStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStylist.swift; sourceTree = "<group>"; };
-		2908BCEB1DBA621D0012C924 /* ViewStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStylist.swift; sourceTree = "<group>"; };
-		2908BCED1DBA62680012C924 /* TextFieldStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStylist.swift; sourceTree = "<group>"; };
-		2908BCEF1DBA62AA0012C924 /* SegmentedControlStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlStylist.swift; sourceTree = "<group>"; };
-		2908BCF11DBA62E20012C924 /* SliderStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderStylist.swift; sourceTree = "<group>"; };
-		2908BCF31DBA631E0012C924 /* StepperStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperStylist.swift; sourceTree = "<group>"; };
-		2908BCF51DBA636D0012C924 /* ProgressViewStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewStylist.swift; sourceTree = "<group>"; };
 		2908BCF81DBA89240012C924 /* StylesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StylesViewController.swift; sourceTree = "<group>"; };
 		2908BD1E1DBC0EC10012C924 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		2908BD201DBC10A20012C924 /* SegmentedControlsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlsTableViewCell.swift; sourceTree = "<group>"; };
@@ -80,12 +76,9 @@
 		298DC6141C92073E00BB0D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		298DC6161C92073E00BB0D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		298E3BC71DB56D7B00B54DD0 /* Style2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Style2.json; sourceTree = "<group>"; };
-		29EBA4901DB69EA500CAFFEA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		29B64F2F1DC3AAF600D460B1 /* StyleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StyleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C406E7BB1DBFFF59004865CA /* ReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
-		C406E7C11DC0F63C004865CA /* TextViewStylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewStylist.swift; sourceTree = "<group>"; };
 		C406E7C31DC0F81D004865CA /* TextViewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewsTableViewCell.swift; sourceTree = "<group>"; };
-		C446D61B1CB540CA00EBC929 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+StyleKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B64F301DC3AAF600D460B1 /* StyleKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,22 +105,6 @@
 			);
 			name = Fonts;
 			path = StyleKitDemo/Fonts;
-			sourceTree = "<group>";
-		};
-		2908BCEA1DBA61CB0012C924 /* Stylist */ = {
-			isa = PBXGroup;
-			children = (
-				2908BCED1DBA62680012C924 /* TextFieldStylist.swift */,
-				2908BCE61DBA61360012C924 /* LabelStylist.swift */,
-				2908BCE81DBA61BF0012C924 /* ButtonStylist.swift */,
-				2908BCEB1DBA621D0012C924 /* ViewStylist.swift */,
-				2908BCEF1DBA62AA0012C924 /* SegmentedControlStylist.swift */,
-				2908BCF11DBA62E20012C924 /* SliderStylist.swift */,
-				2908BCF31DBA631E0012C924 /* StepperStylist.swift */,
-				2908BCF51DBA636D0012C924 /* ProgressViewStylist.swift */,
-				C406E7C11DC0F63C004865CA /* TextViewStylist.swift */,
-			);
-			name = Stylist;
 			sourceTree = "<group>";
 		};
 		2908BCF71DBA887B0012C924 /* ViewControllers */ = {
@@ -160,10 +138,6 @@
 			children = (
 				2908BD581DC24A5D0012C924 /* DemoCode.swift */,
 				298DC60A1C92073E00BB0D29 /* AppDelegate.swift */,
-				C446D61B1CB540CA00EBC929 /* Style.swift */,
-				29EBA4901DB69EA500CAFFEA /* Utils.swift */,
-				C446D61C1CB540CA00EBC929 /* UIView+StyleKit.swift */,
-				2908BCEA1DBA61CB0012C924 /* Stylist */,
 				2908BCF71DBA887B0012C924 /* ViewControllers */,
 				2908BD2E1DBC11310012C924 /* Cells */,
 			);
@@ -173,6 +147,7 @@
 		298DC5FE1C92073E00BB0D29 = {
 			isa = PBXGroup;
 			children = (
+				29B64F2F1DC3AAF600D460B1 /* StyleKit.framework */,
 				2908BCE51DB818160012C924 /* Fonts */,
 				298DC6091C92073E00BB0D29 /* StyleKitDemo */,
 				298DC6081C92073E00BB0D29 /* Products */,
@@ -212,6 +187,7 @@
 				298DC6031C92073E00BB0D29 /* Sources */,
 				298DC6041C92073E00BB0D29 /* Frameworks */,
 				298DC6051C92073E00BB0D29 /* Resources */,
+				29B64F2E1DC3A7B900D460B1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,26 +262,14 @@
 				2908BD591DC24A5D0012C924 /* DemoCode.swift in Sources */,
 				2908BD2D1DBC11220012C924 /* ViewsTableViewCell.swift in Sources */,
 				2908BD1F1DBC0EC10012C924 /* ButtonTableViewCell.swift in Sources */,
-				2908BCEC1DBA621D0012C924 /* ViewStylist.swift in Sources */,
 				2908BD271DBC10EB0012C924 /* SlidersTableViewCell.swift in Sources */,
 				C406E7BC1DBFFF59004865CA /* ReadingViewController.swift in Sources */,
-				C406E7C21DC0F63C004865CA /* TextViewStylist.swift in Sources */,
 				2908BD291DBC10FF0012C924 /* SteppersTableViewCell.swift in Sources */,
-				2908BCF61DBA636D0012C924 /* ProgressViewStylist.swift in Sources */,
 				2908BCF91DBA89240012C924 /* StylesViewController.swift in Sources */,
-				2908BCF01DBA62AA0012C924 /* SegmentedControlStylist.swift in Sources */,
 				2908BD251DBC10D60012C924 /* LabelsTableViewCell.swift in Sources */,
-				C446D61E1CB540CA00EBC929 /* UIView+StyleKit.swift in Sources */,
 				C406E7C41DC0F81D004865CA /* TextViewsTableViewCell.swift in Sources */,
-				2908BCE71DBA61360012C924 /* LabelStylist.swift in Sources */,
-				2908BCF21DBA62E20012C924 /* SliderStylist.swift in Sources */,
 				2908BD2B1DBC11120012C924 /* ProgressViewsTableViewCell.swift in Sources */,
-				2908BCEE1DBA62680012C924 /* TextFieldStylist.swift in Sources */,
 				2908BD211DBC10A20012C924 /* SegmentedControlsTableViewCell.swift in Sources */,
-				29EBA4911DB69EA500CAFFEA /* Utils.swift in Sources */,
-				2908BCF41DBA631E0012C924 /* StepperStylist.swift in Sources */,
-				2908BCE91DBA61BF0012C924 /* ButtonStylist.swift in Sources */,
-				C446D61D1CB540CA00EBC929 /* Style.swift in Sources */,
 				298DC60B1C92073E00BB0D29 /* AppDelegate.swift in Sources */,
 				2908BD231DBC10BE0012C924 /* TextFieldsTableViewCell.swift in Sources */,
 			);

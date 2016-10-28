@@ -1,12 +1,13 @@
 
 import Foundation
+import StyleKit
 
 extension Utils {
     
     
     static func copyStyleFileFromBundle() {
         
-        if let relativePath = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocation] as? String,
+        if let relativePath = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocationKey] as? String,
         let srcDir = NSBundle.mainBundle().URLForResource("Style", withExtension: "json"),
             let destDir = Utils.documentDirectory?.URLByAppendingPathComponent(relativePath) {
             Utils.copyStyleFile(from: srcDir, to: destDir)
@@ -37,7 +38,7 @@ extension Utils {
     }
     
     static func downloadStyleFile() {
-        if let string = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocation] as? String {
+        if let string = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocationKey] as? String {
             if let url = NSURL(string:"https://dl.dropboxusercontent.com/u/26582460/Style.json") {
                 NSURLSession.sharedSession().downloadTaskWithURL(url, completionHandler: { tempFileDirectory, response, error in
                     if error == nil {

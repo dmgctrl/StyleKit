@@ -1,5 +1,6 @@
 
 import UIKit
+import StyleKit
 
 class StylesViewController: UIViewController {
 

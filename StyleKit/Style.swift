@@ -16,10 +16,10 @@ class ColorStyle {
     }
 }
 
-class CommonResources {
-    var fontLabels = [String: String]()
-    var colors = [String: UIColor]()
-    var imageNames = [String: String]()
+public class CommonResources {
+    public var fontLabels = [String: String]()
+    public var colors = [String: UIColor]()
+    public var imageNames = [String: String]()
 }
 
 class AttributedTextStyle {
@@ -41,7 +41,7 @@ protocol Stylist {
     associatedtype Element
 }
 
-protocol StyleKitSubscriber: class {
+public protocol StyleKitSubscriber: class {
     func update()
 }
 
@@ -50,7 +50,7 @@ enum FontProperty: String {
     case size = "size"
 }
 
-enum UIElement: String {
+public enum UIElement: String {
     case segmentedControl = "SegmentedControls"
     case textField = "TextFields"
     case button = "Buttons"
@@ -78,7 +78,7 @@ enum ColorProperties: String {
 }
 
 
-class Style {
+public class Style {
     
     enum StyleKitError: ErrorType {
         case StyleFileNotFound(String)
@@ -86,16 +86,16 @@ class Style {
         case InvalidLabelStyle
     }
     
-    static let sharedInstance = Style()
+    public static let sharedInstance = Style()
     
     private let fileName = "Style.json"
-    static let styleSheetLocation = "StyleKit-StylesheetLocation" // Make sure to update docs if this changes
+    public static let styleSheetLocationKey = "SKStylesheetLocation" // Make sure to update docs if this changes
     
-    var resources = CommonResources()
+    public var resources = CommonResources()
     
-    typealias StyleMap = [String: AnyObject]
+    public typealias StyleMap = [String: AnyObject]
     
-    var styleMap = [UIElement:StyleMap]()
+    public var styleMap = [UIElement:StyleMap]()
     
     private let subscribers: NSHashTable
     
@@ -109,7 +109,7 @@ class Style {
     }
     
     private func getStylePath() throws -> NSURL {
-        if let string = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocation] as? String,
+        if let string = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocationKey] as? String,
             documentDirectory = Utils.documentDirectory {
             let pathURL: NSURL?
             if string.containsString(".json") {
@@ -272,7 +272,7 @@ extension Style {
          
          Call 'removeSubscriber(subscriber: StyleKitSubscriber)' to unregister
     */
-    func addSubscriber(subscriber: StyleKitSubscriber) {
+    public func addSubscriber(subscriber: StyleKitSubscriber) {
         if !subscribers.containsObject(subscriber) {
             subscribers.addObject(subscriber)
         }
@@ -281,7 +281,7 @@ extension Style {
     /**
         Removes a subscriber from the list of subscribers
      */
-    func removeSubscriber(subscriber: StyleKitSubscriber) {
+    public func removeSubscriber(subscriber: StyleKitSubscriber) {
         if subscribers.containsObject(subscriber) {
             subscribers.removeObject(subscriber)
         }
@@ -292,13 +292,13 @@ extension Style {
      
         StyleKit.sharedInstance.refresh()
      
-        Since the bundle is readonly, the stylesheet must be at the location specified in the applications plist file for the key 'StyleKit-StylesheetLocation'. The new stylesheet will **not** automatically get applied to views which have already been tagged/styled. To restyle a view which has already been tagged/styled, call `style()` on the view.
+        Since the bundle is readonly, the stylesheet must be at the location specified in the applications plist file for the key 'SKStylesheetLocation'. The new stylesheet will **not** automatically get applied to views which have already been tagged/styled. To restyle a view which has already been tagged/styled, call `style()` on the view.
      
         You may register for changes to the stylesheet by implementing the `StyleKitSubscriber` protocol and calling `addSubscriber`.
      
             StyleKit.sharedInstance.addSubscriber(self)
     */
-    func refresh() {
+    public func refresh() {
         serialize()
         let enumerator = subscribers.objectEnumerator()
         while let subscriber = enumerator.nextObject() as? StyleKitSubscriber {

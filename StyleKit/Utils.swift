@@ -2,10 +2,10 @@
 import Foundation
 import UIKit
 
-
-struct Utils {
+internal struct Utils {
     static let documentDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last
 }
+
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int, alph: Float) {
