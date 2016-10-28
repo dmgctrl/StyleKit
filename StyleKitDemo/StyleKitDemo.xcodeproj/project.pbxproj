@@ -147,9 +147,9 @@
 		298DC5FE1C92073E00BB0D29 = {
 			isa = PBXGroup;
 			children = (
-				29B64F2F1DC3AAF600D460B1 /* StyleKit.framework */,
-				2908BCE51DB818160012C924 /* Fonts */,
 				298DC6091C92073E00BB0D29 /* StyleKitDemo */,
+				299612051DC3AFD2006BA22E /* Frameworks */,
+				2908BCE51DB818160012C924 /* Fonts */,
 				298DC6081C92073E00BB0D29 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -175,6 +175,14 @@
 			);
 			name = StyleKitDemo;
 			path = StyleKit;
+			sourceTree = "<group>";
+		};
+		299612051DC3AFD2006BA22E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B64F2F1DC3AAF600D460B1 /* StyleKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
