@@ -244,24 +244,27 @@ To use titleColor for button state you must set the button as "Custom" type in I
 ## Dynamic Updates
 
 Dynamic updates to tagged ui elements are possible by updating the style JSON and communicating the change. Since the bundle is readonly, you must first place your style.json in the app's documents directory (or other writable location) and tell StyleKit where you placed it by adding a key/value entry in the apps info.plist.
-
-Now when you make changes to style json, you need to tell StyleKit that the stylesheet has changed.
+```
+  <key>SKStylesheetLocation</key>
+  <string>NewFolder</string>
+```
+Now when you make changes to style json, you need to tell StyleKit that the stylesheet has changed by calling `refresh`.
 
   ```
   StyleKit.sharedInstance.refresh()
   ```
 
-The new stylesheet will **not** automatically get applied to views which have already been tagged/styled. View controllers or objects may register to receive notification of stylesheet changes by registering as a subscriber.
+The new stylesheet will **not** automatically get applied to views which have already been tagged/styled. View controllers or objects may be notified of stylesheet changes by registering as a subscriber and implementing the `StyleKitSubscriber` protocol.
 
   ```
   StyleKit.sharedInstance.addSubscriber(self)
    ```
 
-  To restyle a view which has already been tagged/styled, set a different tag or just call `style()` for a view which already has a tag.
+  Upon notification of an update, view controllers can restyle a view which has already been tagged/styled by resetting the views styleTag property or just call `style()`.
 
   ```swift
       button.styleTag = "B3"
-      // or
+      // or call style if styleTag has already been set
       button.style()
   }
   ```
