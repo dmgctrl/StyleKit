@@ -1,66 +1,40 @@
 # StyleKit
 
-StyleKit is a iOS library that styles native controls with a CSS like JSON format. With StyleKit, you can replace many complicated lines of Swift with a few lines of StyleKit JSON. This simplifies and centralizes your styling code, and offers other benefits as well. Styles are wired up to their objects via IBOutlet collections and generates methods per style that can be applied in code if necessary.
+StyleKit is a iOS library that styles native controls with a CSS like JSON format.  This simplifies and centralizes your styling code.  With StyleKit, you can replace many complicated lines of Swift with a few lines of StyleKit JSON.
 
-## Requirements
-
-1. ` Python ` version 2.7 or newer
-2. ` pip ` -  to install ` brew install python ` this will install all of pythons developer tools along with it
+The StyleKit API additionally supports the ability to dynamically update styles in your app by changing your StyleKit JSON. Controllers can subscribe to style changes and update their UI elements.
 
 ## Install StyleKit using Carthage
 
 `github "dmgctrl/StyleKit"`
 
-## Install StyleKit as a submodule
+## Style Elements
 
-1. ` cd ` Into the root of the project you'd like to install StyleKit
-2. Add styleKit submodule in ` Libraries/ ` directory ` git submodule add https://github.com/dmgctrl/StyleKit.git Libraries/StyleKit
+To style a UI element using StyleKit, you set its 'styleTag' property, to a tag defined in the stylesheet. The example below sets a UIButton's style in the `viewDidLoad` of view controller.
 
-## Configure StyleKit
+```swift
+@IBOutlet weak var button: UIButton!
 
-1. create ` Style/ ` in the ` ${TARGET_NAME}/ ` directory of your project
-2. add your ` StyleKit.json ` file to the ` Style/ ` directory
-3. Open Xcode project and navigate to your targets ` Build Phases `
-4. Add a new ` Run Script ` under the ` Target Dependencies ` build phase
-5. Add the following BASH Script :
-  * *please note* : this assumes the location of ` Libraries/StyleKit/ ` & ` ${TARGET_NAME}/Style/StyleKit.json ` those requirements must be added as described by the previous instructions or this BASH script must altered to reflect there location.
-
+override func viewDidLoad() {
+    super.viewDidLoad()
+    button.styleTag = "B3"
+}
 ```
-
-export PATH="$PATH:/usr/local/bin/"
-
-if [ ! -d Libraries/StyleKit/ ]; then
-    echo "error: Missing submodules run : $ git submodule update --init"
-    exit 1
-fi
-
-pip list | grep jsonschema
-if [ $? -ne 0 ]; then
-    pip install --user jsonschema
-    if [ $? -ne 0 ]; then
-        echo "error: pip install failed"
-        exit 1
-    fi
-fi
-
-./Libraries/StyleKit/ParserJSON.py -i ${TARGET_NAME}/Style/StyleKit.json -o ${TARGET_NAME}/Style/StyleKit.swift
-
-```
-
-8. Build the project
-9. Add ` StyleKit.json ` & the generated ` StyleKit.swift ` to the Xcode project
 
 ## Usage
 
-Steps to add author styles and apply them to UIKit elements
+StyleKit by default looks for a stylesheet named `Style.json` in the bundle. The location and name of the stylesheet can be customized by setting an alternate location in your apps Info.plist. The location may be specified as a directory (implied file name of Style.json) or as directory/filename.
 
-1.) Your ` StyleKit.json ` file is you single location to define the style for you application
-2.) Below are examples for the currently supported features
- * Full support & validation documentation can be found in the ` Style.json.schema `
+	<key>StyleKit-StylesheetLocation</key>
+	<string>SpecialStyle.json</string>
+
+In the example above, StyleKit will will attempt to load styles from the file `SpecialStyle.json` in the apps Documents directory.
+
+Below are examples for the currently supported features of the StyleKit JSON.
 
 #### Fonts
 
-```
+```JSON
 
 "Fonts": {
     "fontKey": "font-bundle-identifier"
@@ -70,7 +44,7 @@ Steps to add author styles and apply them to UIKit elements
 
 #### Font Styles
 
-```
+```JSON
 
 "fontStyle": {
     "font": "primaryFontLightItalic",
@@ -83,7 +57,7 @@ Steps to add author styles and apply them to UIKit elements
 
 You can specify a color with either a Hex value or an RGB value. Alpha is optional in both (default is 1.0). See examples below:
 
-```
+```JSON
 
 "Colors": {
     "colorKey": {
@@ -102,7 +76,7 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
 
 #### Images
 
-```
+```JSON
 
 "Images": {
     "imageKey": "image-bundle-identifier"
@@ -112,7 +86,7 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
 
 #### Views
 
-```
+```JSON
 
 "Views": {
     "viewName": {
@@ -129,7 +103,7 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
 
 To use attributes the label must be set to attributed text in Interface Builder.
 
-```
+```JSON
 
 "Labels": {
     "H1": {
@@ -153,7 +127,7 @@ To use attributes the label must be set to attributed text in Interface Builder.
 
 To use titleColor for button state you must set the button as "Custom" type in Interface Builder. Currently supports button states ` normal `, ` selected `, `  highlighted `
 
-```
+```JSON
 
 "Buttons": {
     "primaryButton": {
@@ -186,7 +160,7 @@ To use titleColor for button state you must set the button as "Custom" type in I
 * textAlignment values : ` "Left", "Right", "Center", "Justified", "Natural" `
 * borderStyle values : ` "None", "Line", "Bezel", "RoundedRect" `
 
-```
+```JSON
 "TextFields": {
     "T1": {
         "fontStyle": {
@@ -208,7 +182,7 @@ To use titleColor for button state you must set the button as "Custom" type in I
 
 * textAlignment values : ` "Left", "Right", "Center", "Justified", "Natural" `
 
-```
+```JSON
 "TextViews": {
        "TV1": {
            "textColor": "blueColor",
@@ -229,8 +203,7 @@ To use titleColor for button state you must set the button as "Custom" type in I
 
 #### SegmentedControls
 
-```
-
+```JSON
 "SegmentedControls": {
     "default": {
           "fontStyle": {
@@ -253,7 +226,7 @@ To use titleColor for button state you must set the button as "Custom" type in I
 
 * Note: if both the track tint colors and the track images are specified, the tint colors will override the images.
 
-```
+```JSON
     "Sliders": {
         "S1": {
             "minimumTrackTintColor": "purpleColor",
@@ -268,18 +241,27 @@ To use titleColor for button state you must set the button as "Custom" type in I
 
 ```
 
-#### Xcode Integration
+## Dynamic Updates
 
-The output of a valid ` Style.json ` is a compiled ` Style.swift ` that file will contain ` IBOutletCollections ` & specific methods for each element defined in the ` Style.json `. These methods can be applied directly to elements via code or objects can be linked directly to a Style inside storyboards.
+Dynamic updates to tagged ui elements are possible by updating the style JSON and communicating the change. Since the bundle is readonly, you must first place your style.json in the app's documents directory (or other writable location) and tell StyleKit where you placed it by adding a key/value entry in the apps info.plist.
 
-* To link styles in Storyboards add an object of class ` Style ` to the view / viewController you'd like to style. That will make StyleKits outlet collections available in interface builder.
-* Next link the selected style outlet to it's corresponding object using the "whip tool".
+Now when you make changes to style json, you need to tell StyleKit that the stylesheet has changed.
 
-## Steps to contribute
+  ```
+  StyleKit.sharedInstance.refresh()
+  ```
 
-If you'd like to add support for any remaining UIKit elements follow this guide to help you through the process.
+The new stylesheet will **not** automatically get applied to views which have already been tagged/styled. View controllers or objects may register to receive notification of stylesheet changes by registering as a subscriber.
 
-1. All new features must be validated through the ` Style.json.schema `. Documentation on json schema syntax can be found at [http://json-schema.org](http://json-schema.org).
-2. Once the ` json ` structure has been defined it's properties need to be created in ` UIObjects.py `
-3. If it's a UIKit element that's not already supported ` ParserJSON.py ` will need to be updated to break down the json to python objects that are feed to the swift generator.
-4.) Next ` SwiftGenerator.py ` will need to updated to generate the appropriate swift code.
+  ```
+  StyleKit.sharedInstance.addSubscriber(self)
+   ```
+
+  To restyle a view which has already been tagged/styled, set a different tag or just call `style()` for a view which already has a tag.
+
+  ```swift
+      button.styleTag = "B3"
+      // or
+      button.style()
+  }
+  ```
