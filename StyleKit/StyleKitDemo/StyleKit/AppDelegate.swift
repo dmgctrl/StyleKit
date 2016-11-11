@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {        
         
         Utils.copyStyleFileFromBundle()
         return true
@@ -23,5 +23,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 struct Utils {
-    static let documentDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last
+    static let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last
 }

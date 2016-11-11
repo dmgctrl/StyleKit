@@ -12,19 +12,19 @@ class ReadingViewController: UIViewController {
     }
     
     
-    @IBAction func switchChanged(sender: AnyObject) {
+    @IBAction func switchChanged(_ sender: AnyObject) {
         guard let theSwitch = sender as? UISwitch else {
             return
         }
 
-        if theSwitch.on {
-            UIView.animateWithDuration(0.25) {
+        if theSwitch.isOn {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.setNightTimeReading()
-            }
+            }) 
         } else {
-            UIView.animateWithDuration(0.25) {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.setDayTimeReading()
-            }
+            }) 
         }
     }
     
