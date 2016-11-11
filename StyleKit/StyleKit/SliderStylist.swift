@@ -23,7 +23,7 @@ class SliderStyle : Stylist {
     
     static let allValues:[Properties] = [.FilledTrackColor,.EmptyTrackColor, .ThumbImage, .MinimumTrackImage, .MaximumTrackImage]
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> SliderStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> SliderStyle {
         let style = SliderStyle()
         for (key,value) in spec {
             guard let property = SliderStyle.Properties(rawValue: key) else {
@@ -32,26 +32,26 @@ class SliderStyle : Stylist {
             }
             switch property {
             case .ThumbImage:
-                if let imageKey = value as? String, imageName = resources.imageNames[imageKey],
-                    image = UIImage(named:imageName){
+                if let imageKey = value as? String, let imageName = resources.imageNames[imageKey],
+                    let image = UIImage(named:imageName){
                     style.thumbImage = image
                 }
             case .MinimumTrackImage:
-                if let imageKey = value as? String, imageName = resources.imageNames[imageKey],
-                    image = UIImage(named:imageName){
+                if let imageKey = value as? String, let imageName = resources.imageNames[imageKey],
+                    let image = UIImage(named:imageName){
                     style.minimumTrackImage = image
                 }
             case .MaximumTrackImage:
-                if let imageKey = value as? String, imageName = resources.imageNames[imageKey],
-                    image = UIImage(named:imageName){
+                if let imageKey = value as? String, let imageName = resources.imageNames[imageKey],
+                    let image = UIImage(named:imageName){
                     style.maximumTrackImage = image
                 }
             case .FilledTrackColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey] {
+                if let colorKey = value as? String, let color = resources.colors[colorKey] {
                     style.filledTrackColor = color
                 }
             case .EmptyTrackColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey] {
+                if let colorKey = value as? String, let color = resources.colors[colorKey] {
                     style.emptyTrackColor = color
                 }
             }
@@ -64,20 +64,20 @@ class SliderStyle : Stylist {
 
 extension UISlider {
     
-    func applyStyle(style:SliderStyle, resources:CommonResources) {
+    func applyStyle(_ style:SliderStyle, resources:CommonResources) {
         for property in SliderStyle.allValues {
             switch property {
             case .ThumbImage:
                 if let image = style.thumbImage {
-                    self.setThumbImage(image, forState: .Normal)
+                    self.setThumbImage(image, for: .normal)
                 }
             case .MinimumTrackImage:
                 if let image = style.minimumTrackImage {
-                    self.setMinimumTrackImage(image, forState: .Normal)
+                    self.setMinimumTrackImage(image, for: .normal)
                 }
             case .MaximumTrackImage:
                 if let image = style.maximumTrackImage {
-                    self.setMaximumTrackImage(image, forState: .Normal)
+                    self.setMaximumTrackImage(image, for: .normal)
                 }
             case .FilledTrackColor:
                 if let color = style.filledTrackColor {

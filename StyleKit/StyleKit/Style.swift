@@ -16,10 +16,10 @@ class ColorStyle {
     }
 }
 
-public class CommonResources {
-    public var fontLabels = [String: String]()
-    public var colors = [String: UIColor]()
-    public var imageNames = [String: String]()
+open class CommonResources {
+    open var fontLabels = [String: String]()
+    open var colors = [String: UIColor]()
+    open var imageNames = [String: String]()
 }
 
 class AttributedTextStyle {
@@ -78,74 +78,77 @@ enum ColorProperties: String {
 }
 
 
-public class Style {
+open class Style {
     
-    enum StyleKitError: ErrorType {
-        case StyleFileNotFound(String)
-        case InvalidTextFieldProperty
-        case InvalidLabelStyle
+    enum StyleKitError: Error {
+        case invalidJSON
+        case styleFileNotFound(String)
+        case invalidTextFieldProperty
+        case invalidLabelStyle
     }
     
-    public static let sharedInstance = Style()
+    open static let sharedInstance = Style()
     
-    private let fileName = "Style.json"
-    public static let styleSheetLocationKey = "SKStylesheetLocation" // Make sure to update docs if this changes
+    fileprivate let fileName = "Style.json"
+    open static let styleSheetLocationKey = "SKStylesheetLocation" // Make sure to update docs if this changes
     
-    public var resources = CommonResources()
+    open var resources = CommonResources()
     
     public typealias StyleMap = [String: AnyObject]
     
-    public var styleMap = [UIElement:StyleMap]()
+    open var styleMap = [UIElement:StyleMap]()
     
-    private let subscribers: NSHashTable
+    fileprivate let subscribers: NSHashTable<AnyObject>
     
-    private init() {
-        self.subscribers = NSHashTable(options: .WeakMemory)
+    fileprivate init() {
+        self.subscribers = NSHashTable(options: .weakMemory)
         serialize()
     }
 
-    private func checkIfImageExist(name:String) -> Bool {
+    fileprivate func checkIfImageExist(_ name:String) -> Bool {
         return UIImage(named: name) == nil ? false : true
     }
     
-    private func getStylePath() throws -> NSURL {
-        if let string = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocationKey] as? String,
-            documentDirectory = Utils.documentDirectory {
-            let pathURL: NSURL?
-            if string.containsString(".json") {
-                pathURL = documentDirectory.URLByAppendingPathComponent(string)
+    fileprivate func getStylePath() throws -> URL {
+        if let string = Bundle.main.infoDictionary?[Style.styleSheetLocationKey] as? String,
+            let documentDirectory = Utils.documentDirectory {
+            let pathURL: URL?
+            if string.contains(".json") {
+                pathURL = documentDirectory.appendingPathComponent(string)
             } else {
-                pathURL = documentDirectory.URLByAppendingPathComponent(string + "/" + fileName)
+                pathURL = documentDirectory.appendingPathComponent(string + "/" + fileName)
             }
             
-            if let thePathURL = pathURL, path = thePathURL.path {
-                if NSFileManager.defaultManager().fileExistsAtPath(path) {
+            if let thePathURL = pathURL {
+                if FileManager.default.fileExists(atPath: thePathURL.path) {
                     return thePathURL
                 } else {
-                    throw StyleKitError.StyleFileNotFound("File does not exist at \(thePathURL)")
+                    throw StyleKitError.styleFileNotFound("File does not exist at \(thePathURL)")
                 }
             } else {
-                throw StyleKitError.StyleFileNotFound("Invalid path URL: \(pathURL)")
+                throw StyleKitError.styleFileNotFound("Invalid path URL: \(pathURL)")
             }
         } else {
-            if let path = NSBundle.mainBundle().URLForResource(fileName, withExtension: nil) {
+            if let path = Bundle.main.url(forResource: fileName, withExtension: nil) {
                 return path
             } else {
-                throw StyleKitError.StyleFileNotFound("Expected to find Style.json in the bundle")
+                throw StyleKitError.styleFileNotFound("Expected to find Style.json in the bundle")
             }
         }
     }
     
-    private func serialize() {
+    fileprivate func serialize() {
         
         do {
             let stylePath = try self.getStylePath()
-            let data = try NSData(contentsOfURL: stylePath, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-            let json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            let data = try Data(contentsOf: stylePath, options: NSData.ReadingOptions.mappedIfSafe)
+            let json_ = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            
+            guard let json = json_ as? [String:Any] else { throw StyleKitError.invalidJSON }
             
             if let fontConfigs = json[CommonObjects.Fonts.rawValue] as? [String: String] {
-                let allFontNames = UIFont.familyNames().reduce([]) {
-                    $0 + UIFont.fontNamesForFamilyName($1)
+                let allFontNames = UIFont.familyNames.reduce([]) {
+                    $0 + UIFont.fontNames(forFamilyName: $1)
                 }
                 for fontName in fontConfigs.values {
                     guard allFontNames.contains(fontName) else {
@@ -212,7 +215,7 @@ public class Style {
         } catch {
             if let error = error as? StyleKitError {
                 switch error {
-                case .StyleFileNotFound(let str):
+                case .styleFileNotFound(let str):
                     print("StyleKit:Error: " + str)
                 default:
                     break
@@ -227,7 +230,7 @@ public class Style {
     // MARK: - Serialize JSON into Objects (Common)
     //---------------------------------------------
     
-    static func serializeColorsSpec(spec: [String:String], resources:CommonResources) -> ColorStyle? {
+    static func serializeColorsSpec(_ spec: [String:String], resources:CommonResources) -> ColorStyle? {
         
         let styleSpec = ColorStyle()
         for style in ColorStyle.Properties.allValues {
@@ -245,7 +248,7 @@ public class Style {
         return styleSpec
     }
         
-    static func serializeFontSpec(spec: [String:AnyObject], resources:CommonResources) -> FontStyle? {
+    static func serializeFontSpec(_ spec: [String:AnyObject], resources:CommonResources) -> FontStyle? {
 
         if let nameKey = spec[FontProperty.name.rawValue] as? String {
             if let fontName = resources.fontLabels[nameKey] {
@@ -272,18 +275,18 @@ extension Style {
          
          Call 'removeSubscriber(subscriber: StyleKitSubscriber)' to unregister
     */
-    public func addSubscriber(subscriber: StyleKitSubscriber) {
-        if !subscribers.containsObject(subscriber) {
-            subscribers.addObject(subscriber)
+    public func addSubscriber(_ subscriber: StyleKitSubscriber) {
+        if !subscribers.contains(subscriber) {
+            subscribers.add(subscriber)
         }
     }
 
     /**
         Removes a subscriber from the list of subscribers
      */
-    public func removeSubscriber(subscriber: StyleKitSubscriber) {
-        if subscribers.containsObject(subscriber) {
-            subscribers.removeObject(subscriber)
+    public func removeSubscriber(_ subscriber: StyleKitSubscriber) {
+        if subscribers.contains(subscriber) {
+            subscribers.remove(subscriber)
         }
     }
 

@@ -17,13 +17,13 @@ class LabelStyle: Stylist {
         static let allValues:[Properties] = [.TextColor, .TextAlignment, .Attributes]
     }
     
-    static var textAlignmentKeyMap:[String:NSTextAlignment] = ["Left":.Left,
-                                                               "Center":.Center,
-                                                               "Right":.Right,
-                                                               "Justified":.Justified,
-                                                               "Natural":.Natural]
+    static var textAlignmentKeyMap:[String:NSTextAlignment] = ["Left":.left,
+                                                               "Center":.center,
+                                                               "Right":.right,
+                                                               "Justified":.justified,
+                                                               "Natural":.natural]
     
-    static func attributesForLabel(styles:AttributedTextStyle, textAlignment:NSTextAlignment) ->  Dictionary<String, AnyObject> {
+    static func attributesForLabel(_ styles:AttributedTextStyle, textAlignment:NSTextAlignment) ->  Dictionary<String, AnyObject> {
 
         
         var attributes:[String: AnyObject] = [:]
@@ -34,7 +34,7 @@ class LabelStyle: Stylist {
         
         if let tracking = styles.tracking, let fontSize = styles.fontStyle?.size {
             let characterSpacing = fontSize * tracking / 1000
-            attributes[NSKernAttributeName] = characterSpacing
+            attributes[NSKernAttributeName] = characterSpacing as AnyObject?
         }
 
         let style = NSMutableParagraphStyle()
@@ -53,7 +53,7 @@ class LabelStyle: Stylist {
         return attributes
     }
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> LabelStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> LabelStyle {
         let labelStyle = LabelStyle()
         for (key,value) in spec {
             guard let property = LabelStyle.Properties(rawValue: key) else {
@@ -81,7 +81,7 @@ class LabelStyle: Stylist {
         return labelStyle
     }
     
-    static func serializeFormatAttributesSpec(spec: [String:AnyObject], resources:CommonResources) throws -> AttributedTextStyle {
+    static func serializeFormatAttributesSpec(_ spec: [String:AnyObject], resources:CommonResources) throws -> AttributedTextStyle {
         
         let style = AttributedTextStyle()
         for (key,value) in spec {
@@ -114,7 +114,7 @@ class LabelStyle: Stylist {
 }
 
 extension UILabel {
-    func applyStyle(style:LabelStyle, resources:CommonResources) {
+    func applyStyle(_ style:LabelStyle, resources:CommonResources) {
         for property in LabelStyle.Properties.allValues {
             switch property {
             case .TextColor:
@@ -122,7 +122,7 @@ extension UILabel {
             case .TextAlignment:
                 textAlignment = style.textAlignment ?? self.textAlignment
             case .Attributes:
-                if let attributes = style.attributes, text = self.text {
+                if let attributes = style.attributes, let text = self.text {
                     let attr = LabelStyle.attributesForLabel(attributes, textAlignment: textAlignment)
                     self.attributedText = NSAttributedString(string: text, attributes:attr)
                 }

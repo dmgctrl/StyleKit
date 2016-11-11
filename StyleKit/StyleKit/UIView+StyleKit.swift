@@ -2,7 +2,7 @@
 import UIKit
 
 public extension UIView {
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var styleTag = ""
     }
     

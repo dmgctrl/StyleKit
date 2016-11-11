@@ -20,7 +20,7 @@ class ViewStyle : Stylist {
     
     static let allValues:[Properties] = [.BorderWidth, .BorderColor, .CornerRadius, .BackgroundColor]
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> ViewStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> ViewStyle {
         let style = ViewStyle()
         for (key,value) in spec {
             guard let property = ViewStyle.Properties(rawValue: key) else {
@@ -55,7 +55,7 @@ class ViewStyle : Stylist {
 
 extension UIView {
     
-    private func applyStyle(style:ViewStyle, resources:CommonResources) {
+    fileprivate func applyStyle(_ style:ViewStyle, resources:CommonResources) {
         for property in ViewStyle.allValues {
             switch property {
             case .BorderWidth:
@@ -64,7 +64,7 @@ extension UIView {
                 }
             case .BorderColor:
                 if let borderColor = style.borderColor {
-                    self.layer.borderColor = borderColor.CGColor
+                    self.layer.borderColor = borderColor.cgColor
                 }
             case .CornerRadius:
                 if let cornerRadius = style.cornerRadius {
@@ -83,7 +83,7 @@ extension UIView {
     */
     func style() {
         guard let styleTag = self.styleTag else {
-            print("StyleKit: Warning: Instance of \(self.dynamicType) with no styleTag")
+            print("StyleKit: Warning: Instance of \(type(of: self)) with no styleTag")
             return
         }
         switch self {
@@ -93,7 +93,7 @@ extension UIView {
                 let styleObject = styles as? SegmentedControlStyle {
                 (self as! UISegmentedControl).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         case is UITextField:
             if let elementStyles = Style.sharedInstance.styleMap[.textField],
@@ -101,7 +101,7 @@ extension UIView {
                 let styleObject = styles as? TextFieldStyle {
                 (self as! UITextField).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         case is UIButton:
             if let elementStyles = Style.sharedInstance.styleMap[.button],
@@ -109,7 +109,7 @@ extension UIView {
                 let styleObject = styles as? ButtonStyle {
                 (self as! UIButton).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         case is UILabel:
             if let elementStyles = Style.sharedInstance.styleMap[.label],
@@ -117,7 +117,7 @@ extension UIView {
                 let styleObject = styles as? LabelStyle {
                 (self as! UILabel).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         case is UISlider:
             if let elementStyles = Style.sharedInstance.styleMap[.slider],
@@ -125,7 +125,7 @@ extension UIView {
                 let styleObject = styles as? SliderStyle {
                 (self as! UISlider).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         case is UIStepper:
             if let elementStyles = Style.sharedInstance.styleMap[.stepper],
@@ -133,7 +133,7 @@ extension UIView {
                 let styleObject = styles as? StepperStyle {
                 (self as! UIStepper).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         case is UIProgressView:
             if let elementStyles = Style.sharedInstance.styleMap[.progressView],
@@ -141,7 +141,7 @@ extension UIView {
                 let styleObject = styles as? ProgressViewStyle {
                 (self as! UIProgressView).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         case is UITextView:
             if let elementStyles = Style.sharedInstance.styleMap[.textView],
@@ -149,7 +149,7 @@ extension UIView {
                 let styleObject = styles as? TextViewStyle {
                 (self as! UITextView).applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         default:
             if let elementStyles = Style.sharedInstance.styleMap[.view],
@@ -157,7 +157,7 @@ extension UIView {
                 let styleObject = styles as? ViewStyle {
                 self.applyStyle(styleObject, resources: Style.sharedInstance.resources)
             } else {
-                print("StyleKit: Warning: styleTag \(styleTag) on \(self.dynamicType) was not found in Style.json")
+                print("StyleKit: Warning: styleTag \(styleTag) on \(type(of: self)) was not found in Style.json")
             }
         }
     }

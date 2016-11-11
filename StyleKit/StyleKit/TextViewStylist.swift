@@ -16,15 +16,15 @@ class TextViewStyle {
         static let allValues:[Properties] = [.TextColor, .TextAlignment, .Attributes, .BackgroundColor]
     }
     
-    static var textAlignmentKeyMap:[String:NSTextAlignment] = ["Left":.Left,
-                                                               "Center":.Center,
-                                                               "Right":.Right,
-                                                               "Justified":.Justified,
-                                                               "Natural":.Natural]
+    static var textAlignmentKeyMap:[String:NSTextAlignment] = ["Left":.left,
+                                                               "Center":.center,
+                                                               "Right":.right,
+                                                               "Justified":.justified,
+                                                               "Natural":.natural]
     
-    static func attributesForTextView(styles:AttributedTextStyle) ->  Dictionary<String, AnyObject> {
+    static func attributesForTextView(_ styles:AttributedTextStyle) ->  Dictionary<String, AnyObject> {
         let style = NSMutableParagraphStyle()
-        style.alignment = NSTextAlignment.Center
+        style.alignment = NSTextAlignment.center
         if let lineSpace = styles.lineSpacing {
             style.lineSpacing = lineSpace
         }
@@ -37,7 +37,7 @@ class TextViewStyle {
         
         if let tracking = styles.tracking, let fontSize = styles.fontStyle?.size {
             let characterSpacing = fontSize * tracking / 1000
-            attributes[NSKernAttributeName] = characterSpacing
+            attributes[NSKernAttributeName] = characterSpacing as AnyObject?
         }
         
         attributes[NSParagraphStyleAttributeName] = style
@@ -45,7 +45,7 @@ class TextViewStyle {
         return attributes
     }
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> TextViewStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> TextViewStyle {
         let textViewStyle = TextViewStyle()
         for (key,value) in spec {
             guard let property = TextViewStyle.Properties(rawValue: key) else {
@@ -77,7 +77,7 @@ class TextViewStyle {
         return textViewStyle
     }
     
-    static func serializeFormatAttributesSpec(spec: [String:AnyObject], resources:CommonResources) throws -> AttributedTextStyle {
+    static func serializeFormatAttributesSpec(_ spec: [String:AnyObject], resources:CommonResources) throws -> AttributedTextStyle {
         
         let style = AttributedTextStyle()
         for (key,value) in spec {
@@ -110,7 +110,7 @@ class TextViewStyle {
 }
 
 extension UITextView {
-    func applyStyle(style: TextViewStyle, resources:CommonResources) {
+    func applyStyle(_ style: TextViewStyle, resources:CommonResources) {
         for property in TextViewStyle.Properties.allValues {
             switch property {
             case .TextColor:
@@ -118,7 +118,7 @@ extension UITextView {
             case .TextAlignment:
                 self.textAlignment = style.textAlignment ?? self.textAlignment
             case .Attributes:
-                if let attributes = style.attributes, text = self.text {
+                if let attributes = style.attributes, let text = self.text {
                     let asdf = TextViewStyle.attributesForTextView(attributes)
                     self.attributedText = NSAttributedString(string: text, attributes:asdf)
                 }

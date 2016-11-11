@@ -26,7 +26,7 @@ class SegmentedControlStyle : Stylist {
     
     static let allValues:[Properties] = [.DividerColor, .FontStyle, .TintColor, .Normal, .Highlighted, .Selected, .Disabled]
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> SegmentedControlStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> SegmentedControlStyle {
         let style = SegmentedControlStyle()
         for (key,value) in spec {
             guard let property = SegmentedControlStyle.Properties(rawValue: key) else {
@@ -74,11 +74,11 @@ class SegmentedControlStyle : Stylist {
 
 extension UISegmentedControl {
     
-    func applyStyle(style:SegmentedControlStyle, resources:CommonResources) {
+    func applyStyle(_ style:SegmentedControlStyle, resources:CommonResources) {
         for property in SegmentedControlStyle.allValues {
             
-            var normalAttributes: [NSObject: AnyObject] = [:]
-            var selectedAttributes: [NSObject: AnyObject] = [:]
+            var normalAttributes: [AnyHashable: Any] = [:]
+            var selectedAttributes: [AnyHashable: Any] = [:]
             
             switch property {
             case .FontStyle:
@@ -93,35 +93,35 @@ extension UISegmentedControl {
                 }
             case .Normal:
                 if let colorStyles = style.normalColors {
-                    assignColors(colorStyles, forState: .Normal, resources: resources)
+                    assignColors(colorStyles, forState: .normal, resources: resources)
                 }
             case .Selected:
                 if let colorStyles = style.selectedColors {
-                    assignColors(colorStyles, forState: .Selected, resources: resources)
+                    assignColors(colorStyles, forState: .selected, resources: resources)
                 }
             case .Highlighted:
                 if let colorStyles = style.highlightedColors {
-                    assignColors(colorStyles, forState: .Highlighted, resources: resources)
+                    assignColors(colorStyles, forState: .highlighted, resources: resources)
                 }
             case .Disabled:
                 if let colorStyles = style.disabledColors {
-                    assignColors(colorStyles, forState: .Disabled, resources: resources)
+                    assignColors(colorStyles, forState: .disabled, resources: resources)
                 }
             case .DividerColor:
                 if let divColor = style.dividerColor {
-                    self.setDividerImage(UIImage.imageWithColor(divColor), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
+                    self.setDividerImage(UIImage.imageWithColor(divColor), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
                 }
             }
         }
     }
     
-    func assignColors(colors: ColorStyle, forState state: UIControlState, resources:CommonResources) {
+    func assignColors(_ colors: ColorStyle, forState state: UIControlState, resources:CommonResources) {
         if let colorKey = colors.backgroundColor, let color = resources.colors[colorKey] {
-            self.setBackgroundImage(UIImage.imageWithColor(color), forState: state, barMetrics: .Default)
+            self.setBackgroundImage(UIImage.imageWithColor(color), for: state, barMetrics: .default)
         }
         if let colorKey = colors.textColor, let color = resources.colors[colorKey] {
             let attributes = [NSForegroundColorAttributeName: color]
-            self.setTitleTextAttributes(attributes, forState: state)
+            self.setTitleTextAttributes(attributes, for: state)
         }
     }
 }

@@ -24,20 +24,20 @@ class StepperStyle : Stylist {
         case Disabled = "disabledState"
     }
     
-    static func controlStateForAllowedState(state:AllowedStates) -> UIControlState {
+    static func controlStateForAllowedState(_ state:AllowedStates) -> UIControlState {
         switch state {
         case .Disabled:
-            return UIControlState.Disabled
+            return UIControlState.disabled
         case .Highlighted:
-            return UIControlState.Highlighted
+            return UIControlState.highlighted
         case .Normal:
-            return UIControlState.Normal
+            return .normal
         }
     }
     
     static let allValues:[Properties] = [.TintColor, .IncrementImage, .DecrementImage, .BackgroundImage]
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> StepperStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> StepperStyle {
         let style = StepperStyle()
         for (key,value) in spec {
             guard let property = StepperStyle.Properties(rawValue: key) else {
@@ -46,7 +46,7 @@ class StepperStyle : Stylist {
             }
             switch property {
             case .TintColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey] {
+                if let colorKey = value as? String, let color = resources.colors[colorKey] {
                     style.tintColor = color
                 }
             case .IncrementImage:
@@ -93,7 +93,7 @@ class StepperStyle : Stylist {
 
 extension UIStepper {
     
-    func applyStyle(style:StepperStyle, resources:CommonResources) {
+    func applyStyle(_ style:StepperStyle, resources:CommonResources) {
         for property in StepperStyle.allValues {
             switch property {
             case .TintColor:
@@ -104,21 +104,21 @@ extension UIStepper {
                 if let states = style.incrementImage {
                     for (key, value) in states {
                         let controlState = StepperStyle.controlStateForAllowedState(key)
-                        self.setIncrementImage(value, forState: controlState)
+                        self.setIncrementImage(value, for: controlState)
                     }
                 }
             case .DecrementImage:
                 if let states = style.decrementImage {
                     for (key, value) in states {
                         let controlState = StepperStyle.controlStateForAllowedState(key)
-                        self.setDecrementImage(value, forState: controlState)
+                        self.setDecrementImage(value, for: controlState)
                     }
                 }
             case .BackgroundImage:
                 if let states = style.backgroundImage {
                     for (key, value) in states {
                         let controlState = StepperStyle.controlStateForAllowedState(key)
-                        self.setBackgroundImage(value, forState: controlState)
+                        self.setBackgroundImage(value, for: controlState)
                     }
                 }
             }
