@@ -25,33 +25,27 @@ override func viewDidLoad() {
 
 StyleKit by default looks for a stylesheet named `Style.json` in the bundle. The location and name of the stylesheet can be customized by setting an alternate location in your apps Info.plist. The location may be specified as a directory (implied file name of Style.json) or as directory/filename.
 
-	<key>StyleKit-StylesheetLocation</key>
+	<key>SKStylesheetLocation</key>
 	<string>SpecialStyle.json</string>
 
 In the example above, StyleKit will will attempt to load styles from the file `SpecialStyle.json` in the apps Documents directory.
 
 Below are examples for the currently supported features of the StyleKit JSON.
 
+Fonts, Colors, and Images, are common elements defined to be used elsewhere in the stylesheet.
+
 #### Fonts
 
 ```JSON
-
 "Fonts": {
-    "fontKey": "font-bundle-identifier"
+    "primaryFontLight":"BrandonGrotesque-Light",
+	"primaryFontMedium":"BrandonGrotesque-Medium",
+	"primaryFontBold":"BrandonGrotesque-Bold"	
 }
-
 ```
 
-#### Font Styles
-
-```JSON
-
-"fontStyle": {
-    "font": "primaryFontLightItalic",
-    "size": 20
-}
-
-```
+The font style keys defined here can be used to style other elements. 
+StyleKit will generate a warning if the font cannot be loaded. Make sure to properly configure any custom fonts in your project.
 
 #### Colors
 
@@ -60,40 +54,50 @@ You can specify a color with either a Hex value or an RGB value. Alpha is option
 ```JSON
 
 "Colors": {
-    "colorKey": {
+    "salmonColor": {
         "red": 250,   // RGB Value between 1-255
         "green": 110, // RGB Value between 1-255
         "blue": 92,   // RGB Value between 1-255
         "alpha": 1    // Alpha Value between 0.0-1.0
     },
-    "colorKey2": {
+    "mostlyClearColor": {
         "hex": "#000000", // Hex value
-        "alpha": 1        // Alpha Value between 0.0-1.0
+        "alpha": 0.1        // Alpha Value between 0.0-1.0
     }
 }
 
 ```
+
+The color style keys defined here can be used to style other elements. 
 
 #### Images
 
 ```JSON
 
 "Images": {
-    "imageKey": "image-bundle-identifier"
+    "buttonImage1": "image-bundle-identifier"
 }
 
 ```
+The image style keys defined here can be used to style other elements. 
+StyleKit will generate a warning if the referenced image cannot be found in the main bundle image assets.
 
 #### Views
 
 ```JSON
 
 "Views": {
-    "viewName": {
-        "backgroundColor": "blueColor",
-        "borderColor": "blackColor",
-        "borderWidth": 5,
-        "cornerRadius": 5
+    "special": {
+        "backgroundColor": "lightGrayColor",
+        "borderColor": "blueColor",
+        "borderWidth": 2,
+        "cornerRadius": 10
+    },
+    "DayTimeReading": {
+        "backgroundColor": "whiteColor"
+    },
+    "NightTimeReading": {
+        "backgroundColor": "blackColor"
     }
 }
 
@@ -122,6 +126,7 @@ To use attributes the label must be set to attributed text in Interface Builder.
 }
 
 ```
+Note the values for "textColor" and "font" refer to keys defined in the Colors and Fonts style elements respectively.
 
 #### Buttons
 
@@ -154,6 +159,8 @@ To use titleColor for button state you must set the button as "Custom" type in I
 }
 
 ```
+Note the values for "borderColor" and "font" refer to keys defined in the Colors and Fonts style elements respectively.
+
 
 #### TextFields
 
