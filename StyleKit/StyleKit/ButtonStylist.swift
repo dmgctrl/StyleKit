@@ -30,7 +30,7 @@ class ButtonStyle : Stylist {
     
     static let allValues:[Properties] = [.FontStyle, .BorderWidth, .BackgroundColor, .BorderColor, .CornerRadius, .Normal, .Highlighted, .Selected, .Disabled]
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> ButtonStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> ButtonStyle {
         let style = ButtonStyle()
         for (key,value) in spec {
             guard let property = ButtonStyle.Properties(rawValue: key) else {
@@ -84,7 +84,7 @@ class ButtonStyle : Stylist {
 
 extension UIButton {
     
-    func applyStyle(style:ButtonStyle, resources:CommonResources) {
+    func applyStyle(_ style:ButtonStyle, resources:CommonResources) {
         for property in ButtonStyle.allValues {
             switch property {
             case .FontStyle:
@@ -97,7 +97,7 @@ extension UIButton {
                 }
             case .BorderColor:
                 if let borderColor = style.borderColor {
-                    self.layer.borderColor = borderColor.CGColor
+                    self.layer.borderColor = borderColor.cgColor
                 }
             case .BackgroundColor:
                 if let color = style.backgroundColor {
@@ -110,30 +110,30 @@ extension UIButton {
                 }
             case .Normal:
                 if let value = style.normalColors {
-                    assignColors(value, forState: .Normal, resources: resources)
+                    assignColors(value, forState: .normal, resources: resources)
                 }
             case .Selected:
                 if let value = style.selectedColors {
-                    assignColors(value, forState: .Selected, resources: resources)
+                    assignColors(value, forState: .selected, resources: resources)
                 }
             case .Highlighted:
                 if let value = style.highlightedColors {
-                    assignColors(value, forState: .Highlighted, resources: resources)
+                    assignColors(value, forState: .highlighted, resources: resources)
                 }
             case .Disabled:
                 if let value = style.disabledColors {
-                    assignColors(value, forState: .Disabled, resources: resources)
+                    assignColors(value, forState: .disabled, resources: resources)
                 }
             }
         }
     }
     
-    func assignColors(colors: ColorStyle, forState state: UIControlState, resources:CommonResources) {
+    func assignColors(_ colors: ColorStyle, forState state: UIControlState, resources:CommonResources) {
         if let colorKey = colors.backgroundColor, let color = resources.colors[colorKey] {
-            self.setBackgroundImage(UIImage.imageWithColor(color), forState: state)
+            self.setBackgroundImage(UIImage.imageWithColor(color), for: state)
         }
         if let colorKey = colors.textColor, let color = resources.colors[colorKey] {
-            self.setTitleColor(color, forState: state)
+            self.setTitleColor(color, for: state)
         }
     }
 }

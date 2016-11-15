@@ -22,7 +22,7 @@ class ProgressViewStyle : Stylist {
     
     static let allValues:[Properties] = [.Style, .ProgressTintColor, .TrackTintColor, .ProgressImage, .TrackImage]
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> ProgressViewStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> ProgressViewStyle {
         let style = ProgressViewStyle()
         for (key,value) in spec {
             guard let property = ProgressViewStyle.Properties(rawValue: key) else {
@@ -35,19 +35,19 @@ class ProgressViewStyle : Stylist {
                     style.style = viewStyle
                 }
             case .ProgressTintColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey] {
+                if let colorKey = value as? String, let color = resources.colors[colorKey] {
                     style.progressTintColor = color
                 }
             case .TrackTintColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey] {
+                if let colorKey = value as? String, let color = resources.colors[colorKey] {
                     style.trackTintColor = color
                 }
             case .ProgressImage:
-                if let imageKey = value as? String, imageName = resources.imageNames[imageKey] {
+                if let imageKey = value as? String, let imageName = resources.imageNames[imageKey] {
                     style.progressImage = UIImage(named: imageName)
                 }
             case .TrackImage:
-                if let imageKey = value as? String, imageName = resources.imageNames[imageKey] {
+                if let imageKey = value as? String, let imageName = resources.imageNames[imageKey] {
                     style.trackImage = UIImage(named: imageName)
                 }
             }
@@ -57,7 +57,7 @@ class ProgressViewStyle : Stylist {
 }
 
 extension UIProgressView {    
-    func applyStyle(style:ProgressViewStyle, resources:CommonResources) {
+    func applyStyle(_ style:ProgressViewStyle, resources:CommonResources) {
         for property in ProgressViewStyle.allValues {
             switch property {
             case .Style:

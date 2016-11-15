@@ -9,12 +9,12 @@ class StylesViewController: UIViewController {
 
     var sectionHeaders = Array(Style.sharedInstance.styleMap.keys)
     var styleMap = Style.sharedInstance.styleMap
-    var resources:[String:AnyObject] = ["Colors":Array(Style.sharedInstance.resources.colors.keys),
-                                        "Fonts":Array(Style.sharedInstance.resources.fontLabels.keys),
-                                        "Images":Array(Style.sharedInstance.resources.imageNames.keys)]
+    var resources:[String:AnyObject] = ["Colors":Array(Style.sharedInstance.resources.colors.keys) as AnyObject,
+                                        "Fonts":Array(Style.sharedInstance.resources.fontLabels.keys) as AnyObject,
+                                        "Images":Array(Style.sharedInstance.resources.imageNames.keys) as AnyObject]
     
     
-    @IBAction func buttonTapped(sender: AnyObject) {
+    @IBAction func buttonTapped(_ sender: AnyObject) {
         Utils.downloadStyleFile()
     }
 
@@ -33,9 +33,9 @@ class StylesViewController: UIViewController {
     func updateUI() {
         sectionHeaders = Array(Style.sharedInstance.styleMap.keys)
         styleMap = Style.sharedInstance.styleMap
-        resources = ["Colors":Array(Style.sharedInstance.resources.colors.keys),
-                                            "Fonts":Array(Style.sharedInstance.resources.fontLabels.keys),
-                                            "Images":Array(Style.sharedInstance.resources.imageNames.keys)]
+        resources = ["Colors":Array(Style.sharedInstance.resources.colors.keys) as AnyObject,
+                                            "Fonts":Array(Style.sharedInstance.resources.fontLabels.keys) as AnyObject,
+                                            "Images":Array(Style.sharedInstance.resources.imageNames.keys) as AnyObject]
         tableView.reloadData()
     }
 }
@@ -48,7 +48,7 @@ extension StylesViewController: StyleKitSubscriber {
 
 extension StylesViewController: UITableViewDelegate {
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch sectionHeaders[indexPath.section] {
         case .button, .view, .textField:
@@ -62,7 +62,7 @@ extension StylesViewController: UITableViewDelegate {
 extension StylesViewController: UITableViewDataSource {
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let styles = styleMap[sectionHeaders[section]] {
             return styles.keys.count
         }
@@ -70,11 +70,11 @@ extension StylesViewController: UITableViewDataSource {
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let sectionHeader = sectionHeaders[indexPath.section]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("\(sectionHeader.rawValue)Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(sectionHeader.rawValue)Cell", for: indexPath)
 
         var styleTag = ""
         if let styles = styleMap[sectionHeader] {
@@ -84,7 +84,7 @@ extension StylesViewController: UITableViewDataSource {
             switch sectionHeader {
             case .button:
                 (cell as! ButtonTableViewCell).button.styleTag = styleTag
-                (cell as! ButtonTableViewCell).button.setTitle(styleTag, forState: .Normal)
+                (cell as! ButtonTableViewCell).button.setTitle(styleTag, for: .normal)
             case .segmentedControl:
                 (cell as! SegmentedControlsTableViewCell).segmentedControl.styleTag = styleTag
                 (cell as! SegmentedControlsTableViewCell).label.text = styleTag
@@ -115,11 +115,11 @@ extension StylesViewController: UITableViewDataSource {
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return sectionHeaders.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionHeaders[section].rawValue
     }
 }

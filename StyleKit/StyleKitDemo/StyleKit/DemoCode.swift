@@ -4,33 +4,35 @@ import StyleKit
 
 extension Utils {
     
+    // WARNING: Replace with an URL to your remote stylesheet
+    static let styleKitLink = "https://www.mystylesheetserver.com/location/Style.json"
     
     static func copyStyleFileFromBundle() {
         
-        if let relativePath = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocationKey] as? String,
-        let srcDir = NSBundle.mainBundle().URLForResource("Style", withExtension: "json"),
-            let destDir = Utils.documentDirectory?.URLByAppendingPathComponent(relativePath) {
+        if let relativePath = Bundle.main.infoDictionary?[Style.styleSheetLocationKey] as? String,
+        let srcDir = Bundle.main.url(forResource: "Style", withExtension: "json"),
+            let destDir = Utils.documentDirectory?.appendingPathComponent(relativePath) {
             Utils.copyStyleFile(from: srcDir, to: destDir)
         }
     }
     
-    static func copyStyleFile(from srcURL: NSURL, to destURL: NSURL) {
-        let fileManager = NSFileManager.defaultManager()
+    static func copyStyleFile(from srcURL: URL, to destURL: URL) {
+        let fileManager = FileManager.default
         
-        if fileManager.fileExistsAtPath(destURL.path!) {
+        if fileManager.fileExists(atPath: destURL.path) {
             do {
-                try fileManager.removeItemAtURL(destURL)
+                try fileManager.removeItem(at: destURL)
             } catch let error {
                 print(error)
             }
         }
         
         do {
-            if let path = destURL.path where !path.hasSuffix(".json") {
-                try fileManager.createDirectoryAtURL(destURL, withIntermediateDirectories: false, attributes: nil)
-                try fileManager.copyItemAtURL(srcURL, toURL: destURL.URLByAppendingPathComponent("Style.json")!)
+            if !destURL.path.hasSuffix(".json") {
+                try fileManager.createDirectory(at: destURL, withIntermediateDirectories: false, attributes: nil)
+                try fileManager.copyItem(at: srcURL, to: destURL.appendingPathComponent("Style.json"))
             } else {
-                try fileManager.copyItemAtURL(srcURL, toURL: destURL)
+                try fileManager.copyItem(at: srcURL, to: destURL)
             }
         } catch let error {
             print(error)
@@ -38,13 +40,13 @@ extension Utils {
     }
     
     static func downloadStyleFile() {
-        if let string = NSBundle.mainBundle().infoDictionary?[Style.styleSheetLocationKey] as? String {
-            if let url = NSURL(string:"https://dl.dropboxusercontent.com/u/26582460/Style.json") {
-                NSURLSession.sharedSession().downloadTaskWithURL(url, completionHandler: { tempFileDirectory, response, error in
+        if let string = Bundle.main.infoDictionary?[Style.styleSheetLocationKey] as? String {
+            if let url = URL(string:Utils.styleKitLink) {
+                URLSession.shared.downloadTask(with: url, completionHandler: { tempFileDirectory, response, error in
                     if error == nil {
-                        if let srcDirectory = tempFileDirectory, destDirectory = Utils.documentDirectory?.URLByAppendingPathComponent(string) {
+                        if let srcDirectory = tempFileDirectory, let destDirectory = Utils.documentDirectory?.appendingPathComponent(string) {
                             Utils.copyStyleFile(from: srcDirectory, to: destDirectory)
-                            dispatch_async(dispatch_get_main_queue(), {
+                            DispatchQueue.main.async(execute: {
                                 Style.sharedInstance.refresh()
                             })
                         }

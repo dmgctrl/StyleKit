@@ -28,7 +28,7 @@ class TextFieldStyle : Stylist {
     
     static let allValues:[Properties] = [.BackgroundColor, .FontStyle, .BorderWidth, .BorderColor, .CornerRadius, .TextAlignment, .BorderStyle, .TextColor]
     
-    static func serialize(spec: [String:AnyObject], resources:CommonResources) throws -> TextFieldStyle {
+    static func serialize(_ spec: [String:AnyObject], resources:CommonResources) throws -> TextFieldStyle {
         let result = TextFieldStyle()
         for (key,value) in spec {
             guard let property = TextFieldStyle.Properties(rawValue: key) else {
@@ -47,11 +47,11 @@ class TextFieldStyle : Stylist {
                     result.borderWidth = borderWidth
                 }
             case TextFieldStyle.Properties.TextColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey]  {
+                if let colorKey = value as? String, let color = resources.colors[colorKey]  {
                     result.textColor = color
                 }
             case TextFieldStyle.Properties.BorderColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey]  {
+                if let colorKey = value as? String, let color = resources.colors[colorKey]  {
                     result.borderColor = color
                 }
             case TextFieldStyle.Properties.TextAlignment:
@@ -67,7 +67,7 @@ class TextFieldStyle : Stylist {
                     result.cornerRadius = cornerRadius
                 }
             case TextFieldStyle.Properties.BackgroundColor:
-                if let colorKey = value as? String, color = resources.colors[colorKey] {
+                if let colorKey = value as? String, let color = resources.colors[colorKey] {
                     result.backgroundColor = color
                 }
             }
@@ -76,17 +76,17 @@ class TextFieldStyle : Stylist {
         return result
     }
     
-    static func mapTextAlignmentType(styleStr:String) -> NSTextAlignment?  {
+    static func mapTextAlignmentType(_ styleStr:String) -> NSTextAlignment?  {
         let allowedValues = ["Left","Center","Right","Justified","Natural"]
-        if let index = allowedValues.indexOf(styleStr) {
+        if let index = allowedValues.index(of: styleStr) {
             return NSTextAlignment(rawValue: index)
         }
         return nil
     }
     
-    static func mapBorderStyle(styleStr:String) -> UITextBorderStyle?  {
+    static func mapBorderStyle(_ styleStr:String) -> UITextBorderStyle?  {
         let allowedValues = ["None","Line","Bezel","RoundedRect"]
-        if let index = allowedValues.indexOf(styleStr) {
+        if let index = allowedValues.index(of: styleStr) {
             return UITextBorderStyle(rawValue: index)
         }
         return nil
@@ -95,7 +95,7 @@ class TextFieldStyle : Stylist {
 
 extension UITextField {
     
-    func applyStyle(style:TextFieldStyle, resources:CommonResources) {
+    func applyStyle(_ style:TextFieldStyle, resources:CommonResources) {
         for property in TextFieldStyle.allValues {
             switch property {
             case .FontStyle:
@@ -108,7 +108,7 @@ extension UITextField {
                 }
             case .BorderColor:
                 if let borderColor = style.borderColor {
-                    self.layer.borderColor = borderColor.CGColor
+                    self.layer.borderColor = borderColor.cgColor
                 }
             case .TextAlignment:
                 if let aValue = style.textAlignment {
