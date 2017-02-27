@@ -130,7 +130,7 @@ extension UIButton {
     
     func assignColors(_ colors: ColorStyle, forState state: UIControlState, resources:CommonResources) {
         if let colorKey = colors.backgroundColor, let color = resources.colors[colorKey] {
-            self.setBackgroundImage(UIImage.imageWithColor(color), for: state)
+            self.backgroundColor = color
         }
         if let colorKey = colors.textColor, let color = resources.colors[colorKey] {
             self.setTitleColor(color, for: state)
