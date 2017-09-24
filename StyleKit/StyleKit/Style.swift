@@ -126,7 +126,7 @@ open class Style {
                     throw StyleKitError.styleFileNotFound("File does not exist at \(thePathURL)")
                 }
             } else {
-                throw StyleKitError.styleFileNotFound("Invalid path URL: \(pathURL)")
+                throw StyleKitError.styleFileNotFound("Invalid path URL: \(String(describing: pathURL))")
             }
         } else {
             if let path = Bundle.main.url(forResource: fileName, withExtension: nil) {

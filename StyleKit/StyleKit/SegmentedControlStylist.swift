@@ -84,8 +84,8 @@ extension UISegmentedControl {
             case .FontStyle:
                 if let fontStyle = style.fontStyle {
                     let font = UIFont(name: fontStyle.fontName, size: CGFloat(fontStyle.size))
-                    normalAttributes[NSFontAttributeName] = font
-                    selectedAttributes[NSFontAttributeName] = font
+                    normalAttributes[NSAttributedStringKey.font] = font
+                    selectedAttributes[NSAttributedStringKey.font] = font
                 }
             case .TintColor:
                 if let tintColor = style.tintColor {
@@ -120,7 +120,7 @@ extension UISegmentedControl {
             self.setBackgroundImage(UIImage.imageWithColor(color), for: state, barMetrics: .default)
         }
         if let colorKey = colors.textColor, let color = resources.colors[colorKey] {
-            let attributes = [NSForegroundColorAttributeName: color]
+            let attributes = [NSAttributedStringKey.foregroundColor: color]
             self.setTitleTextAttributes(attributes, for: state)
         }
     }

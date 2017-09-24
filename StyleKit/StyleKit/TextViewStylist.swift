@@ -22,25 +22,25 @@ class TextViewStyle {
                                                                "Justified":.justified,
                                                                "Natural":.natural]
     
-    static func attributesForTextView(_ styles:AttributedTextStyle) ->  Dictionary<String, AnyObject> {
+    static func attributesForTextView(_ styles:AttributedTextStyle) ->  Dictionary<NSAttributedStringKey, AnyObject> {
         let style = NSMutableParagraphStyle()
         style.alignment = NSTextAlignment.center
         if let lineSpace = styles.lineSpacing {
             style.lineSpacing = lineSpace
         }
         
-        var attributes:[String: AnyObject] = [:]
+        var attributes:[NSAttributedStringKey: AnyObject] = [:]
         
         if let fontName = styles.fontStyle?.fontName, let fontSize = styles.fontStyle?.size  {
-            attributes[NSFontAttributeName] = UIFont(name: fontName, size: CGFloat(fontSize))
+            attributes[NSAttributedStringKey.font] = UIFont(name: fontName, size: CGFloat(fontSize))
         }
         
         if let tracking = styles.tracking, let fontSize = styles.fontStyle?.size {
             let characterSpacing = fontSize * tracking / 1000
-            attributes[NSKernAttributeName] = characterSpacing as AnyObject?
+            attributes[NSAttributedStringKey.kern] = characterSpacing as AnyObject?
         }
         
-        attributes[NSParagraphStyleAttributeName] = style
+        attributes[NSAttributedStringKey.paragraphStyle] = style
         
         return attributes
     }
